@@ -1,9 +1,11 @@
-uuid: b3017512-ad47-4545-af43-257bf15d124d
+uuid: df228499-9471-4277-b0e8-46d53b3b1b95
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.schema_sub_organization
+    - node.type.edu_organization
+    - node.type.local_business
     - node.type.organization
   module:
     - epp
@@ -29,5 +31,7 @@ settings:
     excluded_schema_types: {  }
     ignore_additional_mappings: false
     target_bundles:
+      edu_organization: edu_organization
+      local_business: local_business
       organization: organization
 field_type: entity_reference

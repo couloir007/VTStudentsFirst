@@ -1,0 +1,18 @@
+uuid: 95fbd5b2-fae0-49f3-8606-80d808e8a1f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.local_business
+id: node.local_business.unpublish_on
+field_name: unpublish_on
+entity_type: node
+bundle: local_business
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

@@ -1,0 +1,20 @@
+uuid: 2fd129e2-ed8f-4c56-b4c7-e6eb31d8f14e
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_override
+    - node
+id: node.schema_employee
+field_name: schema_employee
+entity_type: node
+type: entity_reference_override
+settings:
+  target_type: node
+module: entity_reference_override
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

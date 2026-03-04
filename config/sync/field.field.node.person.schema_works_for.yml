@@ -1,9 +1,10 @@
-uuid: 3f7c0de2-a654-4a83-9abd-deb368ce3668
+uuid: 7251b31d-a6e1-4245-a187-0e3208c82920
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.schema_works_for
+    - node.type.local_business
     - node.type.person
   module:
     - epp
@@ -28,5 +29,6 @@ settings:
       LocalBusiness: LocalBusiness
     excluded_schema_types: {  }
     ignore_additional_mappings: false
-    target_bundles: {  }
+    target_bundles:
+      local_business: local_business
 field_type: entity_reference

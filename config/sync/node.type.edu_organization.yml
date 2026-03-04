@@ -1,0 +1,24 @@
+uuid: a0076e61-db0b-4c3e-a2ad-aa84510a2b0a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - type_tray
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+  type_tray:
+    type_category: place
+    type_thumbnail: ''
+    type_icon: /modules/contrib/schemadotorg/modules/schemadotorg_type_tray/images/schemadotorg_type_tray/icon/organization.png
+    existing_nodes_link_text: 'View existing <em class="placeholder">Educational Organization</em> content'
+    type_weight: -18
+name: 'Educational Organization'
+type: edu_organization
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

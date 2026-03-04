@@ -1,0 +1,21 @@
+uuid: c82ed369-9c07-433b-9c6c-af97035708dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_leg_date_of_applicability
+    - node.type.legislation
+  module:
+    - datetime
+id: node.legislation.schema_leg_date_of_applicability
+field_name: schema_leg_date_of_applicability
+entity_type: node
+bundle: legislation
+label: 'Legislation date of applicability'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

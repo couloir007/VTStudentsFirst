@@ -1,18 +1,18 @@
-uuid: ecb6d0a7-9b36-4a5d-a633-1795ea9ed00d
+uuid: 898f127e-ddb5-4cc3-a8cf-5987c7cdd000
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.schema_subject_of
-    - node.type.article
+    - node.type.edu_organization
     - node.type.event
-    - node.type.image_gallery
-    - node.type.media_gallery
+    - node.type.legislation
+    - node.type.local_business
     - node.type.organization
     - node.type.page
     - node.type.person
     - node.type.place
-    - node.type.video_gallery
+    - node.type.testimonial
     - node.type.web_site
   module:
     - epp
@@ -39,14 +39,14 @@ settings:
     excluded_schema_types: {  }
     ignore_additional_mappings: false
     target_bundles:
-      article: article
+      edu_organization: edu_organization
       event: event
-      image_gallery: image_gallery
-      media_gallery: media_gallery
+      legislation: legislation
+      local_business: local_business
       organization: organization
       page: page
       person: person
       place: place
-      video_gallery: video_gallery
+      testimonial: testimonial
       web_site: web_site
 field_type: entity_reference

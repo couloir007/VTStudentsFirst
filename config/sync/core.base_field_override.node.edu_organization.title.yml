@@ -1,0 +1,18 @@
+uuid: dda8544b-b758-4a87-b36f-8dad62d6b000
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.edu_organization
+id: node.edu_organization.title
+field_name: title
+entity_type: node
+bundle: edu_organization
+label: Name
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

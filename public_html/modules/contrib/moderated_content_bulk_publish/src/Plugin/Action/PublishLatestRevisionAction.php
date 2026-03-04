@@ -47,7 +47,7 @@ class PublishLatestRevisionAction extends ActionBase {
       \Drupal::logger('moderated_content_bulk_publish')->notice("Executing publish latest revision of ".$entity->label());
 
       $adminModeration = new AdminModeration($entity, NodeInterface::PUBLISHED);
-      $entity = $adminModeration->publish($error_message, $msgdetail_isToken, $msgdetail_isPublished, $msgdetail_isAbsoluteURL);
+      $entity = $adminModeration->publish($error_message, $msgdetail_isToken, $msgdetail_isPublished, $msgdetail_isAbsoluteURL, $msgdetail_MenulinkParentStatus);
       if (!isset($entity) && !empty($error_message)) {
         // When publish () return NULL, we output messages and to stop the process.
         $msgError = Markup::create(mb_convert_encoding($error_message, 'UTF-8'));
@@ -63,6 +63,10 @@ class PublishLatestRevisionAction extends ActionBase {
         if (!empty($msgdetail_isAbsoluteURL)) {
           $msgAbsoluteURL = Markup::create($msgdetail_isAbsoluteURL);
           \Drupal::messenger()->addWarning($msgAbsoluteURL,TRUE);
+        }
+        if (!empty($msgdetail_MenulinkParentStatus)) {
+          $msgMenulinkParentStatus = Markup::create($msgdetail_MenulinkParentStatus);
+          \Drupal::messenger()->addWarning($msgMenulinkParentStatus,TRUE);
         }
         return $msgError;
       }

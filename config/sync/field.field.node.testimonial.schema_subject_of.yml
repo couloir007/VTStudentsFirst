@@ -1,0 +1,52 @@
+uuid: 82c6c56b-df44-4bbe-ac2a-49d45c73d463
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_subject_of
+    - node.type.edu_organization
+    - node.type.event
+    - node.type.legislation
+    - node.type.local_business
+    - node.type.organization
+    - node.type.page
+    - node.type.person
+    - node.type.place
+    - node.type.testimonial
+    - node.type.web_site
+  module:
+    - epp
+third_party_settings:
+  epp:
+    value: 'target_id: [current-page:query:subject_of]'
+id: node.testimonial.schema_subject_of
+field_name: schema_subject_of
+entity_type: node
+bundle: testimonial
+label: 'Subject of'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'schemadotorg:node'
+  handler_settings:
+    target_type: node
+    schema_types:
+      CreativeWork: CreativeWork
+      Event: Event
+    excluded_schema_types: {  }
+    ignore_additional_mappings: false
+    target_bundles:
+      edu_organization: edu_organization
+      event: event
+      legislation: legislation
+      local_business: local_business
+      organization: organization
+      page: page
+      person: person
+      place: place
+      testimonial: testimonial
+      web_site: web_site
+field_type: entity_reference

@@ -1,0 +1,19 @@
+uuid: f23af1d2-0c1f-42ce-8b96-3661e60978f7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.schema_alumni
+field_name: schema_alumni
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

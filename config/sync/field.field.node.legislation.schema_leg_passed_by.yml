@@ -1,0 +1,41 @@
+uuid: ee09525a-d208-48f2-95f0-853d3d1ccca1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_leg_passed_by
+    - node.type.edu_organization
+    - node.type.legislation
+    - node.type.local_business
+    - node.type.organization
+    - node.type.person
+  module:
+    - epp
+third_party_settings:
+  epp:
+    value: 'target_id: [current-page:query:legislation_passed_by]'
+id: node.legislation.schema_leg_passed_by
+field_name: schema_leg_passed_by
+entity_type: node
+bundle: legislation
+label: 'Legislation passed by'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'schemadotorg:node'
+  handler_settings:
+    target_type: node
+    schema_types:
+      Organization: Organization
+      Person: Person
+    excluded_schema_types: {  }
+    ignore_additional_mappings: false
+    target_bundles:
+      edu_organization: edu_organization
+      local_business: local_business
+      organization: organization
+      person: person
+field_type: entity_reference

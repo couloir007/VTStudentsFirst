@@ -1,0 +1,24 @@
+uuid: af843384-d029-42e1-98e6-11c5a9ad3f64
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - type_tray
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+  type_tray:
+    type_category: organization
+    type_thumbnail: ''
+    type_icon: /modules/contrib/schemadotorg/modules/schemadotorg_type_tray/images/schemadotorg_type_tray/icon/legislation.png
+    existing_nodes_link_text: 'View existing <em class="placeholder">Legislation</em> content'
+    type_weight: -17
+name: Legislation
+type: legislation
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

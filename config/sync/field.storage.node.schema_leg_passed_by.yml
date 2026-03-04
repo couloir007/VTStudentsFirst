@@ -1,0 +1,19 @@
+uuid: 056c6144-3ef1-42b9-9dda-edd16d35bf21
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.schema_leg_passed_by
+field_name: schema_leg_passed_by
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

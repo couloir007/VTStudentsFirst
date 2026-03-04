@@ -1,0 +1,22 @@
+uuid: 05f94a50-9497-478e-80da-008c0fb099ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.legislation
+id: node.legislation.sticky
+field_name: sticky
+entity_type: node
+bundle: legislation
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

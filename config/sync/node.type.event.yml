@@ -1,4 +1,4 @@
-uuid: 61634f85-579a-4cc6-89ff-3a7217ae7d3d
+uuid: 657c3390-1ccc-480c-b421-75bd33e2a781
 langcode: en
 status: true
 dependencies:
@@ -31,8 +31,8 @@ third_party_settings:
     type_weight: -19
 name: Event
 type: event
-description: null
-help: null
+description: ''
+help: ''
 new_revision: true
 preview_mode: 1
 display_submitted: false

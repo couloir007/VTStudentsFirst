@@ -1,0 +1,37 @@
+uuid: c5971121-f1b7-4727-b00f-a759e71dc5dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.testimonial.body
+    - field.field.node.testimonial.schema_about
+    - field.field.node.testimonial.schema_image
+    - field.field.node.testimonial.schema_related_link
+    - field.field.node.testimonial.schema_significant_link
+    - field.field.node.testimonial.schema_subject_of
+    - node.type.testimonial
+  module:
+    - node
+id: node.testimonial
+target_entity_type_id: node
+target_bundle: testimonial
+schema_type: CreativeWork
+schema_properties:
+  schema_about: about
+  created: dateCreated
+  changed: dateModified
+  langcode: inLanguage
+  title: name
+  schema_subject_of: subjectOf
+  body: text
+additional_mappings:
+  WebPage:
+    schema_type: WebPage
+    schema_properties:
+      created: dateCreated
+      changed: dateModified
+      langcode: inLanguage
+      title: name
+      schema_image: primaryImageOfPage
+      schema_related_link: relatedLink
+      schema_significant_link: significantLink

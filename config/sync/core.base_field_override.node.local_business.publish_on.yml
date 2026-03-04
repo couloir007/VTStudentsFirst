@@ -1,0 +1,18 @@
+uuid: fa413f82-8a67-4fea-b427-259e20204b95
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.local_business
+id: node.local_business.publish_on
+field_name: publish_on
+entity_type: node
+bundle: local_business
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

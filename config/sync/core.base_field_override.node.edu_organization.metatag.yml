@@ -1,0 +1,20 @@
+uuid: 2150ea1b-4ed7-42be-9dff-cef8d32ced36
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.edu_organization
+  module:
+    - metatag
+id: node.edu_organization.metatag
+field_name: metatag
+entity_type: node
+bundle: edu_organization
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

@@ -1,0 +1,47 @@
+uuid: 6d7aa12b-638b-4a22-8857-455029b3a744
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.legislation.body
+    - field.field.node.legislation.schema_about
+    - field.field.node.legislation.schema_image
+    - field.field.node.legislation.schema_leg_date
+    - field.field.node.legislation.schema_leg_date_of_applicability
+    - field.field.node.legislation.schema_leg_passed_by
+    - field.field.node.legislation.schema_leg_responsible
+    - field.field.node.legislation.schema_leg_type
+    - field.field.node.legislation.schema_related_link
+    - field.field.node.legislation.schema_significant_link
+    - field.field.node.legislation.schema_subject_of
+    - node.type.legislation
+  module:
+    - node
+id: node.legislation
+target_entity_type_id: node
+target_bundle: legislation
+schema_type: Legislation
+schema_properties:
+  schema_about: about
+  created: dateCreated
+  changed: dateModified
+  langcode: inLanguage
+  schema_leg_date: legislationDate
+  schema_leg_date_of_applicability: legislationDateOfApplicability
+  schema_leg_passed_by: legislationPassedBy
+  schema_leg_responsible: legislationResponsible
+  schema_leg_type: legislationType
+  title: name
+  schema_subject_of: subjectOf
+  body: text
+additional_mappings:
+  WebPage:
+    schema_type: WebPage
+    schema_properties:
+      created: dateCreated
+      changed: dateModified
+      langcode: inLanguage
+      title: name
+      schema_image: primaryImageOfPage
+      schema_related_link: relatedLink
+      schema_significant_link: significantLink

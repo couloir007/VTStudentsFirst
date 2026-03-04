@@ -1,0 +1,22 @@
+uuid: e2d1770d-26f4-4e8a-bc3c-2bf7dd5c5d55
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.local_business
+id: node.local_business.sticky
+field_name: sticky
+entity_type: node
+bundle: local_business
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

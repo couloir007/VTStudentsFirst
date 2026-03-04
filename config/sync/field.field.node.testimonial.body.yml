@@ -1,0 +1,26 @@
+uuid: b9462d3d-4dc7-4ab5-a765-f8effb10db44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - filter.format.full_html
+    - node.type.testimonial
+  module:
+    - text
+id: node.testimonial.body
+field_name: body
+entity_type: node
+bundle: testimonial
+label: Text
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+  allowed_formats:
+    - full_html
+field_type: text_with_summary

@@ -1,0 +1,21 @@
+uuid: d2f7c0e8-b31f-43b2-bbdd-c7544e74b393
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_edu_organization_type
+    - node.type.edu_organization
+  module:
+    - options
+id: node.edu_organization.schema_edu_organization_type
+field_name: schema_edu_organization_type
+entity_type: node
+bundle: edu_organization
+label: Type
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

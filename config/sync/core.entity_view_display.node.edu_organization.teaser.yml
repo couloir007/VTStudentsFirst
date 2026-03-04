@@ -1,0 +1,76 @@
+uuid: 4ad0c9c4-cd7a-4a5f-ade6-5528d855029c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.edu_organization.body
+    - field.field.node.edu_organization.field_editorial
+    - field.field.node.edu_organization.field_metatag
+    - field.field.node.edu_organization.schema_address
+    - field.field.node.edu_organization.schema_alumni
+    - field.field.node.edu_organization.schema_edu_organization_type
+    - field.field.node.edu_organization.schema_image
+    - field.field.node.edu_organization.schema_latitude
+    - field.field.node.edu_organization.schema_longitude
+    - field.field.node.edu_organization.schema_opening_hours
+    - field.field.node.edu_organization.schema_parent_organization
+    - field.field.node.edu_organization.schema_related_link
+    - field.field.node.edu_organization.schema_significant_link
+    - field.field.node.edu_organization.schema_sub_organization
+    - field.field.node.edu_organization.schema_subject_of
+    - field.field.node.edu_organization.schema_telephone
+    - node.type.edu_organization
+  module:
+    - address
+    - text
+    - user
+id: node.edu_organization.teaser
+targetEntityType: node
+bundle: edu_organization
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 17
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -100
+    region: content
+  schema_address:
+    type: address_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 150
+    region: content
+  schema_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+hidden:
+  field_editorial: true
+  field_metatag: true
+  langcode: true
+  schema_alumni: true
+  schema_edu_organization_type: true
+  schema_latitude: true
+  schema_longitude: true
+  schema_opening_hours: true
+  schema_parent_organization: true
+  schema_related_link: true
+  schema_significant_link: true
+  schema_sub_organization: true
+  schema_subject_of: true
+  schema_telephone: true

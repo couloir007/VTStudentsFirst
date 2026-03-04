@@ -1,0 +1,23 @@
+uuid: abd68741-c98f-4bed-be8d-0931931736e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_latitude
+    - node.type.local_business
+id: node.local_business.schema_latitude
+field_name: schema_latitude
+entity_type: node
+bundle: local_business
+label: Latitude
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

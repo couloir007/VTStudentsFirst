@@ -1,14 +1,12 @@
-uuid: 0856d6f5-a28e-432f-9e77-f2829c4089bf
+uuid: 20217de4-a5d4-4f46-8e98-4d93c0a49aac
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.schema_is_part_of
-    - node.type.article
-    - node.type.image_gallery
-    - node.type.media_gallery
+    - node.type.legislation
     - node.type.page
-    - node.type.video_gallery
+    - node.type.testimonial
     - node.type.web_site
   module:
     - epp
@@ -34,10 +32,8 @@ settings:
     excluded_schema_types: {  }
     ignore_additional_mappings: true
     target_bundles:
-      article: article
-      image_gallery: image_gallery
-      media_gallery: media_gallery
+      legislation: legislation
       page: page
-      video_gallery: video_gallery
+      testimonial: testimonial
       web_site: web_site
 field_type: entity_reference

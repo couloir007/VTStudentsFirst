@@ -1,0 +1,23 @@
+uuid: 8dee2021-9db9-4e61-8ea8-91e106d057b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_longitude
+    - node.type.local_business
+id: node.local_business.schema_longitude
+field_name: schema_longitude
+entity_type: node
+bundle: local_business
+label: Longitude
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

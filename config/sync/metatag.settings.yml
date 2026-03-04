@@ -32,6 +32,24 @@ entity_type_groups:
     article:
       basic: basic
       advanced: advanced
+    homepage:
+      basic: basic
+      advanced: advanced
+    creative_work:
+      basic: basic
+      advanced: advanced
+    legislation:
+      basic: basic
+      advanced: advanced
+    edu_organization:
+      basic: basic
+      advanced: advanced
+    local_business:
+      basic: basic
+      advanced: advanced
+    testimonial:
+      basic: basic
+      advanced: advanced
 separator: ''
 tag_trim_method: beforeValue
 use_maxlength: true

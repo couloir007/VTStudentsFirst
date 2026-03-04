@@ -1,0 +1,19 @@
+uuid: 4ca618de-cec2-40bb-ac56-367244c46f7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_opening_hours
+    - node.type.edu_organization
+id: node.edu_organization.schema_opening_hours
+field_name: schema_opening_hours
+entity_type: node
+bundle: edu_organization
+label: 'Opening hours'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

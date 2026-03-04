@@ -1,0 +1,39 @@
+uuid: 134aad83-cb46-4472-a71b-e1b9920a9b0a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.schema_edu_organization_type
+field_name: schema_edu_organization_type
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: college_or_university
+      label: 'College or University'
+    -
+      value: elementary_school
+      label: 'Elementary School'
+    -
+      value: high_school
+      label: 'High School'
+    -
+      value: middle_school
+      label: 'Middle School'
+    -
+      value: preschool
+      label: Preschool
+    -
+      value: school
+      label: School
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

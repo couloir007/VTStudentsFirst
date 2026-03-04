@@ -1,0 +1,20 @@
+uuid: 050e9bc4-2eea-436d-8eda-08e7177d9100
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.local_business
+  module:
+    - metatag
+id: node.local_business.metatag
+field_name: metatag
+entity_type: node
+bundle: local_business
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

@@ -1,0 +1,18 @@
+uuid: a6ec6df4-d5b2-4a51-8b02-f2a473514bda
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.testimonial
+id: node.testimonial.publish_on
+field_name: publish_on
+entity_type: node
+bundle: testimonial
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

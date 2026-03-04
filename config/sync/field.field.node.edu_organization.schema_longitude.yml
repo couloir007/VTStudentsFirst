@@ -1,0 +1,23 @@
+uuid: 9130c3dc-ca68-48aa-aeca-ad93375a1440
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_longitude
+    - node.type.edu_organization
+id: node.edu_organization.schema_longitude
+field_name: schema_longitude
+entity_type: node
+bundle: edu_organization
+label: Longitude
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

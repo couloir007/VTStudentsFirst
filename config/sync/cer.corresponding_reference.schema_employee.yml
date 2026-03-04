@@ -1,0 +1,13 @@
+uuid: 473dbf8f-764b-4f95-872e-7b1f5b2b1f04
+langcode: en
+status: true
+dependencies: {  }
+id: schema_employee
+label: 'Schema.org: Employee ↔ Works for'
+enabled: true
+first_field: schema_employee
+second_field: schema_works_for
+add_direction: append
+bundles:
+  node:
+    - '*'

@@ -1,0 +1,21 @@
+uuid: eaf7f6d6-7b98-4fe8-b3b4-99e00b2e17c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_telephone
+    - node.type.local_business
+  module:
+    - telephone
+id: node.local_business.schema_telephone
+field_name: schema_telephone
+entity_type: node
+bundle: local_business
+label: Telephone
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

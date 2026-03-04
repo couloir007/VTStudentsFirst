@@ -1,0 +1,19 @@
+uuid: 97922d18-0438-466e-9875-c65301777fc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_email
+    - node.type.local_business
+id: node.local_business.schema_email
+field_name: schema_email
+entity_type: node
+bundle: local_business
+label: Email
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

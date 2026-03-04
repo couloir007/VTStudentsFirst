@@ -1,4 +1,4 @@
-uuid: 2753e1cc-875b-429b-a386-02e8fc7359de
+uuid: e4a03819-2c0c-4e32-bb2a-a5149ea0e444
 langcode: en
 status: true
 dependencies:
@@ -17,8 +17,8 @@ third_party_settings:
     type_weight: 0
 name: Place
 type: place
-description: null
-help: null
+description: ''
+help: ''
 new_revision: true
 preview_mode: 1
 display_submitted: false

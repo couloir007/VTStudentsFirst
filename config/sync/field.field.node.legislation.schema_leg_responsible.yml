@@ -1,0 +1,41 @@
+uuid: e67cae78-c703-4bcd-ad07-15141a9fe797
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_leg_responsible
+    - node.type.edu_organization
+    - node.type.legislation
+    - node.type.local_business
+    - node.type.organization
+    - node.type.person
+  module:
+    - epp
+third_party_settings:
+  epp:
+    value: 'target_id: [current-page:query:legislation_responsible]'
+id: node.legislation.schema_leg_responsible
+field_name: schema_leg_responsible
+entity_type: node
+bundle: legislation
+label: 'Legislation responsible'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'schemadotorg:node'
+  handler_settings:
+    target_type: node
+    schema_types:
+      Organization: Organization
+      Person: Person
+    excluded_schema_types: {  }
+    ignore_additional_mappings: false
+    target_bundles:
+      edu_organization: edu_organization
+      local_business: local_business
+      organization: organization
+      person: person
+field_type: entity_reference

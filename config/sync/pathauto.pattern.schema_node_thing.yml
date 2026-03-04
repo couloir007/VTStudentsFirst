@@ -17,13 +17,19 @@ selection_criteria:
       node: node
     bundles:
       article: article
+      creative_work: creative_work
+      edu_organization: edu_organization
       event: event
+      homepage: homepage
       image_gallery: image_gallery
+      legislation: legislation
+      local_business: local_business
       media_gallery: media_gallery
       organization: organization
       page: page
       person: person
       place: place
+      testimonial: testimonial
       video_gallery: video_gallery
       web_site: web_site
 selection_logic: and

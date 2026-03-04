@@ -1,0 +1,106 @@
+# Schema Blueprints — Mapping Set Configuration
+# Site: VTStudentsFirst.org
+# Updated: corrected node:Testimonial → schema:CreativeWork,
+#          added paragraph bundle mapping notes for homepage sections.
+
+required:
+  label: Required
+  types:
+    - 'taxonomy_term:DefinedTerm'
+    - 'node:Person'
+
+common:
+  label: Common
+  types:
+    - 'node:Place'
+    - 'node:Organization'
+    - 'node:Person'
+    - 'node:Event'
+    - 'node:Article'
+    - 'node:WebPage'
+
+web_site:
+  label: 'Web site'
+  types:
+    - 'node:WebPage'
+    - 'node:WebSite'
+
+education_organization:
+  label: 'Education organization'
+  types:
+    - 'node:CourseInstance'
+    - 'node:Course'
+    - 'node:EducationalOrganization'
+
+local_business:
+  label: 'Local business'
+  types:
+    - 'paragraph:ServiceChannel'
+    - 'node:Service'
+    - 'node:JobPosting'
+    - 'node:LocalBusiness'
+
+# ------------------------------------------------------------------
+# Campaign set — VTStudentsFirst.org
+#
+# NODE MAPPINGS
+#
+#   node:WebPage         → schema:WebPage
+#     Homepage. No body field. All content via field_sections
+#     (Paragraphs). Set as Drupal front page node.
+#
+#   node:Person          → schema:Person
+#     Spokespeople, coalition members, legislators, contacts.
+#
+#   node:Organization    → schema:Organization
+#     Schools (subtype EducationalOrganization at field level),
+#     employer groups, civic coalitions.
+#
+#   node:Event           → schema:Event
+#     Legislative hearings, town halls, testimony deadlines.
+#
+#   node:Place           → schema:Place
+#     Towns, school campuses, hearing venues, regions.
+#
+#   node:Testimonial     → schema:CreativeWork
+#     Community voice quotes. additionalType "Testimonial" applied
+#     at field level. Managed as nodes for reuse across pages.
+#     Referenced by paragraph:VoicesSection via field_testimonials.
+#     Note: schema:Statement and schema:Quotation are not used —
+#     Statement is not a valid Schema.org type; Quotation is pending
+#     vocabulary and not reliably supported in Blueprints.
+#
+#   node:Legislation     → schema:Legislation
+#     Tracked bills and amendments. schema:Legislation is pending
+#     vocabulary — fall back to schema:CreativeWork if your
+#     Blueprints version does not support it.
+#
+# PARAGRAPH BUNDLE MAPPINGS
+# Paragraph bundles are structural/layout components. They do not
+# carry independent Schema.org types — they are part of their parent
+# node:WebPage (schema:WebPage) and rendered via Twig templates.
+# No Blueprints mapping entries are needed for paragraph bundles.
+#
+#   paragraph:HeroSection          — hero content, no schema type
+#   paragraph:StatItem             — nested in HeroSection
+#   paragraph:IssueSection         — issue content, no schema type
+#   paragraph:CardItem             — reusable nested card
+#   paragraph:StakesSection        — stakes grid, no schema type
+#   paragraph:PositionsSection     — positions list, no schema type
+#   paragraph:PositionItem         — nested in PositionsSection
+#   paragraph:AccountabilitySection — pillars grid, no schema type
+#   paragraph:VoicesSection        — references node:Testimonial
+#   paragraph:ActionSection        — action funnel, no schema type
+#   paragraph:StepItem             — nested in ActionSection
+# ------------------------------------------------------------------
+
+campaign:
+  label: 'Campaign'
+  types:
+    - 'node:WebPage'
+    - 'node:Person'
+    - 'node:Organization'
+    - 'node:Event'
+    - 'node:Place'
+    - 'node:Testimonial'
+    - 'node:Legislation'

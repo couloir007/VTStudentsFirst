@@ -3,10 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.media.audio.field_media_audio_file
     - media.type.audio
   module:
-    - file
     - path
 id: media.audio.default
 targetEntityType: media
@@ -18,13 +16,6 @@ content:
     weight: 200
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_media_audio_file:
-    type: file_generic
-    weight: 0
-    region: content
-    settings:
-      progress_indicator: throbber
     third_party_settings: {  }
   langcode:
     type: language_select

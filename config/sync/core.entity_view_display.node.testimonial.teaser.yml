@@ -1,0 +1,45 @@
+uuid: 5e09bff4-8286-4158-ad10-ccf7135206e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.testimonial.body
+    - field.field.node.testimonial.field_editorial
+    - field.field.node.testimonial.field_metatag
+    - field.field.node.testimonial.schema_about
+    - field.field.node.testimonial.schema_image
+    - field.field.node.testimonial.schema_related_link
+    - field.field.node.testimonial.schema_significant_link
+    - field.field.node.testimonial.schema_subject_of
+    - node.type.testimonial
+  module:
+    - text
+    - user
+id: node.testimonial.teaser
+targetEntityType: node
+bundle: testimonial
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 18
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -100
+    region: content
+hidden:
+  field_editorial: true
+  field_metatag: true
+  langcode: true
+  schema_about: true
+  schema_image: true
+  schema_related_link: true
+  schema_significant_link: true
+  schema_subject_of: true

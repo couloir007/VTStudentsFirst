@@ -1,0 +1,23 @@
+uuid: 45a6ba5b-f647-47bf-a94e-79a2fd8cfcd0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_significant_link
+    - node.type.edu_organization
+  module:
+    - link
+id: node.edu_organization.schema_significant_link
+field_name: schema_significant_link
+entity_type: node
+bundle: edu_organization
+label: 'Significant links'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

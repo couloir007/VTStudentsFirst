@@ -1,0 +1,22 @@
+uuid: 643fcb20-6705-4494-bae0-c5c1a7b428b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.legislation
+id: node.legislation.promote
+field_name: promote
+entity_type: node
+bundle: legislation
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

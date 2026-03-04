@@ -1,0 +1,18 @@
+uuid: c843c44c-8ad4-4949-9f61-9a2021d0961a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.legislation
+id: node.legislation.publish_on
+field_name: publish_on
+entity_type: node
+bundle: legislation
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

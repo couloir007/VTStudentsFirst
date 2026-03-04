@@ -1,0 +1,20 @@
+uuid: 9eee09ef-7311-4840-bf50-41355a0ff466
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.legislation
+  module:
+    - metatag
+id: node.legislation.metatag
+field_name: metatag
+entity_type: node
+bundle: legislation
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

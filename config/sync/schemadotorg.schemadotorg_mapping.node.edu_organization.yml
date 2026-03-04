@@ -1,0 +1,51 @@
+uuid: a703105e-5e3a-4e91-b94a-937a6f1944e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.edu_organization.body
+    - field.field.node.edu_organization.schema_address
+    - field.field.node.edu_organization.schema_alumni
+    - field.field.node.edu_organization.schema_edu_organization_type
+    - field.field.node.edu_organization.schema_image
+    - field.field.node.edu_organization.schema_latitude
+    - field.field.node.edu_organization.schema_longitude
+    - field.field.node.edu_organization.schema_opening_hours
+    - field.field.node.edu_organization.schema_parent_organization
+    - field.field.node.edu_organization.schema_related_link
+    - field.field.node.edu_organization.schema_significant_link
+    - field.field.node.edu_organization.schema_sub_organization
+    - field.field.node.edu_organization.schema_subject_of
+    - field.field.node.edu_organization.schema_telephone
+    - node.type.edu_organization
+  module:
+    - node
+id: node.edu_organization
+target_entity_type_id: node
+target_bundle: edu_organization
+schema_type: EducationalOrganization
+schema_properties:
+  schema_edu_organization_type: additionalType
+  schema_address: address
+  schema_alumni: alumni
+  body: description
+  schema_image: image
+  schema_latitude: latitude
+  schema_longitude: longitude
+  title: name
+  schema_opening_hours: openingHours
+  schema_parent_organization: parentOrganization
+  schema_subject_of: subjectOf
+  schema_sub_organization: subOrganization
+  schema_telephone: telephone
+additional_mappings:
+  WebPage:
+    schema_type: WebPage
+    schema_properties:
+      created: dateCreated
+      changed: dateModified
+      langcode: inLanguage
+      title: name
+      schema_image: primaryImageOfPage
+      schema_related_link: relatedLink
+      schema_significant_link: significantLink

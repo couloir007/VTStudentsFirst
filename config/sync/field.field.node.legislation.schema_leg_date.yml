@@ -1,0 +1,21 @@
+uuid: af4f2521-3fc1-4456-a463-62ec3f0e0727
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_leg_date
+    - node.type.legislation
+  module:
+    - datetime
+id: node.legislation.schema_leg_date
+field_name: schema_leg_date
+entity_type: node
+bundle: legislation
+label: 'Legislation date'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

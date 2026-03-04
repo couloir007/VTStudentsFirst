@@ -1,0 +1,347 @@
+uuid: f328f5be-e4cb-4d47-a29d-e6100ada24d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.local_business.body
+    - field.field.node.local_business.field_editorial
+    - field.field.node.local_business.field_metatag
+    - field.field.node.local_business.schema_address
+    - field.field.node.local_business.schema_email
+    - field.field.node.local_business.schema_employee
+    - field.field.node.local_business.schema_image
+    - field.field.node.local_business.schema_latitude
+    - field.field.node.local_business.schema_local_business_type
+    - field.field.node.local_business.schema_longitude
+    - field.field.node.local_business.schema_opening_hours
+    - field.field.node.local_business.schema_parent_organization
+    - field.field.node.local_business.schema_related_link
+    - field.field.node.local_business.schema_significant_link
+    - field.field.node.local_business.schema_sub_organization
+    - field.field.node.local_business.schema_subject_of
+    - field.field.node.local_business.schema_telephone
+    - node.type.local_business
+  module:
+    - address
+    - allowed_formats
+    - entity_reference_override
+    - field_group
+    - inline_entity_form
+    - linkit
+    - metatag
+    - path
+    - telephone
+    - text
+third_party_settings:
+  field_group:
+    group_general:
+      children:
+        - schema_local_business_type
+        - schema_image
+        - body
+        - title
+      label: General
+      region: content
+      parent_name: ''
+      weight: -20
+      format_type: details
+      format_settings:
+        open: true
+        description: ''
+    group_contact:
+      children:
+        - schema_address
+        - schema_email
+        - schema_latitude
+        - schema_longitude
+        - schema_opening_hours
+        - schema_telephone
+      label: Contact
+      region: content
+      parent_name: ''
+      weight: -18
+      format_type: details
+      format_settings:
+        open: true
+        description: ''
+    group_organization:
+      children:
+        - schema_employee
+        - schema_parent_organization
+        - schema_sub_organization
+      label: Organization
+      region: content
+      parent_name: ''
+      weight: -13
+      format_type: details
+      format_settings:
+        open: true
+        description: ''
+    group_references:
+      children:
+        - schema_subject_of
+      label: References
+      region: content
+      parent_name: ''
+      weight: 22
+      format_type: details
+      format_settings:
+        open: true
+        description: ''
+    group_editorial:
+      children:
+        - field_editorial
+      label: 'Editorial information'
+      region: content
+      parent_name: ''
+      weight: 220
+      format_type: details_sidebar
+      format_settings:
+        description: 'Track the editorial decisions and status of a document.'
+    group_links:
+      children:
+        - schema_related_link
+        - schema_significant_link
+      label: Links
+      region: content
+      parent_name: ''
+      weight: 20
+      format_type: details
+      format_settings:
+        open: true
+        description: ''
+id: node.local_business.default
+targetEntityType: node
+bundle: local_business
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 18
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings:
+      allowed_formats:
+        hide_help: '1'
+        hide_guidelines: '1'
+  created:
+    type: datetime_timestamp
+    weight: 200
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_editorial:
+    type: inline_entity_form_simple
+    weight: 221
+    region: content
+    settings:
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+  field_metatag:
+    type: metatag_firehose
+    weight: 99
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 200
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 220
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 210
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  schema_address:
+    type: address_default
+    weight: 0
+    region: content
+    settings:
+      wrapper_type: fieldset
+    third_party_settings: {  }
+  schema_email:
+    type: email_default
+    weight: 6
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  schema_employee:
+    type: entity_reference_override_autocomplete
+    weight: 8
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_image:
+    type: entity_reference_autocomplete
+    weight: 23
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_latitude:
+    type: number
+    weight: 3
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  schema_local_business_type:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  schema_longitude:
+    type: number
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  schema_opening_hours:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_parent_organization:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_related_link:
+    type: linkit
+    weight: 0
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: true
+    third_party_settings: {  }
+  schema_significant_link:
+    type: linkit
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: true
+    third_party_settings: {  }
+  schema_sub_organization:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_subject_of:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_telephone:
+    type: telephone_default
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 220
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 220
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 210
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 200
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  publish_on: true
+  unpublish_on: true

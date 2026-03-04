@@ -1,4 +1,4 @@
-uuid: 9a2ce78d-b148-4bf7-a66e-f172df7f0704
+uuid: fc0b463e-a687-4ddb-91dc-d0ac273c3bb2
 langcode: en
 status: true
 dependencies:
@@ -17,8 +17,8 @@ third_party_settings:
     type_weight: -20
 name: Person
 type: person
-description: null
-help: null
+description: ''
+help: ''
 new_revision: true
 preview_mode: 1
 display_submitted: false

@@ -1,4 +1,4 @@
-uuid: 0bbe03f6-9a9f-4318-8dc6-fbd8e6855c3c
+uuid: ab961693-3712-4e2d-afde-3d17079fd4a7
 langcode: en
 status: true
 dependencies:
@@ -28,6 +28,5 @@ settings:
       ImageObject: ImageObject
     excluded_schema_types: {  }
     ignore_additional_mappings: false
-    target_bundles:
-      image: image
+    target_bundles: {  }
 field_type: entity_reference

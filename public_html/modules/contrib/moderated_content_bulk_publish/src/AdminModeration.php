@@ -112,7 +112,7 @@ class AdminModeration
     /**
      * Publish Latest Revision.
      */
-    public function publish(&$error_message = '', &$msgdetail_isToken = '', &$msgdetail_isPublished ='', &$msgdetail_isAbsoluteURL = '') {
+    public function publish(&$error_message = '', &$msgdetail_isToken = '', &$msgdetail_isPublished ='', &$msgdetail_isAbsoluteURL = '', &$msgdetail_MenulinkParentStatus = '') {
       $user = \Drupal::currentUser();
       $allLanguages = AdminHelper::getAllEnabledLanguages();
       $published_state = $this->getConfig()
@@ -151,6 +151,7 @@ class AdminModeration
             $msgdetail_isToken = $hookObject->msgdetail_isToken;
             $msgdetail_isPublished = $hookObject->msgdetail_isPublished;
             $msgdetail_isAbsoluteURL = $hookObject->msgdetail_isAbsoluteURL;
+            $msgdetail_MenulinkParentStatus = $hookObject->markup;
             return NULL;
           }
           // Flip to the published state on a NEW revision of the latest draft.

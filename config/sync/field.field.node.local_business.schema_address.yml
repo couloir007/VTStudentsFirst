@@ -1,0 +1,33 @@
+uuid: 5e3e3628-7698-4446-9444-971099c8ecb6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_address
+    - node.type.local_business
+  module:
+    - address
+id: node.local_business.schema_address
+field_name: schema_address
+entity_type: node
+bundle: local_business
+label: Address
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries: {  }
+  langcode_override: null
+  field_overrides:
+    givenName:
+      override: optional
+    additionalName:
+      override: optional
+    familyName:
+      override: optional
+    organization:
+      override: optional
+  fields: {  }
+field_type: address

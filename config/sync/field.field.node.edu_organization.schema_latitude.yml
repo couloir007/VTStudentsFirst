@@ -1,0 +1,23 @@
+uuid: a2ac8453-8eb7-4bda-bc40-4b63c874198c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_latitude
+    - node.type.edu_organization
+id: node.edu_organization.schema_latitude
+field_name: schema_latitude
+entity_type: node
+bundle: edu_organization
+label: Latitude
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: decimal

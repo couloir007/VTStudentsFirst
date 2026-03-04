@@ -137,7 +137,7 @@
 # Ignore .env files as they are personal
 #/.env
 
-#Ray-2*.*
+Ray-2*.*
 
 public_html/themes/custom/a_clean_ocean/node_modules
 

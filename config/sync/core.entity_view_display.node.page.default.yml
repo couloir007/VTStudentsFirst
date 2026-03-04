@@ -17,12 +17,10 @@ dependencies:
     - field.field.node.page.schema_web_page_type
     - node.type.page
   module:
-    - entity_reference_revisions
     - field_group
     - layout_paragraphs
     - link
     - options
-    - text
     - user
 id: node.page.default
 targetEntityType: node

@@ -1,0 +1,22 @@
+uuid: 21fd1b74-7782-45de-aef2-e88ec57a82b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.local_business
+id: node.local_business.promote
+field_name: promote
+entity_type: node
+bundle: local_business
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

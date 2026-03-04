@@ -1,0 +1,885 @@
+# =============================================================================
+# VTStudentsFirst.org — Content Type & Paragraph Bundle Definitions
+# Drupal 10 config YAML
+# Architecture: node:WebPage (homepage) + Paragraphs field_sections
+# Storybook integration: custom Twig adapter (1 bundle = 1 component)
+# Schema Blueprints mapping set: campaign
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# NODE: WebPage (Homepage)
+# Schema.org: schema:WebPage
+# Front page node. No body field. All content via field_sections (Paragraphs).
+# -----------------------------------------------------------------------------
+
+node.type.web_page:
+  type: node_type
+  langcode: en
+  status: true
+  name: 'Web Page'
+  type: web_page
+  description: 'Static web pages including the homepage. Layout is dev-controlled via Paragraph sections; editors populate content fields only.'
+  help: ''
+  new_revision: true
+  preview_mode: 1
+  display_submitted: false
+
+field.storage.node.field_sections:
+  type: field_storage_config
+  field_name: field_sections
+  entity_type: node
+  type: entity_reference_revisions
+  cardinality: -1
+  settings:
+    target_type: paragraph
+
+field.field.node.web_page.field_sections:
+  type: field_config
+  field_name: field_sections
+  entity_type: node
+  bundle: web_page
+  label: 'Page sections'
+  required: false
+  settings:
+    handler: 'default:paragraph'
+    handler_settings:
+      target_bundles:
+        hero_section: hero_section
+        issue_section: issue_section
+        stakes_section: stakes_section
+        positions_section: positions_section
+        accountability_section: accountability_section
+        voices_section: voices_section
+        action_section: action_section
+      target_bundles_drag_drop:
+        hero_section: { enabled: true, weight: 0 }
+        issue_section: { enabled: true, weight: 1 }
+        stakes_section: { enabled: true, weight: 2 }
+        positions_section: { enabled: true, weight: 3 }
+        accountability_section: { enabled: true, weight: 4 }
+        voices_section: { enabled: true, weight: 5 }
+        action_section: { enabled: true, weight: 6 }
+
+field.storage.node.field_meta_description:
+  type: field_storage_config
+  field_name: field_meta_description
+  entity_type: node
+  type: string_long
+  cardinality: 1
+
+field.field.node.web_page.field_meta_description:
+  type: field_config
+  field_name: field_meta_description
+  entity_type: node
+  bundle: web_page
+  label: 'Meta description'
+  required: false
+
+
+# =============================================================================
+# PARAGRAPH BUNDLES
+# Each bundle = one homepage section = one Storybook component.
+# Twig template naming convention: paragraph--{bundle-name}.html.twig
+# Storybook story naming convention: {BundleName}.stories.js
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# PARAGRAPH: HeroSection
+# Twig: paragraph--hero-section.html.twig
+# Storybook: HeroSection.stories.js
+# Schema.org: no direct mapping — child of node:WebPage (schema:WebPage)
+# Fields: headline, subheadline, stats (nested), primary CTA, secondary CTA
+# -----------------------------------------------------------------------------
+
+paragraphs.paragraphs_type.hero_section:
+  type: paragraphs_type
+  label: 'Hero Section'
+  id: hero_section
+  description: 'Full-viewport hero with headline, subheadline, stat bar, and dual CTAs.'
+
+# Headline
+field.storage.paragraph.field_hero_headline:
+  type: field_storage_config
+  field_name: field_hero_headline
+  entity_type: paragraph
+  type: string
+  cardinality: 1
+
+field.field.paragraph.hero_section.field_hero_headline:
+  type: field_config
+  field_name: field_hero_headline
+  entity_type: paragraph
+  bundle: hero_section
+  label: 'Headline'
+  required: true
+
+# Subheadline
+field.storage.paragraph.field_hero_subheadline:
+  type: field_storage_config
+  field_name: field_hero_subheadline
+  entity_type: paragraph
+  type: string_long
+  cardinality: 1
+
+field.field.paragraph.hero_section.field_hero_subheadline:
+  type: field_config
+  field_name: field_hero_subheadline
+  entity_type: paragraph
+  bundle: hero_section
+  label: 'Subheadline'
+  required: false
+
+# Stats (nested Paragraph: StatItem)
+field.storage.paragraph.field_hero_stats:
+  type: field_storage_config
+  field_name: field_hero_stats
+  entity_type: paragraph
+  type: entity_reference_revisions
+  cardinality: 3
+  settings:
+    target_type: paragraph
+
+field.field.paragraph.hero_section.field_hero_stats:
+  type: field_config
+  field_name: field_hero_stats
+  entity_type: paragraph
+  bundle: hero_section
+  label: 'Stats'
+  required: false
+  settings:
+    handler: 'default:paragraph'
+    handler_settings:
+      target_bundles:
+        stat_item: stat_item
+
+# Primary CTA
+field.storage.paragraph.field_cta_primary:
+  type: field_storage_config
+  field_name: field_cta_primary
+  entity_type: paragraph
+  type: link
+  cardinality: 1
+
+field.field.paragraph.hero_section.field_cta_primary:
+  type: field_config
+  field_name: field_cta_primary
+  entity_type: paragraph
+  bundle: hero_section
+  label: 'Primary CTA'
+  required: true
+  settings:
+    link_type: 17
+    title: ENABLED
+
+# Secondary CTA
+field.storage.paragraph.field_cta_secondary:
+  type: field_storage_config
+  field_name: field_cta_secondary
+  entity_type: paragraph
+  type: link
+  cardinality: 1
+
+field.field.paragraph.hero_section.field_cta_secondary:
+  type: field_config
+  field_name: field_cta_secondary
+  entity_type: paragraph
+  bundle: hero_section
+  label: 'Secondary CTA'
+  required: false
+  settings:
+    link_type: 17
+    title: ENABLED
+
+
+# -----------------------------------------------------------------------------
+# PARAGRAPH: StatItem (nested inside HeroSection)
+# Twig: paragraph--stat-item.html.twig
+# Storybook: StatItem.stories.js
+# -----------------------------------------------------------------------------
+
+paragraphs.paragraphs_type.stat_item:
+  type: paragraphs_type
+  label: 'Stat Item'
+  id: stat_item
+  description: 'A single statistic: number + label. Used in hero stat bar.'
+
+field.storage.paragraph.field_stat_number:
+  type: field_storage_config
+  field_name: field_stat_number
+  entity_type: paragraph
+  type: string
+  cardinality: 1
+
+field.field.paragraph.stat_item.field_stat_number:
+  type: field_config
+  field_name: field_stat_number
+  entity_type: paragraph
+  bundle: stat_item
+  label: 'Number'
+  required: true
+
+field.storage.paragraph.field_stat_label:
+  type: field_storage_config
+  field_name: field_stat_label
+  entity_type: paragraph
+  type: string
+  cardinality: 1
+
+field.field.paragraph.stat_item.field_stat_label:
+  type: field_config
+  field_name: field_stat_label
+  entity_type: paragraph
+  bundle: stat_item
+  label: 'Label'
+  required: true
+
+
+# -----------------------------------------------------------------------------
+# PARAGRAPH: IssueSection
+# Twig: paragraph--issue-section.html.twig
+# Storybook: IssueSection.stories.js
+# Fields: section label, headline, lead text, body text, issue cards (nested)
+# -----------------------------------------------------------------------------
+
+paragraphs.paragraphs_type.issue_section:
+  type: paragraphs_type
+  label: 'Issue Section'
+  id: issue_section
+  description: 'Two-column layout: lead text + body left, issue cards right.'
+
+field.storage.paragraph.field_section_label:
+  type: field_storage_config
+  field_name: field_section_label
+  entity_type: paragraph
+  type: string
+  cardinality: 1
+
+field.field.paragraph.issue_section.field_section_label:
+  type: field_config
+  field_name: field_section_label
+  entity_type: paragraph
+  bundle: issue_section
+  label: 'Section label'
+  required: false
+
+field.storage.paragraph.field_section_headline:
+  type: field_storage_config
+  field_name: field_section_headline
+  entity_type: paragraph
+  type: string
+  cardinality: 1
+
+field.field.paragraph.issue_section.field_section_headline:
+  type: field_config
+  field_name: field_section_headline
+  entity_type: paragraph
+  bundle: issue_section
+  label: 'Headline'
+  required: true
+
+field.storage.paragraph.field_lead_text:
+  type: field_storage_config
+  field_name: field_lead_text
+  entity_type: paragraph
+  type: string_long
+  cardinality: 1
+
+field.field.paragraph.issue_section.field_lead_text:
+  type: field_config
+  field_name: field_lead_text
+  entity_type: paragraph
+  bundle: issue_section
+  label: 'Lead text'
+  required: false
+
+field.storage.paragraph.field_body_text:
+  type: field_storage_config
+  field_name: field_body_text
+  entity_type: paragraph
+  type: text_long
+  cardinality: 1
+
+field.field.paragraph.issue_section.field_body_text:
+  type: field_config
+  field_name: field_body_text
+  entity_type: paragraph
+  bundle: issue_section
+  label: 'Body text'
+  required: false
+  settings:
+    allowed_formats:
+      - basic_html
+
+# Issue cards (nested Paragraph: CardItem)
+field.storage.paragraph.field_cards:
+  type: field_storage_config
+  field_name: field_cards
+  entity_type: paragraph
+  type: entity_reference_revisions
+  cardinality: -1
+  settings:
+    target_type: paragraph
+
+field.field.paragraph.issue_section.field_cards:
+  type: field_config
+  field_name: field_cards
+  entity_type: paragraph
+  bundle: issue_section
+  label: 'Cards'
+  required: false
+  settings:
+    handler: 'default:paragraph'
+    handler_settings:
+      target_bundles:
+        card_item: card_item
+
+
+# -----------------------------------------------------------------------------
+# PARAGRAPH: CardItem (nested — used in IssueSection, StakesSection)
+# Twig: paragraph--card-item.html.twig
+# Storybook: CardItem.stories.js
+# Fields: icon/emoji, title, body, optional variant (urgent | default)
+# -----------------------------------------------------------------------------
+
+paragraphs.paragraphs_type.card_item:
+  type: paragraphs_type
+  label: 'Card Item'
+  id: card_item
+  description: 'Reusable card: icon, title, body. Supports variant flag for urgent styling.'
+
+field.storage.paragraph.field_card_icon:
+  type: field_storage_config
+  field_name: field_card_icon
+  entity_type: paragraph
+  type: string
+  cardinality: 1
+
+field.field.paragraph.card_item.field_card_icon:
+  type: field_config
+  field_name: field_card_icon
+  entity_type: paragraph
+  bundle: card_item
+  label: 'Icon (emoji or SVG id)'
+  required: false
+
+field.storage.paragraph.field_card_title:
+  type: field_storage_config
+  field_name: field_card_title
+  entity_type: paragraph
+  type: string
+  cardinality: 1
+
+field.field.paragraph.card_item.field_card_title:
+  type: field_config
+  field_name: field_card_title
+  entity_type: paragraph
+  bundle: card_item
+  label: 'Title'
+  required: true
+
+field.storage.paragraph.field_card_body:
+  type: field_storage_config
+  field_name: field_card_body
+  entity_type: paragraph
+  type: string_long
+  cardinality: 1
+
+field.field.paragraph.card_item.field_card_body:
+  type: field_config
+  field_name: field_card_body
+  entity_type: paragraph
+  bundle: card_item
+  label: 'Body'
+  required: false
+
+field.storage.paragraph.field_card_variant:
+  type: field_storage_config
+  field_name: field_card_variant
+  entity_type: paragraph
+  type: list_string
+  cardinality: 1
+  settings:
+    allowed_values:
+      - value: default
+        label: Default
+      - value: urgent
+        label: Urgent
+
+field.field.paragraph.card_item.field_card_variant:
+  type: field_config
+  field_name: field_card_variant
+  entity_type: paragraph
+  bundle: card_item
+  label: 'Variant'
+  required: false
+
+
+# -----------------------------------------------------------------------------
+# PARAGRAPH: StakesSection
+# Twig: paragraph--stakes-section.html.twig
+# Storybook: StakesSection.stories.js
+# Fields: section label, headline, stake items (nested CardItem — reused)
+# -----------------------------------------------------------------------------
+
+paragraphs.paragraphs_type.stakes_section:
+  type: paragraphs_type
+  label: 'Stakes Section'
+  id: stakes_section
+  description: 'Dark 3-column grid of stake items (icon, title, body). Reuses CardItem.'
+
+field.field.paragraph.stakes_section.field_section_label:
+  type: field_config
+  field_name: field_section_label
+  entity_type: paragraph
+  bundle: stakes_section
+  label: 'Section label'
+  required: false
+
+field.field.paragraph.stakes_section.field_section_headline:
+  type: field_config
+  field_name: field_section_headline
+  entity_type: paragraph
+  bundle: stakes_section
+  label: 'Headline'
+  required: true
+
+field.field.paragraph.stakes_section.field_cards:
+  type: field_config
+  field_name: field_cards
+  entity_type: paragraph
+  bundle: stakes_section
+  label: 'Stake items'
+  required: false
+  settings:
+    handler: 'default:paragraph'
+    handler_settings:
+      target_bundles:
+        card_item: card_item
+
+
+# -----------------------------------------------------------------------------
+# PARAGRAPH: PositionsSection
+# Twig: paragraph--positions-section.html.twig
+# Storybook: PositionsSection.stories.js
+# Fields: section label, headline, intro text, position items (nested)
+# -----------------------------------------------------------------------------
+
+paragraphs.paragraphs_type.positions_section:
+  type: paragraphs_type
+  label: 'Positions Section'
+  id: positions_section
+  description: 'Numbered list of legislative positions. Each item is a PositionItem paragraph.'
+
+field.field.paragraph.positions_section.field_section_label:
+  type: field_config
+  field_name: field_section_label
+  entity_type: paragraph
+  bundle: positions_section
+  label: 'Section label'
+  required: false
+
+field.field.paragraph.positions_section.field_section_headline:
+  type: field_config
+  field_name: field_section_headline
+  entity_type: paragraph
+  bundle: positions_section
+  label: 'Headline'
+  required: true
+
+field.storage.paragraph.field_intro_text:
+  type: field_storage_config
+  field_name: field_intro_text
+  entity_type: paragraph
+  type: string_long
+  cardinality: 1
+
+field.field.paragraph.positions_section.field_intro_text:
+  type: field_config
+  field_name: field_intro_text
+  entity_type: paragraph
+  bundle: positions_section
+  label: 'Intro text'
+  required: false
+
+# Position items (nested Paragraph: PositionItem)
+field.storage.paragraph.field_position_items:
+  type: field_storage_config
+  field_name: field_position_items
+  entity_type: paragraph
+  type: entity_reference_revisions
+  cardinality: -1
+  settings:
+    target_type: paragraph
+
+field.field.paragraph.positions_section.field_position_items:
+  type: field_config
+  field_name: field_position_items
+  entity_type: paragraph
+  bundle: positions_section
+  label: 'Position items'
+  required: false
+  settings:
+    handler: 'default:paragraph'
+    handler_settings:
+      target_bundles:
+        position_item: position_item
+
+
+# -----------------------------------------------------------------------------
+# PARAGRAPH: PositionItem (nested inside PositionsSection)
+# Twig: paragraph--position-item.html.twig
+# Storybook: PositionItem.stories.js
+# -----------------------------------------------------------------------------
+
+paragraphs.paragraphs_type.position_item:
+  type: paragraphs_type
+  label: 'Position Item'
+  id: position_item
+  description: 'A single numbered legislative position: title + body.'
+
+field.storage.paragraph.field_position_title:
+  type: field_storage_config
+  field_name: field_position_title
+  entity_type: paragraph
+  type: string
+  cardinality: 1
+
+field.field.paragraph.position_item.field_position_title:
+  type: field_config
+  field_name: field_position_title
+  entity_type: paragraph
+  bundle: position_item
+  label: 'Title'
+  required: true
+
+field.storage.paragraph.field_position_body:
+  type: field_storage_config
+  field_name: field_position_body
+  entity_type: paragraph
+  type: string_long
+  cardinality: 1
+
+field.field.paragraph.position_item.field_position_body:
+  type: field_config
+  field_name: field_position_body
+  entity_type: paragraph
+  bundle: position_item
+  label: 'Body'
+  required: false
+
+
+# -----------------------------------------------------------------------------
+# PARAGRAPH: AccountabilitySection
+# Twig: paragraph--accountability-section.html.twig
+# Storybook: AccountabilitySection.stories.js
+# Fields: section label, headline, intro text, pillars (nested CardItem — reused)
+# -----------------------------------------------------------------------------
+
+paragraphs.paragraphs_type.accountability_section:
+  type: paragraphs_type
+  label: 'Accountability Section'
+  id: accountability_section
+  description: '2x2 pillar grid. Reuses CardItem for icon + title + body pattern.'
+
+field.field.paragraph.accountability_section.field_section_label:
+  type: field_config
+  field_name: field_section_label
+  entity_type: paragraph
+  bundle: accountability_section
+  label: 'Section label'
+  required: false
+
+field.field.paragraph.accountability_section.field_section_headline:
+  type: field_config
+  field_name: field_section_headline
+  entity_type: paragraph
+  bundle: accountability_section
+  label: 'Headline'
+  required: true
+
+field.field.paragraph.accountability_section.field_intro_text:
+  type: field_config
+  field_name: field_intro_text
+  entity_type: paragraph
+  bundle: accountability_section
+  label: 'Intro text'
+  required: false
+
+field.field.paragraph.accountability_section.field_cards:
+  type: field_config
+  field_name: field_cards
+  entity_type: paragraph
+  bundle: accountability_section
+  label: 'Pillars'
+  required: false
+  settings:
+    handler: 'default:paragraph'
+    handler_settings:
+      target_bundles:
+        card_item: card_item
+
+
+# -----------------------------------------------------------------------------
+# PARAGRAPH: VoicesSection
+# Twig: paragraph--voices-section.html.twig
+# Storybook: VoicesSection.stories.js
+# Fields: section label, headline, testimonials (entity reference → node:Testimonial)
+# Note: Testimonials are managed as nodes, not nested paragraphs,
+#       so editors can reuse them across pages.
+# -----------------------------------------------------------------------------
+
+paragraphs.paragraphs_type.voices_section:
+  type: paragraphs_type
+  label: 'Voices Section'
+  id: voices_section
+  description: 'Community quote grid. References node:Testimonial entities — not inline paragraphs.'
+
+field.field.paragraph.voices_section.field_section_label:
+  type: field_config
+  field_name: field_section_label
+  entity_type: paragraph
+  bundle: voices_section
+  label: 'Section label'
+  required: false
+
+field.field.paragraph.voices_section.field_section_headline:
+  type: field_config
+  field_name: field_section_headline
+  entity_type: paragraph
+  bundle: voices_section
+  label: 'Headline'
+  required: true
+
+field.storage.paragraph.field_testimonials:
+  type: field_storage_config
+  field_name: field_testimonials
+  entity_type: paragraph
+  type: entity_reference
+  cardinality: -1
+  settings:
+    target_type: node
+
+field.field.paragraph.voices_section.field_testimonials:
+  type: field_config
+  field_name: field_testimonials
+  entity_type: paragraph
+  bundle: voices_section
+  label: 'Testimonials'
+  required: false
+  settings:
+    handler: 'default:node'
+    handler_settings:
+      target_bundles:
+        testimonial: testimonial
+
+
+# -----------------------------------------------------------------------------
+# PARAGRAPH: ActionSection
+# Twig: paragraph--action-section.html.twig
+# Storybook: ActionSection.stories.js
+# Fields: section label, headline, intro text, steps (nested), form embed ID
+# -----------------------------------------------------------------------------
+
+paragraphs.paragraphs_type.action_section:
+  type: paragraphs_type
+  label: 'Action Section'
+  id: action_section
+  description: 'Take action — 3-step funnel + legislator contact form embed.'
+
+field.field.paragraph.action_section.field_section_label:
+  type: field_config
+  field_name: field_section_label
+  entity_type: paragraph
+  bundle: action_section
+  label: 'Section label'
+  required: false
+
+field.field.paragraph.action_section.field_section_headline:
+  type: field_config
+  field_name: field_section_headline
+  entity_type: paragraph
+  bundle: action_section
+  label: 'Headline'
+  required: true
+
+field.field.paragraph.action_section.field_intro_text:
+  type: field_config
+  field_name: field_intro_text
+  entity_type: paragraph
+  bundle: action_section
+  label: 'Intro text'
+  required: false
+
+# Steps (nested Paragraph: StepItem)
+field.storage.paragraph.field_steps:
+  type: field_storage_config
+  field_name: field_steps
+  entity_type: paragraph
+  type: entity_reference_revisions
+  cardinality: 3
+  settings:
+    target_type: paragraph
+
+field.field.paragraph.action_section.field_steps:
+  type: field_config
+  field_name: field_steps
+  entity_type: paragraph
+  bundle: action_section
+  label: 'Steps'
+  required: false
+  settings:
+    handler: 'default:paragraph'
+    handler_settings:
+      target_bundles:
+        step_item: step_item
+
+# Form embed ID (e.g. Webform machine name or third-party embed key)
+field.storage.paragraph.field_form_embed_id:
+  type: field_storage_config
+  field_name: field_form_embed_id
+  entity_type: paragraph
+  type: string
+  cardinality: 1
+
+field.field.paragraph.action_section.field_form_embed_id:
+  type: field_config
+  field_name: field_form_embed_id
+  entity_type: paragraph
+  bundle: action_section
+  label: 'Form embed ID'
+  required: false
+  description: 'Machine name of the Webform, or embed key for third-party form service.'
+
+
+# -----------------------------------------------------------------------------
+# PARAGRAPH: StepItem (nested inside ActionSection)
+# Twig: paragraph--step-item.html.twig
+# Storybook: StepItem.stories.js
+# -----------------------------------------------------------------------------
+
+paragraphs.paragraphs_type.step_item:
+  type: paragraphs_type
+  label: 'Step Item'
+  id: step_item
+  description: 'A single numbered action step: title + body.'
+
+field.storage.paragraph.field_step_title:
+  type: field_storage_config
+  field_name: field_step_title
+  entity_type: paragraph
+  type: string
+  cardinality: 1
+
+field.field.paragraph.step_item.field_step_title:
+  type: field_config
+  field_name: field_step_title
+  entity_type: paragraph
+  bundle: step_item
+  label: 'Title'
+  required: true
+
+field.storage.paragraph.field_step_body:
+  type: field_storage_config
+  field_name: field_step_body
+  entity_type: paragraph
+  type: string_long
+  cardinality: 1
+
+field.field.paragraph.step_item.field_step_body:
+  type: field_config
+  field_name: field_step_body
+  entity_type: paragraph
+  bundle: step_item
+  label: 'Body'
+  required: false
+
+
+# =============================================================================
+# NODE: Testimonial
+# Schema.org: schema:CreativeWork (additionalType: Testimonial)
+# Managed as nodes so quotes are reusable across pages/contexts.
+# Referenced by VoicesSection via field_testimonials.
+# =============================================================================
+
+node.type.testimonial:
+  type: node_type
+  langcode: en
+  status: true
+  name: 'Testimonial'
+  type: testimonial
+  description: 'A community voice quote. Reusable across pages. Referenced by Voices sections.'
+  help: ''
+  new_revision: true
+  preview_mode: 1
+  display_submitted: false
+
+field.storage.node.field_quote_text:
+  type: field_storage_config
+  field_name: field_quote_text
+  entity_type: node
+  type: string_long
+  cardinality: 1
+
+field.field.node.testimonial.field_quote_text:
+  type: field_config
+  field_name: field_quote_text
+  entity_type: node
+  bundle: testimonial
+  label: 'Quote text'
+  required: true
+
+field.storage.node.field_quote_attribution:
+  type: field_storage_config
+  field_name: field_quote_attribution
+  entity_type: node
+  type: string
+  cardinality: 1
+
+field.field.node.testimonial.field_quote_attribution:
+  type: field_config
+  field_name: field_quote_attribution
+  entity_type: node
+  bundle: testimonial
+  label: 'Attribution (e.g. Parent — Danville, VT)'
+  required: true
+
+field.storage.node.field_quote_author:
+  type: field_storage_config
+  field_name: field_quote_author
+  entity_type: node
+  type: entity_reference
+  cardinality: 1
+  settings:
+    target_type: node
+
+field.field.node.testimonial.field_quote_author:
+  type: field_config
+  field_name: field_quote_author
+  entity_type: node
+  bundle: testimonial
+  label: 'Author (optional node:Person reference)'
+  required: false
+  settings:
+    handler: 'default:node'
+    handler_settings:
+      target_bundles:
+        person: person
+
+field.storage.node.field_quote_anonymous:
+  type: field_storage_config
+  field_name: field_quote_anonymous
+  entity_type: node
+  type: boolean
+  cardinality: 1
+
+field.field.node.testimonial.field_quote_anonymous:
+  type: field_config
+  field_name: field_quote_anonymous
+  entity_type: node
+  bundle: testimonial
+  label: 'Anonymous (hide author name publicly)'
+  required: false
+  default_value:
+    - value: 0

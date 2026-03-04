@@ -1,0 +1,36 @@
+uuid: c9e67539-8222-484c-9a69-703e57976341
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_employee
+    - node.type.local_business
+  module:
+    - entity_reference_override
+    - epp
+third_party_settings:
+  epp:
+    value: 'target_id: [current-page:query:employee]'
+id: node.local_business.schema_employee
+field_name: schema_employee
+entity_type: node
+bundle: local_business
+label: Employees
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'schemadotorg:node'
+  handler_settings:
+    target_type: node
+    schema_types:
+      Person: Person
+    excluded_schema_types: {  }
+    ignore_additional_mappings: false
+    target_bundles:
+      person: person
+  override_label: 'Enter role'
+  override_format: null
+field_type: entity_reference_override

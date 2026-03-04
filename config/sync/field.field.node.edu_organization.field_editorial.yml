@@ -1,0 +1,31 @@
+uuid: 010c16f6-c735-4e2a-afd3-8c5d9d1d3b6e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_editorial
+    - node.type.edu_organization
+    - paragraphs.paragraphs_type.editorial
+  module:
+    - entity_reference_revisions
+id: node.edu_organization.field_editorial
+field_name: field_editorial
+entity_type: node
+bundle: edu_organization
+label: 'Editorial information'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      editorial: editorial
+    negate: 0
+    target_bundles_drag_drop:
+      editorial:
+        weight: 0
+        enabled: true
+field_type: entity_reference_revisions

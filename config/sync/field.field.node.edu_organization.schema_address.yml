@@ -1,0 +1,33 @@
+uuid: 97c1366d-119f-44c3-a4c4-f48aa742342b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_address
+    - node.type.edu_organization
+  module:
+    - address
+id: node.edu_organization.schema_address
+field_name: schema_address
+entity_type: node
+bundle: edu_organization
+label: Address
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries: {  }
+  langcode_override: null
+  field_overrides:
+    givenName:
+      override: optional
+    additionalName:
+      override: optional
+    familyName:
+      override: optional
+    organization:
+      override: optional
+  fields: {  }
+field_type: address
