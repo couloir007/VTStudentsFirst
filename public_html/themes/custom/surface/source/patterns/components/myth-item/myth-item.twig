@@ -1,0 +1,12 @@
+{{ attach_library('surface/myth-item') }}
+<div class="myth-item{{ modifier ? ' ' ~ modifier }}{{- attributes ? ' ' ~ attributes.class -}}" {{- attributes ? attributes|without(class) -}}>
+  <div class="myth-item__icon">{{ icon|default('❌') }}</div>
+  <div class="myth-item__content">
+    {% if myth %}
+      <h5 class="myth-item__myth"><strong>Myth:</strong> {{ myth }}</h5>
+    {% endif %}
+    {% if fact %}
+      <div class="myth-item__fact"><strong>Fact:</strong> {{ fact|raw }}</div>
+    {% endif %}
+  </div>
+</div>

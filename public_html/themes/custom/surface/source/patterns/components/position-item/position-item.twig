@@ -1,0 +1,14 @@
+{{ attach_library('surface/position-item') }}
+<div class="position-item{{ modifier ? ' ' ~ modifier }}{{- attributes ? ' ' ~ attributes.class -}}" {{- attributes ? attributes|without(class) -}}>
+  {% if number %}
+    <div class="position-item__num">{{ number }}</div>
+  {% endif %}
+  <div class="position-item__content">
+    {% if headline %}
+      <h4 class="position-item__headline">{{ headline }}</h4>
+    {% endif %}
+    {% if body %}
+      <div class="position-item__body">{{ body|raw }}</div>
+    {% endif %}
+  </div>
+</div>

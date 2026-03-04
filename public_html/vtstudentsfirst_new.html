@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VT Students First — Protect Public Education in Rural Vermont</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:     #1d3a2a;
+    --pine:       #2c5640;
+    --meadow:     #4a7c5f;
+    --sage:       #7aab8a;
+    --mist:       #c8ddd0;
+    --cream:      #f5f0e8;
+    --parchment:  #ede6d6;
+    --bark:       #6b4f32;
+    --maple:      #c0622a;
+    --gold:       #d4a847;
+    --ink:        #1a1a18;
+    --mid:        #4a4a44;
+    --light:      #f9f7f2;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--light);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.5;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(29, 58, 42, 0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(122,171,138,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: var(--cream);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--mist);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--maple);
+    color: white !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: #a8521f !important; color: white !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    position: relative;
+    overflow: hidden;
+    background: var(--forest);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 80%, rgba(44,86,64,0.6) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 10% 20%, rgba(74,124,95,0.3) 0%, transparent 60%),
+      linear-gradient(165deg, #0f2119 0%, #1d3a2a 40%, #2c5640 100%);
+  }
+
+  /* Mountain silhouette SVG */
+  .hero-mountains {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 45%;
+    opacity: 0.18;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 8rem 2.5rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 2rem;
+    height: 1px;
+    background: var(--sage);
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    line-height: 1.0;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-sub {
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    line-height: 1.65;
+    color: var(--mist);
+    max-width: 580px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--maple);
+    color: white;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { background: #a8521f; transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: var(--cream);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 1px solid rgba(200,221,208,0.4);
+    transition: border-color 0.2s, background 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--sage);
+    background: rgba(122,171,138,0.1);
+  }
+
+  .hero-scroll {
+    position: relative;
+    z-index: 2;
+    padding: 2rem 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-top: 1px solid rgba(122,171,138,0.15);
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .scroll-stat {
+    display: flex;
+    flex-direction: column;
+    padding-right: 2rem;
+    border-right: 1px solid rgba(122,171,138,0.2);
+    margin-right: 2rem;
+  }
+
+  .scroll-stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-top: 0.25rem;
+  }
+
+  /* ── SECTIONS SHARED ── */
+  section { padding: 6rem 2.5rem; }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--meadow);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--meadow);
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--forest);
+    margin-bottom: 1.5rem;
+  }
+
+  h2 em { font-style: italic; color: var(--maple); }
+
+  /* ── THE ISSUE ── */
+  .issue {
+    background: var(--parchment);
+    border-top: 3px solid var(--forest);
+  }
+
+  .issue-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+
+  .issue-lead {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: var(--forest);
+    font-weight: 400;
+    border-left: 3px solid var(--gold);
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .issue-body {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--mid);
+  }
+
+  .issue-body p + p { margin-top: 1em; }
+
+  .issue-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .issue-card {
+    background: white;
+    border-radius: 3px;
+    padding: 1.5rem;
+    border-left: 4px solid var(--meadow);
+    box-shadow: 0 2px 12px rgba(29,58,42,0.07);
+  }
+
+  .issue-card.urgent { border-left-color: var(--maple); }
+
+  .issue-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 0.5rem;
+  }
+
+  .issue-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--mid);
+  }
+
+  /* ── WHAT'S AT STAKE ── */
+  .stakes {
+    background: var(--forest);
+    color: var(--cream);
+  }
+
+  .stakes h2 { color: var(--cream); }
+  .stakes h2 em { color: var(--gold); }
+  .stakes .section-label { color: var(--sage); }
+  .stakes .section-label::before { background: var(--sage); }
+
+  .stakes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .stake-item {
+    padding: 2rem;
+    border: 1px solid rgba(122,171,138,0.2);
+    border-radius: 3px;
+    background: rgba(44,86,64,0.3);
+    transition: background 0.25s, border-color 0.25s;
+  }
+
+  .stake-item:hover {
+    background: rgba(44,86,64,0.55);
+    border-color: rgba(122,171,138,0.45);
+  }
+
+  .stake-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .stake-item h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .stake-item p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--mist);
+  }
+
+  /* ── POSITIONS ── */
+  .positions { background: var(--light); }
+
+  .positions-intro {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: var(--mid);
+    max-width: 640px;
+    margin-bottom: 3rem;
+  }
+
+  .position-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--mist);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .position-item {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    border-bottom: 1px solid var(--mist);
+    transition: background 0.2s;
+  }
+
+  .position-item:last-child { border-bottom: none; }
+  .position-item:hover { background: var(--parchment); }
+
+  .position-num {
+    background: var(--forest);
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 0;
+  }
+
+  .position-content {
+    padding: 1.5rem 2rem;
+  }
+
+  .position-content h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 0.4rem;
+  }
+
+  .position-content p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--mid);
+  }
+
+  /* ── MYTH VS FACT ── */
+  .myth {
+    background: var(--forest);
+    color: var(--cream);
+  }
+
+  .myth h2 { color: var(--cream); }
+  .myth h2 em { color: var(--gold); }
+  .myth .section-label { color: var(--sage); }
+  .myth .section-label::before { background: var(--sage); }
+  .myth .positions-intro { color: var(--mist); }
+
+  .myth-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .myth-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(122,171,138,0.2);
+    border-radius: 3px;
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+
+  .myth-item:hover { background: rgba(255,255,255,0.08); }
+
+  .myth-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--maple);
+    background: rgba(192,98,42,0.15);
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    margin-bottom: 0.6rem;
+    border: 1px solid rgba(192,98,42,0.3);
+  }
+
+  .myth-text {
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(200,221,208,0.7);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+    text-decoration: line-through;
+    text-decoration-color: rgba(192,98,42,0.5);
+  }
+
+  .fact-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage);
+    background: rgba(122,171,138,0.15);
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2px;
+    margin-bottom: 0.6rem;
+    border: 1px solid rgba(122,171,138,0.3);
+  }
+
+  .fact-text {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--mist);
+  }
+
+  .fact-text strong { color: var(--gold); font-weight: 600; }
+
+  /* ── VOICES ── */
+  .voices {
+    background: var(--parchment);
+    border-top: 1px solid var(--mist);
+  }
+
+  .voices-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .voice-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 3px;
+    box-shadow: 0 2px 16px rgba(29,58,42,0.06);
+    position: relative;
+  }
+
+  .voice-card::before {
+    content: '\201C';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    line-height: 1;
+    color: var(--mist);
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+  }
+
+  .voice-text {
+    font-size: 0.97rem;
+    line-height: 1.75;
+    color: var(--ink);
+    font-style: italic;
+    padding-top: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .voice-attr {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--meadow);
+  }
+
+  /* ── ACTION ── */
+  .action {
+    background: var(--maple);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .action::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(212,168,71,0.2) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .action h2 { color: white; }
+  .action h2 em { color: var(--gold); }
+  .action .section-label { color: rgba(255,255,255,0.7); }
+  .action .section-label::before { background: rgba(255,255,255,0.4); }
+
+  .action-intro {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    max-width: 580px;
+    margin-bottom: 3rem;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .step {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 3px;
+    padding: 2rem;
+    backdrop-filter: blur(4px);
+  }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .step h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .step p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .action-form {
+    background: white;
+    border-radius: 3px;
+    padding: 2.5rem;
+    max-width: 560px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+  }
+
+  .form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-sub {
+    font-size: 0.88rem;
+    color: var(--mid);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .form-group label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.95rem;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid var(--mist);
+    border-radius: 2px;
+    background: var(--light);
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--meadow);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 80px; }
+
+  .form-note {
+    font-size: 0.78rem;
+    color: var(--mid);
+    margin-top: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .form-success h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--forest);
+    margin-bottom: 0.75rem;
+  }
+
+  .form-success p { color: var(--mid); font-size: 0.95rem; line-height: 1.6; }
+
+  /* ── ACCOUNTABILITY ── */
+  .accountability { background: var(--light); }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .pillar {
+    padding: 2rem;
+    border-radius: 3px;
+    border: 1px solid var(--mist);
+    background: var(--parchment);
+  }
+
+  .pillar-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--forest);
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .pillar h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--forest);
+    margin-bottom: 0.5rem;
+  }
+
+  .pillar p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: var(--mid);
+  }
+
+  /* ── SURVEY CALLOUT ── */
+  .survey-callout {
+    margin-top: 3rem;
+    background: rgba(212,168,71,0.12);
+    border: 1px solid rgba(212,168,71,0.35);
+    border-radius: 3px;
+    padding: 2rem 2.5rem;
+  }
+
+  .survey-inner {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .survey-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .survey-callout h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .survey-callout p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.75);
+    max-width: 520px;
+  }
+
+  /* ── EVENTS ── */
+  .events-block {
+    margin-top: 3rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .event-item {
+    display: flex;
+    gap: 1.25rem;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 3px;
+    padding: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .event-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--forest);
+    border-radius: 2px;
+    padding: 0.5rem 0.75rem;
+    min-width: 3rem;
+    flex-shrink: 0;
+  }
+
+  .event-month {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+
+  .event-day {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1.1;
+  }
+
+  .event-details h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.4rem;
+  }
+
+  .event-details p {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 0.25rem;
+  }
+
+  .event-meta {
+    font-family: 'DM Mono', monospace !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.06em;
+    color: var(--sage) !important;
+    margin-top: 0.5rem !important;
+  }
+
+  @media (max-width: 768px) {
+    .survey-inner { flex-direction: column; gap: 1.5rem; }
+    .events-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── TOOLKIT TABS ── */
+  .toolkit-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: transparent;
+    color: rgba(255,255,255,0.65);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tab-btn:hover { border-color: rgba(255,255,255,0.5); color: white; }
+  .tab-btn.active { background: white; color: var(--forest); border-color: white; }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .toolkit-split {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .toolkit-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  .toolkit-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.85rem 1.5rem;
+    background: rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .toolkit-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+
+  .copy-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: rgba(122,171,138,0.2);
+    border: 1px solid rgba(122,171,138,0.35);
+    color: var(--sage);
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .copy-btn:hover { background: rgba(122,171,138,0.35); color: var(--cream); }
+  .copy-btn.copied { background: rgba(122,171,138,0.5); color: white; }
+
+  .toolkit-text {
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--mist);
+    white-space: pre-wrap;
+    font-family: 'Source Serif 4', serif;
+  }
+
+  .social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .social-post {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 3px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    position: relative;
+  }
+
+  .social-post:hover {
+    background: rgba(255,255,255,0.13);
+    border-color: rgba(122,171,138,0.4);
+  }
+
+  .social-post p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--mist);
+    margin-bottom: 0.75rem;
+  }
+
+  .copy-hint {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+    opacity: 0.6;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: var(--mist);
+    padding: 3rem 2.5rem;
+  }
+
+  .footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(200,221,208,0.12);
+    margin-bottom: 2rem;
+  }
+
+  .footer-brand h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--cream);
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-brand h3 span { color: var(--gold); }
+
+  .footer-brand p {
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: rgba(200,221,208,0.65);
+  }
+
+  .footer-col h4 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul { list-style: none; }
+
+  .footer-col li + li { margin-top: 0.5rem; }
+
+  .footer-col a {
+    font-size: 0.88rem;
+    color: rgba(200,221,208,0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--cream); }
+
+  .footer-bottom {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    color: rgba(200,221,208,0.35);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow  { animation: fadeUp 0.6s ease 0.1s both; }
+  h1             { animation: fadeUp 0.7s ease 0.25s both; }
+  .hero-sub      { animation: fadeUp 0.7s ease 0.4s both; }
+  .hero-actions  { animation: fadeUp 0.7s ease 0.55s both; }
+  .hero-scroll   { animation: fadeUp 0.6s ease 0.75s both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.25rem; }
+    .hero-content { padding: 7rem 1.25rem 3rem; }
+    .hero-scroll { padding: 1.5rem 1.25rem; flex-wrap: wrap; gap: 0.75rem; }
+    .scroll-stat { padding-right: 1rem; margin-right: 1rem; }
+    .issue-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .stakes-grid { grid-template-columns: 1fr; }
+    .voices-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .pillars { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">VT<span>Students</span>First</a>
+  <ul class="nav-links">
+    <li><a href="#issue">The Issue</a></li>
+    <li><a href="#positions">Our Position</a></li>
+    <li><a href="#facts">Myth vs. Fact</a></li>
+    <li><a href="#voices">Voices</a></li>
+    <li><a href="#act" class="nav-cta">Take Action</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <!-- Mountain silhouette -->
+  <svg class="hero-mountains" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill="rgba(122,171,138,1)" d="M0,320 L0,200 L120,140 L240,190 L360,100 L480,160 L560,80 L650,130 L720,60 L800,110 L900,40 L980,90 L1080,30 L1160,85 L1260,50 L1360,100 L1440,70 L1440,320 Z"/>
+    <path fill="rgba(44,86,64,1)" d="M0,320 L0,250 L100,200 L200,230 L320,170 L420,210 L520,150 L620,190 L700,130 L780,170 L880,110 L980,155 L1080,100 L1180,145 L1280,115 L1380,150 L1440,130 L1440,320 Z"/>
+    <path fill="rgba(29,58,42,1)" d="M0,320 L0,285 L150,255 L280,270 L400,240 L520,260 L640,225 L760,250 L880,215 L1000,245 L1120,220 L1240,245 L1360,228 L1440,240 L1440,320 Z"/>
+  </svg>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Vermont Public Education</p>
+    <h1>Every Vermont student<br>deserves a <em>real</em> choice.</h1>
+    <p class="hero-sub">Thousands of Vermont students in rural towns attend their local academy through tuitioning — the mechanism Vermont uses to deliver public education where no public high school exists. Proposed legislation threatens to eliminate that choice. We're fighting to keep it.</p>
+    <div class="hero-actions">
+      <a href="#act" class="btn-primary">Contact Your Legislator</a>
+      <a href="#issue" class="btn-secondary">Learn What's at Stake</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-stat">
+      <span class="stat-num">4%</span>
+      <span class="stat-label">Of students — independent schools</span>
+    </div>
+    <div class="scroll-stat">
+      <span class="stat-num">3%</span>
+      <span class="stat-label">Of Education Fund spending</span>
+    </div>
+    <div class="scroll-stat">
+      <span class="stat-num">$184</span>
+      <span class="stat-label">Less per pupil than state average</span>
+    </div>
+    <div class="scroll-stat">
+      <span class="stat-num">$0</span>
+      <span class="stat-label">State construction aid received</span>
+    </div>
+  </div>
+</section>
+
+<!-- THE ISSUE -->
+<section class="issue" id="issue">
+  <div class="container">
+    <p class="section-label">The Issue</p>
+    <h2>Tuitioning is how rural Vermont delivers <em>public education.</em></h2>
+    <div class="issue-grid">
+      <div>
+        <p class="issue-lead">In Vermont, over 90 towns have no public high school of their own. Tuitioning — the right of families to choose an approved school and have tuition paid by their town — is how these communities provide public education. For generations, students in Danville, Sutton, Newark, and dozens of other rural towns have attended St. Johnsbury Academy, Lyndon Institute, Burr and Burton Academy, Thetford Academy, and other regional schools through this system.</p>
+        <div class="issue-body">
+          <p>Now, three legislative proposals threaten to dismantle this system — not by debating its merits, but by redesigning how districts are structured so that family choice disappears by default.</p>
+          <p>The Chair of the House Education Committee has explicitly stated that his goal is to eliminate school choice. Members of the committee have even referred to independent schools as <strong>"vendors"</strong> — a term that reveals a fundamental misunderstanding of how rural Vermont's education system actually works. We are taking them at their word — and organizing to stop it.</p>
+          <p>This is not about ideology. It is about equity. Tuitioning is Vermont's rural education delivery mechanism. Protecting it means protecting the same standard of access that every Vermont student deserves.</p>
+        </div>
+      </div>
+      <div class="issue-cards">
+        <div class="issue-card urgent">
+          <h4>Act 73 Phase 2 — Forced Consolidation</h4>
+          <p>Would eliminate Supervisory Union structures and replace them with Supervisory Districts that assign students to schools through attendance zones. Family choice disappears. Only four historic academies — Burr and Burton, Thetford, St. Johnsbury, and Lyndon Institute — could be designated, and even they face forced enrollment reductions that would cut programs and staff.</p>
+        </div>
+        <div class="issue-card urgent">
+          <h4>H.777 — Elimination of Tuitioning</h4>
+          <p>Would eliminate public tuition funding for any independent school that does not follow public school rules (EQS). Because most independent schools operate under the rigorous Independent School Rules (Series 2200), this bill would effectively ban students from attending them with public tuition dollars.</p>
+        </div>
+        <div class="issue-card urgent">
+          <h4>H.813 — Imposition of Public Rules</h4>
+          <p>Would mandate that all independent schools follow public school regulations — removing the operational flexibility that makes these schools effective. This is a thinly-veiled attempt to homogenize Vermont's educational ecosystem and strip the independence that generations of families have valued.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S AT STAKE -->
+<section class="stakes" id="stakes">
+  <div class="container">
+    <p class="section-label">What's at Stake</p>
+    <h2>This affects more than<br>one <em>school</em> or one <em>town.</em></h2>
+    <div class="stakes-grid">
+      <div class="stake-item">
+        <span class="stake-icon">🎓</span>
+        <h3>Program Access</h3>
+        <p>CTE pathways, AP courses, arts programs, dual enrollment, and world languages exist at regional academies that smaller consolidated schools could not replicate. Reassignment ends access overnight.</p>
+      </div>
+      <div class="stake-item">
+        <span class="stake-icon">🚌</span>
+        <h3>Rural Commutes</h3>
+        <p>For families in the Northeast Kingdom and other rural regions, alternative schools can mean 45–90 minute one-way commutes — a barrier that disproportionately harms working families.</p>
+      </div>
+      <div class="stake-item">
+        <span class="stake-icon">🏗️</span>
+        <h3>Workforce Pipelines</h3>
+        <p>Regional academies partner with local employers, hospitals, and trades. Disrupting enrollment disrupts workforce development pipelines that rural Vermont's economy depends on.</p>
+      </div>
+      <div class="stake-item">
+        <span class="stake-icon">👨‍👩‍👧</span>
+        <h3>Family Stability</h3>
+        <p>Families choose Vermont communities in part because of school access. Eliminating choice creates relocation risk — and rural Vermont cannot afford to lose young families.</p>
+      </div>
+      <div class="stake-item">
+        <span class="stake-icon">♿</span>
+        <h3>Student Supports</h3>
+        <p>Students with IEPs and special needs are often well-served by academy environments with robust support infrastructure. Any reassignment policy must preserve — and strengthen — these outcomes.</p>
+      </div>
+      <div class="stake-item">
+        <span class="stake-icon">🏘️</span>
+        <h3>Community Anchors</h3>
+        <p>In many NEK towns, the local academy is the largest employer and the social center of the region. Enrollment changes destabilize economies, not just schools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR POSITION -->
+<section class="positions" id="positions">
+  <div class="container">
+    <p class="section-label">Our Position</p>
+    <h2>Local flexibility.<br><em>Statewide accountability.</em></h2>
+    <p class="positions-intro">We are not asking for special treatment. We are asking Vermont to protect the mechanism it already uses to deliver public education in rural communities — while holding all schools receiving public dollars to clear, enforceable standards.</p>
+    <div class="position-list">
+      <div class="position-item">
+        <div class="position-num">1</div>
+        <div class="position-content">
+          <h4>Preserve family-level tuitioning access</h4>
+          <p>Non-operating towns must retain the right to provide students with genuine school choice, not board-only designation that eliminates options. Tuitioning is not a loophole — it is Vermont's rural education policy.</p>
+        </div>
+      </div>
+      <div class="position-item">
+        <div class="position-num">2</div>
+        <div class="position-content">
+          <h4>Protect rural equity — not special treatment</h4>
+          <p>Tuitioning is how Vermont ensures equity for students in towns without a high school. Defending it is defending the same standard of access that every Vermont student deserves.</p>
+        </div>
+      </div>
+      <div class="position-item">
+        <div class="position-num">3</div>
+        <div class="position-content">
+          <h4>Require accountability from all receiving schools</h4>
+          <p>We support enforceable guardrails: transparency in spending, student support obligations, nondiscrimination requirements, and regular outcomes reporting for any school receiving public tuition dollars.</p>
+        </div>
+      </div>
+      <div class="position-item">
+        <div class="position-num">4</div>
+        <div class="position-content">
+          <h4>Prevent destabilizing disruption</h4>
+          <p>Any governance changes must include safeguards against sudden reassignments, loss of established programs, or changes that undermine workforce pipelines and community economic stability.</p>
+        </div>
+      </div>
+      <div class="position-item">
+        <div class="position-num">5</div>
+        <div class="position-content">
+          <h4>Governance cannot be a backdoor to end tuitioning</h4>
+          <p>If consolidation or restructuring proceeds, statute must explicitly prevent governance changes from being used to eliminate family choice in non-operating towns. The protection must be durable.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCOUNTABILITY -->
+<section class="accountability" id="accountability">
+  <div class="container">
+    <p class="section-label">Our Accountability Framework</p>
+    <h2>We support guardrails.<br><em>Real ones.</em></h2>
+    <p style="font-size:1.05rem; line-height:1.75; color:var(--mid); max-width:600px; margin-bottom:2rem;">Protecting tuitioning doesn't mean writing a blank check. We believe any school receiving Vermont public tuition dollars should meet clear, enforceable standards. This is our position — not a concession.</p>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon">📊</div>
+        <h4>Transparent Financial Reporting</h4>
+        <p>Schools receiving public tuition dollars must disclose how those funds are used, with annual public reporting to the State.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">♿</div>
+        <h4>Student Support Obligations</h4>
+        <p>Receiving schools must provide or fully fund special education services for tuitioning students — no exceptions, no cost-shifting to sending towns.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">⚖️</div>
+        <h4>Nondiscrimination Requirements</h4>
+        <p>All tuition-receiving schools must comply with state and federal nondiscrimination law as a condition of continued eligibility.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">📈</div>
+        <h4>Outcomes Reporting</h4>
+        <p>Graduation rates, post-secondary outcomes, and student performance data must be reported publicly and annually for all tuitioning students.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MYTH VS FACT -->
+<section class="myth" id="facts">
+  <div class="container">
+    <p class="section-label">Setting the Record Straight</p>
+    <h2>Myth vs. <em>Fact.</em></h2>
+    <p class="positions-intro">These talking points address the misinformation circulating in Montpelier and at school board meetings. Use them when speaking with neighbors, legislators, or the press.</p>
+    <div class="myth-grid">
+
+      <div class="myth-item">
+        <div class="myth-label">Myth</div>
+        <p class="myth-text">Independent schools are draining the Education Fund.</p>
+        <div class="fact-label">Fact</div>
+        <p class="fact-text">Publicly funded independent school students make up only <strong>4% of the student population</strong> and just <strong>3% of Education Fund spending</strong>. Districts that tuition students to independent schools consistently spend <strong>$184 less per pupil</strong> ($13,763) than the state average ($13,947). Independent schools receive <strong>no state construction aid</strong>, saving taxpayers millions while public schools face over $6 billion in deferred maintenance.</p>
+      </div>
+
+      <div class="myth-item">
+        <div class="myth-label">Myth</div>
+        <p class="myth-text">Independent schools have no oversight or accountability.</p>
+        <div class="fact-label">Fact</div>
+        <p class="fact-text">Independent schools are governed by <strong>Rule Series 2200</strong> — nearly twice the length of public school standards. Unlike public schools, independent schools must undergo formal review and re-approval by the Agency of Education <strong>every five years</strong>. They are subject to the same background checks, mandated reporter laws, and statewide assessment requirements as public schools.</p>
+      </div>
+
+      <div class="myth-item">
+        <div class="myth-label">Myth</div>
+        <p class="myth-text">Independent schools aren't equitable and don't serve all students.</p>
+        <div class="fact-label">Fact</div>
+        <p class="fact-text">Under <strong>Act 173</strong>, independent schools that receive public tuition dollars are required to accommodate students with special education needs. Discrimination based on any protected class is illegal under state and federal law. Many independent schools provide specialized social and emotional environments where neurodiverse students thrive — offering flexibility that large public systems often cannot match.</p>
+      </div>
+
+      <div class="myth-item">
+        <div class="myth-label">Myth</div>
+        <p class="myth-text">Consolidation will save money and improve outcomes.</p>
+        <div class="fact-label">Fact</div>
+        <p class="fact-text">Districts with tuitioning and school choice already spend <strong>less per pupil than the state average</strong> — not more. Forced consolidation into large Supervisory Districts would eliminate the cost-effective delivery model that rural Vermont has built over generations, while imposing new administrative costs and forcing long commutes on students in towns that never had a local public school to begin with.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY VOICES -->
+<section class="voices" id="voices">
+  <div class="container">
+    <p class="section-label">Community Voices</p>
+    <h2>Vermont families,<br>in their own <em>words.</em></h2>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <p class="voice-text">Without regional school choice, we are confident we would be forced to relocate out of state — and we know we would not be alone. We chose to build our businesses and our lives here because of these opportunities.</p>
+        <p class="voice-attr">Business Owner &amp; SJA Parent — Waterford, Vermont <span style="color:var(--mist); font-style:italic;">(name withheld pending permission)</span></p>
+      </div>
+      <div class="voice-card">
+        <p class="voice-text">St. Johnsbury Academy is not simply an educational institution. It is a central economic engine for this town. Hundreds, and likely thousands, of individuals come to St. Johnsbury each day because of the Academy — fueling our gas stations, restaurants, shops, housing, and tax base.</p>
+        <p class="voice-attr">Business Owner &amp; Community Member — St. Johnsbury Region</p>
+      </div>
+      <div class="voice-card">
+        <p class="voice-text">The most important thing right now is that we need more people to get involved, raise concerns, and share personal stories. Every voice that reaches Montpelier makes a difference.</p>
+        <p class="voice-attr">NEK Community Advocate</p>
+      </div>
+      <div class="voice-card">
+        <p class="voice-text">My daughter has an IEP and found her footing at the academy in ways I couldn't have predicted. The thought of a forced reassignment — to a school two towns over — is terrifying. We chose this community because of this school.</p>
+        <p class="voice-attr">Parent — [Town], Vermont</p>
+      </div>
+    </div>
+    <p style="margin-top:2rem; font-size:0.9rem; color:var(--mid); font-style:italic;">Your story matters. <a href="#act" style="color:var(--maple); text-decoration:underline;">Share it with us →</a></p>
+  </div>
+</section>
+
+<!-- TAKE ACTION -->
+<section class="action" id="act">
+  <div class="container" style="position:relative; z-index:2;">
+    <p class="section-label">Take Action</p>
+    <h2>Four ways to make<br>an <em>impact today.</em></h2>
+    <p class="action-intro">The most powerful advocacy happens when real constituents make direct, personal contact. As one NEK advocate put it: <em>"We need more people to get involved, raise concerns, and share personal stories."</em> Here are four concrete ways to do exactly that.</p>
+
+    <div class="steps" style="grid-template-columns: repeat(4,1fr);">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Contact Your Legislator</h4>
+        <p>Send a personal message to your Vermont House and Senate members. Find yours at <a href="https://legislature.vermont.gov" target="_blank" style="color:var(--gold);">legislature.vermont.gov</a></p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Engage Your School Board</h4>
+        <p>Email your board or speak at the next public meeting. Ask them to go on record opposing designation and attendance zones.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Spread the Word</h4>
+        <p>Share on Facebook, Front Porch Forum, or Instagram. Use the ready-made posts below — or write your own.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Write to Your Paper</h4>
+        <p>A letter to the editor in your local paper reaches legislators, school board members, and neighbors all at once.</p>
+      </div>
+    </div>
+
+    <!-- TAB SWITCHER -->
+    <div class="toolkit-tabs">
+      <button class="tab-btn active" onclick="showTab('legislator')">Legislator Letter</button>
+      <button class="tab-btn" onclick="showTab('board')">School Board Email</button>
+      <button class="tab-btn" onclick="showTab('social')">Social Media</button>
+      <button class="tab-btn" onclick="showTab('lte')">Letter to Editor</button>
+    </div>
+
+    <!-- TAB: LEGISLATOR -->
+    <div class="tab-panel active" id="tab-legislator">
+      <div class="toolkit-split">
+        <div class="action-form">
+          <h3 class="form-title">Contact Your Legislator</h3>
+          <p class="form-sub">Fill in your info and we'll connect you with your Vermont House and Senate representatives. Personal messages carry far more weight than form letters.</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="Jane" id="fname">
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Smith" id="lname">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="jane@example.com" id="email">
+          </div>
+          <div class="form-group">
+            <label>Your Town</label>
+            <input type="text" placeholder="e.g. Danville, Sutton, Newark…" id="town">
+          </div>
+          <div class="form-group">
+            <label>Your Connection</label>
+            <select id="role">
+              <option value="">Select one…</option>
+              <option>Parent of a tuitioning student</option>
+              <option>Student</option>
+              <option>Teacher / School staff</option>
+              <option>Local employer</option>
+              <option>Community member / Alumnus</option>
+              <option>Elected official</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Your Message (personalize for more impact)</label>
+            <textarea id="message" rows="5">My name is [Your Name] and I am a constituent from [Town]. I am writing to share my strong opposition to proposals that would eliminate supervisory unions and restrict Vermont's Town Tuition Program. I understand the need for education reform, but eliminating choice and access to independent schools does nothing to save money or improve quality. Please oppose any plan that restricts family choice or consolidates our district against our will.</textarea>
+          </div>
+          <button class="btn-primary" style="width:100%;" onclick="handleSubmit()">Send to My Legislators →</button>
+          <p class="form-note">We'll match your town to your representatives and send on your behalf. We never share your information. You can also contact the <a href="https://governor.vermont.gov/contact-us-requests" target="_blank" style="color:var(--meadow);">Governor's Office directly</a>.</p>
+        </div>
+        <div class="form-success" id="form-success" style="display:none; background:white; border-radius:3px; padding:2.5rem; align-self:start;">
+          <h3 style="font-family:'Playfair Display',serif; color:var(--forest); margin-bottom:.75rem;">✅ Message sent. Thank you.</h3>
+          <p style="color:var(--mid); font-size:.95rem; line-height:1.6;">Your message has been routed to your Vermont House and Senate representatives. Consider forwarding this page to one more person — every voice counts.</p>
+          <button onclick="shareNow()" class="btn-primary" style="margin-top:1.5rem;">Share This Page</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: SCHOOL BOARD -->
+    <div class="tab-panel" id="tab-board">
+      <div class="toolkit-card">
+        <div class="toolkit-card-header">
+          <span class="toolkit-tag">Email or Public Comment Template</span>
+          <button class="copy-btn" onclick="copyText('board-template')">Copy Text</button>
+        </div>
+        <div class="toolkit-text" id="board-template">
+I am asking the school board to publicly oppose legislative proposals that would eliminate or restrict school choice, or force our independent schools to conform to one-size-fits-all regulations.
+
+Proposals being considered in the legislature — including Act 73 Phase 2, H.777, and H.813 — would strip our community of its ability to tuition students to the schools that best fit their needs. By replacing family choice with "designation" and "attendance zones," the legislature is trying to do something about education reform by reducing educational opportunity for our children, while ignoring the reality that our community is not driving up the cost of education.
+
+Independent schools serve 4% of students and account for just 3% of the Education Fund. Districts with school choice spend less per pupil than the state average. These schools are not the problem.
+
+As our elected representatives, your voice carries weight. Please join other boards across the state in demanding that any new structure respects the historic partnership between our town and independent schools, while preserving family choice.
+
+Will this board commit to drafting a public statement in unambiguous support of maintaining our system of school choice — and in opposition to any system that imposes designation or forced assignment of students through attendance zones?
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: SOCIAL MEDIA -->
+    <div class="tab-panel" id="tab-social">
+      <p style="color:rgba(255,255,255,0.8); margin-bottom:1.5rem; font-size:.95rem;">Post these on Facebook, Front Porch Forum, or Instagram. Click any post to copy it.</p>
+      <div class="social-grid">
+        <div class="social-post" onclick="copyPost(this)">
+          <p>Rural Vermont doesn't deserve to have its education system targeted. Education "reform" proposals in the House Education Committee would redraw districts that could cut out the independent schools that have served us for generations. Under these proposals, students could be forced to go to a newly designated school, even if the independent school you prefer is right down the road. Contact your legislators today and tell them you oppose changes to the Town Tuition Program. 🏔️ #VTStudentsFirst #VTEd</p>
+          <span class="copy-hint">Click to copy</span>
+        </div>
+        <div class="social-post" onclick="copyPost(this)">
+          <p>The numbers don't lie: independent school students make up 4% of Vermont's student population and just 3% of Education Fund spending. Districts with school choice actually spend LESS per pupil than the state average. These schools aren't the problem. Please tell your lawmakers to protect the Town Tuition Program. #VTStudentsFirst</p>
+          <span class="copy-hint">Click to copy</span>
+        </div>
+        <div class="social-post" onclick="copyPost(this)">
+          <p>My child is not a seat to be filled. Proposals in the House Education Committee seek to make district public schools the "default," allowing tuition to independent schools only as a rare exception. Vermont's success has always been built on diversity of options. Let's not trade our educational ecosystem for a generic, one-size-fits-all model. #VTStudentsFirst #ProtectSchoolChoice</p>
+          <span class="copy-hint">Click to copy</span>
+        </div>
+        <div class="social-post" onclick="copyPost(this)">
+          <p>These proposals treat independent schools — which have served Vermont towns for over a century — as loopholes rather than lifelines. St. Johnsbury Academy, Lyndon Institute, Burr and Burton, Thetford Academy: these are not exceptions. They are the system. Let's keep our communities vibrant. Let's keep our choice. #VTStudentsFirst</p>
+          <span class="copy-hint">Click to copy</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: LETTER TO EDITOR -->
+    <div class="tab-panel" id="tab-lte">
+      <p style="color:rgba(255,255,255,0.8); margin-bottom:1.5rem; font-size:.95rem;">Customize one of these templates for your local paper. Replace the bracketed fields with your own details.</p>
+      <div class="toolkit-card" style="margin-bottom:1.5rem;">
+        <div class="toolkit-card-header">
+          <span class="toolkit-tag">Template A — General</span>
+          <button class="copy-btn" onclick="copyText('lte-a')">Copy Text</button>
+        </div>
+        <div class="toolkit-text" id="lte-a">To the Editor,
+
+I am writing as a parent in [Town Name]. Like many families, we value the tight-knit community here and the ability to choose the best education for our kids through the Town Tuition Program.
+
+Recent proposals in the Legislature threaten to dismantle this system. The plan would consolidate our schools into massive districts and make independent schools an option only by "exception" — accessible only to the four historic academies, and only when a board decides to designate them.
+
+This is deeply concerning. My child thrives at [School Name] because of its [mention a specific program: e.g., CTE, arts, small class size]. A distant district school cannot replicate that experience.
+
+Vermont's education funding problem is real, but we cannot solve it by punishing rural students — or attacking independent schools that are not driving cost increases. I urge our representatives to reject any map that eliminates school choice and to protect the partnerships that have served our towns for generations.
+
+Sincerely,
+[Your Name], [Your Town]</div>
+      </div>
+
+      <div class="toolkit-card">
+        <div class="toolkit-card-header">
+          <span class="toolkit-tag">Template B — Choose Your Angle</span>
+          <button class="copy-btn" onclick="copyText('lte-b')">Copy Text</button>
+        </div>
+        <div class="toolkit-text" id="lte-b">To the Editor,
+
+I am writing as a parent in [Town Name]. Like many families, we chose to live here because we value the tight-knit community and the ability to choose the best education for our kids through the Town Tuition Program.
+
+Recent proposals in the Legislature — specifically Act 73 Phase 2, H.777, and H.813 — threaten to dismantle this successful system. The plan would consolidate schools into massive districts and make independent schools an option only by rare "exception."
+
+[THE COMMUTE: Policymakers seem to think a long bus ride out of town is better for our children than attending the local independent school that has served us well for so long. That's not true for my family.]
+
+[THE ECONOMY: Our local independent school, [School Name], is an economic and cultural anchor. If the state forces enrollment to drop by redirecting local students, we risk losing the programs, jobs, and vitality that school brings to our region.]
+
+[THE CHOICE: My child thrives at [School Name] because of its [specific program, e.g. CTE, arts, small class size]. A distant district school cannot replicate that experience.]
+
+Vermont's education funding problem is real, but we cannot solve it by punishing rural students. I urge our representatives to reject any map that eliminates school choice and protect the partnerships that have served our towns for generations.
+
+Sincerely,
+[Your Name], [Your Town]</div>
+      </div>
+    </div>
+
+    <!-- SURVEY CALLOUT -->
+    <div class="survey-callout">
+      <div class="survey-inner">
+        <div>
+          <p class="survey-eyebrow">NEK Voices on School Choice</p>
+          <h4>Take the community survey</h4>
+          <p>Concerned residents of the NEK have put together a survey to collect data and stories to share directly with legislators. Your voice — as a parent, employer, or community member — is the most credible evidence we have. Results will be summarized and presented to the Education Committee.</p>
+        </div>
+        <a href="https://forms.gle/5vhyCPDq12aSLg7R7" target="_blank" class="btn-primary" style="white-space:nowrap; align-self:center;">Take the Survey →</a>
+      </div>
+    </div>
+
+    <!-- UPCOMING EVENTS -->
+    <div class="events-block">
+      <p class="section-label" style="color:var(--sage); margin-bottom:1.5rem;">Upcoming Events</p>
+      <div class="events-grid">
+        <div class="event-item">
+          <div class="event-date">
+            <span class="event-month">MAR</span>
+            <span class="event-day">4</span>
+          </div>
+          <div class="event-details">
+            <h4>SJA Family Forum — Zoom</h4>
+            <p>Dr. Sharon Howell, Headmaster of St. Johnsbury Academy, hosts a family briefing on the current legislative threats. Open to SJA families.</p>
+            <p class="event-meta">4:00 PM Eastern · Zoom · Meeting ID: 813 4230 1017</p>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-date">
+            <span class="event-month">MAR</span>
+            <span class="event-day">4</span>
+          </div>
+          <div class="event-details">
+            <h4>NEK Choice District Meeting — Maidstone</h4>
+            <p>Deputy Director of Education Jill Campbell-Briggs meets with NEK Choice district community members to discuss education reform proposals.</p>
+            <p class="event-meta">Evening · Maidstone, VT · Open to NEK Choice town residents</p>
+          </div>
+        </div>
+        <div class="event-item">
+          <div class="event-date">
+            <span class="event-month">TBD</span>
+            <span class="event-day">—</span>
+          </div>
+          <div class="event-details">
+            <h4>More events coming</h4>
+            <p>Sign up to receive event announcements, action alerts, and legislative updates directly to your inbox.</p>
+            <div style="display:flex; gap:.5rem; margin-top:.75rem; flex-wrap:wrap;">
+              <input type="email" placeholder="your@email.com" style="font-family:'Source Serif 4',serif; font-size:.9rem; padding:.5rem .75rem; border:1px solid rgba(255,255,255,.25); background:rgba(255,255,255,.1); color:white; border-radius:2px; flex:1; min-width:180px;" id="event-email">
+              <button onclick="subscribeEvents()" class="btn-primary" style="font-size:.72rem; padding:.5rem 1rem; white-space:nowrap;">Notify Me</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>VT<span>Students</span>First</h3>
+      <p>A coalition of Vermont parents, educators, employers, and community members committed to protecting equitable public education access for rural students.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#issue">The Issue</a></li>
+        <li><a href="#stakes">What's at Stake</a></li>
+        <li><a href="#positions">Our Position</a></li>
+        <li><a href="#accountability">Accountability</a></li>
+        <li><a href="#voices">Community Voices</a></li>
+        <li><a href="#act">Take Action</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Get Involved</h4>
+      <ul>
+        <li><a href="#act">Contact Your Legislator</a></li>
+        <li><a href="#act">Share Your Story</a></li>
+        <li><a href="#act">Join the Coalition</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#82ebece4edc2f4f6f1f6f7e6e7ecf6f1e4ebf0f1f6acedf0e5"><span class="__cf_email__" data-cfemail="0b62656d644b7d7f787f7e6f6e657f786d6279787f2564796c">[email&#160;protected]</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 VTStudentsFirst.org — All rights reserved</span>
+    <span>Protecting public education in rural Vermont</span>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll with nav offset
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const top = target.getBoundingClientRect().top + window.pageYOffset - 70;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.stake-item, .position-item, .voice-card, .step, .pillar, .issue-card, .myth-item, .social-post').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+
+  // Nav shrink on scroll
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.padding =
+      window.scrollY > 60 ? '0.65rem 2.5rem' : '1rem 2.5rem';
+  });
+
+  // Tab switching
+  function showTab(id) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + id).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // Copy toolkit text blocks
+  function copyText(id) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = event.target;
+      const original = btn.innerText;
+      btn.innerText = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.innerText = original; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+
+  // Copy social post on click
+  function copyPost(el) {
+    const text = el.querySelector('p').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const hint = el.querySelector('.copy-hint');
+      const original = hint.innerText;
+      hint.innerText = 'Copied!';
+      setTimeout(() => { hint.innerText = original; }, 2000);
+    });
+  }
+
+  // Legislator form submit
+  function handleSubmit() {
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const town  = document.getElementById('town').value.trim();
+    if (!fname || !email || !town) {
+      alert('Please fill in your name, email, and town to continue.');
+      return;
+    }
+    const success = document.getElementById('form-success');
+    success.style.display = 'block';
+    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // Events email signup
+  function subscribeEvents() {
+    const email = document.getElementById('event-email').value.trim();
+    if (!email) { alert('Please enter your email address.'); return; }
+    const btn = event.target;
+    btn.innerText = '✓ Subscribed';
+    btn.style.background = 'var(--meadow)';
+    document.getElementById('event-email').disabled = true;
+  }
+
+  // Share page
+  function shareNow() {
+    if (navigator.share) {
+      navigator.share({
+        title: 'VT Students First — Protect Rural Education',
+        text: 'Vermont families are fighting to protect tuitioning and public education access for rural students. Add your voice.',
+        url: 'https://vtstudentsfirst.org'
+      });
+    } else {
+      navigator.clipboard.writeText('https://vtstudentsfirst.org')
+        .then(() => alert('Link copied to clipboard!'));
+    }
+  }
+</script>
+</body>
+</html>

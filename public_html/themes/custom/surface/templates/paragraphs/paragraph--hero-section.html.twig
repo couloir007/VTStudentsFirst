@@ -1,0 +1,49 @@
+{#
+/**
+ * @file paragraph--hero-section.html.twig
+ *
+ * Paragraph bundle: HeroSection
+ * Component:        @components/hero-section/hero-section.twig
+ *
+ * Fields
+ *   field_hero_headline    (string)       → headline (raw, supports <em>)
+ *   field_hero_subheadline (string)       → subheadline
+ *   field_cta_primary      (link)         → cta_primary {url, title}
+ *   field_cta_secondary    (link)         → cta_secondary {url, title}
+ *   field_hero_stats       (er_rev)       → stats[] from StatItem paragraphs
+ *                                           each child: field_stat_number, field_stat_label
+ */
+#}
+{% set stats = [] %}
+{% for item in paragraph.field_hero_stats.referencedEntities() %}
+  {% set stats = stats|merge([{
+    number: item.field_stat_number.value,
+    label:  item.field_stat_label.value,
+  }]) %}
+{% endfor %}
+
+{% set cta_primary = null %}
+{% if paragraph.field_cta_primary.uri %}
+  {% set cta_primary = {
+    url:   paragraph.field_cta_primary.uri|replace({'internal:': ''}),
+    title: paragraph.field_cta_primary.title,
+  } %}
+{% endif %}
+
+{% set cta_secondary = null %}
+{% if paragraph.field_cta_secondary.uri %}
+  {% set cta_secondary = {
+    url:   paragraph.field_cta_secondary.uri|replace({'internal:': ''}),
+    title: paragraph.field_cta_secondary.title,
+  } %}
+{% endif %}
+
+{% include "@components/hero-section/hero-section.twig" with {
+  eyebrow:       'Vermont Public Education',
+  headline:      paragraph.field_hero_headline.value,
+  subheadline:   paragraph.field_hero_subheadline.value,
+  cta_primary:   cta_primary,
+  cta_secondary: cta_secondary,
+  stats:         stats,
+  attributes:    attributes,
+} only %}

@@ -1,0 +1,21 @@
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-item__number {
+  color: var(--gold);
+  font-family: var(--font-secondary);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-item__label {
+  color: var(--sage);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+}

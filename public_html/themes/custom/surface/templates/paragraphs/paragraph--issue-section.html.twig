@@ -1,0 +1,35 @@
+{#
+/**
+ * @file paragraph--issue-section.html.twig
+ *
+ * Paragraph bundle: IssueSection
+ * Component:        @components/issue-section/issue-section.twig
+ *
+ * Fields
+ *   field_section_label    (string)       → section_label
+ *   field_section_headline (string)       → section_headline (raw, supports <em>)
+ *   field_lead_text        (string)       → lead_text
+ *   field_body_text        (text_long)    → body_text (filtered HTML)
+ *   field_cards            (er_rev)       → issue_cards[] from CardItem paragraphs
+ *                                           each child: field_card_title,
+ *                                                       field_card_body,
+ *                                                       field_card_variant
+ */
+#}
+{% set issue_cards = [] %}
+{% for card in paragraph.field_cards.referencedEntities() %}
+  {% set issue_cards = issue_cards|merge([{
+    title:   card.field_card_title.value,
+    body:    card.field_card_body.value,
+    variant: card.field_card_variant.value|default('default'),
+  }]) %}
+{% endfor %}
+
+{% include "@components/issue-section/issue-section.twig" with {
+  section_label:    paragraph.field_section_label.value,
+  section_headline: paragraph.field_section_headline.value,
+  lead_text:        paragraph.field_lead_text.value,
+  body_text:        paragraph.field_body_text.value,
+  issue_cards:      issue_cards,
+  attributes:       attributes,
+} only %}

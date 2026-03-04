@@ -1,0 +1,33 @@
+{#
+/**
+ * @file paragraph--accountability-section.html.twig
+ *
+ * Paragraph bundle: AccountabilitySection
+ * Component:        @components/accountability-section/accountability-section.twig
+ *
+ * Fields
+ *   field_section_label    (string)       → section_label
+ *   field_section_headline (string)       → section_headline (raw)
+ *   field_intro_text       (text_long)    → body_text
+ *   field_cards            (er_rev)       → accountability_cards[] from CardItem paragraphs
+ *                                           each child: field_card_icon,
+ *                                                       field_card_title (headline),
+ *                                                       field_card_body
+ */
+#}
+{% set accountability_cards = [] %}
+{% for card in paragraph.field_cards.referencedEntities() %}
+  {% set accountability_cards = accountability_cards|merge([{
+    icon:     card.field_card_icon.value,
+    headline: card.field_card_title.value,
+    body:     card.field_card_body.value,
+  }]) %}
+{% endfor %}
+
+{% include "@components/accountability-section/accountability-section.twig" with {
+  section_label:        paragraph.field_section_label.value,
+  section_headline:     paragraph.field_section_headline.value,
+  body_text:            paragraph.field_intro_text.value,
+  accountability_cards: accountability_cards,
+  attributes:           attributes,
+} only %}

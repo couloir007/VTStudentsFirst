@@ -1,0 +1,64 @@
+<section class="demo-typography">
+  {% for title, list in fonts %}
+    <h3 class="heading">{{ title }}</h3>
+    <div class="demo-typography__container">
+      {% for item in list %}
+        {% set family = 'font-family:' ~ item.family ~ ';' %}
+        {% set style = 'font-style:' ~ item.style ~ ';' %}
+        {% set weight = 'font-weight:' ~ item.weight ~ ';' %}
+        {% set size = 'font-size:' ~ item.size ~ ';' %}
+        {% set line_height = 'line-height:' ~ item.line_height ~ ';' %}
+        {% set transform = 'text-transform:' ~ item.transform ~ ';' %}
+        {% set tag = item.tag %}
+        {% set case = item.case %}
+        {% set preview = family ~ style ~ weight ~ size ~ line_height ~ transform %}
+
+        <div class="demo-meta__container">
+          <div class="demo-meta">
+            <div class="demo-meta__label">Font</div>
+            <div class="demo-meta__value">{{ item.family }}</div>
+          </div>
+
+          <div class="demo-meta">
+            <div class="demo-meta__label">Letter spacing</div>
+            <div class="demo-meta__value">{{ item.tracking }}</div>
+          </div>
+
+          <div class="demo-meta">
+            <div class="demo-meta__label">Weight</div>
+            <div class="demo-meta__value">{{ item.weight }}</div>
+          </div>
+
+          <div class="demo-meta">
+            <div class="demo-meta__label">Text decoration</div>
+            <div class="demo-meta__value">{{ item.size }}</div>
+          </div>
+
+          <div class="demo-meta">
+            <div class="demo-meta__label">SIZE</div>
+            <div class="demo-meta__value">{{ item.size }}</div>
+          </div>
+
+          <div class="demo-meta">
+            <div class="demo-meta__label">Paragraph spacing</div>
+            <div class="demo-meta__value">{{ item.spacing }}</div>
+          </div>
+
+          <div class="demo-meta">
+            <div class="demo-meta__label">Leading</div>
+            <div class="demo-meta__value">{{ item.leading }}</div>
+          </div>
+
+          <div class="demo-meta">
+            <div class="demo-meta__label">Case</div>
+            <div class="demo-meta__value">{{ item.case }}</div>
+          </div>
+        </div>
+
+        <div class="demo-type__container">
+          <{{ tag|default(p) }} style="{{ preview }}">The quick brown fox jumps over the lazy dog.</{{ tag|default(p) }}>
+        </div>
+      {% endfor %}
+    </div>
+  {% endfor %}
+</section>

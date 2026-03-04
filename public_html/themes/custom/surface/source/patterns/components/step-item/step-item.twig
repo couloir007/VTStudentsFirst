@@ -1,0 +1,19 @@
+{{ attach_library('surface/step-item') }}
+<div class="step-item{{ modifier ? ' ' ~ modifier }}{{- attributes ? ' ' ~ attributes.class -}}" {{- attributes ? attributes|without(class) -}}>
+  {% if number %}
+    <div class="step-item__num">{{ number }}</div>
+  {% endif %}
+  <div class="step-item__content">
+    {% if headline %}
+      <h4 class="step-item__headline">{{ headline }}</h4>
+    {% endif %}
+    {% if body %}
+      <div class="step-item__body">{{ body|raw }}</div>
+    {% endif %}
+    {% if cta %}
+      <div class="step-item__action">
+        <a href="{{ cta.url }}" class="step-item__btn">{{ cta.title }}</a>
+      </div>
+    {% endif %}
+  </div>
+</div>

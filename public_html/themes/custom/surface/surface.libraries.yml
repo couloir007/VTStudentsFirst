@@ -28,10 +28,6 @@ container:
     layout:
       dist/css/container.css: {}
 
-nav:
-  css:
-    layout:
-      dist/css/nav.css: {}
 
 region:
   css:
@@ -56,74 +52,22 @@ site-header:
     dist/js/site-header.js: {}
 
 # Component Libraries
-accordion:
-  css:
-    component:
-      dist/css/accordion.css: {}
-  js:
-    dist/js/accordion.js: {}
 
-accordion-tabs:
-  css:
-    component:
-      dist/css/accordion-tabs.css: {}
-  js:
-    dist/js/accordion-tabs.js: {}
 
-breadcrumb:
-  css:
-    component:
-      dist/css/breadcrumb.css: {}
 
-byline:
-  css:
-    component:
-      dist/css/byline.css: {}
 
-call-to-action:
-  css:
-    component:
-      dist/css/call-to-action.css: {}
 
-callout:
-  css:
-    component:
-      dist/css/callout.css: {}
 
-card:
-  css:
-    component:
-      dist/css/card.css: {}
 
 component-list:
   css:
     component:
       dist/css/component-list.css: {}
 
-contact:
-  css:
-    component:
-      dist/css/contact.css: {}
 
-date:
-  css:
-    component:
-      dist/css/date.css: {}
 
-date-badge:
-  css:
-    component:
-      dist/css/date-badge.css: {}
 
-eyebrow:
-  css:
-    component:
-      dist/css/eyebrow.css: {}
 
-featured-card:
-  css:
-    component:
-      dist/css/featured-card.css: {}
 
 filter:
   css:
@@ -298,15 +242,7 @@ paragraphs:
     component:
       dist/css/paragraphs.css: {}
 
-quote:
-  css:
-    component:
-      dist/css/quote.css: {}
 
-readtime:
-  css:
-    component:
-      dist/css/readtime.css: {}
 
 search-block-form:
   css:
@@ -328,10 +264,6 @@ site-branding:
     component:
       dist/css/site-branding.css: {}
 
-site-navigation:
-  css:
-    component:
-      dist/css/site-navigation.css: {}
 
 site-search:
   css:
@@ -350,10 +282,6 @@ tabs:
   js:
     dist/js/tabs.js: {}
 
-video:
-  css:
-    component:
-      dist/css/video.css: {}
 
 view-listing-form:
   css:
@@ -548,3 +476,88 @@ ui-menu:
   css:
     theme:
       dist/css/ui-menu.css: {}
+
+# VTStudentsFirst Components
+card-item:
+  css:
+    component:
+      dist/css/card-item.css: {}
+
+myth-item:
+  css:
+    component:
+      dist/patterns/components/myth-item/myth-item.css: {}
+
+myth-section:
+  css:
+    component:
+      dist/patterns/components/myth-section/myth-section.css: {}
+  dependencies:
+    - surface/myth-item
+
+stat-item:
+  css:
+    component:
+      dist/css/stat-item.css: {}
+
+position-item:
+  css:
+    component:
+      dist/css/position-item.css: {}
+
+step-item:
+  css:
+    component:
+      dist/css/step-item.css: {}
+
+testimonial:
+  css:
+    component:
+      dist/css/testimonial.css: {}
+
+hero-section:
+  css:
+    component:
+      dist/css/hero-section.css: {}
+
+issue-section:
+  css:
+    component:
+      dist/css/issue-section.css: {}
+  dependencies:
+    - surface/card-item
+
+stakes-section:
+  css:
+    component:
+      dist/css/stakes-section.css: {}
+  dependencies:
+    - surface/card-item
+
+positions-section:
+  css:
+    component:
+      dist/css/positions-section.css: {}
+  dependencies:
+    - surface/position-item
+
+voices-section:
+  css:
+    component:
+      dist/css/voices-section.css: {}
+  dependencies:
+    - surface/testimonial
+
+action-section:
+  css:
+    component:
+      dist/css/action-section.css: {}
+  dependencies:
+    - surface/step-item
+
+accountability-section:
+  css:
+    component:
+      dist/css/accountability-section.css: {}
+  dependencies:
+    - surface/card-item

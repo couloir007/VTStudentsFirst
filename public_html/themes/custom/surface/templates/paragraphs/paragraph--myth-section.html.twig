@@ -1,0 +1,31 @@
+{#
+/**
+ * @file paragraph--myth-section.html.twig
+ *
+ * Paragraph bundle: MythSection
+ * Component:        @components/myth-section/myth-section.twig
+ *
+ * MythItems reuse CardItem paragraph bundle with remapped semantics:
+ *   field_card_title → myth text
+ *   field_card_body  → fact text (filtered HTML, supports <strong>)
+ *
+ * Fields
+ *   field_section_label    (string)       → section_label
+ *   field_section_headline (string)       → section_headline (raw)
+ *   field_cards            (er_rev)       → myths[] from CardItem paragraphs
+ */
+#}
+{% set myths = [] %}
+{% for card in paragraph.field_cards.referencedEntities() %}
+  {% set myths = myths|merge([{
+    myth: card.field_card_title.value,
+    fact: card.field_card_body.value,
+  }]) %}
+{% endfor %}
+
+{% include "@components/myth-section/myth-section.twig" with {
+  section_label:    paragraph.field_section_label.value,
+  section_headline: paragraph.field_section_headline.value,
+  myths:            myths,
+  attributes:       attributes,
+} only %}
