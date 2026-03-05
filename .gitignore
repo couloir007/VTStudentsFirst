@@ -137,7 +137,7 @@
 # Ignore .env files as they are personal
 #/.env
 
-Ray-2*.*
+
 .idea
 
 # Ignore Database Files
