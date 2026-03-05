@@ -1,0 +1,72 @@
+.accountability-section {
+  --section-max-width: 1200px;
+  background-color: var(--light);
+}
+
+.accountability-section__label {
+  margin-bottom: 1rem;
+}
+
+.accountability-section__headline {
+  margin-bottom: 3rem;
+}
+
+.accountability-section__body-main {
+  color: var(--mid);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 4rem;
+  max-width: 800px;
+}
+
+.accountability-section__grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.accountability-section__card {
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0,0,0,2%);
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+}
+
+.accountability-section__card-headline {
+  color: var(--forest);
+  font-family: var(--font-secondary);
+  font-size: 1.6rem;
+  margin-bottom: 1.25rem;
+}
+
+.accountability-section__card-body {
+  color: var(--mid);
+  flex-grow: 1;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.accountability-section__card-link {
+  align-items: center;
+  color: var(--maple-dark);
+  display: inline-flex;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  gap: 0.5rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.accountability-section__card-link::after {
+  content: '→';
+  transition: transform 0.2s;
+}
+
+.accountability-section__card-link:hover::after {
+  transform: translateX(4px);
+}

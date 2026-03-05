@@ -7,35 +7,35 @@
   {% block main %}
     <div class="page-layout__content">
       {% if hero_data %}
-        {% include "@components/hero-section/hero-section.twig" with hero_data %}
+        {% include "@collections/hero-section/hero-section.twig" with hero_data %}
       {% endif %}
 
       {% if issue_data %}
-        {% include "@components/issue-section/issue-section.twig" with issue_data %}
+        {% include "@collections/issue-section/issue-section.twig" with issue_data %}
       {% endif %}
 
       {% if stakes_data %}
-        {% include "@components/stakes-section/stakes-section.twig" with stakes_data %}
+        {% include "@collections/stakes-section/stakes-section.twig" with stakes_data %}
       {% endif %}
 
       {% if positions_data %}
-        {% include "@components/positions-section/positions-section.twig" with positions_data %}
+        {% include "@collections/positions-section/positions-section.twig" with positions_data %}
       {% endif %}
 
       {% if accountability_data %}
-        {% include "@components/accountability-section/accountability-section.twig" with accountability_data %}
+        {% include "@collections/accountability-section/accountability-section.twig" with accountability_data %}
       {% endif %}
 
       {% if myth_data %}
-        {% include "@components/myth-section/myth-section.twig" with myth_data %}
+        {% include "@collections/myth-section/myth-section.twig" with myth_data %}
       {% endif %}
 
       {% if voices_data %}
-        {% include "@components/voices-section/voices-section.twig" with voices_data %}
+        {% include "@collections/voices-section/voices-section.twig" with voices_data %}
       {% endif %}
 
       {% if action_data %}
-        {% include "@components/action-section/action-section.twig" with action_data %}
+        {% include "@collections/action-section/action-section.twig" with action_data %}
       {% endif %}
     </div>
   {% endblock %}

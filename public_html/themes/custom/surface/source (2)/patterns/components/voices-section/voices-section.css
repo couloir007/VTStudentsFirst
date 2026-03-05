@@ -1,0 +1,31 @@
+.voices-section {
+  background-color: var(--parchment);
+  border-top: 1px solid var(--mist);
+}
+
+.voices-section__label {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.voices-section__headline {
+  text-align: center;
+}
+
+
+.voices-section__lead {
+  color: var(--mid);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0 auto 5rem;
+  max-width: 800px;
+  text-align: center;
+}
+
+.voices-section__grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 3rem;
+}

@@ -1,0 +1,45 @@
+{{ attach_library('surface/issue-section') }}
+
+{% embed "@layouts/section/section.twig" with {
+  section_class: 'issue-section',
+  inner_class: 'issue-section__inner',
+  attributes: attributes,
+  modifier: modifier
+} %}
+  {% block content %}
+
+      {% if section_label %}
+        {% include "@components/section-label/section-label.twig" with {
+          text: section_label,
+          class: 'issue-section__label'
+        } only %}
+      {% endif %}
+
+    {% if section_headline %}
+      {% include "@components/section-headline/section-headline.twig" with {
+        text: section_headline,
+        modifier: 'black',
+        class: 'issue-section__headline'
+      } only %}
+    {% endif %}
+
+    <div class="issue-section__content">
+      <div class="issue-section__text">
+        {% if lead_text %}
+          <p class="issue-section__lead">{{ lead_text }}</p>
+        {% endif %}
+        {% if body_text %}
+          <div class="issue-section__body">{{ body_text|raw }}</div>
+        {% endif %}
+      </div>
+
+      {% if issue_cards %}
+        <div class="issue-section__cards">
+          {% for card in issue_cards %}
+            {% include "@components/card-item/card-item.twig" with card only %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  {% endblock %}
+{% endembed %}

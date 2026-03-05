@@ -29,6 +29,8 @@ components:
   namespaces:
     images: dist/images
     base: source/patterns/base
-    layouts: source/patterns/layouts
+    elements: source/patterns/elements
     components: source/patterns/components
+    collections: source/patterns/collections
+    layouts: source/patterns/layouts
     theme: source/patterns/theme

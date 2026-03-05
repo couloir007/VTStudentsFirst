@@ -1,0 +1,85 @@
+{{ attach_library('surface/action-section') }}
+
+{% embed "@layouts/section/section.twig" with {
+  section_class: 'action-section',
+  inner_class: 'action-section__inner',
+  attributes: attributes,
+  modifier: modifier
+} %}
+  {% block content %}
+    <div class="action-section__header">
+      {% if section_label %}
+        {% include "@elements/section-label/section-label.twig" with {
+          text: section_label,
+          modifier: 'light',
+          class: 'action-section__label'
+        } only %}
+      {% endif %}
+      {% if section_headline %}
+        {% include "@elements/section-headline/section-headline.twig" with {
+          text: section_headline,
+          modifier: 'white',
+          class: 'action-section__headline'
+        } only %}
+      {% endif %}
+      {% if body_text %}
+        <p class="action-section__lead">{{ body_text|raw }}</p>
+      {% endif %}
+    </div>
+
+    {% if steps %}
+      <div class="action-section__steps">
+        {% for step in steps %}
+          {% include "@components/step-item/step-item.twig" with {
+            number: loop.index,
+            headline: step.headline,
+            body: step.body,
+            cta: step.cta
+          } only %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {# ── Legislator Contact Component ─────────────────────────────────── #}
+{#    {% include "@collections/legislator-contact/legislator-contact.twig" with {#}
+{#      civic_api_key: civic_api_key,#}
+{#    } only %}#}
+
+    {% if toolkit %}
+      <div class="action-section__toolkit">
+        <h3 class="action-section__toolkit-headline">{{ toolkit.headline|default('Advocacy Toolkit') }}</h3>
+        <p class="action-section__toolkit-sub">{{ toolkit.subheadline }}</p>
+
+        <div class="action-section__tabs">
+          <div class="action-section__tab-buttons">
+            {% for tab in toolkit.tabs %}
+              <button class="action-section__tab-btn{{ loop.first ? ' active' : '' }}" data-tab="{{ tab.id }}">{{ tab.title }}</button>
+            {% endfor %}
+          </div>
+
+          <div class="action-section__tab-content">
+            {% for tab in toolkit.tabs %}
+              <div id="tab-{{ tab.id }}" class="action-section__tab-panel{{ loop.first ? ' active' : '' }}">
+                <div class="action-section__toolkit-grid">
+                  {% for item in tab.items %}
+                    {% if tab.id == 'legislator' %}
+                      {% include "@collections/legislator-contact/legislator-contact.twig" with {
+                        civic_api_key: civic_api_key,
+                      } only %}
+                    {% else %}
+                      <div class="action-section__toolkit-card">
+                        <h5>{{ item.title }}</h5>
+                        <p id="text-{{ item.id }}">{{ item.content }}</p>
+                        <button class="action-section__copy-btn" onclick="copyText('text-{{ item.id }}')">Copy Text</button>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endblock %}
+{% endembed %}

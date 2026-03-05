@@ -1,0 +1,36 @@
+{{ attach_library('surface/voices-section') }}
+
+{% embed "@layouts/section/section.twig" with {
+  section_class: 'voices-section',
+  inner_class: 'voices-section__inner',
+  attributes: attributes,
+  modifier: modifier
+} %}
+  {% block content %}
+    {% if section_label %}
+      {% include "@elements/section-label/section-label.twig" with {
+        text: section_label,
+        class: 'voices-section__label'
+      } only %}
+    {% endif %}
+    {% if section_headline %}
+      <h2 class="voices-section__headline">{{ section_headline|raw }}</h2>
+    {% endif %}
+    {% if body_text %}
+      <p class="voices-section__lead">{{ body_text|raw }}</p>
+    {% endif %}
+
+    {% if voices %}
+      <div class="voices-section__grid">
+        {% for voice in voices %}
+          {% include "@components/testimonial/testimonial.twig" with {
+            quote: voice.quote,
+            attribution: (voice.name ?: '') ~ (voice.role ? ' ' ~ voice.role : '')
+          } only %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <p style="margin-top:2rem; font-size:0.9rem; color:var(--mid); font-style:italic;">Your story matters. <a href="#act" style="color:var(--maple); text-decoration:underline;">Share it with us →</a></p>
+  {% endblock %}
+{% endembed %}

@@ -7,7 +7,7 @@
 
       {# Short date badge only displays if the content is an event. #}
       {% if date_short and event_type %}
-        {% include "@components/date-badge/date-badge.twig" with {
+        {% include "@elements/date-badge/date-badge.twig" with {
           'modifier': 'date-badge--small',
           'month': date_short.month,
           'day': date_short.day,
@@ -19,7 +19,7 @@
 
   <div class="card__content">
     {% if event_type %}
-      {% include "@components/eyebrow/eyebrow.twig" with {
+      {% include "@elements/eyebrow/eyebrow.twig" with {
         'eyebrow': {
           'text': event_type,
         }
@@ -27,7 +27,7 @@
     {% endif %}
 
     {% if title %}
-      {% include "@components/title/title.twig" with {
+      {% include "@elements/title/title.twig" with {
         'title': title
       } only %}
     {% endif %}
@@ -49,7 +49,7 @@
     {% if date or readtime %}
       <div class="card__date--wrapper">
         {% if date %}
-          {% include '@components/date/date.twig' with {
+          {% include '@elements/date/date.twig' with {
             'modifier': date.modifier,
             'date': date.date,
           } only %}

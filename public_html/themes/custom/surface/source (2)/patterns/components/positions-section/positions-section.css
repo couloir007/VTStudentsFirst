@@ -1,0 +1,29 @@
+.positions-section {
+  background-color: var(--parchment);
+  color: var(--forest);
+}
+
+.positions-section__label {
+  margin-bottom: 1rem;
+}
+
+.positions-section__headline {
+  max-width: 640px;
+}
+
+.positions-section__lead {
+  color: var(--mid);
+  font-size: 1.1rem;
+  line-height: 1.75;
+  margin-bottom: 3rem;
+  max-width: 640px;
+}
+
+.positions-section__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--mist);
+  border-radius: 3px;
+  overflow: hidden;
+}

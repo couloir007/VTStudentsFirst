@@ -1,0 +1,46 @@
+{{ attach_library('surface/myth-section') }}
+{% set section_attributes = attributes ?: create_attribute() %}
+{% if not section_attributes.id %}
+  {% set section_attributes = section_attributes.setAttribute('id', 'facts') %}
+{% endif %}
+
+{% embed "@layouts/section/section.twig" with {
+  section_class: 'myth-section',
+  inner_class: 'myth-section__inner',
+  attributes: section_attributes,
+  modifier: modifier
+} %}
+  {% block content %}
+    <div class="myth-section__header">
+      {% if section_label %}
+        {% include "@elements/section-label/section-label.twig" with {
+          text: section_label,
+          modifier: 'sage',
+          class: 'myth-section__label'
+        } only %}
+      {% endif %}
+      {% if section_headline %}
+        {% include "@elements/section-headline/section-headline.twig" with {
+          text: section_headline,
+          modifier: 'light',
+          class: 'myth-section__headline'
+        } only %}
+      {% endif %}
+      {% if body_text %}
+        <p class="myth-section__lead">{{ body_text|raw }}</p>
+      {% endif %}
+    </div>
+
+    {% if myths %}
+      <div class="myth-section__grid">
+        {% for item in myths %}
+          {% include "@components/myth-item/myth-item.twig" with {
+            icon: item.icon,
+            myth: item.myth,
+            fact: item.fact
+          } only %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endblock %}
+{% endembed %}

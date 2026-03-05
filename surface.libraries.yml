@@ -478,6 +478,16 @@ ui-menu:
       dist/css/ui-menu.css: {}
 
 # VTStudentsFirst Components
+section-label:
+  css:
+    component:
+      dist/css/section-label.css: {}
+
+section-headline:
+  css:
+    component:
+      dist/css/section-headline.css: {}
+
 card-item:
   css:
     component:
@@ -494,6 +504,8 @@ myth-section:
       dist/css/myth-section.css: {}
   dependencies:
     - surface/myth-item
+    - surface/section-label
+    - surface/section-headline
 
 stat-item:
   css:
@@ -526,6 +538,8 @@ issue-section:
       dist/css/issue-section.css: {}
   dependencies:
     - surface/card-item
+    - surface/section-label
+    - surface/section-headline
 
 stakes-section:
   css:
@@ -533,6 +547,8 @@ stakes-section:
       dist/css/stakes-section.css: {}
   dependencies:
     - surface/card-item
+    - surface/section-label
+    - surface/section-headline
 
 positions-section:
   css:
@@ -540,6 +556,8 @@ positions-section:
       dist/css/positions-section.css: {}
   dependencies:
     - surface/position-item
+    - surface/section-label
+    - surface/section-headline
 
 voices-section:
   css:
@@ -547,6 +565,8 @@ voices-section:
       dist/css/voices-section.css: {}
   dependencies:
     - surface/testimonial
+    - surface/section-label
+    - surface/section-headline
 
 action-section:
   css:
@@ -557,6 +577,8 @@ action-section:
     dist/js/action-section.js: {}
   dependencies:
     - surface/step-item
+    - surface/section-label
+    - surface/section-headline
 
 accountability-section:
   css:
@@ -564,3 +586,5 @@ accountability-section:
       dist/css/accountability-section.css: {}
   dependencies:
     - surface/card-item
+    - surface/section-label
+    - surface/section-headline

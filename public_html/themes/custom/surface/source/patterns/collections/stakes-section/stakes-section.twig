@@ -1,0 +1,39 @@
+{{ attach_library('surface/stakes-section') }}
+
+{% embed "@layouts/section/section.twig" with {
+  section_class: 'stakes-section',
+  inner_class: 'stakes-section__inner',
+  attributes: attributes,
+  modifier: modifier
+} %}
+  {% block content %}
+    {% if section_label %}
+      {% include "@elements/section-label/section-label.twig" with {
+        text: section_label,
+        class: 'stakes-section__label'
+      } only %}
+    {% endif %}
+    {% if section_headline %}
+      {% include "@elements/section-headline/section-headline.twig" with {
+        text: section_headline,
+        modifier: 'light',
+        class: 'stakes-section__headline'
+      } only %}
+    {% endif %}
+    {% if body_text %}
+      <div class="stakes-section__lead">{{ body_text|raw }}</div>
+    {% endif %}
+
+    {% if stakes_items %}
+      <div class="stakes-section__grid">
+        {% for item in stakes_items %}
+          {% include "@components/card-item/card-item.twig" with {
+            variant: 'stake',
+            title: item.headline,
+            body: item.body
+          } only %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endblock %}
+{% endembed %}

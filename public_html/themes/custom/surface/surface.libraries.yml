@@ -552,11 +552,18 @@ action-section:
   css:
     component:
       dist/css/action-section.css: {}
-      dist/css/action-section--rep-lookup.css: {}
   js:
     dist/js/action-section.js: {}
   dependencies:
     - surface/step-item
+    - surface/legislator-contact
+
+legislator-contact:
+  css:
+    component:
+      dist/css/legislator-contact.css: {}
+  js:
+    dist/js/legislator-contact.js: {}
 
 accountability-section:
   css:

@@ -1,0 +1,29 @@
+.section-headline {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--forest);
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.section-headline em {
+  font-style: italic;
+  color: var(--maple);
+}
+
+.section-headline--light {
+  color: var(--cream);
+}
+
+.section-headline--light em {
+  color: var(--gold);
+}
+
+.section-headline--white {
+  color: white;
+}
+
+.section-headline--white em {
+  color: var(--gold);
+}

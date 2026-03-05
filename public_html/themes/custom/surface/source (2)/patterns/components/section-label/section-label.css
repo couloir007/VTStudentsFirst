@@ -1,0 +1,37 @@
+.section-label {
+  font-family: var(--font-mono, 'DM Mono', monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--meadow, #336644);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--meadow, #336644);
+}
+
+/* Modifier for light/transparent backgrounds if needed */
+.section-label--light {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.section-label--light::before {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Specific colors for sections if needed */
+.section-label--sage {
+  color: var(--sage, #6c8c6c);
+}
+
+.section-label--sage::before {
+  background: var(--sage, #6c8c6c);
+}
