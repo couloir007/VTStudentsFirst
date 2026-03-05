@@ -1,0 +1,10 @@
+uuid: eb7031be-9a98-4f06-a0f9-7a7840f3070c
+langcode: en
+status: true
+dependencies: {  }
+id: issue_section
+label: 'Issue Section'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

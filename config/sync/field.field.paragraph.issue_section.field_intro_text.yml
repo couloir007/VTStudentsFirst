@@ -1,0 +1,20 @@
+uuid: 7e9ed32d-d2fa-4d73-9d02-db00c5d5ea6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_intro_text
+    - paragraphs.paragraphs_type.issue_section
+id: paragraph.issue_section.field_intro_text
+field_name: field_intro_text
+entity_type: paragraph
+bundle: issue_section
+label: 'Intro Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

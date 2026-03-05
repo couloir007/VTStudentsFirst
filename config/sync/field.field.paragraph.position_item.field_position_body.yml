@@ -1,0 +1,20 @@
+uuid: d54e81fc-5f65-499e-895a-3cca325283c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_position_body
+    - paragraphs.paragraphs_type.position_item
+id: paragraph.position_item.field_position_body
+field_name: field_position_body
+entity_type: paragraph
+bundle: position_item
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

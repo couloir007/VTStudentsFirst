@@ -1,0 +1,10 @@
+uuid: 9fada1f9-7988-4d71-9fd5-d389e2fcc807
+langcode: en
+status: true
+dependencies: {  }
+id: stat_item
+label: 'Stat Item'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

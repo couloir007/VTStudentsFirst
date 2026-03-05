@@ -1,0 +1,52 @@
+uuid: cabb3201-0690-4a8b-b245-228cb9a642c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.accountability_section.field_section_label
+    - field.field.paragraph.accountability_section.field_section_headline
+    - field.field.paragraph.accountability_section.field_intro_text
+    - field.field.paragraph.accountability_section.field_cards
+    - paragraphs.paragraphs_type.accountability_section
+  module:
+    - text
+id: paragraph.accountability_section.default
+targetEntityType: paragraph
+bundle: accountability_section
+mode: default
+content:
+  field_cards:
+    type: entity_reference_revisions_entity_form
+    weight: 4
+    region: content
+    settings:
+      form_display_mode: default
+    third_party_settings: {  }
+  field_intro_text:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 4
+      placeholder: ''
+    third_party_settings: {  }
+  field_section_headline:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_section_label:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

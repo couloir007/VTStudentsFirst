@@ -1,0 +1,31 @@
+uuid: c76a8b61-3418-4aa2-bc0a-52cdc116a78b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_stat_items
+    - paragraphs.paragraphs_type.hero_section
+    - paragraphs.paragraphs_type.stat_item
+  module:
+    - entity_reference_revisions
+id: paragraph.hero_section.field_stat_items
+field_name: field_stat_items
+entity_type: paragraph
+bundle: hero_section
+label: Stats
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      stat_item: stat_item
+    negate: 0
+    target_bundles_drag_drop:
+      stat_item:
+        weight: 0
+        enabled: true
+field_type: entity_reference_revisions

@@ -1,0 +1,31 @@
+uuid: 53ade6ab-7b1f-4377-be3c-99bbf945452c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_steps
+    - paragraphs.paragraphs_type.action_section
+    - paragraphs.paragraphs_type.step_item
+  module:
+    - entity_reference_revisions
+id: paragraph.action_section.field_steps
+field_name: field_steps
+entity_type: paragraph
+bundle: action_section
+label: Steps
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      step_item: step_item
+    negate: 0
+    target_bundles_drag_drop:
+      step_item:
+        weight: 0
+        enabled: true
+field_type: entity_reference_revisions

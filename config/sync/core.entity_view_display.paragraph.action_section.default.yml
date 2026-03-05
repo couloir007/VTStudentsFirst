@@ -1,0 +1,25 @@
+uuid: a6492bbb-8bbc-4631-94f4-5d3f71a5b592
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.action_section.field_section_label
+    - field.field.paragraph.action_section.field_section_headline
+    - field.field.paragraph.action_section.field_intro_text
+    - field.field.paragraph.action_section.field_steps
+    - paragraphs.paragraphs_type.action_section
+  module:
+    - paragraphs
+id: paragraph.action_section.default
+targetEntityType: paragraph
+bundle: action_section
+mode: default
+content: {  }
+hidden:
+  created: true
+  field_intro_text: true
+  field_section_headline: true
+  field_section_label: true
+  field_steps: true
+  status: true
+  uid: true

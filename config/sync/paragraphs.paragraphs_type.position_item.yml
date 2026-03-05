@@ -1,0 +1,10 @@
+uuid: 88e8283e-72c6-4d54-93b4-5e658e6407f0
+langcode: en
+status: true
+dependencies: {  }
+id: position_item
+label: 'Position Item'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

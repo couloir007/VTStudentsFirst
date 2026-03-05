@@ -1,0 +1,25 @@
+uuid: 9c79bbd9-3204-4791-b5de-2f7d5cdc2d43
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_item.field_card_title
+    - field.field.paragraph.card_item.field_card_body
+    - field.field.paragraph.card_item.field_card_variant
+    - field.field.paragraph.card_item.field_card_icon
+    - paragraphs.paragraphs_type.card_item
+  module:
+    - paragraphs
+id: paragraph.card_item.default
+targetEntityType: paragraph
+bundle: card_item
+mode: default
+content: {  }
+hidden:
+  created: true
+  field_card_body: true
+  field_card_icon: true
+  field_card_title: true
+  field_card_variant: true
+  status: true
+  uid: true

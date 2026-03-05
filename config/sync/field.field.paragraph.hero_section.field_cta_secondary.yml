@@ -1,0 +1,22 @@
+uuid: 46eeb092-73cb-4ba1-8c8c-e1cfa4dce1af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_secondary
+    - paragraphs.paragraphs_type.hero_section
+  'module:\n    - link\nid': paragraph.hero_section.field_cta_secondary
+id: paragraph.hero_section.field_cta_secondary
+field_name: field_cta_secondary
+entity_type: paragraph
+bundle: hero_section
+label: 'Secondary CTA'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

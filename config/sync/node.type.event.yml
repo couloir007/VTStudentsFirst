@@ -27,12 +27,13 @@ third_party_settings:
     type_category: content
     type_thumbnail: ''
     type_icon: /modules/contrib/schemadotorg/modules/schemadotorg_type_tray/images/schemadotorg_type_tray/icon/event.png
+    type_description: ''
     existing_nodes_link_text: 'View existing <em class="placeholder">Event</em> content'
     type_weight: -19
 name: Event
 type: event
-description: ''
-help: ''
-new_revision: true
+description: null
+help: null
+new_revision: false
 preview_mode: 1
 display_submitted: false

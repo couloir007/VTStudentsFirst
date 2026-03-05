@@ -1,0 +1,19 @@
+uuid: 98b53f0f-5da2-40b4-84bf-02ae5d14aced
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section_label
+    - paragraphs.paragraphs_type.issue_section
+id: paragraph.issue_section.field_section_label
+field_name: field_section_label
+entity_type: paragraph
+bundle: issue_section
+label: 'Section Label'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

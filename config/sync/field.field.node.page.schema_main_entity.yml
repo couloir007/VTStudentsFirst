@@ -5,6 +5,14 @@ dependencies:
   config:
     - field.storage.node.schema_main_entity
     - node.type.page
+    - paragraphs.paragraphs_type.hero_section
+    - paragraphs.paragraphs_type.issue_section
+    - paragraphs.paragraphs_type.stakes_section
+    - paragraphs.paragraphs_type.positions_section
+    - paragraphs.paragraphs_type.accountability_section
+    - paragraphs.paragraphs_type.myth_section
+    - paragraphs.paragraphs_type.voices_section
+    - paragraphs.paragraphs_type.action_section
   module:
     - entity_reference_revisions
     - epp
@@ -24,6 +32,38 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    target_bundles: {  }
-    target_bundles_drag_drop: {  }
+    target_bundles:
+      hero_section: hero_section
+      issue_section: issue_section
+      stakes_section: stakes_section
+      positions_section: positions_section
+      accountability_section: accountability_section
+      myth_section: myth_section
+      voices_section: voices_section
+      action_section: action_section
+    target_bundles_drag_drop:
+      accountability_section:
+        weight: 4
+        enabled: true
+      action_section:
+        weight: 7
+        enabled: true
+      hero_section:
+        weight: 0
+        enabled: true
+      issue_section:
+        weight: 1
+        enabled: true
+      myth_section:
+        weight: 5
+        enabled: true
+      positions_section:
+        weight: 3
+        enabled: true
+      stakes_section:
+        weight: 2
+        enabled: true
+      voices_section:
+        weight: 6
+        enabled: true
 field_type: entity_reference_revisions

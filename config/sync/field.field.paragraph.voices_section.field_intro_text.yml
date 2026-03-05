@@ -1,0 +1,20 @@
+uuid: c83c375c-b080-4f88-8e73-49f446ee962e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_intro_text
+    - paragraphs.paragraphs_type.voices_section
+id: paragraph.voices_section.field_intro_text
+field_name: field_intro_text
+entity_type: paragraph
+bundle: voices_section
+label: 'Intro Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

@@ -1,0 +1,55 @@
+uuid: 225b2f8f-f8ce-4321-aa9a-48ed81cfc2b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.voices_section.field_section_label
+    - field.field.paragraph.voices_section.field_section_headline
+    - field.field.paragraph.voices_section.field_intro_text
+    - field.field.paragraph.voices_section.field_testimonials
+    - paragraphs.paragraphs_type.voices_section
+  module:
+    - text
+id: paragraph.voices_section.default
+targetEntityType: paragraph
+bundle: voices_section
+mode: default
+content:
+  field_intro_text:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 4
+      placeholder: ''
+    third_party_settings: {  }
+  field_section_headline:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_section_label:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_testimonials:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,31 @@
+uuid: 6139144a-dc0c-44c6-aaf7-3545c02f61d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_position_items
+    - paragraphs.paragraphs_type.positions_section
+    - paragraphs.paragraphs_type.position_item
+  module:
+    - entity_reference_revisions
+id: paragraph.positions_section.field_position_items
+field_name: field_position_items
+entity_type: paragraph
+bundle: positions_section
+label: 'Position Items'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      position_item: position_item
+    negate: 0
+    target_bundles_drag_drop:
+      position_item:
+        weight: 0
+        enabled: true
+field_type: entity_reference_revisions

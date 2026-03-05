@@ -1,0 +1,61 @@
+uuid: 0728aa66-7744-4e57-9349-4c89ffc18bf1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_section.field_cta_primary
+    - field.field.paragraph.hero_section.field_cta_secondary
+    - field.field.paragraph.hero_section.field_intro_text
+    - field.field.paragraph.hero_section.field_section_headline
+    - field.field.paragraph.hero_section.field_stat_items
+    - paragraphs.paragraphs_type.hero_section
+  module:
+    - text
+id: paragraph.hero_section.default
+targetEntityType: paragraph
+bundle: hero_section
+mode: default
+content:
+  field_cta_primary:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: '#act'
+      placeholder_title: 'Contact Your Legislator'
+    third_party_settings: {  }
+  field_cta_secondary:
+    type: link_default
+    weight: 4
+    region: content
+    settings:
+      placeholder_url: '#issue'
+      placeholder_title: "Learn What's at Stake"
+    third_party_settings: {  }
+  field_intro_text:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 4
+      placeholder: ''
+    third_party_settings: {  }
+  field_section_headline:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Every Vermont student deserves a real choice.'
+    third_party_settings: {  }
+  field_stat_items:
+    type: entity_reference_revisions_entity_form
+    weight: 5
+    region: content
+    settings:
+      form_display_mode: default
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

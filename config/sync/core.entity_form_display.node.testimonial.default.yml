@@ -39,7 +39,7 @@ third_party_settings:
         - title
         - body
         - schema_image
-      label: General
+      label: 'Quote & Attribution'
       region: content
       parent_name: ''
       weight: -20

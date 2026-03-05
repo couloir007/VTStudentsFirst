@@ -1,0 +1,10 @@
+uuid: 140ced18-92a8-4e76-adcb-a7c1bde39f60
+langcode: en
+status: true
+dependencies: {  }
+id: action_section
+label: 'Action Section'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

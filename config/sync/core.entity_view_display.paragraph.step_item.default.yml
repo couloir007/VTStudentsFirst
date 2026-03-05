@@ -1,0 +1,21 @@
+uuid: f15689a0-6986-43b3-9668-0f250f4ea1f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.step_item.field_step_title
+    - field.field.paragraph.step_item.field_step_body
+    - paragraphs.paragraphs_type.step_item
+  module:
+    - paragraphs
+id: paragraph.step_item.default
+targetEntityType: paragraph
+bundle: step_item
+mode: default
+content: {  }
+hidden:
+  created: true
+  field_step_body: true
+  field_step_title: true
+  status: true
+  uid: true

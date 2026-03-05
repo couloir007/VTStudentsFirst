@@ -1,0 +1,10 @@
+uuid: 91162481-f9d2-445a-8d92-c3576db0eb81
+langcode: en
+status: true
+dependencies: {  }
+id: accountability_section
+label: 'Accountability Section'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

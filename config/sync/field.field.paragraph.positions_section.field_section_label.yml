@@ -1,0 +1,19 @@
+uuid: 9df1b25f-573d-43a0-b7c7-2a96607f9f8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section_label
+    - paragraphs.paragraphs_type.positions_section
+id: paragraph.positions_section.field_section_label
+field_name: field_section_label
+entity_type: paragraph
+bundle: positions_section
+label: 'Section Label'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

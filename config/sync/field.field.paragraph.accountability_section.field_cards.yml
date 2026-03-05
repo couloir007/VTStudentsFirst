@@ -1,0 +1,31 @@
+uuid: b3553dba-d6ba-40d5-aa91-ad436635c49f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cards
+    - paragraphs.paragraphs_type.accountability_section
+    - paragraphs.paragraphs_type.card_item
+  module:
+    - entity_reference_revisions
+id: paragraph.accountability_section.field_cards
+field_name: field_cards
+entity_type: paragraph
+bundle: accountability_section
+label: Cards
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      card_item: card_item
+    negate: 0
+    target_bundles_drag_drop:
+      card_item:
+        weight: 0
+        enabled: true
+field_type: entity_reference_revisions

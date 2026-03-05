@@ -26,3 +26,24 @@ foreach (glob(\Drupal::service('extension.list.theme')->getPath('surface') . '/i
 //function surface_preprocess(&$variables) {
 //    $variables['data_menu'] = 'dropdown';
 //}
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ *
+ * Adds a Google Civic Information API key field to theme settings.
+ * Set the key at /admin/appearance/settings/surface
+ */
+function surface_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state): void {
+  $form['civic_api'] = [
+    '#type'        => 'details',
+    '#title'       => t('Legislator Lookup'),
+    '#open'        => TRUE,
+  ];
+  $form['civic_api']['civic_api_key'] = [
+    '#type'          => 'textfield',
+    '#title'         => t('Google Civic Information API Key'),
+    '#description'   => t('Used by the "Find Your Rep" widget in the Action section. Get a key at <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a> → enable "Google Civic Information API".'),
+    '#default_value' => theme_get_setting('AIzaSyDGCir12xKAayOFH4cjDNsZknmzNMbsoCo') ?? '',
+    '#attributes'    => ['autocomplete' => 'off'],
+  ];
+}

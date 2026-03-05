@@ -1,0 +1,10 @@
+uuid: 7ed498c8-dc64-4e09-b82c-62d5b17e1182
+langcode: en
+status: true
+dependencies: {  }
+id: voices_section
+label: 'Voices Section'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

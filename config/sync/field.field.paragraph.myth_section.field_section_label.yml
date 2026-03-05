@@ -1,0 +1,19 @@
+uuid: 2bc804f7-601f-46b8-8f87-70eb7c62af18
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section_label
+    - paragraphs.paragraphs_type.myth_section
+id: paragraph.myth_section.field_section_label
+field_name: field_section_label
+entity_type: paragraph
+bundle: myth_section
+label: 'Section Label'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

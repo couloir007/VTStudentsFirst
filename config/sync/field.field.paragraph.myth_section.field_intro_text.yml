@@ -1,0 +1,20 @@
+uuid: 4933afc4-7aa3-4402-8ab9-8156dbe18958
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_intro_text
+    - paragraphs.paragraphs_type.myth_section
+id: paragraph.myth_section.field_intro_text
+field_name: field_intro_text
+entity_type: paragraph
+bundle: myth_section
+label: 'Intro Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

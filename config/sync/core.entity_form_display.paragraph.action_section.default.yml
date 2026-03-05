@@ -1,0 +1,52 @@
+uuid: 918a520d-a8ff-4dc7-b95e-f90c8bcaeb9a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.action_section.field_section_label
+    - field.field.paragraph.action_section.field_section_headline
+    - field.field.paragraph.action_section.field_intro_text
+    - field.field.paragraph.action_section.field_steps
+    - paragraphs.paragraphs_type.action_section
+  module:
+    - text
+id: paragraph.action_section.default
+targetEntityType: paragraph
+bundle: action_section
+mode: default
+content:
+  field_intro_text:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 4
+      placeholder: ''
+    third_party_settings: {  }
+  field_section_headline:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_section_label:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_steps:
+    type: entity_reference_revisions_entity_form
+    weight: 4
+    region: content
+    settings:
+      form_display_mode: default
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

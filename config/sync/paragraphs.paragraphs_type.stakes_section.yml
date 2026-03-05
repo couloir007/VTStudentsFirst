@@ -1,0 +1,10 @@
+uuid: f16f9f1d-df90-413f-af18-d1eb73a2af61
+langcode: en
+status: true
+dependencies: {  }
+id: stakes_section
+label: 'Stakes Section'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

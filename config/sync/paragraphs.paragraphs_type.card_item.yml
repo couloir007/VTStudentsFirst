@@ -1,0 +1,10 @@
+uuid: c70464ce-0e32-41da-8ea9-8ac0817607d8
+langcode: en
+status: true
+dependencies: {  }
+id: card_item
+label: 'Card Item'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

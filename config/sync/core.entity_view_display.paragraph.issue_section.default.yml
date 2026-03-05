@@ -1,0 +1,25 @@
+uuid: c8cf2236-360c-489c-a19c-a185bc904a57
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.issue_section.field_section_label
+    - field.field.paragraph.issue_section.field_section_headline
+    - field.field.paragraph.issue_section.field_intro_text
+    - field.field.paragraph.issue_section.field_cards
+    - paragraphs.paragraphs_type.issue_section
+  module:
+    - paragraphs
+id: paragraph.issue_section.default
+targetEntityType: paragraph
+bundle: issue_section
+mode: default
+content: {  }
+hidden:
+  created: true
+  field_cards: true
+  field_intro_text: true
+  field_section_headline: true
+  field_section_label: true
+  status: true
+  uid: true

@@ -1,0 +1,20 @@
+uuid: 595be9e6-2a8c-4f17-8548-127accdd81ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_intro_text
+    - paragraphs.paragraphs_type.accountability_section
+id: paragraph.accountability_section.field_intro_text
+field_name: field_intro_text
+entity_type: paragraph
+bundle: accountability_section
+label: 'Intro Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

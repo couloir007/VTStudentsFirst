@@ -1,0 +1,25 @@
+uuid: 353fbdff-c4a8-4999-a8bf-243df3cc3b68
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.positions_section.field_section_label
+    - field.field.paragraph.positions_section.field_section_headline
+    - field.field.paragraph.positions_section.field_intro_text
+    - field.field.paragraph.positions_section.field_position_items
+    - paragraphs.paragraphs_type.positions_section
+  module:
+    - paragraphs
+id: paragraph.positions_section.default
+targetEntityType: paragraph
+bundle: positions_section
+mode: default
+content: {  }
+hidden:
+  created: true
+  field_intro_text: true
+  field_position_items: true
+  field_section_headline: true
+  field_section_label: true
+  status: true
+  uid: true

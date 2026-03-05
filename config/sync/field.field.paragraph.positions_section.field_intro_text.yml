@@ -1,0 +1,20 @@
+uuid: cc82d4e7-066f-4c4a-a3b8-c783d6fe231d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_intro_text
+    - paragraphs.paragraphs_type.positions_section
+id: paragraph.positions_section.field_intro_text
+field_name: field_intro_text
+entity_type: paragraph
+bundle: positions_section
+label: 'Intro Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

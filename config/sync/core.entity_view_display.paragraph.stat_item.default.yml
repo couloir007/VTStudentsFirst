@@ -1,0 +1,21 @@
+uuid: 9f40c43c-9014-4c88-8a29-2d5c5f252f58
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stat_item.field_stat_number
+    - field.field.paragraph.stat_item.field_stat_label
+    - paragraphs.paragraphs_type.stat_item
+  module:
+    - paragraphs
+id: paragraph.stat_item.default
+targetEntityType: paragraph
+bundle: stat_item
+mode: default
+content: {  }
+hidden:
+  created: true
+  field_stat_label: true
+  field_stat_number: true
+  status: true
+  uid: true

@@ -1,0 +1,49 @@
+<?php
+ /**
+ * @file
+ * Functions to support theming in the Olivero theme.
+ */
+
+/**
+ * Load include files which contain additional theming logic.
+ */
+foreach (glob(\Drupal::service('extension.list.theme')->getPath('surface') . '/includes/*.theme') as $file) {
+  include $file;
+}
+
+// function surface_preprocess_field(&$variables): void {
+//  $rich_field_types = ['text_with_summary', 'text', 'text_long'];
+//
+//  if (in_array($variables['field_type'], $rich_field_types, TRUE)) {
+//    $variables['attributes']['class'][] = 'prose';
+//  }
+//}
+//
+//
+///**
+// * Implements theme_preprocess to add variables.
+// */
+//function surface_preprocess(&$variables) {
+//    $variables['data_menu'] = 'dropdown';
+//}
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ *
+ * Adds a Google Civic Information API key field to theme settings.
+ * Set the key at /admin/appearance/settings/surface
+ */
+function surface_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state): void {
+  $form['civic_api'] = [
+    '#type'        => 'details',
+    '#title'       => t('Legislator Lookup'),
+    '#open'        => TRUE,
+  ];
+  $form['civic_api']['civic_api_key'] = [
+    '#type'          => 'textfield',
+    '#title'         => t('Google Civic Information API Key'),
+    '#description'   => t('Used by the "Find Your Rep" widget in the Action section. Get a key at <a href="https://console.cloud.google.com/" target="_blank">Google Cloud Console</a> → enable "Google Civic Information API".'),
+    '#default_value' => theme_get_setting('civic_api_key') ?? '',
+    '#attributes'    => ['autocomplete' => 'off'],
+  ];
+}

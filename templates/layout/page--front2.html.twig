@@ -1,0 +1,55 @@
+{#
+/**
+ * @file page--front.html.twig
+ *
+ * Homepage override for VTStudentsFirst.org.
+ *
+ * Differences from page.html.twig:
+ *   - No site-container wrapper. Each paragraph section is full-bleed;
+ *     sections own their backgrounds and internal max-width constraints.
+ *   - No breadcrumb region.
+ *   - No content_above / content_below regions.
+ *   - body.path-frontpage + .site-header--transparent CSS makes the header
+ *     transparent over the hero. site-header.js transitions it to opaque
+ *     on scroll. The class is applied via CSS, not hardcoded here, so
+ *     Drupal's block attributes remain unmodified.
+ *   - footer_top rendered conditionally (optional email capture block, etc.).
+ *   - footer_bottom receives the site-footer block.
+ *
+ * Drupal block placement (Block Layout UI):
+ *   Header region  → Site header block, Main navigation block
+ *   Highlighted    → Status messages block
+ *   Content        → Main page content block
+ *   Footer Top     → (optional) email signup or coalition bar block
+ *   Footer Bottom  → Site footer block
+ *
+ * Regions intentionally omitted on the front page:
+ *   hero, breadcrumb, content_above, sidebar, content_below
+ *
+ * @see page.html.twig
+ * @see node--webpage.html.twig
+ * @see site-header.css  (.path-frontpage .site-header)
+ * @see site-header.js   (scroll → removes site-header--transparent)
+ */
+#}
+<a href="#main-content" class="skip-link visually-hidden focusable">
+  {{- 'Skip to main content'|t -}}
+</a>
+
+{% block header %}
+  {{ page.header }}
+{% endblock %}
+
+{% if page.highlighted %}
+  {{ page.highlighted }}
+{% endif %}
+
+<main id="main-content" tabindex="-1" role="main">
+  {{ page.content }}
+</main>
+
+{% if page.footer_top %}
+  {{ page.footer_top }}
+{% endif %}
+
+{{ page.footer_bottom }}

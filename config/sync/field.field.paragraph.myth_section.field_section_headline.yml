@@ -1,0 +1,19 @@
+uuid: a937ffa8-0552-4d29-bd68-2b03724562e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section_headline
+    - paragraphs.paragraphs_type.myth_section
+id: paragraph.myth_section.field_section_headline
+field_name: field_section_headline
+entity_type: paragraph
+bundle: myth_section
+label: Headline
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,21 @@
+uuid: ed34b1cd-3fa7-4a34-ac61-0077af98a580
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.position_item.field_position_title
+    - field.field.paragraph.position_item.field_position_body
+    - paragraphs.paragraphs_type.position_item
+  module:
+    - paragraphs
+id: paragraph.position_item.default
+targetEntityType: paragraph
+bundle: position_item
+mode: default
+content: {  }
+hidden:
+  created: true
+  field_position_body: true
+  field_position_title: true
+  status: true
+  uid: true

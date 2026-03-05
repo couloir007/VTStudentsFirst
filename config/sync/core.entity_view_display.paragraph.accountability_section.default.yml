@@ -1,0 +1,25 @@
+uuid: ad3d0cb3-3825-4512-a4fa-15818d2ce654
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.accountability_section.field_section_label
+    - field.field.paragraph.accountability_section.field_section_headline
+    - field.field.paragraph.accountability_section.field_intro_text
+    - field.field.paragraph.accountability_section.field_cards
+    - paragraphs.paragraphs_type.accountability_section
+  module:
+    - paragraphs
+id: paragraph.accountability_section.default
+targetEntityType: paragraph
+bundle: accountability_section
+mode: default
+content: {  }
+hidden:
+  created: true
+  field_cards: true
+  field_intro_text: true
+  field_section_headline: true
+  field_section_label: true
+  status: true
+  uid: true

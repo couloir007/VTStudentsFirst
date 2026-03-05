@@ -1,0 +1,25 @@
+uuid: d9a12d01-e9f3-40e6-829c-d22eb6753eb3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.voices_section.field_section_label
+    - field.field.paragraph.voices_section.field_section_headline
+    - field.field.paragraph.voices_section.field_intro_text
+    - field.field.paragraph.voices_section.field_testimonials
+    - paragraphs.paragraphs_type.voices_section
+  module:
+    - paragraphs
+id: paragraph.voices_section.default
+targetEntityType: paragraph
+bundle: voices_section
+mode: default
+content: {  }
+hidden:
+  created: true
+  field_intro_text: true
+  field_section_headline: true
+  field_section_label: true
+  field_testimonials: true
+  status: true
+  uid: true

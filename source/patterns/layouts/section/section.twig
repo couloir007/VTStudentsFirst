@@ -1,0 +1,15 @@
+{{ attach_library('surface/section') }}
+
+{% set section_classes = [
+  'section',
+  section_class ? section_class : '',
+  modifier ? 'section--' ~ modifier : '',
+]|join(' ')|trim %}
+
+<section class="{{ section_classes }}" {{- attributes ? attributes|without('class') -}}>
+  {% block section_content %}
+    <div class="section__inner {{ inner_class }}">
+      {% block content %}{% endblock %}
+    </div>
+  {% endblock %}
+</section>

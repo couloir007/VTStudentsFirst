@@ -1,0 +1,47 @@
+{#
+/**
+ * @file node--webpage.html.twig
+ *
+ * Renders the WebPage content type as a full-width section-based layout.
+ * All content is delivered through field_sections (Paragraphs).
+ * There is no page title, body field, or sidebar — layout is 100% paragraph-driven.
+ *
+ * Available variables:
+ *   node       — the fully loaded node object
+ *   content    — render array of all node fields
+ *   attributes — HTML attributes for the wrapper
+ *   view_mode  — current view mode (full, teaser, etc.)
+ *   logged_in  — TRUE if user is authenticated
+ *   is_admin   — TRUE if user has admin access
+ *
+ * @see template_preprocess_node()
+ */
+#}
+<article{{
+  attributes.addClass([
+    'node--type-webpage',
+    not node.isPublished() ? 'node--unpublished',
+  ])
+}}>
+
+  {#
+    Render each paragraph section in order.
+    field_sections is an entity_reference_revisions field pointing to
+    the campaign paragraph bundles:
+      - hero_section
+      - issue_section
+      - stakes_section
+      - positions_section
+      - accountability_section
+      - myth_section
+      - voices_section
+      - action_section
+
+    Each paragraph bundle has its own paragraph--[bundle].html.twig template
+    which maps Drupal fields to the Storybook component.
+  #}
+  {% if content.field_sections %}
+    {{ content.field_sections }}
+  {% endif %}
+
+</article>

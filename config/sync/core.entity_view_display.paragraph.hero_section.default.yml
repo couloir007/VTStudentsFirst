@@ -1,0 +1,27 @@
+uuid: 912d8bf7-9ab4-4f63-b9c6-888bdd8841f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_section.field_cta_primary
+    - field.field.paragraph.hero_section.field_cta_secondary
+    - field.field.paragraph.hero_section.field_intro_text
+    - field.field.paragraph.hero_section.field_section_headline
+    - field.field.paragraph.hero_section.field_stat_items
+    - paragraphs.paragraphs_type.hero_section
+  module:
+    - paragraphs
+id: paragraph.hero_section.default
+targetEntityType: paragraph
+bundle: hero_section
+mode: default
+content: {  }
+hidden:
+  created: true
+  field_cta_primary: true
+  field_cta_secondary: true
+  field_intro_text: true
+  field_section_headline: true
+  field_stat_items: true
+  status: true
+  uid: true
