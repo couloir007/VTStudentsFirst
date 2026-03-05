@@ -159,3 +159,6 @@ public_html/themes/custom/surface/storybook/css/Oswald-VariableFont_wght.css
 *.mysql.gz
 *.sql.gz
 backup-*.tar.gz
+
+Ray-2.8.2.AppImage
+Ray-*
