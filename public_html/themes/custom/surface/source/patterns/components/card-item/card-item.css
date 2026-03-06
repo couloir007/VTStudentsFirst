@@ -1,23 +1,22 @@
 .card-item {
-  background: var(--white);
-  border-left: 4px solid var(--meadow);
+  background: var(--section-card-bg, var(--white));
+  border-left: 4px solid var(--section-label, var(--meadow));
   border-radius: 3px;
-  box-shadow: 0 2px 12px rgba(29, 58, 42, 7%);
+  box-shadow: 0 2px 16px rgba(29, 58, 42, 12%), 0 0 0 1px rgba(29, 58, 42, 6%);
   display: flex;
   gap: 1rem;
   padding: 1.5rem;
 }
 
 .card-item--urgent {
-  border-left-color: var(--maple);
+  border-left-color: var(--section-accent, var(--maple));
 }
 
-/* Stakes section variant */
+/* Stakes variant — dark glass card */
 .card-item--stake {
   background: rgba(44, 86, 64, 30%);
   border: 1px solid rgba(122, 171, 138, 20%);
   border-left-width: 1px;
-  color: var(--cream);
   flex-direction: column;
   padding: 2rem;
   transition: background 0.25s, border-color 0.25s;
@@ -28,13 +27,13 @@
   }
 
   .card-item__title {
-    color: var(--gold);
+    color: var(--section-accent, var(--gold));
     font-size: 1.1rem;
     margin-bottom: 0.75rem;
   }
 
   .card-item__body {
-    color: var(--mist);
+    color: var(--section-body, var(--mist));
     font-size: 0.92rem;
     line-height: 1.65;
   }
@@ -42,15 +41,15 @@
 
 /* Accountability pillar variant */
 .card-item--pillar {
-  background: var(--parchment);
-  border: 1px solid var(--mist);
+  background: var(--section-card-bg, var(--parchment));
+  border: 1px solid var(--section-card-border, var(--mist));
   border-left-width: 1px;
   flex-direction: column;
   padding: 2rem;
 
   .card-item__icon {
     align-items: center;
-    background: var(--forest);
+    background: var(--section-headline, var(--forest));
     border-radius: 2px;
     display: flex;
     font-size: 1rem;
@@ -67,7 +66,7 @@
 }
 
 .card-item__title {
-  color: var(--forest);
+  color: var(--section-headline, var(--forest));
   font-family: var(--font-secondary);
   font-size: 1rem;
   font-weight: 700;
@@ -76,7 +75,7 @@
 }
 
 .card-item__body {
-  color: var(--mid);
+  color: var(--section-body, var(--mid));
   font-size: 0.9rem;
   line-height: 1.6;
 }

@@ -3,7 +3,7 @@
  * @file paragraph--issue-section.html.twig
  *
  * Paragraph bundle: IssueSection
- * Component:        @components/issue-section/issue-section.twig
+ * Component:        @collections/issue-section/issue-section.twig
  *
  * Fields
  *   field_section_label    (string)       → section_label
@@ -24,11 +24,12 @@
   }]) %}
 {% endfor %}
 
-{% include "@components/issue-section/issue-section.twig" with {
-  section_label:    paragraph.field_section_label.value,
-  section_headline: paragraph.field_section_headline.value,
-  lead_text:        paragraph.field_intro_text.value,
-  body_text:        null,
-  issue_cards:      issue_cards,
-  attributes:       attributes,
+{% include "@collections/issue-section/issue-section.twig" with {
+  'section_label':    paragraph.field_section_label.value,
+  'section_headline': paragraph.field_section_headline.value,
+  'lead_text':        paragraph.field_lead_text.processed,
+  'body_text':        paragraph.field_intro_text.processed,
+  'issue_cards':      issue_cards,
+  'attributes':       attributes,
+  'id':               paragraph.field_section_url.value,
 } only %}

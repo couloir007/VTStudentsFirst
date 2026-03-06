@@ -1,4 +1,3 @@
-/* Utility styles - Do not sort. */
 @import 'container';
 @import 'grid';
 @import 'align';
@@ -13,3 +12,5 @@
 @import 'text';
 @import 'visibility';
 @import 'focus';
+
+/* Utility styles - Do not sort. */

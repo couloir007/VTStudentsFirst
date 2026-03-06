@@ -3,7 +3,7 @@
  * @file paragraph--positions-section.html.twig
  *
  * Paragraph bundle: PositionsSection
- * Component:        @components/positions-section/positions-section.twig
+ * Component:        @collections/positions-section/positions-section.twig
  *
  * Fields
  *   field_section_label    (string)       → section_label
@@ -22,10 +22,11 @@
   }]) %}
 {% endfor %}
 
-{% include "@components/positions-section/positions-section.twig" with {
+{% include "@collections/positions-section/positions-section.twig" with {
   section_label:    paragraph.field_section_label.value,
   section_headline: paragraph.field_section_headline.value,
   body_text:        paragraph.field_intro_text.value,
   positions:        positions,
   attributes:       attributes,
+  'id':             paragraph.field_section_url.value,
 } only %}

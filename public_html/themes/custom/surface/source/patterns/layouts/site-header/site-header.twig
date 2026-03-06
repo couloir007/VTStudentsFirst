@@ -1,9 +1,11 @@
 {{ attach_library('surface/site-header') }}
 
-<header id="header" class="site-header" data-drupal-selector="site-header" role="banner" data-once="navigation">
+<header id="header" class="site-header{{ modifier ? ' ' ~ modifier }}" data-drupal-selector="site-header" role="banner" data-once="navigation">
   <div class="container site-header__container">
     <div class="site-branding">
-      <a href="#" class="site-header__logo">Our<span>Kids</span>Our<span>Schools</span>VT</a>
+      <a href="{{ logo_url|default('#') }}" class="site-header__logo" rel="home" aria-label="Our Kids Our Schools VT — Home">
+        Our<span>Kids</span>Our<span>Schools</span>VT
+      </a>
     </div>
     <nav class="site-navigation" role="navigation" aria-label="Main navigation">
       {% block menu %}

@@ -3,7 +3,7 @@
  * @file paragraph--stakes-section.html.twig
  *
  * Paragraph bundle: StakesSection
- * Component:        @components/stakes-section/stakes-section.twig
+ * Component:        @collections/stakes-section/stakes-section.twig
  *
  * Fields
  *   field_section_label    (string)       → section_label
@@ -22,10 +22,11 @@
   }]) %}
 {% endfor %}
 
-{% include "@components/stakes-section/stakes-section.twig" with {
+{% include "@collections/stakes-section/stakes-section.twig" with {
   section_label:    paragraph.field_section_label.value,
   section_headline: paragraph.field_section_headline.value,
-  body_text:        paragraph.field_intro_text.value,
+  body_text:        paragraph.field_intro_text.processed,
   stakes_items:     stakes_items,
   attributes:       attributes,
+  'id':             paragraph.field_section_url.value,
 } only %}

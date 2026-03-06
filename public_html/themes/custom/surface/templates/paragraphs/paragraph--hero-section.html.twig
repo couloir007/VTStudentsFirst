@@ -3,7 +3,7 @@
  * @file paragraph--hero-section.html.twig
  *
  * Paragraph bundle: HeroSection
- * Component:        @components/hero-section/hero-section.twig
+ * Component:        @collections/hero-section/hero-section.twig
  *
  * Fields
  *   field_section_headline (string_long)  → headline (raw, supports <em>)
@@ -38,7 +38,7 @@
   } %}
 {% endif %}
 
-{% include "@components/hero-section/hero-section.twig" with {
+{% include "@collections/hero-section/hero-section.twig" with {
   eyebrow:       'Vermont Public Education',
   headline:      paragraph.field_section_headline.value,
   subheadline:   paragraph.field_intro_text.value,
@@ -46,4 +46,5 @@
   cta_secondary: cta_secondary,
   stats:         stats,
   attributes:    attributes,
+  'id':               paragraph.field_section_url.value,
 } only %}

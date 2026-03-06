@@ -1,6 +1,6 @@
 .position-item {
-  border-bottom: 1px solid var(--meadow);
-  background: var(--light);
+  background: var(--section-card-bg, var(--white));
+  border-bottom: 1px solid var(--section-border, var(--meadow));
   display: grid;
   grid-template-columns: 3rem 1fr;
   transition: background 0.2s;
@@ -10,21 +10,19 @@
   }
 
   &:hover {
-    transform: none;
+    background: var(--cream);
   }
 }
 
 .position-item__num {
   align-items: center;
-  background: var(--forest);
-  color: var(--gold);
+  background: var(--section-headline, var(--forest));
+  color: var(--section-accent, var(--gold));
   display: flex;
   font-family: var(--font-secondary);
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
-  margin-bottom: 0;
-  opacity: 100%;
   padding: 1.5rem 0;
 }
 
@@ -33,7 +31,7 @@
 }
 
 .position-item__headline {
-  color: var(--forest);
+  color: var(--section-headline, var(--forest));
   font-family: var(--font-secondary);
   font-size: 1.05rem;
   font-weight: 700;
@@ -41,7 +39,7 @@
 }
 
 .position-item__body {
-  color: var(--forest);
+  color: var(--section-body, var(--mid));
   font-size: 0.95rem;
   line-height: 1.6;
 }

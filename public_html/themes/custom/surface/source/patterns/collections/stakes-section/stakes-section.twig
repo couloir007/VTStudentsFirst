@@ -1,10 +1,11 @@
 {{ attach_library('surface/stakes-section') }}
 
 {% embed "@layouts/section/section.twig" with {
-  section_class: 'stakes-section',
-  inner_class: 'stakes-section__inner',
-  attributes: attributes,
-  modifier: modifier
+  'section_class': 'stakes-section section-theme--dark',
+  'inner_class': 'stakes-section__inner',
+  'id': id,
+  'attributes': attributes,
+  'modifier': modifier
 } %}
   {% block content %}
     {% if section_label %}
@@ -21,7 +22,7 @@
       } only %}
     {% endif %}
     {% if body_text %}
-      <div class="stakes-section__lead">{{ body_text|raw }}</div>
+      <div class="stakes-section__lead">{{ body_text }}</div>
     {% endif %}
 
     {% if stakes_items %}

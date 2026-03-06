@@ -3,13 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.accountability_section.field_section_label
-    - field.field.paragraph.accountability_section.field_section_headline
-    - field.field.paragraph.accountability_section.field_intro_text
     - field.field.paragraph.accountability_section.field_cards
+    - field.field.paragraph.accountability_section.field_intro_text
+    - field.field.paragraph.accountability_section.field_section_headline
+    - field.field.paragraph.accountability_section.field_section_label
+    - field.field.paragraph.accountability_section.field_section_url
     - paragraphs.paragraphs_type.accountability_section
-  module:
-    - paragraphs
 id: paragraph.accountability_section.default
 targetEntityType: paragraph
 bundle: accountability_section
@@ -21,5 +20,6 @@ hidden:
   field_intro_text: true
   field_section_headline: true
   field_section_label: true
+  field_section_url: true
   status: true
   uid: true

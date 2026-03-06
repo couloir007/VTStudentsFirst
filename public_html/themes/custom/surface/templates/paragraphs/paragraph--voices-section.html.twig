@@ -3,7 +3,7 @@
  * @file paragraph--voices-section.html.twig
  *
  * Paragraph bundle: VoicesSection
- * Component:        @components/voices-section/voices-section.twig
+ * Component:        @collections/voices-section/voices-section.twig
  *
  * Voices references node:Testimonial entities (not nested paragraphs).
  *
@@ -27,10 +27,11 @@
   }]) %}
 {% endfor %}
 
-{% include "@components/voices-section/voices-section.twig" with {
+{% include "@collections/voices-section/voices-section.twig" with {
   section_label:    paragraph.field_section_label.value,
   section_headline: paragraph.field_section_headline.value,
   body_text:        paragraph.field_intro_text.value,
   voices:           voices,
   attributes:       attributes,
+  'id':               paragraph.field_section_url.value,
 } only %}

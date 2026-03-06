@@ -51,23 +51,24 @@ site-header:
   js:
     dist/js/site-header.js: {}
 
+section-label:
+  css:
+    layout:
+      dist/css/section-label.css: {}
+
+scroll-top:
+  css:
+    layout:
+      dist/css/scroll-top.css: { }
+  js:
+    dist/js/scroll-top.js: { }
+
 # Component Libraries
-
-
-
-
-
-
 
 component-list:
   css:
     component:
       dist/css/component-list.css: {}
-
-
-
-
-
 
 filter:
   css:
@@ -483,6 +484,11 @@ card-item:
     component:
       dist/css/card-item.css: {}
 
+section-headline:
+  css:
+    layout:
+      dist/css/section-headline.css: {}
+
 myth-item:
   css:
     component:
@@ -493,6 +499,7 @@ myth-section:
     component:
       dist/css/myth-section.css: {}
   dependencies:
+    - surface/section
     - surface/myth-item
 
 stat-item:
@@ -519,19 +526,28 @@ hero-section:
   css:
     component:
       dist/css/hero-section.css: {}
+  dependencies:
+    - surface/section
 
 issue-section:
   css:
     component:
       dist/css/issue-section.css: {}
   dependencies:
+    - surface/section
     - surface/card-item
+
+section:
+  css:
+    component:
+      dist/css/section.css: {}
 
 stakes-section:
   css:
     component:
       dist/css/stakes-section.css: {}
   dependencies:
+    - surface/section
     - surface/card-item
 
 positions-section:
@@ -539,6 +555,7 @@ positions-section:
     component:
       dist/css/positions-section.css: {}
   dependencies:
+    - surface/section
     - surface/position-item
 
 voices-section:
@@ -546,6 +563,7 @@ voices-section:
     component:
       dist/css/voices-section.css: {}
   dependencies:
+    - surface/section
     - surface/testimonial
 
 action-section:
@@ -555,8 +573,10 @@ action-section:
   js:
     dist/js/action-section.js: {}
   dependencies:
+    - surface/section
     - surface/step-item
     - surface/legislator-contact
+    - surface/section-headline
 
 legislator-contact:
   css:
@@ -570,4 +590,5 @@ accountability-section:
     component:
       dist/css/accountability-section.css: {}
   dependencies:
+    - surface/section
     - surface/card-item

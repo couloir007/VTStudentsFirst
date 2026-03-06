@@ -3,8 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.position_item.field_position_title
     - field.field.paragraph.position_item.field_position_body
+    - field.field.paragraph.position_item.field_position_title
+    - field.field.paragraph.position_item.field_section_url
     - paragraphs.paragraphs_type.position_item
   module:
     - text
@@ -24,6 +25,14 @@ content:
   field_position_title:
     type: string_textfield
     weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_section_url:
+    type: string_textfield
+    weight: 3
     region: content
     settings:
       size: 60

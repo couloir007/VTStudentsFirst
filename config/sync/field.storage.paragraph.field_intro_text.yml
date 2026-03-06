@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - paragraphs
+    - text
 id: paragraph.field_intro_text
 field_name: field_intro_text
 entity_type: paragraph

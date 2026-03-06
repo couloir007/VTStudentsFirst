@@ -1,0 +1,19 @@
+uuid: 91ddb48e-43b4-4001-aacb-7c1e3b07c918
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section_url
+    - paragraphs.paragraphs_type.action_section
+id: paragraph.action_section.field_section_url
+field_name: field_section_url
+entity_type: paragraph
+bundle: action_section
+label: 'Section URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

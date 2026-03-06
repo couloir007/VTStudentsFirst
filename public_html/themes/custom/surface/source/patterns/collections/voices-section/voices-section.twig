@@ -1,8 +1,9 @@
 {{ attach_library('surface/voices-section') }}
 
 {% embed "@layouts/section/section.twig" with {
-  section_class: 'voices-section',
+  section_class: 'voices-section section-theme--warm',
   inner_class: 'voices-section__inner',
+  'id': id,
   attributes: attributes,
   modifier: modifier
 } %}

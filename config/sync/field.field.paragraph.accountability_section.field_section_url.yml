@@ -1,0 +1,19 @@
+uuid: 293a8972-42e0-4838-ab61-4eb87effc906
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_section_url
+    - paragraphs.paragraphs_type.accountability_section
+id: paragraph.accountability_section.field_section_url
+field_name: field_section_url
+entity_type: paragraph
+bundle: accountability_section
+label: 'Section URL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

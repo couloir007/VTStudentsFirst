@@ -1,6 +1,6 @@
 .myth-section {
-  background: var(--forest);
-  color: var(--mist);
+  background: var(--section-bg, var(--forest));
+  color: var(--section-body, var(--mist));
 }
 
 .myth-section__header {
@@ -15,11 +15,6 @@
 .myth-section__headline {
   margin-bottom: 3rem;
 }
-
-.myth-section__lead {
-
-}
-
 
 .myth-section__grid {
   display: grid;

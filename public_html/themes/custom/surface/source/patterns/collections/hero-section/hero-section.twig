@@ -1,7 +1,8 @@
 {{ attach_library('surface/hero-section') }}
 
 {% embed "@layouts/section/section.twig" with {
-  section_class: 'hero-section',
+  section_class: 'hero-section section-theme--dark',
+  'id': id,
   attributes: attributes,
   modifier: modifier
 } %}

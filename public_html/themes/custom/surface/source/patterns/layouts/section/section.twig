@@ -6,7 +6,7 @@
   modifier ? 'section--' ~ modifier : '',
 ]|join(' ')|trim %}
 
-<section class="{{ section_classes }}" {{- attributes ? attributes|without('class') -}}>
+<section id="{{ id }}" class="{{ section_classes }}" {{- attributes ? attributes|without('class') -}}>
   {% block section_content %}
     <div class="section__inner {{ inner_class }}">
       {% block content %}{% endblock %}

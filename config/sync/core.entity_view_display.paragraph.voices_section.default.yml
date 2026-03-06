@@ -3,18 +3,25 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.voices_section.field_section_label
-    - field.field.paragraph.voices_section.field_section_headline
     - field.field.paragraph.voices_section.field_intro_text
+    - field.field.paragraph.voices_section.field_section_headline
+    - field.field.paragraph.voices_section.field_section_label
+    - field.field.paragraph.voices_section.field_section_url
     - field.field.paragraph.voices_section.field_testimonials
     - paragraphs.paragraphs_type.voices_section
-  module:
-    - paragraphs
 id: paragraph.voices_section.default
 targetEntityType: paragraph
 bundle: voices_section
 mode: default
-content: {  }
+content:
+  field_section_url:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   created: true
   field_intro_text: true

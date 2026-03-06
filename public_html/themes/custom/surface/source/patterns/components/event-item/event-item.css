@@ -1,0 +1,107 @@
+/* ── Event Item ─────────────────────────────────────────────────────────── */
+
+.event-item {
+  align-items: flex-start;
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--section-border, rgba(245, 240, 232, 15%));
+}
+
+.event-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.event-item:first-child {
+  padding-top: 0;
+}
+
+.event-item__details {
+  flex: 1;
+  min-width: 0;
+}
+
+.event-item__title {
+  color: var(--section-headline, var(--cream));
+  font-family: var(--font-secondary);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+}
+
+.event-item__body {
+  color: var(--section-body, var(--mist));
+  font-size: 0.9rem;
+  line-height: 1.65;
+  margin-bottom: 0.4rem;
+}
+
+.event-item__meta {
+  color: var(--section-label, var(--sage));
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+/* ── Signup row (TBD / notify me item) ─────────────────────────────────── */
+
+.event-item__signup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.event-item__email {
+  background: rgba(255, 255, 255, 10%);
+  border: 1px solid rgba(245, 240, 232, 25%);
+  border-radius: 2px;
+  color: var(--section-headline, white);
+  flex: 1 1 180px;
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  min-width: 0;
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.event-item__email::placeholder {
+  color: rgba(200, 221, 208, 50%);
+}
+
+.event-item__email:focus {
+  background: rgba(255, 255, 255, 15%);
+  border-color: var(--section-label, var(--sage));
+  outline: 2px solid rgba(122, 171, 138, 25%);
+  outline-offset: 2px;
+}
+
+.event-item__btn {
+  background: var(--section-btn-bg, var(--maple));
+  border: none;
+  border-radius: 2px;
+  color: var(--section-btn-color, white);
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.event-item__btn:hover {
+  background: var(--section-btn-hover, var(--maple-dark));
+}
+
+@media (width <= 540px) {
+  .event-item {
+    gap: 1rem;
+  }
+}

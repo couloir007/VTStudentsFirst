@@ -1,0 +1,98 @@
+/* ============================================================
+   Section Theme Modifiers
+   ============================================================
+   Semantic tokens consumed by all section/collection components.
+   Set --section-* defaults, then override per modifier class.
+
+   Usage in Twig:
+     <section class="hero-section section-theme--dark">
+     <section class="issue-section section-theme--light">
+
+   Usage in stories:
+     modifier: 'section-theme--warm'
+   ============================================================ */
+
+/* ── Semantic token defaults (dark theme — most sections start dark) ── */
+:where([class*="section-theme"]) {
+  --section-bg:          var(--forest);
+  --section-headline:    var(--cream);
+  --section-body:        var(--mist);
+  --section-label:       var(--sage);
+  --section-accent:      var(--gold);
+  --section-border:      rgba(122, 171, 138, 20%);  /* sage tint */
+  --section-card-bg:     rgba(255, 255, 255, 6%);
+  --section-card-border: rgba(122, 171, 138, 20%);
+  --section-btn-bg:      var(--maple);
+  --section-btn-color:   #ffffff;
+  --section-btn-hover:   var(--maple-dark);
+  --section-link:        var(--gold);
+}
+
+/* ── Dark  (--forest background) ───────────────────────────────────── */
+.section-theme--dark {
+  --section-bg:          var(--forest);
+  --section-headline:    var(--cream);
+  --section-body:        var(--mist);
+  --section-label:       var(--sage);
+  --section-accent:      var(--gold);
+  --section-border:      rgba(122, 171, 138, 20%);
+  --section-card-bg:     rgba(255, 255, 255, 6%);
+  --section-card-border: rgba(122, 171, 138, 20%);
+  --section-btn-bg:      var(--maple);
+  --section-btn-color:   #ffffff;
+  --section-btn-hover:   var(--maple-dark);
+  --section-link:        var(--gold);
+}
+
+/* ── Light  (--light background) ───────────────────────────────────── */
+.section-theme--light {
+  --section-bg:          var(--light);
+  --section-headline:    var(--forest);
+  --section-body:        var(--mid);
+  --section-label:       var(--meadow);
+  --section-accent:      var(--maple);
+  --section-border:      var(--meadow);
+  --section-card-bg:     #ffffff;
+  --section-card-border: rgba(29, 58, 42, 8%);
+  --section-btn-bg:      var(--maple-dark);
+  --section-btn-color:   #ffffff;
+  --section-btn-hover:   var(--maple-darker);
+  --section-link:        var(--maple-dark);
+}
+
+/* ── Warm  (--parchment background) ────────────────────────────────── */
+.section-theme--warm {
+  --section-bg:          var(--parchment);
+  --section-headline:    var(--forest);
+  --section-body:        var(--mid);
+  --section-label:       var(--meadow);
+  --section-accent:      var(--maple);
+  --section-border:      var(--meadow);
+  --section-card-bg:     #ffffff;
+  --section-card-border: var(--mist);
+  --section-btn-bg:      var(--maple-dark);
+  --section-btn-color:   #ffffff;
+  --section-btn-hover:   var(--maple-darker);
+  --section-link:        var(--maple-dark);
+}
+
+/* ── Bold  (--maple-darker background) ─────────────────────────────── */
+.section-theme--bold {
+  --section-bg:          var(--maple-darker);
+  --section-headline:    #ffffff;
+  --section-body:        var(--cream);
+  --section-label:       var(--mist);
+  --section-accent:      var(--gold);
+  --section-border:      rgba(245, 240, 232, 20%);
+  --section-card-bg:     rgba(0, 0, 0, 15%);
+  --section-card-border: rgba(245, 240, 232, 15%);
+  --section-btn-bg:      var(--maple);
+  --section-btn-color:   #ffffff;
+  --section-btn-hover:   var(--maple-dark);
+  --section-link:        var(--gold);
+}
+
+/* ── Apply background from token ───────────────────────────────────── */
+[class*="section-theme"] {
+  background-color: var(--section-bg);
+}

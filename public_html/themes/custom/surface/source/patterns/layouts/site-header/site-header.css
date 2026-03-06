@@ -8,21 +8,33 @@
   right: 0;
   top: 0;
   transition: all 0.3s ease;
-  z-index: 1000;
+  z-index: 500;
 }
 
 /**
- * Drupal Admin Toolbar adjustments.
- * Move the fixed header down when the toolbar is present.
+ * Admin toolbar adjustments.
+ *
+ * Gin and Drupal core add toolbar classes to <body>, confirmed:
+ *   body.toolbar-fixed.toolbar-horizontal.gin--horizontal-toolbar
+ *
+ * Gin sets --gin-toolbar-y-offset on body.toolbar-fixed:
+ *   default: var(--gin-toolbar-height) = 39px
+ *   tray open on desktop: 78px (from classic_toolbar.scss)
+ *
+ * Fallback chain for non-Gin toolbars:
+ *   --drupal-displace-offset-top  → set by Drupal core displace module
+ *   39px                          → standard toolbar bar-only height
  */
-html.toolbar-fixed .site-header,
 body.toolbar-fixed .site-header {
-  top: 39px;
+  top: var(
+    --gin-toolbar-y-offset,
+    var(--drupal-displace-offset-top, 39px)
+  );
 }
 
-html.toolbar-fixed.toolbar-horizontal.toolbar-tray-open .site-header,
-body.toolbar-fixed.toolbar-horizontal.toolbar-tray-open .site-header {
-  top: 79px;
+/* Gin vertical (sidebar) toolbar — no top offset needed */
+body.gin--vertical-toolbar .site-header {
+  top: 0;
 }
 
 .site-header__container {
@@ -63,14 +75,15 @@ body.toolbar-fixed.toolbar-horizontal.toolbar-tray-open .site-header {
  * site-header.js adds .site-header--transparent on load and removes it
  * once the user scrolls 60% of the hero height, then adds --scrolled.
  */
-.path-frontpage .site-header {
-  backdrop-filter: none;
-  background: transparent;
-  border-bottom-color: transparent;
-}
+/*.path-frontpage .site-header {*/
+/*  backdrop-filter: none;*/
+/*  background: transparent;*/
+/*  border-bottom-color: transparent;*/
+/*}*/
 
 .path-frontpage .site-header--scrolled {
   backdrop-filter: blur(10px);
   background: rgba(10, 22, 17, 92%);
   border-bottom-color: rgba(122, 171, 138, 15%);
 }
+

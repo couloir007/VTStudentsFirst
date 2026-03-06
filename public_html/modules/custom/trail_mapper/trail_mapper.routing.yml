@@ -1,7 +1,0 @@
-trail_mapper.generate_geojson:
-  path: '/trail-mapper/generate-geojson'
-  defaults:
-    _controller: '\Drupal\trail_mapper\Controller\GeoJsonController::generate'
-    _title: 'Generate GeoJSON'
-  requirements:
-    _permission: 'access content'

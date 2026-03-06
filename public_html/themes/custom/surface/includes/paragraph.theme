@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * @file
+ * Paragraph-related hook implementations.
+ */
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function surface_preprocess_paragraph(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+
+  // Expose the Google Civic API key from theme settings to the Action Section paragraph.
+  if ($paragraph->bundle() === 'action_section') {
+    $variables['civic_api_key'] = theme_get_setting('civic_api_key') ?? '';
+
+    // Pre-process steps to avoid restricted "referencedEntities" in Twig.
+    if ($paragraph->hasField('field_steps') && !$paragraph->get('field_steps')->isEmpty()) {
+      $steps = [];
+      foreach ($paragraph->get('field_steps')->referencedEntities() as $item) {
+        $steps[] = [
+          'headline' => $item->field_step_title->value,
+          'body' => $item->field_step_body->value,
+        ];
+      }
+      $variables['preprocessed_steps'] = $steps;
+    }
+  }
+}

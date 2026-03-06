@@ -2,31 +2,24 @@
 /**
  * @file region--header.html.twig
  *
- * Renders the Header region. This template owns the site-header wrapper
- * and passes the region's block content into the nav slot.
+ * Delegates to site-header.twig for all markup.
+ * Passes the Header region's block content into the menu block slot.
  *
  * Expected blocks in this region:
- *   - Main navigation menu block → rendered by block--system-menu-block--main.html.twig
- *     which outputs menu-main.twig
+ *   - Main navigation menu block → menu-main.twig via
+ *     block--system-menu-block--main.html.twig
  *
- * The logo, <header> element, and nav wrapper live here.
- * The menu-main block renders inside the <nav>.
- *
- * @see site-header.twig
+ * @see layouts/site-header/site-header.twig
  * @see block--system-menu-block--main.html.twig
  * @see template_preprocess_region()
  */
 #}
 {% if content %}
-  {{ attach_library('surface/site-header') }}
-  <header id="header" class="site-header" data-drupal-selector="site-header" role="banner" data-once="navigation">
-    <div class="site-header__container">
-      <a href="{{ path('<front>') }}" class="site-header__logo" rel="home" aria-label="Our Kids Our Schools VT — Home">
-        Our<span>Kids</span>Our<span>Schools</span>VT
-      </a>
-      <nav class="site-navigation" role="navigation" aria-label="Main navigation">
-        {{ content }}
-      </nav>
-    </div>
-  </header>
+  {% embed '@layouts/site-header/site-header.twig' with {
+    logo_url: path('<front>'),
+  } %}
+    {% block menu %}
+      {{ content }}
+    {% endblock %}
+  {% endembed %}
 {% endif %}

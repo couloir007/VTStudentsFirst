@@ -1,4 +1,0 @@
-services:
-  external_pg.service:
-    class: Drupal\external_pg\ExternalPgService
-    arguments: []

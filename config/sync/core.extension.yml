@@ -195,7 +195,6 @@ module:
   schemadotorg_descriptions: 20
   minimal: 1000
 theme:
-  stark: 0
   surface: 0
   claro: 0
   gin: 0

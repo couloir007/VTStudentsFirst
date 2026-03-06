@@ -1,4 +1,7 @@
-/* Global  - Do not sort */
 @import "../../props/index";
+@import "../../props/section-themes.css";
 @import "global/global";
 @import "typography/typography";
+@import "../layouts/section/section.css";
+
+/* Global  - Do not sort */

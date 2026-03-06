@@ -1,6 +1,6 @@
 .positions-section {
-  background-color: var(--parchment);
-  color: var(--forest);
+  background-color: var(--section-bg, var(--parchment));
+  color: var(--section-headline, var(--forest));
 }
 
 .positions-section__label {
@@ -12,7 +12,7 @@
 }
 
 .positions-section__lead {
-  color: var(--mid);
+  color: var(--section-body, var(--mid));
   font-size: 1.1rem;
   line-height: 1.75;
   margin-bottom: 3rem;
@@ -20,10 +20,10 @@
 }
 
 .positions-section__grid {
+  border: 1px solid var(--section-border, var(--meadow));
+  border-radius: 3px;
   display: flex;
   flex-direction: column;
   gap: 0;
-  border: 1px solid var(--mist);
-  border-radius: 3px;
   overflow: hidden;
 }

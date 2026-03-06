@@ -1,6 +1,6 @@
 .myth-item {
-  background: rgba(255, 255, 255, 6%);
-  border: 1px solid rgba(122, 171, 138, 20%);
+  background: var(--section-card-bg, rgba(255, 255, 255, 6%));
+  border: 1px solid var(--section-card-border, rgba(122, 171, 138, 20%));
   border-radius: 4px;
   display: flex;
   gap: 1.25rem;
@@ -8,7 +8,7 @@
   transition: border-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
-    border-color: var(--sage);
+    border-color: var(--section-label, var(--sage));
     transform: translateY(-2px);
   }
 }
@@ -30,7 +30,7 @@
 }
 
 .myth-item__myth {
-  color: var(--cream);
+  color: var(--section-headline, var(--cream));
   font-family: var(--font-secondary);
   font-size: 1.05rem;
   font-weight: 700;
@@ -38,15 +38,15 @@
 }
 
 .myth-item__myth strong {
-  color: var(--maple-dark);
+  color: var(--section-accent, var(--gold));
 }
 
 .myth-item__fact {
-  color: var(--mist);
+  color: var(--section-body, var(--mist));
   font-size: 0.95rem;
   line-height: 1.6;
 }
 
 .myth-item__fact strong {
-  color: var(--sage);
+  color: var(--section-label, var(--sage));
 }

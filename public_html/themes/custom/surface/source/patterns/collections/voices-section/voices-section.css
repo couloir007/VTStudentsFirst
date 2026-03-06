@@ -1,6 +1,6 @@
 .voices-section {
-  background-color: var(--parchment);
-  border-top: 1px solid var(--mist);
+  background-color: var(--section-bg, var(--parchment));
+  border-top: 1px solid var(--section-border, var(--mist));
 }
 
 .voices-section__label {
@@ -13,9 +13,8 @@
   text-align: center;
 }
 
-
 .voices-section__lead {
-  color: var(--mid);
+  color: var(--section-body, var(--mid));
   font-size: 1.1rem;
   line-height: 1.6;
   margin: 0 auto 5rem;

@@ -42,3 +42,23 @@
     }
   }
 }
+
+/* ── Campaign event variant ─────────────────────────────────────────────── */
+
+.date-badge--event {
+  background: var(--section-card-bg, rgba(255, 255, 255, 10%));
+  border: 1px solid var(--section-border, rgba(245, 240, 232, 20%));
+  block-size: var(--size-20);
+  inline-size: var(--size-20);
+  border-radius: 3px;
+  flex-shrink: 0;
+
+  .date-badge__month {
+    color: var(--section-label, var(--sage));
+  }
+
+  .date-badge__day {
+    color: var(--section-headline, var(--cream));
+    font-size: var(--font-size-6);
+  }
+}

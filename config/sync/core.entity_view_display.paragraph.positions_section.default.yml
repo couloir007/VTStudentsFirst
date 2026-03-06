@@ -3,13 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.positions_section.field_section_label
-    - field.field.paragraph.positions_section.field_section_headline
     - field.field.paragraph.positions_section.field_intro_text
     - field.field.paragraph.positions_section.field_position_items
+    - field.field.paragraph.positions_section.field_section_headline
+    - field.field.paragraph.positions_section.field_section_label
+    - field.field.paragraph.positions_section.field_section_url
     - paragraphs.paragraphs_type.positions_section
-  module:
-    - paragraphs
 id: paragraph.positions_section.default
 targetEntityType: paragraph
 bundle: positions_section
@@ -21,5 +20,6 @@ hidden:
   field_position_items: true
   field_section_headline: true
   field_section_label: true
+  field_section_url: true
   status: true
   uid: true

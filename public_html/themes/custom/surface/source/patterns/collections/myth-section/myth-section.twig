@@ -5,8 +5,9 @@
 {% endif %}
 
 {% embed "@layouts/section/section.twig" with {
-  section_class: 'myth-section',
+  section_class: 'myth-section section-theme--dark',
   inner_class: 'myth-section__inner',
+  'id': id,
   attributes: section_attributes,
   modifier: modifier
 } %}

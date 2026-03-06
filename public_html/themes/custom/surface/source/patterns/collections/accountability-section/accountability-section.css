@@ -1,6 +1,6 @@
 .accountability-section {
   --section-max-width: 1200px;
-  background-color: var(--light);
+  background-color: var(--section-bg, var(--light));
 }
 
 .accountability-section__label {
@@ -12,7 +12,7 @@
 }
 
 .accountability-section__body-main {
-  color: var(--mid);
+  color: var(--section-body, var(--mid));
   font-size: 1.1rem;
   line-height: 1.7;
   margin-bottom: 4rem;
@@ -26,7 +26,8 @@
 }
 
 .accountability-section__card {
-  background: white;
+  background: var(--section-card-bg, white);
+  border: 1px solid var(--section-card-border, rgba(29, 58, 42, 8%));
   border-radius: 4px;
   box-shadow: 0 4px 15px rgba(0,0,0,2%);
   display: flex;
@@ -35,14 +36,14 @@
 }
 
 .accountability-section__card-headline {
-  color: var(--forest);
+  color: var(--section-headline, var(--forest));
   font-family: var(--font-secondary);
   font-size: 1.6rem;
   margin-bottom: 1.25rem;
 }
 
 .accountability-section__card-body {
-  color: var(--mid);
+  color: var(--section-body, var(--mid));
   flex-grow: 1;
   font-size: 1rem;
   line-height: 1.6;
@@ -51,7 +52,7 @@
 
 .accountability-section__card-link {
   align-items: center;
-  color: var(--maple-dark);
+  color: var(--section-link, var(--maple-dark));
   display: inline-flex;
   font-family: var(--font-mono);
   font-size: 0.75rem;

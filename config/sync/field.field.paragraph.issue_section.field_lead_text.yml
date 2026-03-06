@@ -1,0 +1,26 @@
+uuid: 6bc003a6-5391-406d-bc16-48312ff5b664
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_lead_text
+    - filter.format.full_html
+    - filter.format.plain_text
+    - paragraphs.paragraphs_type.issue_section
+  module:
+    - text
+id: paragraph.issue_section.field_lead_text
+field_name: field_lead_text
+entity_type: paragraph
+bundle: issue_section
+label: 'Lead Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - full_html
+    - plain_text
+field_type: text_long

@@ -3,7 +3,7 @@
  * @file paragraph--action-section.html.twig
  *
  * Paragraph bundle: ActionSection
- * Component:        @components/action-section/action-section.twig
+ * Component:        @collections/action-section/action-section.twig
  *
  * Fields
  *   field_section_label    (string)       → section_label
@@ -19,13 +19,16 @@
  * ToolkitTab paragraph bundle and replace this block with an er_rev loop.
  */
 #}
-{% set steps = [] %}
-{% for item in paragraph.field_steps.referencedEntities() %}
-  {% set steps = steps|merge([{
-    headline: item.field_step_title.value,
-    body:     item.field_step_body.value,
-  }]) %}
-{% endfor %}
+{% set steps = preprocessed_steps|default([]) %}
+{#
+  Old method that triggered SecurityError in sandbox:
+  {% for item in paragraph.field_steps.referencedEntities() %}
+    {% set steps = steps|merge([{
+      headline: item.field_step_title.value,
+      body:     item.field_step_body.value,
+    }]) %}
+  {% endfor %}
+#}
 
 {% set toolkit = {
   headline: 'Advocacy Toolkit',
@@ -98,14 +101,15 @@
   ],
 } %}
 
-{% set civic_api_key = theme_get_setting('civic_api_key')|default('') %}
+{% set civic_api_key = civic_api_key|default('') %}
 
-{% include "@components/action-section/action-section.twig" with {
+{% include "@collections/action-section/action-section.twig" with {
   section_label:    paragraph.field_section_label.value,
   section_headline: paragraph.field_section_headline.value,
-  body_text:        paragraph.field_intro_text.value,
+  body_text:        paragraph.field_intro_text.processed,
   steps:            steps,
   toolkit:          toolkit,
   civic_api_key:    civic_api_key,
   attributes:       attributes,
+  'id':               paragraph.field_section_url.value,
 } only %}

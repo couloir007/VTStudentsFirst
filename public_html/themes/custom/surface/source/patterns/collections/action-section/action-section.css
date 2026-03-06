@@ -1,7 +1,7 @@
 .action-section {
   --section-max-width: 1200px;
-  background-color: var(--maple-darker);
-  color: white;
+  background-color: var(--section-bg, var(--maple-darker));
+  color: var(--section-headline, white);
 }
 
 .action-section__header {
@@ -12,33 +12,31 @@
   margin-bottom: 1rem;
 }
 
-.action-section__headline {
-
-}
-
 .action-section__lead {
-  color: var(--mist);
+  color: var(--section-body, var(--cream));
   font-size: clamp(1.1rem, 2vw, 1.35rem);
   line-height: 1.6;
   max-width: 580px;
 }
 
 .action-section__steps {
+  align-items: stretch;
   display: grid;
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   margin-bottom: 8rem;
 }
 
-/* Toolkit styles */
+/* Toolkit */
 .action-section__toolkit {
-  background: rgba(100, 30, 0, 30%);
-  border: 1px solid rgba(122, 171, 138, 20%);
+  background: var(--section-card-bg, rgba(0, 0, 0, 15%));
+  border: 1px solid var(--section-card-border, rgba(245, 240, 232, 15%));
   border-radius: 4px;
   padding: 4rem 3rem;
 }
 
 .action-section__toolkit-headline {
+  color: var(--section-accent, var(--gold));
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
@@ -46,7 +44,7 @@
 }
 
 .action-section__toolkit-sub {
-  color: var(--mist);
+  color: var(--section-body, var(--mist));
   margin-bottom: 3rem;
   text-align: center;
 }
@@ -56,7 +54,7 @@
 }
 
 .action-section__tab-buttons {
-  border-bottom: 1px solid rgba(122,171,138,20%);
+  border-bottom: 1px solid var(--section-border, rgba(122,171,138,20%));
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -67,7 +65,7 @@
   background: none;
   border: none;
   border-bottom: 2px solid transparent;
-  color: var(--sage);
+  color: var(--section-label, var(--mist));
   cursor: pointer;
   font-family: var(--font-mono);
   font-size: 0.8rem;
@@ -78,12 +76,12 @@
 }
 
 .action-section__tab-btn:hover {
-  color: var(--cream);
+  color: var(--section-headline, var(--cream));
 }
 
 .action-section__tab-btn.active {
-  border-bottom-color: var(--maple);
-  color: white;
+  border-bottom-color: var(--section-btn-bg, var(--maple));
+  color: var(--section-headline, white);
 }
 
 .action-section__tab-panel {
@@ -101,13 +99,13 @@
 }
 
 .action-section__toolkit-card {
-  background: rgba(0, 0, 0, 25%);
+  background: rgba(0, 0, 0, 15%);
   border-radius: 4px;
   padding: 1.5rem;
 }
 
 .action-section__toolkit-card h5 {
-  color: var(--gold);
+  color: var(--section-accent, var(--gold));
   font-family: var(--font-secondary);
   font-size: 1.1rem;
   font-weight: 700;
@@ -115,7 +113,7 @@
 }
 
 .action-section__toolkit-card p {
-  color: var(--mist);
+  color: var(--section-body, var(--mist));
   font-size: 0.9rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
@@ -123,9 +121,9 @@
 
 .action-section__copy-btn {
   background: transparent;
-  border: 1px solid rgba(245,240,232,25%);
+  border: 1px solid var(--section-border, rgba(245,240,232,25%));
   border-radius: 2px;
-  color: var(--cream);
+  color: var(--section-body, var(--cream));
   cursor: pointer;
   font-family: var(--font-mono);
   font-size: 0.65rem;
@@ -136,8 +134,8 @@
 }
 
 .action-section__copy-btn:hover {
-  background: rgba(245,240,232,10%);
-  border-color: var(--cream);
+  background: var(--section-card-bg, rgba(245,240,232,10%));
+  border-color: var(--section-headline, var(--cream));
 }
 
 .action-section__copy-btn.copied {
@@ -149,5 +147,25 @@
 @media (width <= 768px) {
   .action-section__toolkit {
     padding: 3rem 1.5rem;
+  }
+}
+
+/* ── Events block ───────────────────────────────────────────────────────── */
+
+.action-section__events {
+  background: var(--section-card-bg, rgba(0, 0, 0, 15%));
+  border: 1px solid var(--section-card-border, rgba(245, 240, 232, 15%));
+  border-radius: 4px;
+  margin-bottom: 4rem;
+  padding: 2.5rem 3rem;
+}
+
+.action-section__events-label {
+  margin-bottom: 1rem;
+}
+
+@media (width <= 768px) {
+  .action-section__events {
+    padding: 2rem 1.5rem;
   }
 }

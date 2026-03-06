@@ -3,16 +3,23 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.position_item.field_position_title
     - field.field.paragraph.position_item.field_position_body
+    - field.field.paragraph.position_item.field_position_title
+    - field.field.paragraph.position_item.field_section_url
     - paragraphs.paragraphs_type.position_item
-  module:
-    - paragraphs
 id: paragraph.position_item.default
 targetEntityType: paragraph
 bundle: position_item
 mode: default
-content: {  }
+content:
+  field_section_url:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   created: true
   field_position_body: true

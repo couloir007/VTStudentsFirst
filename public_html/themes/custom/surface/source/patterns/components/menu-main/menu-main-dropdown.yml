@@ -2,25 +2,5 @@
 data_menu: 'dropdown'
 items:
   - title: 'Sean Montague'
-    url: '/'
+    url: '/#issue'
     in_active_trail: true
-  - title: 'Topics'
-    url: '#'
-    in_active_trail: false
-    below:
-      - title: 'Mapping'
-        url: '#'
-        in_active_trail: false
-        below: false
-      - title: 'Drupal'
-        url: '#'
-        in_active_trail: false
-        below: false
-      - title: 'Travel/Recreation'
-        url: '#'
-        in_active_trail: false
-        below: false
-      - title: 'Permaculture'
-        url: '#'
-        in_active_trail: false
-        below: false

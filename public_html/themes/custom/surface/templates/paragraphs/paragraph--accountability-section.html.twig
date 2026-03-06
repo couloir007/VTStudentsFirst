@@ -3,7 +3,7 @@
  * @file paragraph--accountability-section.html.twig
  *
  * Paragraph bundle: AccountabilitySection
- * Component:        @components/accountability-section/accountability-section.twig
+ * Component:        @collections/accountability-section/accountability-section.twig
  *
  * Fields
  *   field_section_label    (string)       → section_label
@@ -24,10 +24,11 @@
   }]) %}
 {% endfor %}
 
-{% include "@components/accountability-section/accountability-section.twig" with {
+{% include "@collections/accountability-section/accountability-section.twig" with {
   section_label:        paragraph.field_section_label.value,
   section_headline:     paragraph.field_section_headline.value,
   body_text:            paragraph.field_intro_text.value,
   accountability_cards: accountability_cards,
   attributes:           attributes,
+  'id':               paragraph.field_section_url.value,
 } only %}

@@ -1,8 +1,9 @@
 {{ attach_library('surface/positions-section') }}
 
 {% embed "@layouts/section/section.twig" with {
-  section_class: 'positions-section',
+  section_class: 'positions-section section-theme--warm',
   inner_class: 'positions-section__inner',
+  'id': id,
   attributes: attributes,
   modifier: modifier
 } %}

@@ -1,18 +1,13 @@
 .stakes-section {
-  background-color: var(--forest);
+  background-color: var(--section-bg, var(--forest));
 }
 
 .stakes-section__label {
   margin-bottom: 1rem;
 }
 
-.stakes-section__headline {
-
-}
-
-
 .stakes-section__lead {
-  color: var(--mist);
+  color: var(--section-body, var(--mist));
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 4rem;

@@ -27,7 +27,7 @@
   }
 
   &.form-required::after {
-    background-image: url("../images/required.svg");
+    background-image: url("../form-item/images/required.svg");
     background-repeat: no-repeat;
     background-size: 0.5rem 0.5rem;
     content: "";

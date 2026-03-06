@@ -1,0 +1,33 @@
+{{ attach_library('surface/event-item') }}
+<div class="event-item{{ modifier ? ' ' ~ modifier }}{{- attributes ? ' ' ~ attributes.class -}}" {{- attributes ? attributes|without(class) -}}>
+
+  {% include "@elements/date-badge/date-badge.twig" with {
+    month: month,
+    day: day,
+    modifier: 'date-badge--event'
+  } only %}
+
+  <div class="event-item__details">
+    {% if title %}
+      <h4 class="event-item__title">{{ title }}</h4>
+    {% endif %}
+    {% if body %}
+      <p class="event-item__body">{{ body }}</p>
+    {% endif %}
+    {% if meta %}
+      <p class="event-item__meta">{{ meta }}</p>
+    {% endif %}
+    {% if signup %}
+      <div class="event-item__signup">
+        <input
+          type="email"
+          class="event-item__email"
+          placeholder="{{ signup.placeholder|default('your@email.com') }}"
+          aria-label="Email address"
+        />
+        <button class="event-item__btn">{{ signup.label|default('Notify Me') }}</button>
+      </div>
+    {% endif %}
+  </div>
+
+</div>

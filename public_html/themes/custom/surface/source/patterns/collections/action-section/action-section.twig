@@ -1,8 +1,9 @@
 {{ attach_library('surface/action-section') }}
 
 {% embed "@layouts/section/section.twig" with {
-  section_class: 'action-section',
+  section_class: 'action-section section-theme--bold',
   inner_class: 'action-section__inner',
+  'id': id,
   attributes: attributes,
   modifier: modifier
 } %}
@@ -40,6 +41,28 @@
       </div>
     {% endif %}
 
+
+    {% if events %}
+      <div class="action-section__events">
+        <p class="action-section__events-label">
+          {% include "@elements/section-label/section-label.twig" with {
+            text: events.label|default('Upcoming Events'),
+            modifier: 'light',
+          } only %}
+        </p>
+        {% for event in events.items %}
+          {% include "@components/event-item/event-item.twig" with {
+            month: event.month,
+            day: event.day,
+            title: event.title,
+            body: event.body,
+            meta: event.meta,
+            signup: event.signup
+          } only %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
     {# ── Legislator Contact Component ─────────────────────────────────── #}
 {#    {% include "@collections/legislator-contact/legislator-contact.twig" with {#}
 {#      civic_api_key: civic_api_key,#}
@@ -60,21 +83,21 @@
           <div class="action-section__tab-content">
             {% for tab in toolkit.tabs %}
               <div id="tab-{{ tab.id }}" class="action-section__tab-panel{{ loop.first ? ' active' : '' }}">
-                <div class="action-section__toolkit-grid">
-                  {% for item in tab.items %}
-                    {% if tab.id == 'legislator' %}
-                      {% include "@collections/legislator-contact/legislator-contact.twig" with {
-                        civic_api_key: civic_api_key,
-                      } only %}
-                    {% else %}
+                {% if tab.id == 'legislator' %}
+                  {% include "@collections/legislator-contact/legislator-contact.twig" with {
+                    civic_api_key: civic_api_key,
+                  } only %}
+                {% else %}
+                  <div class="action-section__toolkit-grid">
+                    {% for item in tab.items %}
                       <div class="action-section__toolkit-card">
                         <h5>{{ item.title }}</h5>
                         <p id="text-{{ item.id }}">{{ item.content }}</p>
                         <button class="action-section__copy-btn" onclick="copyText('text-{{ item.id }}')">Copy Text</button>
                       </div>
-                    {% endif %}
-                  {% endfor %}
-                </div>
+                    {% endfor %}
+                  </div>
+                {% endif %}
               </div>
             {% endfor %}
           </div>

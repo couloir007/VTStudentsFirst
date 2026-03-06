@@ -1,0 +1,22 @@
+{#
+/**
+ * @file scroll-top.twig
+ *
+ * Scroll to top button. Appears after scrolling past a threshold.
+ *
+ * Variables:
+ *   - label: Button label (default: "Back to top")
+ */
+#}
+{{ attach_library('surface/scroll-top') }}
+<button
+  class="scroll-top"
+  type="button"
+  aria-label="{{ label|default('Back to top') }}"
+  hidden
+>
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+  <span class="scroll-top__label">{{ label|default('Back to top') }}</span>
+</button>

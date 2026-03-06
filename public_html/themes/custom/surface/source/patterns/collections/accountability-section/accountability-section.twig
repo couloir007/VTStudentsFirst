@@ -1,8 +1,9 @@
 {{ attach_library('surface/accountability-section') }}
 
 {% embed "@layouts/section/section.twig" with {
-  section_class: 'accountability-section',
+  section_class: 'accountability-section section-theme--light',
   inner_class: 'accountability-section__inner',
+  'id': id,
   attributes: attributes,
   modifier: modifier
 } %}

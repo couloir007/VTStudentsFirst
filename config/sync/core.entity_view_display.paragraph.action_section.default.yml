@@ -3,13 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.action_section.field_section_label
-    - field.field.paragraph.action_section.field_section_headline
     - field.field.paragraph.action_section.field_intro_text
+    - field.field.paragraph.action_section.field_section_headline
+    - field.field.paragraph.action_section.field_section_label
+    - field.field.paragraph.action_section.field_section_url
     - field.field.paragraph.action_section.field_steps
     - paragraphs.paragraphs_type.action_section
-  module:
-    - paragraphs
 id: paragraph.action_section.default
 targetEntityType: paragraph
 bundle: action_section
@@ -20,6 +19,7 @@ hidden:
   field_intro_text: true
   field_section_headline: true
   field_section_label: true
+  field_section_url: true
   field_steps: true
   status: true
   uid: true

@@ -1,35 +1,45 @@
+import React from 'react';
 import template from './section-headline.twig';
 import './section-headline.css';
 
 export default {
   title: 'Elements/Section Headline',
-};
-
-export const Default = {
-  render: (args) => template(args),
-  args: {
-    text: 'Our <em>Position</em>',
-  },
-};
-
-export const Light = {
-  render: (args) => template(args),
-  args: {
-    text: 'The <em>Stakes</em> for Vermont Families',
-    modifier: 'light',
-  },
   parameters: {
-    backgrounds: { default: 'dark' },
+    layout: 'centered',
+  },
+  argTypes: {
+    text: { control: 'text' },
+    modifier: {
+      control: { type: 'select' },
+      options: [null, 'light', 'white'],
+    },
+    class: { control: 'text' },
   },
 };
 
-export const White = {
-  render: (args) => template(args),
-  args: {
-    text: 'Take <em>Action</em> Today',
-    modifier: 'white',
-  },
-  parameters: {
-    backgrounds: { default: 'dark' },
-  },
+const Template = (args) => {
+  return <div dangerouslySetInnerHTML={{ __html: template(args) }} />;
+};
+
+export const Default = Template.bind({});
+Default.args = {
+  text: 'Our <em>Position</em>',
+};
+
+export const Light = Template.bind({});
+Light.args = {
+  text: 'The <em>Stakes</em> for Vermont Families',
+  modifier: 'light',
+};
+Light.parameters = {
+  backgrounds: { default: 'dark' },
+};
+
+export const White = Template.bind({});
+White.args = {
+  text: 'Take <em>Action</em> Today',
+  modifier: 'white',
+};
+White.parameters = {
+  backgrounds: { default: 'dark' },
 };

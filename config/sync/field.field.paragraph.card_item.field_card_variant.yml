@@ -10,7 +10,7 @@ field_name: field_card_variant
 entity_type: paragraph
 bundle: card_item
 label: Variant
-description: ''
+description: Issues
 required: false
 translatable: false
 default_value: {  }
