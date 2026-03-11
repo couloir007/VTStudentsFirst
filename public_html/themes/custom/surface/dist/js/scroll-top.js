@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{const o=document.querySelector(".scroll-top");if(!o)return;const n=400,e=()=>{const t=window.scrollY>n;o.classList.toggle("scroll-top--visible",t),o.hidden=!t};o.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})}),window.addEventListener("scroll",e,{passive:!0}),e()});
