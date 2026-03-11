@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.field_editorial
     - field.field.node.page.field_metatag
+    - field.field.node.page.field_sections
     - field.field.node.page.schema_about
     - field.field.node.page.schema_has_part
     - field.field.node.page.schema_image
@@ -41,6 +42,7 @@ content:
 hidden:
   field_editorial: true
   field_metatag: true
+  field_sections: true
   langcode: true
   schema_about: true
   schema_has_part: true

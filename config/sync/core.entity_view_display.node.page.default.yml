@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.field_editorial
     - field.field.node.page.field_metatag
+    - field.field.node.page.field_sections
     - field.field.node.page.schema_about
     - field.field.node.page.schema_has_part
     - field.field.node.page.schema_image
@@ -24,6 +25,15 @@ targetEntityType: node
 bundle: page
 mode: default
 content:
+  field_sections:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 98
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }

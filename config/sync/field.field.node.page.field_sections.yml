@@ -1,0 +1,61 @@
+uuid: ec6b2163-6007-4bd0-afd0-2be87ff5f5e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_sections
+    - node.type.page
+    - paragraphs.paragraphs_type.accountability_section
+    - paragraphs.paragraphs_type.action_section
+    - paragraphs.paragraphs_type.hero_section
+    - paragraphs.paragraphs_type.myth_section
+    - paragraphs.paragraphs_type.positions_section
+    - paragraphs.paragraphs_type.stakes_section
+    - paragraphs.paragraphs_type.voices_section
+  module:
+    - entity_reference_revisions
+id: node.page.field_sections
+field_name: field_sections
+entity_type: node
+bundle: page
+label: Sections
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      accountability_section: accountability_section
+      action_section: action_section
+      hero_section: hero_section
+      myth_section: myth_section
+      positions_section: positions_section
+      stakes_section: stakes_section
+      voices_section: voices_section
+    negate: 0
+    target_bundles_drag_drop:
+      accountability_section:
+        weight: 0
+        enabled: true
+      action_section:
+        weight: 1
+        enabled: true
+      hero_section:
+        weight: 2
+        enabled: true
+      myth_section:
+        weight: 3
+        enabled: true
+      positions_section:
+        weight: 4
+        enabled: true
+      stakes_section:
+        weight: 5
+        enabled: true
+      voices_section:
+        weight: 6
+        enabled: true
+field_type: entity_reference_revisions

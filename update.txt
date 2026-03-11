@@ -4,3 +4,8 @@ PHP OPcode caching
 
 
 lando composer update "drupal/core-*" -W
+
+
+../vendor/drush/drush/drush --uri=vtchoice.org sql:dump --result-file=../vtchoice-db.sql
+
+lando drush sql:cli < vtchoice-db.sql
