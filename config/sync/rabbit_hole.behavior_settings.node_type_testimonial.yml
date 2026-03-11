@@ -1,0 +1,14 @@
+uuid: c5492c79-93d0-435f-b76d-4675a6979154
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.testimonial
+id: node_type_testimonial
+entity_type_id: node_type
+entity_id: testimonial
+action: page_not_found
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

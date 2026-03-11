@@ -97,12 +97,14 @@ module:
   pgsql: 0
   queue_ui: 0
   r4032login: 0
+  rabbit_hole: 0
   ray_debugger: 0
   ray_debugger_js: 0
   ray_debugger_twig: 0
   recaptcha: 0
   redirect: 0
   rest: 0
+  rh_node: 0
   scheduler: 0
   schema_article: 0
   schema_event: 0

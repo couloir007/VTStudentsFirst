@@ -6,7 +6,6 @@ dependencies:
     - field.storage.node.schema_has_part
     - node.type.legislation
     - node.type.page
-    - node.type.testimonial
     - node.type.web_site
   module:
     - epp
@@ -34,6 +33,5 @@ settings:
     target_bundles:
       legislation: legislation
       page: page
-      testimonial: testimonial
       web_site: web_site
 field_type: entity_reference
