@@ -51,7 +51,7 @@ public_html/sites/*/settings.php
 # Ignore paths that contain user-generated content.
 public_html/sites/*/files
 public_html/sites/*/private
-/private
+private
 
 # Ignore SimpleTest multi-site environment.
 public_html/sites/simpletest
