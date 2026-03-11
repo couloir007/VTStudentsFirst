@@ -1,4 +1,4 @@
-uuid: 3e053eae-6ddb-4bd1-b4fb-26a398cddf09
+uuid: 213b31af-0f07-4696-abf6-5397c92255f5
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.testimonial.field_editorial
     - field.field.node.testimonial.field_metatag
     - field.field.node.testimonial.schema_about
+    - field.field.node.testimonial.schema_creator
     - field.field.node.testimonial.schema_image
     - field.field.node.testimonial.schema_related_link
     - field.field.node.testimonial.schema_significant_link
@@ -28,6 +29,15 @@ third_party_settings:
       parent_name: ''
       region: content
       weight: 22
+      format_type: fieldset
+      format_settings: {  }
+    group_relationships:
+      children:
+        - schema_creator
+      label: Relationships
+      parent_name: ''
+      region: content
+      weight: 23
       format_type: fieldset
       format_settings: {  }
     group_general:
@@ -79,7 +89,7 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 23
+    weight: 24
     region: content
   links:
     settings: {  }
@@ -93,6 +103,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 0
+    region: content
+  schema_creator:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 22
     region: content
   schema_image:
     type: entity_reference_entity_view

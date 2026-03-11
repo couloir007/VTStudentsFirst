@@ -1,0 +1,20 @@
+uuid: 72bb2f59-b7c7-466b-8a70-044df3b174d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.voices_section.field_section_label
+    - field.field.paragraph.voices_section.field_testimonials
+    - field.field.paragraph.voices_section.schema_description
+    - paragraphs.paragraphs_type.voices_section
+  module:
+    - paragraphs
+id: paragraph.voices_section
+target_entity_type_id: paragraph
+target_bundle: voices_section
+schema_type: ItemList
+schema_properties:
+  schema_description: description
+  field_testimonials: itemListElement
+  field_section_label: name
+additional_mappings: {  }

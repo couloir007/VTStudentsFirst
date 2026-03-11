@@ -4,14 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.schema_subject_of
-    - node.type.edu_organization
     - node.type.event
-    - node.type.legislation
-    - node.type.local_business
-    - node.type.organization
-    - node.type.page
-    - node.type.person
-    - node.type.place
     - node.type.testimonial
     - node.type.web_site
   module:
@@ -34,19 +27,11 @@ settings:
   handler_settings:
     target_type: node
     schema_types:
-      CreativeWork: CreativeWork
+      CreativeWork: Quotation
       Event: Event
     excluded_schema_types: {  }
     ignore_additional_mappings: false
     target_bundles:
-      edu_organization: edu_organization
       event: event
-      legislation: legislation
-      local_business: local_business
-      organization: organization
-      page: page
-      person: person
-      place: place
       testimonial: testimonial
-      web_site: web_site
 field_type: entity_reference

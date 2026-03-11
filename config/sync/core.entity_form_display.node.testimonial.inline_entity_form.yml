@@ -1,4 +1,4 @@
-uuid: 74b29112-fa68-4111-b534-1e8259f20593
+uuid: fb11c819-bf94-491a-8cb6-69ce2bbc64e3
 langcode: en
 status: true
 dependencies:
@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.testimonial.field_editorial
     - field.field.node.testimonial.field_metatag
     - field.field.node.testimonial.schema_about
+    - field.field.node.testimonial.schema_creator
     - field.field.node.testimonial.schema_image
     - field.field.node.testimonial.schema_related_link
     - field.field.node.testimonial.schema_significant_link
@@ -100,6 +101,7 @@ hidden:
   publish_on: true
   scheduler_settings: true
   schema_about: true
+  schema_creator: true
   schema_image: true
   schema_related_link: true
   schema_significant_link: true

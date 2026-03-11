@@ -1,4 +1,4 @@
-uuid: 17b4708f-d2c9-47f3-beb7-b162e20ce458
+uuid: 24cea807-6db2-4f56-bc7e-2dc96dc32407
 langcode: en
 status: true
 dependencies:
@@ -14,7 +14,7 @@ required: false
 translatable: false
 default_value:
   -
-    value: 0
+    value: 1
 default_value_callback: ''
 settings:
   on_label: 'On'

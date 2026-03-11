@@ -6,8 +6,6 @@ dependencies:
     - field.storage.paragraph.field_testimonials
     - node.type.testimonial
     - paragraphs.paragraphs_type.voices_section
-  module:
-    - node
 id: paragraph.voices_section.field_testimonials
 field_name: field_testimonials
 entity_type: paragraph
@@ -25,6 +23,7 @@ settings:
       testimonial: testimonial
     sort:
       field: _none
+      direction: ASC
     auto_create: false
     auto_create_bundle: ''
 field_type: entity_reference

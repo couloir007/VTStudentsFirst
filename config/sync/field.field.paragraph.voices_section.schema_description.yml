@@ -1,0 +1,24 @@
+uuid: a5b9a829-dd34-4e9f-aaaa-cb5030e61e86
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.schema_description
+    - filter.format.basic_html
+    - paragraphs.paragraphs_type.voices_section
+  module:
+    - text
+id: paragraph.voices_section.schema_description
+field_name: schema_description
+entity_type: paragraph
+bundle: voices_section
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+field_type: text_long

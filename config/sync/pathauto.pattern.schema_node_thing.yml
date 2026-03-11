@@ -29,6 +29,7 @@ selection_criteria:
       page: page
       person: person
       place: place
+      quotation: quotation
       testimonial: testimonial
       video_gallery: video_gallery
       web_site: web_site

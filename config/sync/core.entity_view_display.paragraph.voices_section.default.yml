@@ -8,25 +8,61 @@ dependencies:
     - field.field.paragraph.voices_section.field_section_label
     - field.field.paragraph.voices_section.field_section_url
     - field.field.paragraph.voices_section.field_testimonials
+    - field.field.paragraph.voices_section.schema_description
     - paragraphs.paragraphs_type.voices_section
+  module:
+    - text
 id: paragraph.voices_section.default
 targetEntityType: paragraph
 bundle: voices_section
 mode: default
 content:
+  field_intro_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_section_headline:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_section_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
   field_section_url:
     type: string
-    label: above
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
     weight: 0
     region: content
+  field_testimonials:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  schema_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 17
+    region: content
 hidden:
   created: true
-  field_intro_text: true
-  field_section_headline: true
-  field_section_label: true
-  field_testimonials: true
   status: true
   uid: true

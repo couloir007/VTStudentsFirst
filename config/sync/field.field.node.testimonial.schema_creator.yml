@@ -1,29 +1,20 @@
-uuid: 9c46959a-ec99-4f88-b853-bcb943b39745
+uuid: 25726afe-ff6f-4e60-9803-ac233acd8799
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.schema_about
-    - node.type.edu_organization
-    - node.type.event
-    - node.type.legislation
-    - node.type.local_business
-    - node.type.organization
-    - node.type.page
-    - node.type.person
-    - node.type.place
+    - field.storage.node.schema_creator
     - node.type.testimonial
-    - node.type.web_site
   module:
     - epp
 third_party_settings:
   epp:
-    value: 'target_id: [current-page:query:about]'
-id: node.testimonial.schema_about
-field_name: schema_about
+    value: 'target_id: [current-page:query:creator]'
+id: node.testimonial.schema_creator
+field_name: schema_creator
 entity_type: node
 bundle: testimonial
-label: About
+label: Creator
 description: ''
 required: false
 translatable: false
@@ -34,18 +25,13 @@ settings:
   handler_settings:
     target_type: node
     schema_types:
-      Thing: Thing
+      Organization: Organization
+      Person: Person
     excluded_schema_types: {  }
     ignore_additional_mappings: false
     target_bundles:
       edu_organization: edu_organization
-      event: event
-      legislation: legislation
       local_business: local_business
       organization: organization
-      page: page
       person: person
-      place: place
-      testimonial: testimonial
-      web_site: web_site
 field_type: entity_reference

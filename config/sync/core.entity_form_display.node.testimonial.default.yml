@@ -1,4 +1,4 @@
-uuid: 4733a751-fadd-41b0-996b-f031f2677888
+uuid: 79f18c8f-c2cc-4ae4-86fc-9e80da268c08
 langcode: en
 status: true
 dependencies:
@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.testimonial.field_editorial
     - field.field.node.testimonial.field_metatag
     - field.field.node.testimonial.schema_about
+    - field.field.node.testimonial.schema_creator
     - field.field.node.testimonial.schema_image
     - field.field.node.testimonial.schema_related_link
     - field.field.node.testimonial.schema_significant_link
@@ -34,12 +35,23 @@ third_party_settings:
       format_settings:
         open: true
         description: ''
+    group_relationships:
+      children:
+        - schema_creator
+      label: Relationships
+      region: content
+      parent_name: ''
+      weight: 23
+      format_type: details
+      format_settings:
+        open: true
+        description: ''
     group_general:
       children:
         - title
         - body
         - schema_image
-      label: 'Quote & Attribution'
+      label: General
       region: content
       parent_name: ''
       weight: -20
@@ -137,6 +149,16 @@ content:
   schema_about:
     type: entity_reference_autocomplete
     weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_creator:
+    type: entity_reference_autocomplete
+    weight: 22
     region: content
     settings:
       match_operator: CONTAINS

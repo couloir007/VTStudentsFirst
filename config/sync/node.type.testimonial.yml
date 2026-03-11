@@ -1,4 +1,4 @@
-uuid: dd3aa2e4-fd4d-47c2-abad-575a552d5b99
+uuid: 44a0a550-d176-4128-85ee-f0966af85ab0
 langcode: en
 status: true
 dependencies:
@@ -15,7 +15,7 @@ third_party_settings:
     type_thumbnail: ''
     type_icon: /modules/contrib/schemadotorg/modules/schemadotorg_type_tray/images/schemadotorg_type_tray/icon/creative_work.png
     type_description: ''
-    existing_nodes_link_text: 'View existing <em class="placeholder">Testimonial</em> content'
+    existing_nodes_link_text: 'View existing <em class="placeholder">Quotation</em> content'
     type_weight: 0
   scheduler:
     expand_fieldset: when_required
@@ -34,6 +34,6 @@ name: Testimonial
 type: testimonial
 description: null
 help: null
-new_revision: false
+new_revision: true
 preview_mode: 1
 display_submitted: false
