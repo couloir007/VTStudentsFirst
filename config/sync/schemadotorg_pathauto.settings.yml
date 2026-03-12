@@ -25,7 +25,7 @@ base_paths:
   MedicalTest: medical/tests
   MedicalEntity: medical
   WebPage: pages
-  Article: articles
+  Article: news
   BlogPosting: blog
   Blog: blogs
   Organization: organizations

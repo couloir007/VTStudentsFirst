@@ -1,0 +1,19 @@
+uuid: ea448bcc-e8e2-473b-97ba-45a569e994b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_citation
+    - node.type.article
+id: node.article.schema_citation
+field_name: schema_citation
+entity_type: node
+bundle: article
+label: 'Pull quote'
+description: 'A highlighted quote displayed prominently within the article.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

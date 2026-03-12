@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.schema_has_part
+    - node.type.article
     - node.type.legislation
     - node.type.page
     - node.type.testimonial
@@ -32,6 +33,7 @@ settings:
     excluded_schema_types: {  }
     ignore_additional_mappings: true
     target_bundles:
+      article: article
       legislation: legislation
       page: page
       testimonial: testimonial

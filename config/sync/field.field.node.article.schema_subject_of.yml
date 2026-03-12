@@ -1,24 +1,30 @@
-uuid: 20217de4-a5d4-4f46-8e98-4d93c0a49aac
+uuid: 3e6776c5-0faf-42bf-b02b-30f2e23ccf61
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.schema_is_part_of
+    - field.storage.node.schema_subject_of
     - node.type.article
+    - node.type.edu_organization
+    - node.type.event
     - node.type.legislation
+    - node.type.local_business
+    - node.type.organization
     - node.type.page
+    - node.type.person
+    - node.type.place
     - node.type.testimonial
     - node.type.web_site
   module:
     - epp
 third_party_settings:
   epp:
-    value: 'target_id: [current-page:query:is_part_of]'
-id: node.page.schema_is_part_of
-field_name: schema_is_part_of
+    value: 'target_id: [current-page:query:subject_of]'
+id: node.article.schema_subject_of
+field_name: schema_subject_of
 entity_type: node
-bundle: page
-label: 'Is part of'
+bundle: article
+label: 'Subject of'
 description: ''
 required: false
 translatable: false
@@ -30,12 +36,19 @@ settings:
     target_type: node
     schema_types:
       CreativeWork: CreativeWork
+      Event: Event
     excluded_schema_types: {  }
-    ignore_additional_mappings: true
+    ignore_additional_mappings: false
     target_bundles:
       article: article
+      edu_organization: edu_organization
+      event: event
       legislation: legislation
+      local_business: local_business
+      organization: organization
       page: page
+      person: person
+      place: place
       testimonial: testimonial
       web_site: web_site
 field_type: entity_reference
