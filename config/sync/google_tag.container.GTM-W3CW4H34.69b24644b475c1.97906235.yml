@@ -1,0 +1,33 @@
+uuid: d938ca54-cbff-4a02-a902-f3065b787b35
+langcode: en
+status: true
+dependencies: {  }
+id: GTM-W3CW4H34.69b24644b475c1.97906235
+label: GTM-W3CW4H34
+weight: 0
+tag_container_ids:
+  - GTM-W3CW4H34
+advanced_settings:
+  consent_mode: false
+  gtm:
+    GTM-W3CW4H34:
+      data_layer: dataLayer
+      include_classes: false
+      allowlist_classes: ''
+      blocklist_classes: ''
+      include_environment: false
+      environment_id: ''
+      environment_token: ''
+dimensions_metrics: {  }
+conditions: {  }
+events:
+  custom: {  }
+  generate_lead:
+    value: ''
+    currency: ''
+  search: {  }
+  login:
+    method: CMS
+  webform_purchase: {  }
+  sign_up:
+    method: CMS

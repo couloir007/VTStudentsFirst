@@ -9,7 +9,6 @@ dependencies:
     - field.field.node.page.schema_has_part
     - field.field.node.page.schema_image
     - field.field.node.page.schema_is_part_of
-    - field.field.node.page.schema_main_entity
     - field.field.node.page.schema_related_link
     - field.field.node.page.schema_significant_link
     - field.field.node.page.schema_subject_of
@@ -29,7 +28,6 @@ schema_properties:
   schema_has_part: hasPart
   langcode: inLanguage
   schema_is_part_of: isPartOf
-  schema_main_entity: mainEntity
   field_sections: mainEntityOfPage
   title: name
   schema_image: primaryImageOfPage

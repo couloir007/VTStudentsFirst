@@ -8,6 +8,7 @@ dependencies:
     - paragraphs.paragraphs_type.accountability_section
     - paragraphs.paragraphs_type.action_section
     - paragraphs.paragraphs_type.hero_section
+    - paragraphs.paragraphs_type.issue_section
     - paragraphs.paragraphs_type.myth_section
     - paragraphs.paragraphs_type.positions_section
     - paragraphs.paragraphs_type.stakes_section
@@ -35,6 +36,7 @@ settings:
       positions_section: positions_section
       stakes_section: stakes_section
       voices_section: voices_section
+      issue_section: issue_section
     negate: 0
     target_bundles_drag_drop:
       accountability_section:
@@ -45,6 +47,9 @@ settings:
         enabled: true
       hero_section:
         weight: 2
+        enabled: true
+      issue_section:
+        weight: 7
         enabled: true
       myth_section:
         weight: 3
