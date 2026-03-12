@@ -1,0 +1,24 @@
+uuid: 8253fea2-5720-443c-80da-d4b4d1a01bd2
+langcode: en
+status: true
+dependencies: {  }
+id: GTM-W3CW4H34.69b26f14211bd0.34303697
+label: GTM-W3CW4H34
+weight: 0
+tag_container_ids:
+  - GTM-W3CW4H34
+advanced_settings:
+  consent_mode: false
+dimensions_metrics: {  }
+conditions: {  }
+events:
+  custom: {  }
+  generate_lead:
+    value: ''
+    currency: ''
+  search: {  }
+  login:
+    method: CMS
+  webform_purchase: {  }
+  sign_up:
+    method: CMS

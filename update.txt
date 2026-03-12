@@ -21,7 +21,7 @@ lando ssh -s database -c "pg_dump -h us17.acugis-dns.com -U roundybr -d roundybr
 
 
 Export
-lando ssh -s database -c "pg_dump -U postgres -d drupal --format=p" > backup_postgres.sql
+lando ssh -s database -c "pg_dump -U postgres -d drupal --no-owner --no-privileges --format=p" > backup_postgres.sql
 
 Import
 lando db-import production_dump.sql
