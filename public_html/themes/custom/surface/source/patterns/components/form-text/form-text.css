@@ -22,7 +22,7 @@ textarea {
   background-color: var(--white);
   border-radius: var(--radius-2);
   border-width: 1px;
-  color: var(--gray-800);
+  color: var(--black);
   max-inline-size: 100%;
   min-height: var(--size-12);
   padding-inline: var(--size-4);
@@ -76,7 +76,7 @@ textarea {
 
 input::file-selector-button {
   align-items: center;
-  background-color: var(--gray-800);
+  background-color: var(--black);
   border-bottom-left-radius: var(--radius-2);
   border-top-left-radius: var(--radius-2);
   border-width: 1px;

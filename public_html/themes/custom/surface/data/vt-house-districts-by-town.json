@@ -1,0 +1,1026 @@
+{
+  "Addison": {
+    "houseDistrict": "Addison-2",
+    "senateDistrict": "Addison"
+  },
+  "Bridport": {
+    "houseDistrict": "Addison-2",
+    "senateDistrict": "Addison"
+  },
+  "Bristol": {
+    "houseDistrict": "Addison-4",
+    "senateDistrict": "Addison"
+  },
+  "Cornwall": {
+    "houseDistrict": "Addison-1",
+    "senateDistrict": "Addison"
+  },
+  "Ferrisburgh": {
+    "houseDistrict": "Addison-3",
+    "senateDistrict": "Addison"
+  },
+  "Goshen": {
+    "houseDistrict": "Addison-5",
+    "senateDistrict": "Addison"
+  },
+  "Granville": {
+    "houseDistrict": "Addison-5",
+    "senateDistrict": "Addison"
+  },
+  "Hancock": {
+    "houseDistrict": "Addison-5",
+    "senateDistrict": "Addison"
+  },
+  "Hubbardton": {
+    "houseDistrict": "Addison-Rutland",
+    "senateDistrict": "Addison"
+  },
+  "Leicester": {
+    "houseDistrict": "Addison-5",
+    "senateDistrict": "Addison"
+  },
+  "Lincoln": {
+    "houseDistrict": "Addison-4",
+    "senateDistrict": "Addison"
+  },
+  "Middlebury": {
+    "houseDistrict": "Addison-1",
+    "senateDistrict": "Addison"
+  },
+  "Monkton": {
+    "houseDistrict": "Addison-3",
+    "senateDistrict": "Addison"
+  },
+  "New Haven": {
+    "houseDistrict": "Addison-4",
+    "senateDistrict": "Addison"
+  },
+  "Orwell": {
+    "houseDistrict": "Addison-2",
+    "senateDistrict": "Addison"
+  },
+  "Panton": {
+    "houseDistrict": "Addison-2",
+    "senateDistrict": "Addison"
+  },
+  "Ripton": {
+    "houseDistrict": "Addison-1",
+    "senateDistrict": "Addison"
+  },
+  "Salisbury": {
+    "houseDistrict": "Addison-1",
+    "senateDistrict": "Addison"
+  },
+  "Shoreham": {
+    "houseDistrict": "Addison-2",
+    "senateDistrict": "Addison"
+  },
+  "Starksboro": {
+    "houseDistrict": "Addison-4",
+    "senateDistrict": "Addison"
+  },
+  "Vergennes": {
+    "houseDistrict": "Addison-3",
+    "senateDistrict": "Addison"
+  },
+  "Waltham": {
+    "houseDistrict": "Addison-3",
+    "senateDistrict": "Addison"
+  },
+  "Weybridge": {
+    "houseDistrict": "Addison-1",
+    "senateDistrict": "Addison"
+  },
+  "Whiting": {
+    "houseDistrict": "Addison-2",
+    "senateDistrict": "Addison"
+  },
+  "Arlington": {
+    "houseDistrict": "Bennington-Rutland",
+    "senateDistrict": "Bennington"
+  },
+  "Bennington": {
+    "houseDistrict": "Bennington-1",
+    "senateDistrict": "Bennington"
+  },
+  "Dorset": {
+    "houseDistrict": "Bennington-3",
+    "senateDistrict": "Bennington"
+  },
+  "Glastenbury": {
+    "houseDistrict": "Bennington-2",
+    "senateDistrict": "Bennington"
+  },
+  "Landgrove": {
+    "houseDistrict": "Bennington-4",
+    "senateDistrict": "Bennington"
+  },
+  "Manchester": {
+    "houseDistrict": "Bennington-3",
+    "senateDistrict": "Bennington"
+  },
+  "Pawlet": {
+    "houseDistrict": "Rutland-Bennington",
+    "senateDistrict": "Rutland"
+  },
+  "Peru": {
+    "houseDistrict": "Bennington-4",
+    "senateDistrict": "Bennington"
+  },
+  "Pownal": {
+    "houseDistrict": "Bennington-2",
+    "senateDistrict": "Bennington"
+  },
+  "Readsboro": {
+    "houseDistrict": "Bennington-5",
+    "senateDistrict": "Bennington"
+  },
+  "Rupert": {
+    "houseDistrict": "Bennington-Rutland",
+    "senateDistrict": "Bennington"
+  },
+  "Sandgate": {
+    "houseDistrict": "Bennington-Rutland",
+    "senateDistrict": "Bennington"
+  },
+  "Searsburg": {
+    "houseDistrict": "Bennington-5",
+    "senateDistrict": "Bennington"
+  },
+  "Shaftsbury": {
+    "houseDistrict": "Bennington-2",
+    "senateDistrict": "Bennington"
+  },
+  "Somerset": {
+    "houseDistrict": "Bennington-5",
+    "senateDistrict": "Bennington"
+  },
+  "Stamford": {
+    "houseDistrict": "Bennington-5",
+    "senateDistrict": "Bennington"
+  },
+  "Sunderland": {
+    "houseDistrict": "Bennington-3",
+    "senateDistrict": "Bennington"
+  },
+  "Winhall": {
+    "houseDistrict": "Bennington-4",
+    "senateDistrict": "Bennington"
+  },
+  "Woodford": {
+    "houseDistrict": "Bennington-2",
+    "senateDistrict": "Bennington"
+  },
+  "Barnet": {
+    "houseDistrict": "Caledonia-Washington",
+    "senateDistrict": "Caledonia"
+  },
+  "Burke": {
+    "houseDistrict": "Caledonia-Essex",
+    "senateDistrict": "Caledonia"
+  },
+  "Cabot": {
+    "houseDistrict": "Caledonia-Washington",
+    "senateDistrict": "Caledonia"
+  },
+  "Danville": {
+    "houseDistrict": "Caledonia-3",
+    "senateDistrict": "Caledonia"
+  },
+  "Groton": {
+    "houseDistrict": "Caledonia-Washington",
+    "senateDistrict": "Caledonia"
+  },
+  "Hardwick": {
+    "houseDistrict": "Caledonia-1",
+    "senateDistrict": "Caledonia"
+  },
+  "Kirby": {
+    "houseDistrict": "Caledonia-Essex",
+    "senateDistrict": "Caledonia"
+  },
+  "Lyndon": {
+    "houseDistrict": "Caledonia-2",
+    "senateDistrict": "Caledonia"
+  },
+  "Newark": {
+    "houseDistrict": "Caledonia-Essex",
+    "senateDistrict": "Caledonia"
+  },
+  "Peacham": {
+    "houseDistrict": "Caledonia-3",
+    "senateDistrict": "Caledonia"
+  },
+  "Ryegate": {
+    "houseDistrict": "Caledonia-Washington",
+    "senateDistrict": "Caledonia"
+  },
+  "Sheffield": {
+    "houseDistrict": "Caledonia-1",
+    "senateDistrict": "Caledonia"
+  },
+  "St. Johnsbury": {
+    "houseDistrict": "Caledonia-3",
+    "senateDistrict": "Caledonia"
+  },
+  "Stannard": {
+    "houseDistrict": "Caledonia-1",
+    "senateDistrict": "Caledonia"
+  },
+  "Sutton": {
+    "houseDistrict": "Caledonia-1",
+    "senateDistrict": "Caledonia"
+  },
+  "Walden": {
+    "houseDistrict": "Caledonia-1",
+    "senateDistrict": "Caledonia"
+  },
+  "Waterford": {
+    "houseDistrict": "Caledonia-3",
+    "senateDistrict": "Caledonia"
+  },
+  "Wheelock": {
+    "houseDistrict": "Caledonia-3",
+    "senateDistrict": "Caledonia"
+  },
+  "Bolton": {
+    "houseDistrict": "Chittenden-Franklin",
+    "senateDistrict": "Chittenden-North"
+  },
+  "Burlington": {
+    "houseDistrict": "Chittenden-13",
+    "senateDistrict": "Chittenden-Central"
+  },
+  "Charlotte": {
+    "houseDistrict": "Chittenden-1",
+    "senateDistrict": "Chittenden-Southeast"
+  },
+  "Colchester": {
+    "houseDistrict": "Chittenden-2",
+    "senateDistrict": "Chittenden-North"
+  },
+  "Essex": {
+    "houseDistrict": "Chittenden-3",
+    "senateDistrict": "Chittenden-North"
+  },
+  "Essex Junction": {
+    "houseDistrict": "Chittenden-3",
+    "senateDistrict": "Chittenden-North"
+  },
+  "Hinesburg": {
+    "houseDistrict": "Chittenden-8",
+    "senateDistrict": "Chittenden-Southeast"
+  },
+  "Huntington": {
+    "houseDistrict": "Chittenden-4",
+    "senateDistrict": "Chittenden-Southeast"
+  },
+  "Jericho": {
+    "houseDistrict": "Chittenden-Franklin",
+    "senateDistrict": "Chittenden-North"
+  },
+  "Milton": {
+    "houseDistrict": "Chittenden-Franklin",
+    "senateDistrict": "Chittenden-North"
+  },
+  "Richmond": {
+    "houseDistrict": "Chittenden-4",
+    "senateDistrict": "Chittenden-Southeast"
+  },
+  "Shelburne": {
+    "houseDistrict": "Chittenden-1",
+    "senateDistrict": "Chittenden-Southeast"
+  },
+  "South Burlington": {
+    "houseDistrict": "Chittenden-20",
+    "senateDistrict": "Chittenden-Southeast"
+  },
+  "St. George": {
+    "houseDistrict": "Chittenden-1",
+    "senateDistrict": "Chittenden-Southeast"
+  },
+  "Underhill": {
+    "houseDistrict": "Chittenden-Franklin",
+    "senateDistrict": "Chittenden-North"
+  },
+  "Westford": {
+    "houseDistrict": "Chittenden-Franklin",
+    "senateDistrict": "Chittenden-North"
+  },
+  "Williston": {
+    "houseDistrict": "Chittenden-9",
+    "senateDistrict": "Chittenden-Southeast"
+  },
+  "Winooski": {
+    "houseDistrict": "Chittenden-25",
+    "senateDistrict": "Chittenden-Central"
+  },
+  "Averill": {
+    "houseDistrict": "Essex-Caledonia",
+    "senateDistrict": "Essex"
+  },
+  "Avery's Gore": {
+    "houseDistrict": "Essex-Caledonia",
+    "senateDistrict": "Essex"
+  },
+  "Bloomfield": {
+    "houseDistrict": "Essex-Orleans",
+    "senateDistrict": "Essex"
+  },
+  "Brighton": {
+    "houseDistrict": "Essex-Orleans",
+    "senateDistrict": "Essex"
+  },
+  "Brunswick": {
+    "houseDistrict": "Essex-Orleans",
+    "senateDistrict": "Essex"
+  },
+  "Buel's Gore": {
+    "houseDistrict": "Essex-Caledonia",
+    "senateDistrict": "Essex"
+  },
+  "Canaan": {
+    "houseDistrict": "Essex-Orleans",
+    "senateDistrict": "Essex"
+  },
+  "Concord": {
+    "houseDistrict": "Essex-Caledonia",
+    "senateDistrict": "Essex"
+  },
+  "East Haven": {
+    "houseDistrict": "Essex-Caledonia",
+    "senateDistrict": "Essex"
+  },
+  "Ferdinand": {
+    "houseDistrict": "Essex-Caledonia",
+    "senateDistrict": "Essex"
+  },
+  "Granby": {
+    "houseDistrict": "Essex-Orleans",
+    "senateDistrict": "Essex"
+  },
+  "Guildhall": {
+    "houseDistrict": "Essex-Caledonia",
+    "senateDistrict": "Essex"
+  },
+  "Lemington": {
+    "houseDistrict": "Essex-Orleans",
+    "senateDistrict": "Essex"
+  },
+  "Lewis": {
+    "houseDistrict": "Essex-Caledonia",
+    "senateDistrict": "Essex"
+  },
+  "Lunenburg": {
+    "houseDistrict": "Essex-Caledonia",
+    "senateDistrict": "Essex"
+  },
+  "Maidstone": {
+    "houseDistrict": "Essex-Caledonia",
+    "senateDistrict": "Essex"
+  },
+  "Norton": {
+    "houseDistrict": "Essex-Orleans",
+    "senateDistrict": "Essex"
+  },
+  "Victory": {
+    "houseDistrict": "Essex-Caledonia",
+    "senateDistrict": "Essex"
+  },
+  "Warner's Grant": {
+    "houseDistrict": "Essex-Caledonia",
+    "senateDistrict": "Essex"
+  },
+  "Warren Gore": {
+    "houseDistrict": "Essex-Caledonia",
+    "senateDistrict": "Essex"
+  },
+  "Bakersfield": {
+    "houseDistrict": "Franklin-6",
+    "senateDistrict": "Franklin"
+  },
+  "Berkshire": {
+    "houseDistrict": "Franklin-6",
+    "senateDistrict": "Franklin"
+  },
+  "Enosburgh": {
+    "houseDistrict": "Franklin-7",
+    "senateDistrict": "Franklin"
+  },
+  "Fairfax": {
+    "houseDistrict": "Franklin-1",
+    "senateDistrict": "Franklin"
+  },
+  "Fairfield": {
+    "houseDistrict": "Franklin-8",
+    "senateDistrict": "Franklin"
+  },
+  "Fletcher": {
+    "houseDistrict": "Franklin-5",
+    "senateDistrict": "Franklin"
+  },
+  "Franklin": {
+    "houseDistrict": "Franklin-7",
+    "senateDistrict": "Franklin"
+  },
+  "Georgia": {
+    "houseDistrict": "Franklin-3",
+    "senateDistrict": "Franklin"
+  },
+  "Highgate": {
+    "houseDistrict": "Franklin-8",
+    "senateDistrict": "Franklin"
+  },
+  "Montgomery": {
+    "houseDistrict": "Franklin-6",
+    "senateDistrict": "Franklin"
+  },
+  "Richford": {
+    "houseDistrict": "Franklin-6",
+    "senateDistrict": "Franklin"
+  },
+  "Sheldon": {
+    "houseDistrict": "Franklin-5",
+    "senateDistrict": "Franklin"
+  },
+  "St. Albans City": {
+    "houseDistrict": "Franklin-2",
+    "senateDistrict": "Franklin"
+  },
+  "St. Albans Town": {
+    "houseDistrict": "Franklin-4",
+    "senateDistrict": "Franklin"
+  },
+  "Swanton": {
+    "houseDistrict": "Franklin-8",
+    "senateDistrict": "Franklin"
+  },
+  "Alburgh": {
+    "houseDistrict": "Grand Isle-Chittenden",
+    "senateDistrict": "Grand Isle"
+  },
+  "Grand Isle": {
+    "houseDistrict": "Grand Isle-Chittenden",
+    "senateDistrict": "Grand Isle"
+  },
+  "Isle La Motte": {
+    "houseDistrict": "Grand Isle-Chittenden",
+    "senateDistrict": "Grand Isle"
+  },
+  "North Hero": {
+    "houseDistrict": "Grand Isle-Chittenden",
+    "senateDistrict": "Grand Isle"
+  },
+  "South Hero": {
+    "houseDistrict": "Grand Isle-Chittenden",
+    "senateDistrict": "Grand Isle"
+  },
+  "Belvidere": {
+    "houseDistrict": "Lamoille-1",
+    "senateDistrict": "Orleans"
+  },
+  "Cambridge": {
+    "houseDistrict": "Orleans-Lamoille",
+    "senateDistrict": "Orleans"
+  },
+  "Eden": {
+    "houseDistrict": "Lamoille-1",
+    "senateDistrict": "Orleans"
+  },
+  "Elmore": {
+    "houseDistrict": "Lamoille-Washington",
+    "senateDistrict": "Washington"
+  },
+  "Hyde Park": {
+    "houseDistrict": "Lamoille-3",
+    "senateDistrict": "Orleans"
+  },
+  "Johnson": {
+    "houseDistrict": "Lamoille-1",
+    "senateDistrict": "Orleans"
+  },
+  "Morristown": {
+    "houseDistrict": "Lamoille-2",
+    "senateDistrict": "Orleans"
+  },
+  "Stowe": {
+    "houseDistrict": "Lamoille-3",
+    "senateDistrict": "Orleans"
+  },
+  "Waterville": {
+    "houseDistrict": "Lamoille-1",
+    "senateDistrict": "Orleans"
+  },
+  "Wolcott": {
+    "houseDistrict": "Lamoille-Washington",
+    "senateDistrict": "Washington"
+  },
+  "Bradford": {
+    "houseDistrict": "Orange-2",
+    "senateDistrict": "Orange"
+  },
+  "Braintree": {
+    "houseDistrict": "Washington-Orange",
+    "senateDistrict": "Orange"
+  },
+  "Brookfield": {
+    "houseDistrict": "Washington-Orange",
+    "senateDistrict": "Orange"
+  },
+  "Chelsea": {
+    "houseDistrict": "Orange-3",
+    "senateDistrict": "Orange"
+  },
+  "Corinth": {
+    "houseDistrict": "Orange-Caledonia",
+    "senateDistrict": "Orange"
+  },
+  "Fairlee": {
+    "houseDistrict": "Orange-2",
+    "senateDistrict": "Orange"
+  },
+  "Newbury": {
+    "houseDistrict": "Orange-2",
+    "senateDistrict": "Orange"
+  },
+  "Orange": {
+    "houseDistrict": "Washington-Orange",
+    "senateDistrict": "Orange"
+  },
+  "Randolph": {
+    "houseDistrict": "Orange-1",
+    "senateDistrict": "Orange"
+  },
+  "Strafford": {
+    "houseDistrict": "Orange-3",
+    "senateDistrict": "Orange"
+  },
+  "Thetford": {
+    "houseDistrict": "Orange-3",
+    "senateDistrict": "Orange"
+  },
+  "Topsham": {
+    "houseDistrict": "Orange-Caledonia",
+    "senateDistrict": "Orange"
+  },
+  "Tunbridge": {
+    "houseDistrict": "Orange-3",
+    "senateDistrict": "Orange"
+  },
+  "Vershire": {
+    "houseDistrict": "Orange-3",
+    "senateDistrict": "Orange"
+  },
+  "Washington": {
+    "houseDistrict": "Washington-Orange",
+    "senateDistrict": "Orange"
+  },
+  "West Fairlee": {
+    "houseDistrict": "Orange-2",
+    "senateDistrict": "Orange"
+  },
+  "Williamstown": {
+    "houseDistrict": "Orange-1",
+    "senateDistrict": "Orange"
+  },
+  "Albany": {
+    "houseDistrict": "Orleans-1",
+    "senateDistrict": "Orleans"
+  },
+  "Barton": {
+    "houseDistrict": "Orleans-2",
+    "senateDistrict": "Orleans"
+  },
+  "Brownington": {
+    "houseDistrict": "Orleans-2",
+    "senateDistrict": "Orleans"
+  },
+  "Charleston": {
+    "houseDistrict": "Orleans-4",
+    "senateDistrict": "Orleans"
+  },
+  "Coventry": {
+    "houseDistrict": "Orleans-4",
+    "senateDistrict": "Orleans"
+  },
+  "Craftsbury": {
+    "houseDistrict": "Orleans-1",
+    "senateDistrict": "Orleans"
+  },
+  "Derby": {
+    "houseDistrict": "Orleans-3",
+    "senateDistrict": "Orleans"
+  },
+  "Glover": {
+    "houseDistrict": "Orleans-1",
+    "senateDistrict": "Orleans"
+  },
+  "Greensboro": {
+    "houseDistrict": "Caledonia-1",
+    "senateDistrict": "Orleans"
+  },
+  "Holland": {
+    "houseDistrict": "Orleans-3",
+    "senateDistrict": "Orleans"
+  },
+  "Irasburg": {
+    "houseDistrict": "Orleans-2",
+    "senateDistrict": "Orleans"
+  },
+  "Jay": {
+    "houseDistrict": "Orleans-3",
+    "senateDistrict": "Orleans"
+  },
+  "Lowell": {
+    "houseDistrict": "Orleans-Lamoille",
+    "senateDistrict": "Orleans"
+  },
+  "Morgan": {
+    "houseDistrict": "Orleans-3",
+    "senateDistrict": "Orleans"
+  },
+  "Newport City": {
+    "houseDistrict": "Orleans-4",
+    "senateDistrict": "Orleans"
+  },
+  "Newport Town": {
+    "houseDistrict": "Orleans-3",
+    "senateDistrict": "Orleans"
+  },
+  "Troy": {
+    "houseDistrict": "Orleans-Lamoille",
+    "senateDistrict": "Orleans"
+  },
+  "Westfield": {
+    "houseDistrict": "Orleans-Lamoille",
+    "senateDistrict": "Orleans"
+  },
+  "Westmore": {
+    "houseDistrict": "Orleans-4",
+    "senateDistrict": "Orleans"
+  },
+  "Benson": {
+    "houseDistrict": "Rutland-10",
+    "senateDistrict": "Rutland"
+  },
+  "Brandon": {
+    "houseDistrict": "Rutland-5",
+    "senateDistrict": "Rutland"
+  },
+  "Castleton": {
+    "houseDistrict": "Rutland-10",
+    "senateDistrict": "Rutland"
+  },
+  "Chittenden": {
+    "houseDistrict": "Rutland-4",
+    "senateDistrict": "Rutland"
+  },
+  "Clarendon": {
+    "houseDistrict": "Rutland-3",
+    "senateDistrict": "Rutland"
+  },
+  "Danby": {
+    "houseDistrict": "Rutland-Bennington",
+    "senateDistrict": "Rutland"
+  },
+  "Fair Haven": {
+    "houseDistrict": "Rutland-10",
+    "senateDistrict": "Rutland"
+  },
+  "Ira": {
+    "houseDistrict": "Rutland-10",
+    "senateDistrict": "Rutland"
+  },
+  "Killington": {
+    "houseDistrict": "Rutland-4",
+    "senateDistrict": "Rutland"
+  },
+  "Mendon": {
+    "houseDistrict": "Rutland-4",
+    "senateDistrict": "Rutland"
+  },
+  "Middletown Springs": {
+    "houseDistrict": "Rutland-Bennington",
+    "senateDistrict": "Rutland"
+  },
+  "Mount Holly": {
+    "houseDistrict": "Rutland-Windsor",
+    "senateDistrict": "Rutland"
+  },
+  "Mount Tabor": {
+    "houseDistrict": "Rutland-Bennington",
+    "senateDistrict": "Rutland"
+  },
+  "Pittsfield": {
+    "houseDistrict": "Rutland-4",
+    "senateDistrict": "Rutland"
+  },
+  "Pittsford": {
+    "houseDistrict": "Rutland-5",
+    "senateDistrict": "Rutland"
+  },
+  "Poultney": {
+    "houseDistrict": "Rutland-9",
+    "senateDistrict": "Rutland"
+  },
+  "Proctor": {
+    "houseDistrict": "Rutland-6",
+    "senateDistrict": "Rutland"
+  },
+  "Rutland City": {
+    "houseDistrict": "Rutland-1",
+    "senateDistrict": "Rutland"
+  },
+  "Rutland Town": {
+    "houseDistrict": "Rutland-7",
+    "senateDistrict": "Rutland"
+  },
+  "Shrewsbury": {
+    "houseDistrict": "Rutland-Windsor",
+    "senateDistrict": "Rutland"
+  },
+  "Sudbury": {
+    "houseDistrict": "Rutland-10",
+    "senateDistrict": "Rutland"
+  },
+  "Tinmouth": {
+    "houseDistrict": "Rutland-9",
+    "senateDistrict": "Rutland"
+  },
+  "Wallingford": {
+    "houseDistrict": "Rutland-8",
+    "senateDistrict": "Rutland"
+  },
+  "Wells": {
+    "houseDistrict": "Rutland-9",
+    "senateDistrict": "Rutland"
+  },
+  "West Haven": {
+    "houseDistrict": "Rutland-10",
+    "senateDistrict": "Rutland"
+  },
+  "West Rutland": {
+    "houseDistrict": "Rutland-6",
+    "senateDistrict": "Rutland"
+  },
+  "Barre City": {
+    "houseDistrict": "Washington-3",
+    "senateDistrict": "Washington"
+  },
+  "Barre Town": {
+    "houseDistrict": "Washington-1",
+    "senateDistrict": "Washington"
+  },
+  "Berlin": {
+    "houseDistrict": "Washington-1",
+    "senateDistrict": "Washington"
+  },
+  "Calais": {
+    "houseDistrict": "Washington-5",
+    "senateDistrict": "Washington"
+  },
+  "Duxbury": {
+    "houseDistrict": "Washington-Orange",
+    "senateDistrict": "Washington"
+  },
+  "East Montpelier": {
+    "houseDistrict": "Washington-5",
+    "senateDistrict": "Washington"
+  },
+  "Fayston": {
+    "houseDistrict": "Washington-Orange",
+    "senateDistrict": "Washington"
+  },
+  "Marshfield": {
+    "houseDistrict": "Washington-5",
+    "senateDistrict": "Washington"
+  },
+  "Middlesex": {
+    "houseDistrict": "Washington-Chittenden",
+    "senateDistrict": "Washington"
+  },
+  "Montpelier": {
+    "houseDistrict": "Washington-6",
+    "senateDistrict": "Washington"
+  },
+  "Moretown": {
+    "houseDistrict": "Washington-Orange",
+    "senateDistrict": "Washington"
+  },
+  "Northfield": {
+    "houseDistrict": "Washington-2",
+    "senateDistrict": "Washington"
+  },
+  "Plainfield": {
+    "houseDistrict": "Washington-5",
+    "senateDistrict": "Washington"
+  },
+  "Roxbury": {
+    "houseDistrict": "Washington-2",
+    "senateDistrict": "Washington"
+  },
+  "Waitsfield": {
+    "houseDistrict": "Washington-Orange",
+    "senateDistrict": "Washington"
+  },
+  "Warren": {
+    "houseDistrict": "Washington-Orange",
+    "senateDistrict": "Washington"
+  },
+  "Waterbury": {
+    "houseDistrict": "Washington-Chittenden",
+    "senateDistrict": "Washington"
+  },
+  "Woodbury": {
+    "houseDistrict": "Washington-5",
+    "senateDistrict": "Washington"
+  },
+  "Worcester": {
+    "houseDistrict": "Washington-5",
+    "senateDistrict": "Washington"
+  },
+  "Athens": {
+    "houseDistrict": "Windham-Windsor-Bennington",
+    "senateDistrict": "Windham"
+  },
+  "Brattleboro": {
+    "houseDistrict": "Windham-7",
+    "senateDistrict": "Windham"
+  },
+  "Brookline": {
+    "houseDistrict": "Windham-Windsor-Bennington",
+    "senateDistrict": "Windham"
+  },
+  "Dover": {
+    "houseDistrict": "Windham-9",
+    "senateDistrict": "Windham"
+  },
+  "Dummerston": {
+    "houseDistrict": "Windham-4",
+    "senateDistrict": "Windham"
+  },
+  "Grafton": {
+    "houseDistrict": "Windham-Windsor-Bennington",
+    "senateDistrict": "Windham"
+  },
+  "Guilford": {
+    "houseDistrict": "Windham-8",
+    "senateDistrict": "Windham"
+  },
+  "Halifax": {
+    "houseDistrict": "Windham-8",
+    "senateDistrict": "Windham"
+  },
+  "Jamaica": {
+    "houseDistrict": "Windham-9",
+    "senateDistrict": "Windham"
+  },
+  "Londonderry": {
+    "houseDistrict": "Windham-9",
+    "senateDistrict": "Windham"
+  },
+  "Marlboro": {
+    "houseDistrict": "Windham-6",
+    "senateDistrict": "Windham"
+  },
+  "Newfane": {
+    "houseDistrict": "Windham-1",
+    "senateDistrict": "Windham"
+  },
+  "Putney": {
+    "houseDistrict": "Windham-4",
+    "senateDistrict": "Windham"
+  },
+  "Rockingham": {
+    "houseDistrict": "Windham-2",
+    "senateDistrict": "Windham"
+  },
+  "Stratton": {
+    "houseDistrict": "Windham-9",
+    "senateDistrict": "Windham"
+  },
+  "Townshend": {
+    "houseDistrict": "Windham-1",
+    "senateDistrict": "Windham"
+  },
+  "Vernon": {
+    "houseDistrict": "Windham-8",
+    "senateDistrict": "Windham"
+  },
+  "Wardsboro": {
+    "houseDistrict": "Windham-9",
+    "senateDistrict": "Windham"
+  },
+  "Westminster": {
+    "houseDistrict": "Windham-3",
+    "senateDistrict": "Windham"
+  },
+  "Whitingham": {
+    "houseDistrict": "Windham-8",
+    "senateDistrict": "Windham"
+  },
+  "Wilmington": {
+    "houseDistrict": "Windham-5",
+    "senateDistrict": "Windham"
+  },
+  "Windham": {
+    "houseDistrict": "Windham-Windsor-Bennington",
+    "senateDistrict": "Windham"
+  },
+  "Andover": {
+    "houseDistrict": "Windsor-Windham",
+    "senateDistrict": "Windsor"
+  },
+  "Baltimore": {
+    "houseDistrict": "Windsor-Windham",
+    "senateDistrict": "Windsor"
+  },
+  "Barnard": {
+    "houseDistrict": "Windsor-5",
+    "senateDistrict": "Windsor"
+  },
+  "Bethel": {
+    "houseDistrict": "Windsor-Orange-2",
+    "senateDistrict": "Windsor"
+  },
+  "Bridgewater": {
+    "houseDistrict": "Windsor-4",
+    "senateDistrict": "Windsor"
+  },
+  "Cavendish": {
+    "houseDistrict": "Windsor-Windham",
+    "senateDistrict": "Windsor"
+  },
+  "Chester": {
+    "houseDistrict": "Windham-Windsor-Bennington",
+    "senateDistrict": "Windsor"
+  },
+  "Hartford": {
+    "houseDistrict": "Windsor-1",
+    "senateDistrict": "Windsor"
+  },
+  "Hartland": {
+    "houseDistrict": "Windsor-2",
+    "senateDistrict": "Windsor"
+  },
+  "Ludlow": {
+    "houseDistrict": "Windsor-Windham",
+    "senateDistrict": "Windsor"
+  },
+  "Norwich": {
+    "houseDistrict": "Windsor-3",
+    "senateDistrict": "Windsor"
+  },
+  "Plymouth": {
+    "houseDistrict": "Windsor-4",
+    "senateDistrict": "Windsor"
+  },
+  "Pomfret": {
+    "houseDistrict": "Windsor-5",
+    "senateDistrict": "Windsor"
+  },
+  "Reading": {
+    "houseDistrict": "Windsor-Windham",
+    "senateDistrict": "Windsor"
+  },
+  "Rochester": {
+    "houseDistrict": "Windsor-Orange-2",
+    "senateDistrict": "Windsor"
+  },
+  "Royalton": {
+    "houseDistrict": "Windsor-Orange-2",
+    "senateDistrict": "Windsor"
+  },
+  "Sharon": {
+    "houseDistrict": "Windsor-Orange-1",
+    "senateDistrict": "Windsor"
+  },
+  "Springfield": {
+    "houseDistrict": "Windsor-6",
+    "senateDistrict": "Windsor"
+  },
+  "Stockbridge": {
+    "houseDistrict": "Windsor-Orange-2",
+    "senateDistrict": "Windsor"
+  },
+  "Weathersfield": {
+    "houseDistrict": "Windsor-6",
+    "senateDistrict": "Windsor"
+  },
+  "West Windsor": {
+    "houseDistrict": "Windsor-Windham",
+    "senateDistrict": "Windsor"
+  },
+  "Weston": {
+    "houseDistrict": "Windham-9",
+    "senateDistrict": "Windsor"
+  },
+  "Windsor": {
+    "houseDistrict": "Windsor-6",
+    "senateDistrict": "Windsor"
+  },
+  "Woodstock": {
+    "houseDistrict": "Windsor-5",
+    "senateDistrict": "Windsor"
+  }
+}

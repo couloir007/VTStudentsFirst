@@ -64,9 +64,9 @@
     {% endif %}
 
     {# ── Legislator Contact Component ─────────────────────────────────── #}
-{#    {% include "@collections/legislator-contact/legislator-contact.twig" with {#}
-{#      civic_api_key: civic_api_key,#}
-{#    } only %}#}
+    {% include "@collections/legislator-contact/legislator-contact.twig" with {
+      civic_api_key: civic_api_key,
+    } only %}
 
     {% if toolkit %}
       <div class="action-section__toolkit">

@@ -3,55 +3,70 @@
  *
  * Form-first legislator contact flow:
  *   1. User fills in name, email, town, role, message
- *   2. On submit, town is matched to VT House districts via the JSON data file
- *      or resolved via the Google Civic Information API if a key is provided
+ *   2. Town is matched to VT House district via vt-house-districts-by-town.json
+ *      then cross-referenced with vt-legislators.json for email addresses.
+ *      Falls back to Google Civic Information API if a key is provided.
  *   3. mailto: link is opened with rep email(s) pre-addressed
  *   4. Confirmation view shown with copy fallback
  */
 
-(function () {
-  'use strict';
+((() => {
 
-  // Town → district map (loaded from vt-house-districts-by-town.json if available)
-  // Fallback: use Civic API with town name as address
-  const DEFAULT_TEMPLATE = `My name is [Your Name] and I am a constituent from [Town]. I am writing to share my strong opposition to proposals that would eliminate supervisory unions and restrict Vermont's Town Tuition Program. I understand the need for education reform, but eliminating choice and access to independent schools does nothing to save money or improve quality. Please oppose any plan that restricts family choice or consolidates our district against our will.`;
+  const DEFAULT_TEMPLATE = `My name is [Your Name] and I am a constituent from [Town]. I am writing to share my strong opposition to proposals that would restrict Vermont's Town Tuition Program. I understand the need for education reform, but eliminating choice and access to independent schools does nothing to save money or improve quality. Please oppose any plan that restricts family choice or consolidates our district against our will.`;
 
   document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('legislator-contact');
-    if (!root) return;
+    if (!root) { return; }
 
-    const apiKey     = root.dataset.civicApiKey || window.CIVIC_API_KEY || '';
-    const formView   = document.getElementById('lc-form');
+    const apiKey      = root.dataset.civicApiKey || window.CIVIC_API_KEY || '';
+    const formView    = document.getElementById('lc-form');
     const confirmView = document.getElementById('lc-confirm');
 
-    // Form fields
-    const fnameInput   = document.getElementById('lc-fname');
-    const lnameInput   = document.getElementById('lc-lname');
-    const emailInput   = document.getElementById('lc-email');
-    const townInput    = document.getElementById('lc-town');
-    const roleInput    = document.getElementById('lc-role');
-    const messageArea  = document.getElementById('lc-message');
-    const submitBtn    = document.getElementById('lc-submit-btn');
-    const formError    = document.getElementById('lc-form-error');
+    const fnameInput  = document.getElementById('lc-fname');
+    const lnameInput  = document.getElementById('lc-lname');
+    const emailInput  = document.getElementById('lc-email');
+    const townInput   = document.getElementById('lc-town');
+    const roleInput   = document.getElementById('lc-role');
+    const messageArea = document.getElementById('lc-message');
+    const submitBtn   = document.getElementById('lc-submit-btn');
+    const formError   = document.getElementById('lc-form-error');
 
-    // Confirmation elements
-    const confirmReps  = document.getElementById('lc-confirm-reps');
-    const confirmMsg   = document.getElementById('lc-confirm-msg');
-    const copyBtn      = document.getElementById('lc-copy-btn');
-    const restartBtn   = document.getElementById('lc-restart');
+    const confirmReps = document.getElementById('lc-confirm-reps');
+    const confirmMsg  = document.getElementById('lc-confirm-msg');
+    const copyBtn     = document.getElementById('lc-copy-btn');
+    const restartBtn  = document.getElementById('lc-restart');
 
-    // Auto-personalize message as user types name/town
+    // Auto-personalize message as user types name/town.
+    // Track current substitutions so re-typing restores placeholders first.
+    let currentName = '[Your Name]';
+    let currentTown = '[Town]';
+
+    function escRegex(s) {
+      return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
     function personalizeMessage() {
       const name = [fnameInput.value.trim(), lnameInput.value.trim()].filter(Boolean).join(' ') || '[Your Name]';
       const town = townInput.value.trim() || '[Town]';
+
+      // Restore previous values back to placeholders before re-substituting
       let msg = messageArea.value;
-      msg = msg.replace(/\[Your Name\]/g, name).replace(/\[Name\]/g, name);
+      if (currentName !== '[Your Name]') {
+        msg = msg.replace(new RegExp(escRegex(currentName), 'g'), '[Your Name]');
+      }
+      if (currentTown !== '[Town]') {
+        msg = msg.replace(new RegExp(escRegex(currentTown), 'g'), '[Town]');
+      }
+      msg = msg.replace(/\[Your Name\]/g, name);
       msg = msg.replace(/\[Town\]/g, town);
+
+      currentName = name;
+      currentTown = town;
       messageArea.value = msg;
     }
 
-    [fnameInput, lnameInput, townInput].forEach(el => {
-      el.addEventListener('blur', personalizeMessage);
+    [fnameInput, lnameInput, townInput].forEach((el) => {
+      el.addEventListener('input', personalizeMessage);
     });
 
     // ── Submit ─────────────────────────────────────────────────────────────
@@ -78,7 +93,7 @@
         const reps = await resolveReps(town, apiKey);
         showConfirmation(reps, msg, email);
       } catch (err) {
-        formError.textContent = err.message || 'Could not find your representatives. Try entering your full address including street number.';
+        formError.textContent = err.message || 'Could not find your representatives. Try entering your full address.';
         formError.hidden = false;
         formError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       } finally {
@@ -88,27 +103,116 @@
     });
 
     // ── Rep resolution ─────────────────────────────────────────────────────
+    // Strategy:
+    //   1. Load vt-house-districts-by-town.json → get House district(s) for town
+    //   2. Load vt-legislators.json → match district to rep email(s)
+    //   3. Match Senate district from county → get senator email(s)
+    //   4. Fall back to Civic API if JSON lookup fails and key is available
     async function resolveReps(town, key) {
-      // Storybook / no API key: return mock reps
-      if (!key) {
-        return [
-          {
-            name: 'Rep. Jane Smith',
-            office: 'Vermont House — Caledonia-Washington',
-            email: 'jsmith@leg.state.vt.us',
-            phone: '(802) 555-0101',
-          },
-          {
-            name: 'Sen. Robert Johnson',
-            office: 'Vermont Senate — Caledonia District',
-            email: 'rjohnson@leg.state.vt.us',
-            phone: '(802) 555-0202',
-          },
-        ];
+
+      // Storybook / dev: no JSON files available, return mock data
+      if (!town) {
+        throw new Error('Please enter your town name.');
       }
 
+      try {
+        const [districtData, legislatorData] = await Promise.all([
+          fetchJson('/themes/custom/surface/data/vt-house-districts-by-town.json'),
+          fetchJson('/themes/custom/surface/data/vt-legislators.json'),
+        ]);
+
+        const normalizedTown = town.trim().toLowerCase();
+
+        // Find matching town entry (districts JSON keyed by town name)
+        const townKey = Object.keys(districtData).find(
+          (k) => k.toLowerCase() === normalizedTown
+        );
+
+        if (!townKey) {
+          throw new Error(`"${town}" was not found in our Vermont town list. Check the spelling and try again.`);
+        }
+
+        const townData = districtData[townKey];
+
+        // townData may be a string district, array of districts, or object with
+        // houseDistrict / senateDistrict keys — normalize to arrays
+        const houseDistricts = extractDistricts(townData, 'house');
+        const senateDistricts = extractDistricts(townData, 'senate');
+
+        const reps = [];
+
+        // Match House reps
+        houseDistricts.forEach((district) => {
+          const matches = legislatorData.representatives.filter(
+            (r) => normalizeDistrict(r.district) === normalizeDistrict(district)
+          );
+          matches.forEach((r) => {
+            reps.push({ name: r.name, office: `Vermont House — ${r.district}`, email: r.email });
+          });
+        });
+
+        // Match Senators
+        senateDistricts.forEach((district) => {
+          const matches = legislatorData.senators.filter(
+            (s) => normalizeDistrict(s.district) === normalizeDistrict(district)
+          );
+          matches.forEach((s) => {
+            reps.push({ name: s.name, office: `Vermont Senate — ${s.district} District`, email: s.email });
+          });
+        });
+
+        if (reps.length) { return reps; }
+
+        throw new Error('No legislators found for that town in our records.');
+
+      } catch (jsonErr) {
+        // Fall back to Civic API if key provided
+        if (key) { return resolveViaApi(town, key); }
+        throw jsonErr;
+      }
+    }
+
+    // Extract house or senate district(s) from the town data structure.
+    // Handles multiple formats the districts JSON may use.
+    function extractDistricts(townData, chamber) {
+      if (!townData) { return []; }
+
+      // Object with explicit keys: { houseDistrict: 'Caledonia-1', senateDistrict: 'Caledonia' }
+      if (typeof townData === 'object' && !Array.isArray(townData)) {
+        const key = chamber === 'house'
+          ? (townData.houseDistrict || townData.house_district || townData.house)
+          : (townData.senateDistrict || townData.senate_district || townData.senate);
+        if (!key) { return []; }
+        return Array.isArray(key) ? key : [key];
+      }
+
+      // Array of district strings — assume House districts
+      if (Array.isArray(townData)) {
+        return chamber === 'house' ? townData : [];
+      }
+
+      // Plain string — assume House district
+      if (typeof townData === 'string') {
+        return chamber === 'house' ? [townData] : [];
+      }
+
+      return [];
+    }
+
+    function normalizeDistrict(d) {
+      return String(d || '').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+    }
+
+    async function fetchJson(url) {
+      const res = await fetch(url);
+      if (!res.ok) { throw new Error(`Failed to load ${url}`); }
+      return res.json();
+    }
+
+    // Civic API fallback
+    async function resolveViaApi(town, key) {
       const url = new URL('https://www.googleapis.com/civicinfo/v2/representatives');
-      url.searchParams.set('address', town + ', Vermont');
+      url.searchParams.set('address', `${town}, Vermont`);
       url.searchParams.set('levels', 'administrativeArea1');
       url.searchParams.set('key', key);
 
@@ -123,18 +227,20 @@
       const offices   = data.offices   || [];
       const reps      = [];
 
-      offices.forEach(office => {
-        if (!office.levels?.includes('administrativeArea1')) return;
-        const isLeg = office.roles?.some(r => r.startsWith('legislator'));
-        if (!isLeg) return;
-        (office.officialIndices || []).forEach(i => {
+      offices.forEach((office) => {
+        if (!office.levels?.includes('administrativeArea1')) { return; }
+        const isLeg = office.roles?.some((r) => r.startsWith('legislator'));
+        if (!isLeg) { return; }
+        (office.officialIndices || []).forEach((i) => {
           const o = officials[i];
-          if (o) reps.push({
-            name:   o.name,
-            office: office.name,
-            email:  o.emails?.[0] || null,
-            phone:  o.phones?.[0] || null,
-          });
+          if (o) {
+            reps.push({
+              name:   o.name,
+              office: office.name,
+              email:  o.emails?.[0] || null,
+              phone:  o.phones?.[0] || null,
+            });
+          }
         });
       });
 
@@ -147,26 +253,27 @@
 
     // ── Show confirmation ──────────────────────────────────────────────────
     function showConfirmation(reps, msg, senderEmail) {
-      // Build rep chips
-      confirmReps.innerHTML = '';
       const emailAddrs = [];
 
-      reps.forEach(rep => {
+      confirmReps.innerHTML = '';
+      reps.forEach((rep) => {
         const chip = document.createElement('div');
         chip.className = 'lc-rep-chip';
         chip.innerHTML = `
-          <span class="lc-rep-chip__office">${escHtml(rep.office)}</span>
           <span class="lc-rep-chip__name">${escHtml(rep.name)}</span>
+          <span class="lc-rep-chip__office">${escHtml(rep.office)}</span>
           ${rep.email ? `<a class="lc-rep-chip__email" href="mailto:${escHtml(rep.email)}">${escHtml(rep.email)}</a>` : ''}
         `;
         confirmReps.appendChild(chip);
-        if (rep.email) emailAddrs.push(rep.email);
+        if (rep.email) { emailAddrs.push(rep.email); }
       });
 
-      // Populate copy textarea
       confirmMsg.value = msg;
 
-      // Open mailto
+      console.log('Email addresses:', emailAddrs);
+      console.log('Message:', msg);
+      console.log('Sender email:', senderEmail);
+
       if (emailAddrs.length) {
         const subject = encodeURIComponent("Please Protect Vermont's Town Tuition Program");
         const body    = encodeURIComponent(msg);
@@ -174,8 +281,7 @@
         window.location.href = `mailto:${emailAddrs.join(',')}?subject=${subject}&body=${body}${cc}`;
       }
 
-      // Switch views
-      formView.hidden   = true;
+      formView.hidden    = true;
       confirmView.hidden = false;
       root.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -199,7 +305,9 @@
       lnameInput.value   = '';
       emailInput.value   = '';
       townInput.value    = '';
-      if (roleInput) roleInput.value = '';
+      if (roleInput) { roleInput.value = ''; }
+      currentName        = '[Your Name]';
+      currentTown        = '[Town]';
       formError.hidden   = true;
       formView.hidden    = false;
       confirmView.hidden = true;
@@ -216,4 +324,4 @@
     }
   });
 
-})();
+}))();

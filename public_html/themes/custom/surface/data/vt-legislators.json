@@ -1,0 +1,906 @@
+{
+  "senators": [
+    {
+      "name": "Philip Baruth",
+      "district": "Chittenden-Central",
+      "email": "pbaruth@leg.state.vt.us"
+    },
+    {
+      "name": "Scott Beck",
+      "district": "Caledonia",
+      "email": "sbeck@leg.state.vt.us"
+    },
+    {
+      "name": "Seth Bongartz",
+      "district": "Bennington",
+      "email": "sbongartz@leg.state.vt.us"
+    },
+    {
+      "name": "Patrick Brennan",
+      "district": "Grand Isle",
+      "email": "pbrennan@leg.state.vt.us"
+    },
+    {
+      "name": "Randy Brock",
+      "district": "Franklin",
+      "email": "rbrock@leg.state.vt.us"
+    },
+    {
+      "name": "Thomas Chittenden",
+      "district": "Chittenden-Southeast",
+      "email": "tchittenden@leg.state.vt.us"
+    },
+    {
+      "name": "Alison Clarkson",
+      "district": "Windsor",
+      "email": "AClarkson@leg.state.vt.us"
+    },
+    {
+      "name": "Brian Collamore",
+      "district": "Rutland",
+      "email": "bcollamore@leg.state.vt.us"
+    },
+    {
+      "name": "Ann Cummings",
+      "district": "Washington",
+      "email": "acummings@leg.state.vt.us"
+    },
+    {
+      "name": "John Morley III",
+      "district": "Orleans",
+      "email": "jmorley@leg.state.vt.us"
+    },
+    {
+      "name": "Martine Larocque Gulick",
+      "district": "Chittenden-Central",
+      "email": "mgulick@leg.state.vt.us"
+    },
+    {
+      "name": "Ruth Hardy",
+      "district": "Addison",
+      "email": "rhardy@leg.state.vt.us"
+    },
+    {
+      "name": "Wendy Harrison",
+      "district": "Windham",
+      "email": "wharrison@leg.state.vt.us"
+    },
+    {
+      "name": "John Benson",
+      "district": "Orange",
+      "email": "jbenson@leg.state.vt.us"
+    },
+    {
+      "name": "Nader Hashim",
+      "district": "Windham",
+      "email": "nhashim@leg.state.vt.us"
+    },
+    {
+      "name": "Steven Heffernan",
+      "district": "Addison",
+      "email": "sheffernan@leg.state.vt.us"
+    },
+    {
+      "name": "Russ Ingalls",
+      "district": "Essex",
+      "email": "ringalls@leg.state.vt.us"
+    },
+    {
+      "name": "Ginny Lyons",
+      "district": "Chittenden-Southeast",
+      "email": "vlyons@leg.state.vt.us"
+    },
+    {
+      "name": "Joe Major",
+      "district": "Windsor",
+      "email": "jmajor@leg.state.vt.us"
+    },
+    {
+      "name": "Chris Mattos",
+      "district": "Chittenden-North",
+      "email": "cmattos@leg.state.vt.us"
+    },
+    {
+      "name": "Robert Norris",
+      "district": "Franklin",
+      "email": "rnorris@leg.state.vt.us"
+    },
+    {
+      "name": "Andrew Perchlik",
+      "district": "Washington",
+      "email": "aperchlik@leg.state.vt.us"
+    },
+    {
+      "name": "Rob Plunkett",
+      "district": "Bennington",
+      "email": "rplunkett@leg.state.vt.us"
+    },
+    {
+      "name": "Kesha Ram Hinsdale",
+      "district": "Chittenden-Southeast",
+      "email": "kramhinsdale@leg.state.vt.us"
+    },
+    {
+      "name": "Tanya Vyhovsky",
+      "district": "Chittenden-Central",
+      "email": "tvyhovsky@leg.state.vt.us"
+    },
+    {
+      "name": "Anne Watson",
+      "district": "Washington",
+      "email": "awatson@leg.state.vt.us"
+    },
+    {
+      "name": "David Weeks",
+      "district": "Rutland",
+      "email": "dweeks@leg.state.vt.us"
+    },
+    {
+      "name": "Richard Westman",
+      "district": "Lamoille",
+      "email": "rwestman@leg.state.vt.us"
+    },
+    {
+      "name": "Becca White",
+      "district": "Windsor",
+      "email": "rwhite@leg.state.vt.us"
+    },
+    {
+      "name": "Terry Williams",
+      "district": "Rutland",
+      "email": "tkwilliams@leg.state.vt.us"
+    }
+  ],
+  "representatives": [
+    {
+      "name": "Angela Arsenault",
+      "district": "Chittenden-2",
+      "email": "aarsenault@leg.state.vt.us"
+    },
+    {
+      "name": "Sarita Austin",
+      "district": "Chittenden-19",
+      "email": "saustin@leg.state.vt.us"
+    },
+    {
+      "name": "Richard Bailey",
+      "district": "Lamoille-2",
+      "email": "rbailey@leg.state.vt.us"
+    },
+    {
+      "name": "John Bartholomew",
+      "district": "Windsor-1",
+      "email": "jbartholomew@leg.state.vt.us"
+    },
+    {
+      "name": "Ashley Bartley",
+      "district": "Franklin-1",
+      "email": "abartley@leg.state.vt.us"
+    },
+    {
+      "name": "Daisy Berbeco",
+      "district": "Chittenden-21",
+      "email": "dberbeco@leg.state.vt.us"
+    },
+    {
+      "name": "Matthew Birong",
+      "district": "Addison-3",
+      "email": "mbirong@leg.state.vt.us"
+    },
+    {
+      "name": "Doug Bishop",
+      "district": "Chittenden-20",
+      "email": "dbishop@leg.state.vt.us"
+    },
+    {
+      "name": "Alyssa Black",
+      "district": "Chittenden-24",
+      "email": "ablack@leg.state.vt.us"
+    },
+    {
+      "name": "Tiffany Bluemle",
+      "district": "Chittenden-13",
+      "email": "tbluemle@leg.state.vt.us"
+    },
+    {
+      "name": "Michelle Bos-Lun",
+      "district": "Windham-3",
+      "email": "mboslun@leg.state.vt.us"
+    },
+    {
+      "name": "David Bosch",
+      "district": "Rutland-2",
+      "email": "dbosch@leg.state.vt.us"
+    },
+    {
+      "name": "Michael Boutin",
+      "district": "Washington-3",
+      "email": "mboutin@leg.state.vt.us"
+    },
+    {
+      "name": "Lucy Boyden",
+      "district": "Lamoille-3",
+      "email": "lboyden@leg.state.vt.us"
+    },
+    {
+      "name": "Erin Brady",
+      "district": "Chittenden-2",
+      "email": "ebrady@leg.state.vt.us"
+    },
+    {
+      "name": "Carolyn Branagan",
+      "district": "Franklin-1",
+      "email": "cbranagan@leg.state.vt.us"
+    },
+    {
+      "name": "Chris Brown",
+      "district": "Rutland-3",
+      "email": "cbrown@leg.state.vt.us"
+    },
+    {
+      "name": "Jana Brown",
+      "district": "Chittenden-1",
+      "email": "jbrown@leg.state.vt.us"
+    },
+    {
+      "name": "Thomas Burditt",
+      "district": "Rutland-2",
+      "email": "tburditt@leg.state.vt.us"
+    },
+    {
+      "name": "Mollie Burke",
+      "district": "Windham-8",
+      "email": "mburke@leg.state.vt.us"
+    },
+    {
+      "name": "Bridget Burkhardt",
+      "district": "Chittenden-8",
+      "email": "bburkhardt@leg.state.vt.us"
+    },
+    {
+      "name": "Elizabeth Burrows",
+      "district": "Windsor-1",
+      "email": "eburrows@leg.state.vt.us"
+    },
+    {
+      "name": "Greg Burtt",
+      "district": "Caledonia-Washington",
+      "email": "gburtt@leg.state.vt.us"
+    },
+    {
+      "name": "Scott Campbell",
+      "district": "Caledonia-Essex",
+      "email": "scampbell@leg.state.vt.us"
+    },
+    {
+      "name": "William Canfield",
+      "district": "Rutland-10",
+      "email": "wcanfield@leg.state.vt.us"
+    },
+    {
+      "name": "Emily Carris-Duncan",
+      "district": "Windham-6",
+      "email": "ecarris-duncan@leg.state.vt.us"
+    },
+    {
+      "name": "Conor Casey",
+      "district": "Washington-4",
+      "email": "ccasey@leg.state.vt.us"
+    },
+    {
+      "name": "Jim Casey",
+      "district": "Addison-Rutland",
+      "email": "jcasey@leg.state.vt.us"
+    },
+    {
+      "name": "Ela Chapin",
+      "district": "Washington-5",
+      "email": "echapin@leg.state.vt.us"
+    },
+    {
+      "name": "Thomas Charlton",
+      "district": "Windsor-Windham",
+      "email": "tcharlton@leg.state.vt.us"
+    },
+    {
+      "name": "Kevin Christie",
+      "district": "Windsor-6",
+      "email": "kchristie@leg.state.vt.us"
+    },
+    {
+      "name": "Brian Cina",
+      "district": "Chittenden-15",
+      "email": "bcina@leg.state.vt.us"
+    },
+    {
+      "name": "VL Coffin",
+      "district": "Windsor-2",
+      "email": "vlcoffin@leg.state.vt.us"
+    },
+    {
+      "name": "Esme Cole",
+      "district": "Windsor-6",
+      "email": "ecole@leg.state.vt.us"
+    },
+    {
+      "name": "Peter Conlon",
+      "district": "Addison-2",
+      "email": "pconlon@leg.state.vt.us"
+    },
+    {
+      "name": "Johnathan Cooper",
+      "district": "Bennington-1",
+      "email": "jcooper@leg.state.vt.us"
+    },
+    {
+      "name": "Timothy Corcoran",
+      "district": "Bennington-2",
+      "email": "tcorcoran@leg.state.vt.us"
+    },
+    {
+      "name": "Mari Cordes",
+      "district": "Addison-4",
+      "email": "mcordes@leg.state.vt.us"
+    },
+    {
+      "name": "Wendy Critchlow",
+      "district": "Chittenden-19",
+      "email": "wcritchlow@leg.state.vt.us"
+    },
+    {
+      "name": "Penny Demar",
+      "district": "Franklin-7",
+      "email": "ademar@leg.state.vt.us"
+    },
+    {
+      "name": "Eileen Dickinson",
+      "district": "Franklin-2",
+      "email": "edickinson@leg.state.vt.us"
+    },
+    {
+      "name": "Joshua Dobrovich",
+      "district": "Orange-3",
+      "email": "jdobrovich@leg.state.vt.us"
+    },
+    {
+      "name": "Leonora Dodge",
+      "district": "Chittenden-23",
+      "email": "ldodge@leg.state.vt.us"
+    },
+    {
+      "name": "Karen Dolan",
+      "district": "Chittenden-22",
+      "email": "kndolan@leg.state.vt.us"
+    },
+    {
+      "name": "Deborah Dolgin",
+      "district": "Caledonia-Essex",
+      "email": "ddolgin@leg.state.vt.us"
+    },
+    {
+      "name": "Anne Donahue",
+      "district": "Washington-1",
+      "email": "adonahue@leg.state.vt.us"
+    },
+    {
+      "name": "Abbey Duke",
+      "district": "Chittenden-17",
+      "email": "aduke@leg.state.vt.us"
+    },
+    {
+      "name": "David Durfee",
+      "district": "Bennington-3",
+      "email": "ddurfee@leg.state.vt.us"
+    },
+    {
+      "name": "Zon Eastes",
+      "district": "Windham-1",
+      "email": "zeastes@leg.state.vt.us"
+    },
+    {
+      "name": "Alice Emmons",
+      "district": "Windsor-3",
+      "email": "aemmons@leg.state.vt.us"
+    },
+    {
+      "name": "Martha Feltus",
+      "district": "Caledonia-3",
+      "email": "mfeltus@leg.state.vt.us"
+    },
+    {
+      "name": "Gina Galfetti",
+      "district": "Washington-Orange",
+      "email": "ggalfetti@leg.state.vt.us"
+    },
+    {
+      "name": "Rey Garofano",
+      "district": "Chittenden-23",
+      "email": "rgarofano@leg.state.vt.us"
+    },
+    {
+      "name": "Leslie Goldman",
+      "district": "Windham-3",
+      "email": "lgoldman@leg.state.vt.us"
+    },
+    {
+      "name": "Ian Goodnow",
+      "district": "Windham-9",
+      "email": "igoodnow@leg.state.vt.us"
+    },
+    {
+      "name": "Kenneth Goslant",
+      "district": "Washington-1",
+      "email": "kgoslant@leg.state.vt.us"
+    },
+    {
+      "name": "Edye Graning",
+      "district": "Chittenden-3",
+      "email": "egraning@leg.state.vt.us"
+    },
+    {
+      "name": "Will Greer",
+      "district": "Bennington-2",
+      "email": "wgreer@leg.state.vt.us"
+    },
+    {
+      "name": "James Gregoire",
+      "district": "Franklin-6",
+      "email": "jgregoire@leg.state.vt.us"
+    },
+    {
+      "name": "Lisa Hango",
+      "district": "Franklin-5",
+      "email": "LHango@leg.state.vt.us"
+    },
+    {
+      "name": "Leanne Harple",
+      "district": "Orleans-4",
+      "email": "lharple@leg.state.vt.us"
+    },
+    {
+      "name": "James Harrison",
+      "district": "Rutland-11",
+      "email": "jharrison@leg.state.vt.us"
+    },
+    {
+      "name": "Troy Headrick",
+      "district": "Chittenden-15",
+      "email": "theadrick@leg.state.vt.us"
+    },
+    {
+      "name": "Mark Higley",
+      "district": "Orleans-Lamoille",
+      "email": "mhigley@leg.state.vt.us"
+    },
+    {
+      "name": "Rebecca Holcombe",
+      "district": "Windsor-Orange-2",
+      "email": "rholcombe@leg.state.vt.us"
+    },
+    {
+      "name": "Philip Jay Hooper",
+      "district": "Orange-Washington-Addison",
+      "email": "JHooper@leg.state.vt.us"
+    },
+    {
+      "name": "Robert Hooper",
+      "district": "Chittenden-18",
+      "email": "rhooper@leg.state.vt.us"
+    },
+    {
+      "name": "Lori Houghton",
+      "district": "Chittenden-22",
+      "email": "LHoughton@leg.state.vt.us"
+    },
+    {
+      "name": "Mary Howard",
+      "district": "Rutland-6",
+      "email": "MHoward@leg.state.vt.us"
+    },
+    {
+      "name": "Christopher Howland",
+      "district": "Rutland-4",
+      "email": "chowland@leg.state.vt.us"
+    },
+    {
+      "name": "Robert Hunter",
+      "district": "Bennington-4",
+      "email": "rhunter@leg.state.vt.us"
+    },
+    {
+      "name": "Kathleen James",
+      "district": "Bennington-4",
+      "email": "kjames@leg.state.vt.us"
+    },
+    {
+      "name": "John Kascenska",
+      "district": "Essex-Caledonia",
+      "email": "jkascenska@leg.state.vt.us"
+    },
+    {
+      "name": "Chris Keyser",
+      "district": "Rutland-7",
+      "email": "ckeyser@leg.state.vt.us"
+    },
+    {
+      "name": "Charles Kimbell",
+      "district": "Windsor-5",
+      "email": "ckimbell@leg.state.vt.us"
+    },
+    {
+      "name": "Bram Kleppner",
+      "district": "Chittenden-13",
+      "email": "bkleppner@leg.state.vt.us"
+    },
+    {
+      "name": "Emilie Kornheiser",
+      "district": "Windham-7",
+      "email": "ekornheiser@leg.state.vt.us"
+    },
+    {
+      "name": "Emilie Krasnow",
+      "district": "Chittenden-9",
+      "email": "ekrasnow@leg.state.vt.us"
+    },
+    {
+      "name": "Jill Krowinski",
+      "district": "Chittenden-16",
+      "email": "jkrowinski@leg.state.vt.us"
+    },
+    {
+      "name": "Larry Labor",
+      "district": "Essex-Orleans",
+      "email": "llabor@leg.state.vt.us"
+    },
+    {
+      "name": "Kate Lalley",
+      "district": "Chittenden-6",
+      "email": "klalley@leg.state.vt.us"
+    },
+    {
+      "name": "Martin LaLonde",
+      "district": "Chittenden-12",
+      "email": "mlalonde@leg.state.vt.us"
+    },
+    {
+      "name": "Saudia LaMont",
+      "district": "Lamoille-Washington",
+      "email": "SLamont@leg.state.vt.us"
+    },
+    {
+      "name": "Wayne Laroche",
+      "district": "Franklin-5",
+      "email": "wlaroche@leg.state.vt.us"
+    },
+    {
+      "name": "Jed Lipsky",
+      "district": "Lamoille-1",
+      "email": "jlipsky@leg.state.vt.us"
+    },
+    {
+      "name": "Kate Logan",
+      "district": "Chittenden-16",
+      "email": "klogan@leg.state.vt.us"
+    },
+    {
+      "name": "Emily Long",
+      "district": "Windham-5",
+      "email": "elong@leg.state.vt.us"
+    },
+    {
+      "name": "Joe Luneau",
+      "district": "Franklin-3",
+      "email": "jluneau@leg.state.vt.us"
+    },
+    {
+      "name": "Eric Maguire",
+      "district": "Rutland-5",
+      "email": "emaguire@leg.state.vt.us"
+    },
+    {
+      "name": "Alicia Malay",
+      "district": "Rutland-8",
+      "email": "amalay@leg.state.vt.us"
+    },
+    {
+      "name": "Michael Marcotte",
+      "district": "Orleans-Lamoille",
+      "email": "mmarcotte@leg.state.vt.us"
+    },
+    {
+      "name": "James Masland",
+      "district": "Windsor-Orange-2",
+      "email": "jmasland@leg.state.vt.us"
+    },
+    {
+      "name": "Kate McCann",
+      "district": "Washington-4",
+      "email": "kmccann@leg.state.vt.us"
+    },
+    {
+      "name": "Patricia McCoy",
+      "district": "Rutland-1",
+      "email": "pmccoy@leg.state.vt.us"
+    },
+    {
+      "name": "Francis McFaun",
+      "district": "Washington-Orange",
+      "email": "fmcfaun@leg.state.vt.us"
+    },
+    {
+      "name": "Jubilee McGill",
+      "district": "Addison-5",
+      "email": "jmcgill@leg.state.vt.us"
+    },
+    {
+      "name": "Tony Micklus",
+      "district": "Chittenden-Franklin",
+      "email": "amicklus@leg.state.vt.us"
+    },
+    {
+      "name": "Marc Mihaly",
+      "district": "Washington-6",
+      "email": "mmihaly@leg.state.vt.us"
+    },
+    {
+      "name": "Brian Minier",
+      "district": "Chittenden-11",
+      "email": "bminier@leg.state.vt.us"
+    },
+    {
+      "name": "Leland Morgan",
+      "district": "Grand Isle-Chittenden",
+      "email": "lmorgan@leg.state.vt.us"
+    },
+    {
+      "name": "Michael Morgan",
+      "district": "Grand Isle-Chittenden",
+      "email": "mmorgan@leg.state.vt.us"
+    },
+    {
+      "name": "Kristi Morris",
+      "district": "Windsor-3",
+      "email": "kmorris2@leg.state.vt.us"
+    },
+    {
+      "name": "Mary Morrissey",
+      "district": "Bennington-5",
+      "email": "mmorrissey@leg.state.vt.us"
+    },
+    {
+      "name": "Chris Morrow",
+      "district": "Windham-Windsor-Bennington",
+      "email": "cmorrow@leg.state.vt.us"
+    },
+    {
+      "name": "Michael Mrowicki",
+      "district": "Windham-4",
+      "email": "mmrowicki@leg.state.vt.us"
+    },
+    {
+      "name": "Richard Nelson",
+      "district": "Orleans-1",
+      "email": "rnelson@leg.state.vt.us"
+    },
+    {
+      "name": "Todd Nielsen",
+      "district": "Rutland-9",
+      "email": "tnielsen@leg.state.vt.us"
+    },
+    {
+      "name": "Michael Nigro",
+      "district": "Bennington-5",
+      "email": "mnigro@leg.state.vt.us"
+    },
+    {
+      "name": "Rob North",
+      "district": "Addison-3",
+      "email": "rnorth@leg.state.vt.us"
+    },
+    {
+      "name": "Daniel Noyes",
+      "district": "Lamoille-2",
+      "email": "DNoyes@leg.state.vt.us"
+    },
+    {
+      "name": "Kate Nugent",
+      "district": "Chittenden-10",
+      "email": "knugent@leg.state.vt.us"
+    },
+    {
+      "name": "John O'Brien",
+      "district": "Windsor-Orange-1",
+      "email": "jobrien@leg.state.vt.us"
+    },
+    {
+      "name": "Carol Ode",
+      "district": "Chittenden-18",
+      "email": "COde@leg.state.vt.us"
+    },
+    {
+      "name": "Thomas Oliver",
+      "district": "Franklin-4",
+      "email": "toliver@leg.state.vt.us"
+    },
+    {
+      "name": "Herb Olsen",
+      "district": "Addison-4",
+      "email": "holsen@leg.state.vt.us"
+    },
+    {
+      "name": "Woodman Page",
+      "district": "Orleans-2",
+      "email": "wpage@leg.state.vt.us"
+    },
+    {
+      "name": "Joseph Parsons",
+      "district": "Orange-Caledonia",
+      "email": "jparsons@leg.state.vt.us"
+    },
+    {
+      "name": "Gail Pezzo",
+      "district": "Chittenden-20",
+      "email": "gpezzo@leg.state.vt.us"
+    },
+    {
+      "name": "Sandy Pinsonault",
+      "district": "Bennington-Rutland",
+      "email": "spinsonault@leg.state.vt.us"
+    },
+    {
+      "name": "Phil Pouech",
+      "district": "Chittenden-4",
+      "email": "ppouech@leg.state.vt.us"
+    },
+    {
+      "name": "Debra Powers",
+      "district": "Caledonia-1",
+      "email": "dpowers@leg.state.vt.us"
+    },
+    {
+      "name": "Monique Priestley",
+      "district": "Orange-2",
+      "email": "mpriestley@leg.state.vt.us"
+    },
+    {
+      "name": "Chris Pritchard",
+      "district": "Rutland-Bennington",
+      "email": "cpritchard@leg.state.vt.us"
+    },
+    {
+      "name": "Beth Quimby",
+      "district": "Caledonia-3",
+      "email": "bquimby@leg.state.vt.us"
+    },
+    {
+      "name": "Barbara Rachelson",
+      "district": "Chittenden-14",
+      "email": "brachelson@leg.state.vt.us"
+    },
+    {
+      "name": "Larry Satcowitz",
+      "district": "Orange-Washington-Addison",
+      "email": "lsatcowitz@leg.state.vt.us"
+    },
+    {
+      "name": "Robin Scheu",
+      "district": "Addison-1",
+      "email": "RScheu@leg.state.vt.us"
+    },
+    {
+      "name": "Amy Sheldon",
+      "district": "Addison-1",
+      "email": "asheldon@leg.state.vt.us"
+    },
+    {
+      "name": "Laura Sibilia",
+      "district": "Windham-2",
+      "email": "lsibilia@leg.state.vt.us"
+    },
+    {
+      "name": "Michael Southworth",
+      "district": "Caledonia-2",
+      "email": "msouthworth@leg.state.vt.us"
+    },
+    {
+      "name": "Trevor Squirrell",
+      "district": "Chittenden-3",
+      "email": "TSquirrell@leg.state.vt.us"
+    },
+    {
+      "name": "Brenda Steady",
+      "district": "Chittenden-25",
+      "email": "bsteady@leg.state.vt.us"
+    },
+    {
+      "name": "Thomas Stevens",
+      "district": "Washington-Chittenden",
+      "email": "tstevens@leg.state.vt.us"
+    },
+    {
+      "name": "Mary-Katherine Stone",
+      "district": "Chittenden-14",
+      "email": "mstone@leg.state.vt.us"
+    },
+    {
+      "name": "Heather Surprenant",
+      "district": "Windsor-4",
+      "email": "hsurprenant@leg.state.vt.us"
+    },
+    {
+      "name": "Shawn Sweeney",
+      "district": "Chittenden-7",
+      "email": "ssweeney@leg.state.vt.us"
+    },
+    {
+      "name": "Michael Tagliavia",
+      "district": "Orange-1",
+      "email": "mtagliavia@leg.state.vt.us"
+    },
+    {
+      "name": "Chris Taylor",
+      "district": "Chittenden-Franklin",
+      "email": "cataylor@leg.state.vt.us"
+    },
+    {
+      "name": "Chloe Thomlinson",
+      "district": "Chittenden-21",
+      "email": "cthomlinson@leg.state.vt.us"
+    },
+    {
+      "name": "Casey Toof",
+      "district": "Franklin-8",
+      "email": "ctoof@leg.state.vt.us"
+    },
+    {
+      "name": "Dara Torre",
+      "district": "Washington-2",
+      "email": "dtorre@leg.state.vt.us"
+    },
+    {
+      "name": "Matt Walker",
+      "district": "Franklin-4",
+      "email": "mwalker@leg.state.vt.us"
+    },
+    {
+      "name": "Teddy Waszazak",
+      "district": "Washington-3",
+      "email": "ewaszazak@leg.state.vt.us"
+    },
+    {
+      "name": "Chea Waters Evans",
+      "district": "Chittenden-5",
+      "email": "cevans@leg.state.vt.us"
+    },
+    {
+      "name": "Kenneth Wells",
+      "district": "Orleans-3",
+      "email": "kwells@leg.state.vt.us"
+    },
+    {
+      "name": "Candice White",
+      "district": "Washington-2",
+      "email": "cwhite@leg.state.vt.us"
+    },
+    {
+      "name": "Kirk White",
+      "district": "Windsor-Addison",
+      "email": "kwhite@leg.state.vt.us"
+    },
+    {
+      "name": "Kevin Winter",
+      "district": "Rutland-Windsor",
+      "email": "kwinter@leg.state.vt.us"
+    },
+    {
+      "name": "Theresa Wood",
+      "district": "Washington-Chittenden",
+      "email": "twood@leg.state.vt.us"
+    },
+    {
+      "name": "David Yacovone",
+      "district": "Lamoille-Washington",
+      "email": "DYacovone@leg.state.vt.us"
+    }
+  ]
+}
