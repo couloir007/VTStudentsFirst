@@ -18,7 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (header) {
     const handleToolbarScroll = () => {
       const { total, floor } = getToolbarOffset();
-      if (total <= 0) return;
+
+      // Logged out: no toolbar — reset any inline top and let CSS take over.
+      if (total <= 0) {
+        header.style.top = '';
+        return;
+      }
 
       const top = Math.max(floor, total - window.scrollY);
       header.style.top = `${top}px`;
@@ -28,23 +33,40 @@ document.addEventListener('DOMContentLoaded', () => {
     handleToolbarScroll();
   }
 
-  // Smooth scroll for anchor links, offset by header height.
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', (e) => {
-      const id = anchor.getAttribute('href');
-      if (id === '#') return;
+  // Smooth scroll — delegated to document so it catches all anchors
+  // regardless of when they were added to the DOM or JS aggregation order.
+  document.addEventListener('click', (e) => {
+    const anchor = e.target.closest('a[href^="#"]');
+    if (!anchor) return;
 
-      const target = document.querySelector(id);
-      if (!target) return;
+    const id = anchor.getAttribute('href');
+    if (!id || id === '#') return;
 
-      e.preventDefault();
+    let target;
+    try {
+      target = document.querySelector(id);
+    } catch (_) {
+      // Malformed selector — bail out gracefully.
+      return;
+    }
+    if (!target) return;
 
+    e.preventDefault();
+
+    // rAF ensures header height is measured after any layout triggered
+    // by the click (e.g. menus closing, class toggles).
+    requestAnimationFrame(() => {
       const headerHeight = header ? header.getBoundingClientRect().height : 0;
       const { floor } = getToolbarOffset();
       const offset = headerHeight + floor;
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
 
-      window.scrollTo({ top, behavior: 'smooth' });
+      if ('scrollBehavior' in document.documentElement.style) {
+        window.scrollTo({ top, behavior: 'smooth' });
+      } else {
+        // Fallback for older browsers.
+        window.scrollTo(0, top);
+      }
     });
   });
 
