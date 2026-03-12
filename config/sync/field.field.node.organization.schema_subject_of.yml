@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.schema_subject_of
+    - node.type.about_page
     - node.type.article
     - node.type.edu_organization
     - node.type.event
@@ -41,6 +42,7 @@ settings:
     excluded_schema_types: {  }
     ignore_additional_mappings: false
     target_bundles:
+      about_page: about_page
       article: article
       edu_organization: edu_organization
       event: event

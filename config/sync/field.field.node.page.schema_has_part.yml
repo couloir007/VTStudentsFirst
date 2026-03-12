@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.schema_has_part
+    - node.type.about_page
     - node.type.article
     - node.type.legislation
     - node.type.news_updates
@@ -34,6 +35,7 @@ settings:
     excluded_schema_types: {  }
     ignore_additional_mappings: true
     target_bundles:
+      about_page: about_page
       article: article
       legislation: legislation
       news_updates: news_updates

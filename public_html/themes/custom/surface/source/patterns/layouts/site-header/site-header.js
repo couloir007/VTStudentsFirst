@@ -3,16 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const siteBranding = document.querySelector('.site-header .site-branding');
   const sitePrimary = document.querySelector('.site-primary__content');
 
-  const updateHeaderHeight = () => {
-    if (header) {
-      const headerHeight = header.getBoundingClientRect().height;
-      document.documentElement.style.setProperty('--site-header-height', `${headerHeight}px`);
-    }
-  };
-
-  updateHeaderHeight();
-  window.addEventListener('resize', updateHeaderHeight);
-
   function getToolbarOffset() {
     const adminToolbar = document.querySelector('#toolbar-administration');
     const ginSecondary = document.querySelector('.gin-secondary-toolbar--frontend');
@@ -46,11 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Smooth scroll — delegated to document so it catches all anchors
   // regardless of when they were added to the DOM or JS aggregation order.
   document.addEventListener('click', (e) => {
-    const anchor = e.target.closest('a[href^="#"]');
+    const anchor = e.target.closest('a[href^="#"], a[href^="/#"]');
     if (!anchor) return;
 
-    const id = anchor.getAttribute('href');
-    if (!id || id === '#') return;
+    const href = anchor.getAttribute('href');
+    if (!href || href === '#') return;
+
+    // Normalize: '/#issue' → '#issue', '#issue' → '#issue'
+    const id = href.startsWith('/#') ? href.slice(1) : href;
 
     let target;
     try {
@@ -59,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Malformed selector — bail out gracefully.
       return;
     }
+    // No target on this page — let browser navigate normally (interior → homepage).
     if (!target) return;
 
     e.preventDefault();

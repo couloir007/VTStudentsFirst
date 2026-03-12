@@ -1,0 +1,34 @@
+uuid: 552b86a7-3565-4e10-bb19-c3f971fea7c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.about_page.body
+    - field.field.node.about_page.schema_about
+    - field.field.node.about_page.schema_has_part
+    - field.field.node.about_page.schema_image
+    - field.field.node.about_page.schema_is_part_of
+    - field.field.node.about_page.schema_related_link
+    - field.field.node.about_page.schema_significant_link
+    - field.field.node.about_page.schema_subject_of
+    - node.type.about_page
+  module:
+    - node
+id: node.about_page
+target_entity_type_id: node
+target_bundle: about_page
+schema_type: AboutPage
+schema_properties:
+  schema_about: about
+  created: dateCreated
+  changed: dateModified
+  schema_has_part: hasPart
+  langcode: inLanguage
+  schema_is_part_of: isPartOf
+  title: name
+  schema_image: primaryImageOfPage
+  schema_related_link: relatedLink
+  schema_significant_link: significantLink
+  schema_subject_of: subjectOf
+  body: text
+additional_mappings: {  }

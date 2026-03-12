@@ -13,6 +13,6 @@
 #}
 {% include '@components/menu-main/menu-main.twig' with {
   'items': content['#items'] is defined ? content['#items'] : [],
-  'data_menu': 'default',
+  'data_menu': 'dropdown',
   'attributes': attributes,
 } only %}

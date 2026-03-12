@@ -1,9 +1,9 @@
-uuid: 64bd8a1d-3ce2-4e53-ab1f-fbec5b39f984
+uuid: c5b50838-98d0-43fe-9c26-b515771bea1f
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.schema_subject_of
+    - field.storage.node.schema_about
     - node.type.about_page
     - node.type.article
     - node.type.edu_organization
@@ -21,12 +21,12 @@ dependencies:
     - epp
 third_party_settings:
   epp:
-    value: 'target_id: [current-page:query:subject_of]'
-id: node.event.schema_subject_of
-field_name: schema_subject_of
+    value: 'target_id: [current-page:query:about]'
+id: node.about_page.schema_about
+field_name: schema_about
 entity_type: node
-bundle: event
-label: 'Subject of'
+bundle: about_page
+label: About
 description: ''
 required: false
 translatable: false
@@ -37,8 +37,7 @@ settings:
   handler_settings:
     target_type: node
     schema_types:
-      CreativeWork: CreativeWork
-      Event: Event
+      Thing: Thing
     excluded_schema_types: {  }
     ignore_additional_mappings: false
     target_bundles:

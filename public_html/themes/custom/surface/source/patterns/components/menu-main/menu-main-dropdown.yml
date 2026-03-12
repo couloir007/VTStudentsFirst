@@ -1,6 +1,41 @@
 ---
 data_menu: 'dropdown'
 items:
-  - title: 'Sean Montague'
+  - title: 'The Issue'
     url: '/#issue'
-    in_active_trail: true
+    in_active_trail: false
+    is_expanded: true
+    is_collapsed: false
+    below:
+      - title: 'Stakes'
+        url: '/#stakes'
+        in_active_trail: false
+        below: false
+      - title: 'Our Position'
+        url: '/#positions'
+        in_active_trail: false
+        below: false
+      - title: 'Accountability'
+        url: '/#accountability'
+        in_active_trail: false
+        below: false
+      - title: 'Myth vs. Fact'
+        url: '/#myth'
+        in_active_trail: false
+        below: false
+      - title: 'Voices'
+        url: '/#voices'
+        in_active_trail: false
+        below: false
+  - title: 'Take Action'
+    url: '/#act'
+    in_active_trail: false
+    below: false
+  - title: 'News & Updates'
+    url: '/news'
+    in_active_trail: false
+    below: false
+  - title: 'About'
+    url: '/about'
+    in_active_trail: false
+    below: false

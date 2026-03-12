@@ -16,6 +16,7 @@ selection_criteria:
     context_mapping:
       node: node
     bundles:
+      about_page: about_page
       article: article
       creative_work: creative_work
       edu_organization: edu_organization

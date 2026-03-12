@@ -7,14 +7,19 @@
 }
 
 .menu-main .menu__item {
+  align-items: center;
   display: flex;
   margin: 0;
+  position: relative;
 }
 
 .menu-main .menu__link {
-  color: var(--sage);
+  align-items: center;
+  color: var(--white);
+  display: flex;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 1rem;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-decoration: none;
   text-transform: uppercase;
@@ -25,8 +30,85 @@
   color: white;
 }
 
-/* Specific CTA style for "Take Action" if it's the last item or has a class */
-.menu-main .menu__item:last-child .menu__link {
+/* ── Dropdown toggle button ── */
+.menu-main .menu-toggle {
+  align-items: center;
+  background: none;
+  border: none;
+  color: var(--sage);
+  cursor: pointer;
+  display: inline-flex;
+  padding: 0 0.2rem;
+  transition: color 0.2s;
+}
+
+.menu-main .menu-toggle:hover {
+  color: white;
+}
+
+.menu-main .menu-toggle svg {
+  height: 0.85em;
+  fill: white;
+  color: white;
+  transition: transform 0.2s;
+  width: 0.85em;
+}
+
+.menu-main .menu-toggle[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+/* ── Dropdown panel ── */
+.translate__container {
+  left: 0;
+  position: absolute;
+  top: 100%;
+  z-index: 100;
+}
+
+.menu-main--level-2 {
+  background: var(--forest);
+  border-top: 2px solid var(--maple);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  min-width: 180px;
+  opacity: 0;
+  padding: 0.5rem 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.menu-main--level-2.is-active-menu-parent {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.menu-main--level-2 .menu__item {
+  display: block;
+}
+
+.menu-main--level-2 .menu__link {
+  color: var(--mist);
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.6rem 1.25rem;
+  white-space: nowrap;
+}
+
+.menu-main--level-2 .menu__link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+/* ── CTA: last top-level item ── */
+.menu-main > .menu__item--level-1.menu__item:last-child .menu__link {
   background: var(--maple);
   border-radius: 2px;
   color: white !important;
@@ -35,12 +117,12 @@
   transition: background 0.2s;
 }
 
-.menu-main .menu__item:last-child .menu__link:hover {
+.menu-main > .menu__item:last-child .menu__link:hover {
   background: #a8521f;
 }
 
 @media (width <= 768px) {
   .menu-main {
-    display: none; /* Mobile menu would need a toggle, simplified for now */
+    display: none;
   }
 }
