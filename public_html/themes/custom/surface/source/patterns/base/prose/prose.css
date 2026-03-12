@@ -7,7 +7,7 @@
   :where(p):not(:where([class~='not-prose'] *)) {
     margin-block: var(--size-6);
     margin-inline: auto; /* Centers content */
-    max-width: 71ch;
+    max-width: var(--size-prose);
     text-wrap: pretty;
   }
 
@@ -36,12 +36,16 @@
   :where(h1):not(:where([class~='not-prose'] *)) {
     margin-block-end: var(--size-8);
     margin-block-start: 0;
+    margin-inline: auto; /* Centers content */
+    max-width: var(--size-prose);
     text-wrap: balance;
   }
 
   :where(h2):not(:where([class~='not-prose'] *)) {
     margin-block-end: var(--size-6);
     margin-block-start: var(--size-12);
+    margin-inline: auto; /* Centers content */
+    max-width: var(--size-prose);
     text-wrap: balance;
 
     :where(strong):not(:where([class~='not-prose'] *)) {
@@ -52,6 +56,8 @@
   :where(h3):not(:where([class~='not-prose'] *)) {
     margin-block-end: var(--size-4);
     margin-block-start: var(--size-8);
+    margin-inline: auto; /* Centers content */
+    max-width: var(--size-prose);
     text-wrap: balance;
 
     :where(strong):not(:where([class~='not-prose'] *)) {
@@ -62,6 +68,8 @@
   :where(h4):not(:where([class~='not-prose'] *)) {
     margin-block-end: var(--size-2);
     margin-block-start: var(--size-6);
+    margin-inline: auto; /* Centers content */
+    max-width: var(--size-prose);
     text-wrap: balance;
   }
 

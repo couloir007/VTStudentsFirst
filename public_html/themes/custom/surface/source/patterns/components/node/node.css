@@ -39,7 +39,7 @@
 
   & a {
     background-color: transparent;
-    background-image: linear-gradient(var(--blue-500), var(--blue-500)); /* Two values are needed for IE11 support. */
+    background-image: linear-gradient(var(--blue-500), var(--blue-500));
     background-position: bottom left;
     background-repeat: no-repeat;
     background-size: 0 3px;
@@ -60,5 +60,16 @@
 
   @media (--laptop) {
     padding-block-end: var(--size-12);
+  }
+}
+
+.node__inner {
+  margin-inline: auto;
+  max-inline-size: var(--section-max-width, 1100px);
+  padding-inline: var(--section-padding-h, 2.5rem);
+  width: 100%;
+
+  @media (width <= 768px) {
+    padding-inline: 1.5rem;
   }
 }
