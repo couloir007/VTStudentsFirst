@@ -3,6 +3,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const siteBranding = document.querySelector('.site-header .site-branding');
   const sitePrimary = document.querySelector('.site-primary__content');
 
+  const updateHeaderHeight = () => {
+    if (header) {
+      const headerHeight = header.getBoundingClientRect().height;
+      document.documentElement.style.setProperty('--site-header-height', `${headerHeight}px`);
+    }
+  };
+
+  updateHeaderHeight();
+  window.addEventListener('resize', updateHeaderHeight);
+
   function getToolbarOffset() {
     const adminToolbar = document.querySelector('#toolbar-administration');
     const ginSecondary = document.querySelector('.gin-secondary-toolbar--frontend');

@@ -1,3 +1,13 @@
+:root {
+  --site-header-height: var(--size-20);
+}
+
+@media (width <= 768px) {
+  :root {
+    --site-header-height: var(--size-16);
+  }
+}
+
 .site-header {
   backdrop-filter: blur(10px);
   background: rgba(10, 22, 17, 85%);

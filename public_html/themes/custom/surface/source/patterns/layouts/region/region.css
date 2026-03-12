@@ -2,3 +2,7 @@
  * @file
  * Region styles.
  */
+
+body:not(.path-frontpage) .region--content {
+  padding-block-start: var(--site-header-height);
+}
