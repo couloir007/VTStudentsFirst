@@ -1,7 +1,12 @@
 uuid: 140ced18-92a8-4e76-adcb-a7c1bde39f60
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
 id: action_section
 label: 'Action Section'
 icon_uuid: null

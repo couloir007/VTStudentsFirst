@@ -3,10 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.card_item.field_card_title
     - field.field.paragraph.card_item.field_card_body
-    - field.field.paragraph.card_item.field_card_variant
     - field.field.paragraph.card_item.field_card_icon
+    - field.field.paragraph.card_item.field_card_title
+    - field.field.paragraph.card_item.field_card_variant
+    - field.field.paragraph.card_item.schema_item
+    - field.field.paragraph.card_item.schema_next_item
+    - field.field.paragraph.card_item.schema_previous_item
     - paragraphs.paragraphs_type.card_item
   module:
     - text
@@ -46,6 +49,30 @@ content:
     settings:
       size: 32
       placeholder: 'urgent, stake, or pillar'
+    third_party_settings: {  }
+  schema_item:
+    type: string_textfield
+    weight: 110
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_next_item:
+    type: string_textfield
+    weight: 110
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_previous_item:
+    type: string_textfield
+    weight: 110
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true

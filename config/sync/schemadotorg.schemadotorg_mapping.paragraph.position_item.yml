@@ -1,0 +1,24 @@
+uuid: bf61125c-f287-4560-a137-d9e522bdca3c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.position_item.field_position_body
+    - field.field.paragraph.position_item.field_position_title
+    - field.field.paragraph.position_item.schema_item
+    - field.field.paragraph.position_item.schema_next_item
+    - field.field.paragraph.position_item.schema_previous_item
+    - paragraphs.paragraphs_type.position_item
+  module:
+    - paragraphs
+id: paragraph.position_item
+target_entity_type_id: paragraph
+target_bundle: position_item
+schema_type: ListItem
+schema_properties:
+  field_position_body: description
+  schema_item: item
+  field_position_title: name
+  schema_next_item: nextItem
+  schema_previous_item: previousItem
+additional_mappings: {  }

@@ -1,7 +1,12 @@
 uuid: ad2cfdfd-bf8c-44ed-9604-1a81c599193a
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
 id: positions_section
 label: 'Positions Section'
 icon_uuid: null

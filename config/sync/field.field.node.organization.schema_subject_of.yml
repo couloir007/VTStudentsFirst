@@ -12,6 +12,7 @@ dependencies:
     - node.type.page
     - node.type.person
     - node.type.place
+    - node.type.testimonial
     - node.type.web_site
   module:
     - epp
@@ -46,5 +47,6 @@ settings:
       page: page
       person: person
       place: place
+      testimonial: testimonial
       web_site: web_site
 field_type: entity_reference

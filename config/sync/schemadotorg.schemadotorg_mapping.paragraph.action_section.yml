@@ -1,0 +1,20 @@
+uuid: 2b204e1d-42fd-4bab-9b7b-7474a3ab4b28
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.action_section.field_section_headline
+    - field.field.paragraph.action_section.field_section_label
+    - field.field.paragraph.action_section.field_steps
+    - paragraphs.paragraphs_type.action_section
+  module:
+    - paragraphs
+id: paragraph.action_section
+target_entity_type_id: paragraph
+target_bundle: action_section
+schema_type: ItemList
+schema_properties:
+  field_section_headline: description
+  field_steps: itemListElement
+  field_section_label: name
+additional_mappings: {  }

@@ -1,0 +1,20 @@
+uuid: 3319b583-7f9c-4f40-a40b-c73d2f168945
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.hero_section.field_intro_text
+    - field.field.paragraph.hero_section.field_section_headline
+    - field.field.paragraph.hero_section.field_stat_items
+    - paragraphs.paragraphs_type.hero_section
+  module:
+    - paragraphs
+id: paragraph.hero_section
+target_entity_type_id: paragraph
+target_bundle: hero_section
+schema_type: ItemList
+schema_properties:
+  field_intro_text: description
+  field_stat_items: itemListElement
+  field_section_headline: name
+additional_mappings: {  }

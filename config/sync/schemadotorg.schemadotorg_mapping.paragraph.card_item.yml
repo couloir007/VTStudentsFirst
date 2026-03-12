@@ -1,0 +1,24 @@
+uuid: 17f04e74-e7c7-4bca-aef1-141336441f0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.card_item.field_card_body
+    - field.field.paragraph.card_item.field_card_title
+    - field.field.paragraph.card_item.schema_item
+    - field.field.paragraph.card_item.schema_next_item
+    - field.field.paragraph.card_item.schema_previous_item
+    - paragraphs.paragraphs_type.card_item
+  module:
+    - paragraphs
+id: paragraph.card_item
+target_entity_type_id: paragraph
+target_bundle: card_item
+schema_type: ListItem
+schema_properties:
+  field_card_body: description
+  schema_item: item
+  field_card_title: name
+  schema_next_item: nextItem
+  schema_previous_item: previousItem
+additional_mappings: {  }

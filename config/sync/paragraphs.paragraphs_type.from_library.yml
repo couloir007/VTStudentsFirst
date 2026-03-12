@@ -1,0 +1,15 @@
+uuid: 7e601b41-c7ff-4f5e-a6f5-bae5a564d8bf
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - paragraphs_library
+_core:
+  default_config_hash: RGSkW7xbQQkzNrGunBWMSKS6lacu7KsgZjVWGVUF0xY
+id: from_library
+label: 'From library'
+icon_uuid: 16714578-82c9-40c2-985e-eef3ba325569
+icon_default: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48IS0tISBGb250IEF3ZXNvbWUgUHJvIDYuMi4wIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlIChDb21tZXJjaWFsIExpY2Vuc2UpIENvcHlyaWdodCAyMDIyIEZvbnRpY29ucywgSW5jLiAtLT48cGF0aCBkPSJNMjI0IDBjLTM1LjMgMC02NCAyOC43LTY0IDY0VjI4OGMwIDM1LjMgMjguNyA2NCA2NCA2NEg0NDhjMzUuMyAwIDY0LTI4LjcgNjQtNjRWNjRjMC0zNS4zLTI4LjctNjQtNjQtNjRIMjI0ek02NCAxNjBjLTM1LjMgMC02NCAyOC43LTY0IDY0VjQ0OGMwIDM1LjMgMjguNyA2NCA2NCA2NEgyODhjMzUuMyAwIDY0LTI4LjcgNjQtNjRWMzg0SDI4OHY2NEg2NFYyMjRoNjRWMTYwSDY0eiIvPjwvc3ZnPg=='
+description: null
+behavior_plugins: {  }

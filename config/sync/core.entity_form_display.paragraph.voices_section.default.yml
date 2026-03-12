@@ -20,7 +20,7 @@ mode: default
 content:
   field_intro_text:
     type: text_textarea
-    weight: 2
+    weight: 3
     region: content
     settings:
       rows: 4
@@ -28,7 +28,7 @@ content:
     third_party_settings: {  }
   field_section_headline:
     type: string_textarea
-    weight: 1
+    weight: 2
     region: content
     settings:
       rows: 5
@@ -44,7 +44,7 @@ content:
     third_party_settings: {  }
   field_section_url:
     type: string_textfield
-    weight: 3
+    weight: 1
     region: content
     settings:
       size: 60
@@ -62,7 +62,7 @@ content:
     third_party_settings: {  }
   schema_description:
     type: text_textarea
-    weight: 17
+    weight: 5
     region: content
     settings:
       rows: 5

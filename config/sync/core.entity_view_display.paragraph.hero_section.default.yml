@@ -9,8 +9,6 @@ dependencies:
     - field.field.paragraph.hero_section.field_section_headline
     - field.field.paragraph.hero_section.field_stat_items
     - paragraphs.paragraphs_type.hero_section
-  module:
-    - paragraphs
 id: paragraph.hero_section.default
 targetEntityType: paragraph
 bundle: hero_section

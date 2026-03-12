@@ -3,8 +3,11 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.step_item.field_step_title
     - field.field.paragraph.step_item.field_step_body
+    - field.field.paragraph.step_item.field_step_title
+    - field.field.paragraph.step_item.schema_item
+    - field.field.paragraph.step_item.schema_next_item
+    - field.field.paragraph.step_item.schema_previous_item
     - paragraphs.paragraphs_type.step_item
   module:
     - text
@@ -24,6 +27,30 @@ content:
   field_step_title:
     type: string_textfield
     weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_item:
+    type: string_textfield
+    weight: 110
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_next_item:
+    type: string_textfield
+    weight: 110
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_previous_item:
+    type: string_textfield
+    weight: 110
     region: content
     settings:
       size: 60

@@ -1,0 +1,70 @@
+uuid: 62f7553e-7d81-445d-8ab0-e8e3a7a3f0e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_main_entity
+    - node.type.page
+    - paragraphs.paragraphs_type.accountability_section
+    - paragraphs.paragraphs_type.action_section
+    - paragraphs.paragraphs_type.hero_section
+    - paragraphs.paragraphs_type.issue_section
+    - paragraphs.paragraphs_type.myth_section
+    - paragraphs.paragraphs_type.positions_section
+    - paragraphs.paragraphs_type.stakes_section
+    - paragraphs.paragraphs_type.voices_section
+  module:
+    - entity_reference_revisions
+    - epp
+third_party_settings:
+  epp:
+    value: 'target_id: [current-page:query:main_entity]'
+id: node.page.schema_main_entity
+field_name: schema_main_entity
+entity_type: node
+bundle: page
+label: Layout
+description: 'Main Content Schema'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      accountability_section: accountability_section
+      action_section: action_section
+      hero_section: hero_section
+      myth_section: myth_section
+      positions_section: positions_section
+      stakes_section: stakes_section
+      voices_section: voices_section
+      issue_section: issue_section
+    negate: 0
+    target_bundles_drag_drop:
+      accountability_section:
+        weight: 0
+        enabled: true
+      action_section:
+        weight: 1
+        enabled: true
+      hero_section:
+        weight: 2
+        enabled: true
+      issue_section:
+        weight: 7
+        enabled: true
+      myth_section:
+        weight: 3
+        enabled: true
+      positions_section:
+        weight: 4
+        enabled: true
+      stakes_section:
+        weight: 5
+        enabled: true
+      voices_section:
+        weight: 6
+        enabled: true
+field_type: entity_reference_revisions

@@ -3,11 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.stat_item.field_stat_number
     - field.field.paragraph.stat_item.field_stat_label
+    - field.field.paragraph.stat_item.field_stat_number
+    - field.field.paragraph.stat_item.schema_item
+    - field.field.paragraph.stat_item.schema_next_item
+    - field.field.paragraph.stat_item.schema_previous_item
     - paragraphs.paragraphs_type.stat_item
-  module:
-    - text
 id: paragraph.stat_item.default
 targetEntityType: paragraph
 bundle: stat_item
@@ -28,6 +29,30 @@ content:
     settings:
       size: 16
       placeholder: 4%
+    third_party_settings: {  }
+  schema_item:
+    type: string_textfield
+    weight: 110
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_next_item:
+    type: string_textfield
+    weight: 110
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_previous_item:
+    type: string_textfield
+    weight: 110
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true

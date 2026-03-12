@@ -1,7 +1,12 @@
 uuid: eb7031be-9a98-4f06-a0f9-7a7840f3070c
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
 id: issue_section
 label: 'Issue Section'
 icon_uuid: null

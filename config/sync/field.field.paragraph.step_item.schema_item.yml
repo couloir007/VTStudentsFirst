@@ -1,0 +1,19 @@
+uuid: b7c3a46c-bffa-4194-9ba9-28e3556c00a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.schema_item
+    - paragraphs.paragraphs_type.step_item
+id: paragraph.step_item.schema_item
+field_name: schema_item
+entity_type: paragraph
+bundle: step_item
+label: Item
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

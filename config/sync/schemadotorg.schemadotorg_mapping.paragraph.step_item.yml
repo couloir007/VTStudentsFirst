@@ -1,0 +1,24 @@
+uuid: a4cca1ae-1607-4cfd-a71a-033d64773b55
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.step_item.field_step_body
+    - field.field.paragraph.step_item.field_step_title
+    - field.field.paragraph.step_item.schema_item
+    - field.field.paragraph.step_item.schema_next_item
+    - field.field.paragraph.step_item.schema_previous_item
+    - paragraphs.paragraphs_type.step_item
+  module:
+    - paragraphs
+id: paragraph.step_item
+target_entity_type_id: paragraph
+target_bundle: step_item
+schema_type: ListItem
+schema_properties:
+  field_step_body: description
+  schema_item: item
+  field_step_title: name
+  schema_next_item: nextItem
+  schema_previous_item: previousItem
+additional_mappings: {  }

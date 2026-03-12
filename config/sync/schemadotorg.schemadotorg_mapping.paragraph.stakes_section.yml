@@ -1,0 +1,20 @@
+uuid: c2b449c0-e55f-45ab-98aa-622c094702ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.stakes_section.field_cards
+    - field.field.paragraph.stakes_section.field_section_headline
+    - field.field.paragraph.stakes_section.field_section_label
+    - paragraphs.paragraphs_type.stakes_section
+  module:
+    - paragraphs
+id: paragraph.stakes_section
+target_entity_type_id: paragraph
+target_bundle: stakes_section
+schema_type: ItemList
+schema_properties:
+  field_section_headline: description
+  field_cards: itemListElement
+  field_section_label: name
+additional_mappings: {  }

@@ -1,7 +1,12 @@
 uuid: c959b432-6992-4f6e-925e-2e122ca7c5bf
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
 id: myth_section
 label: 'Myth Section'
 icon_uuid: null

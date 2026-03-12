@@ -1,0 +1,19 @@
+uuid: 27569a5f-f505-4f24-9acc-93a663d906ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.schema_previous_item
+    - paragraphs.paragraphs_type.card_item
+id: paragraph.card_item.schema_previous_item
+field_name: schema_previous_item
+entity_type: paragraph
+bundle: card_item
+label: 'Previous item'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

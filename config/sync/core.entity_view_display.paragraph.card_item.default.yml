@@ -3,18 +3,43 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.card_item.field_card_title
     - field.field.paragraph.card_item.field_card_body
-    - field.field.paragraph.card_item.field_card_variant
     - field.field.paragraph.card_item.field_card_icon
+    - field.field.paragraph.card_item.field_card_title
+    - field.field.paragraph.card_item.field_card_variant
+    - field.field.paragraph.card_item.schema_item
+    - field.field.paragraph.card_item.schema_next_item
+    - field.field.paragraph.card_item.schema_previous_item
     - paragraphs.paragraphs_type.card_item
-  module:
-    - paragraphs
 id: paragraph.card_item.default
 targetEntityType: paragraph
 bundle: card_item
 mode: default
-content: {  }
+content:
+  schema_item:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  schema_next_item:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  schema_previous_item:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 110
+    region: content
 hidden:
   created: true
   field_card_body: true

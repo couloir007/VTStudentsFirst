@@ -1,0 +1,20 @@
+uuid: 9e58a518-32b6-465b-8b5d-d4ae730db80c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.myth_section.field_cards
+    - field.field.paragraph.myth_section.field_section_headline
+    - field.field.paragraph.myth_section.field_section_label
+    - paragraphs.paragraphs_type.myth_section
+  module:
+    - paragraphs
+id: paragraph.myth_section
+target_entity_type_id: paragraph
+target_bundle: myth_section
+schema_type: ItemList
+schema_properties:
+  field_section_headline: description
+  field_cards: itemListElement
+  field_section_label: name
+additional_mappings: {  }

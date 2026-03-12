@@ -1,7 +1,12 @@
 uuid: 91162481-f9d2-445a-8d92-c3576db0eb81
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
 id: accountability_section
 label: 'Accountability Section'
 icon_uuid: null

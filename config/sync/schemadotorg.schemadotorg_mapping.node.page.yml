@@ -4,11 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.node.page.body
-    - field.field.node.page.field_sections
     - field.field.node.page.schema_about
     - field.field.node.page.schema_has_part
     - field.field.node.page.schema_image
     - field.field.node.page.schema_is_part_of
+    - field.field.node.page.schema_main_entity
     - field.field.node.page.schema_related_link
     - field.field.node.page.schema_significant_link
     - field.field.node.page.schema_subject_of
@@ -28,7 +28,7 @@ schema_properties:
   schema_has_part: hasPart
   langcode: inLanguage
   schema_is_part_of: isPartOf
-  field_sections: mainEntityOfPage
+  schema_main_entity: mainEntity
   title: name
   schema_image: primaryImageOfPage
   schema_related_link: relatedLink

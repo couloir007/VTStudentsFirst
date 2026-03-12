@@ -12,12 +12,14 @@ dependencies:
     - field.field.node.page.schema_has_part
     - field.field.node.page.schema_image
     - field.field.node.page.schema_is_part_of
+    - field.field.node.page.schema_main_entity
     - field.field.node.page.schema_related_link
     - field.field.node.page.schema_significant_link
     - field.field.node.page.schema_subject_of
     - field.field.node.page.schema_web_page_type
     - node.type.page
   module:
+    - layout_paragraphs
     - path
 id: node.page.inline_entity_form
 targetEntityType: node
@@ -49,6 +51,18 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  schema_main_entity:
+    type: layout_paragraphs
+    weight: 97
+    region: content
+    settings:
+      view_mode: default
+      preview_view_mode: default
+      form_display_mode: default
+      nesting_depth: 0
+      require_layouts: 0
+      empty_message: 'Click the [+] sign below to choose your first component.'
     third_party_settings: {  }
   simple_sitemap:
     weight: 220

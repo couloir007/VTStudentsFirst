@@ -1,7 +1,12 @@
 uuid: f16f9f1d-df90-413f-af18-d1eb73a2af61
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
 id: stakes_section
 label: 'Stakes Section'
 icon_uuid: null

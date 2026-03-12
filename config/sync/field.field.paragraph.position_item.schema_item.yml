@@ -1,15 +1,15 @@
-uuid: b21e965a-9a43-43a6-bc57-3361a4f54e99
+uuid: 90cd0bf1-c204-457c-8202-dead934e7d89
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.paragraph.field_section_url
+    - field.storage.paragraph.schema_item
     - paragraphs.paragraphs_type.position_item
-id: paragraph.position_item.field_section_url
-field_name: field_section_url
+id: paragraph.position_item.schema_item
+field_name: schema_item
 entity_type: paragraph
 bundle: position_item
-label: 'Section URL'
+label: Item
 description: ''
 required: false
 translatable: false

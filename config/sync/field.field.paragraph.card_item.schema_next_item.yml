@@ -1,0 +1,19 @@
+uuid: d3cc1aae-e970-4c78-94bb-76be0b6f75bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.schema_next_item
+    - paragraphs.paragraphs_type.card_item
+id: paragraph.card_item.schema_next_item
+field_name: schema_next_item
+entity_type: paragraph
+bundle: card_item
+label: 'Next item'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

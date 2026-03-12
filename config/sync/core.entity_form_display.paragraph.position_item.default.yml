@@ -5,7 +5,9 @@ dependencies:
   config:
     - field.field.paragraph.position_item.field_position_body
     - field.field.paragraph.position_item.field_position_title
-    - field.field.paragraph.position_item.field_section_url
+    - field.field.paragraph.position_item.schema_item
+    - field.field.paragraph.position_item.schema_next_item
+    - field.field.paragraph.position_item.schema_previous_item
     - paragraphs.paragraphs_type.position_item
   module:
     - text
@@ -30,9 +32,25 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_section_url:
+  schema_item:
     type: string_textfield
-    weight: 3
+    weight: 110
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_next_item:
+    type: string_textfield
+    weight: 110
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  schema_previous_item:
+    type: string_textfield
+    weight: 110
     region: content
     settings:
       size: 60

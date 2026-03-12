@@ -3,16 +3,41 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.stat_item.field_stat_number
     - field.field.paragraph.stat_item.field_stat_label
+    - field.field.paragraph.stat_item.field_stat_number
+    - field.field.paragraph.stat_item.schema_item
+    - field.field.paragraph.stat_item.schema_next_item
+    - field.field.paragraph.stat_item.schema_previous_item
     - paragraphs.paragraphs_type.stat_item
-  module:
-    - paragraphs
 id: paragraph.stat_item.default
 targetEntityType: paragraph
 bundle: stat_item
 mode: default
-content: {  }
+content:
+  schema_item:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  schema_next_item:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  schema_previous_item:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 110
+    region: content
 hidden:
   created: true
   field_stat_label: true
