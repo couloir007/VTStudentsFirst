@@ -15,10 +15,11 @@
 
 .menu-main .menu__link {
   align-items: center;
-  color: var(--sage);
+  color: var(--white);
   display: flex;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-decoration: none;
   text-transform: uppercase;
@@ -95,7 +96,10 @@
 .menu-main--level-2 .menu__link {
   color: var(--mist);
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   padding: 0.6rem 1.25rem;
   white-space: nowrap;
 }
@@ -106,7 +110,7 @@
 }
 
 /* ── CTA: last top-level item ── */
-.menu-main > .menu__item:last-child .menu__link {
+.menu-main > .menu__item--level-1.menu__item:last-child .menu__link {
   background: var(--maple);
   border-radius: 2px;
   color: white !important;
