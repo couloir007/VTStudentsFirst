@@ -1,0 +1,232 @@
+{
+  "exportFormatVersion": 2,
+  "exportTime": "2026-03-12 00:00:00",
+  "containerVersion": {
+    "path": "accounts/0/containers/0/versions/0",
+    "accountId": "0",
+    "containerId": "0",
+    "containerVersionId": "0",
+    "container": {
+      "path": "accounts/0/containers/0",
+      "accountId": "0",
+      "containerId": "0",
+      "name": "VTStudentsFirst",
+      "publicId": "GTM-W3CW4H34",
+      "usageContext": ["WEB"]
+    },
+    "variable": [
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "variableId": "1",
+        "name": "GA4 Measurement ID",
+        "type": "c",
+        "parameter": [
+          { "type": "template", "key": "value", "value": "G-0YZ5NQTX7D" }
+        ]
+      },
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "variableId": "2",
+        "name": "DLV - event_name",
+        "type": "v",
+        "parameter": [
+          { "type": "integer", "key": "dataLayerVersion", "value": "2" },
+          { "type": "boolean", "key": "setDefaultValue", "value": "false" },
+          { "type": "template", "key": "name", "value": "event" }
+        ]
+      },
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "variableId": "3",
+        "name": "DLV - rep_count",
+        "type": "v",
+        "parameter": [
+          { "type": "integer", "key": "dataLayerVersion", "value": "2" },
+          { "type": "boolean", "key": "setDefaultValue", "value": "false" },
+          { "type": "template", "key": "name", "value": "rep_count" }
+        ]
+      }
+    ],
+    "trigger": [
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "triggerId": "10",
+        "name": "Custom Event - lc_form_start",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              { "type": "template", "key": "arg0", "value": "{{_event}}" },
+              { "type": "template", "key": "arg1", "value": "lc_form_start" }
+            ]
+          }
+        ]
+      },
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "triggerId": "11",
+        "name": "Custom Event - lc_form_submit_attempt",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              { "type": "template", "key": "arg0", "value": "{{_event}}" },
+              { "type": "template", "key": "arg1", "value": "lc_form_submit_attempt" }
+            ]
+          }
+        ]
+      },
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "triggerId": "12",
+        "name": "Custom Event - lc_confirmation_shown",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              { "type": "template", "key": "arg0", "value": "{{_event}}" },
+              { "type": "template", "key": "arg1", "value": "lc_confirmation_shown" }
+            ]
+          }
+        ]
+      },
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "triggerId": "13",
+        "name": "Custom Event - lc_email_opened",
+        "type": "CUSTOM_EVENT",
+        "customEventFilter": [
+          {
+            "type": "EQUALS",
+            "parameter": [
+              { "type": "template", "key": "arg0", "value": "{{_event}}" },
+              { "type": "template", "key": "arg1", "value": "lc_email_opened" }
+            ]
+          }
+        ]
+      },
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "triggerId": "14",
+        "name": "All Pages",
+        "type": "PAGEVIEW"
+      }
+    ],
+    "tag": [
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "tagId": "1",
+        "name": "GA4 - Configuration",
+        "type": "googtag",
+        "parameter": [
+          { "type": "template", "key": "id", "value": "{{GA4 Measurement ID}}" },
+          {
+            "type": "list",
+            "key": "configSettingsTable",
+            "list": [
+              {
+                "type": "map",
+                "map": [
+                  { "type": "template", "key": "parameter", "value": "send_page_view" },
+                  { "type": "template", "key": "parameterValue", "value": "true" }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": ["14"],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      },
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "tagId": "2",
+        "name": "GA4 Event - lc_form_start",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "template", "key": "eventName", "value": "lc_form_start" },
+          { "type": "tagReference", "key": "measurementId", "value": "GA4 - Configuration" }
+        ],
+        "firingTriggerId": ["10"],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      },
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "tagId": "3",
+        "name": "GA4 Event - lc_form_submit_attempt",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "template", "key": "eventName", "value": "lc_form_submit_attempt" },
+          { "type": "tagReference", "key": "measurementId", "value": "GA4 - Configuration" }
+        ],
+        "firingTriggerId": ["11"],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      },
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "tagId": "4",
+        "name": "GA4 Event - lc_confirmation_shown",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "template", "key": "eventName", "value": "lc_confirmation_shown" },
+          { "type": "tagReference", "key": "measurementId", "value": "GA4 - Configuration" },
+          {
+            "type": "list",
+            "key": "eventParameters",
+            "list": [
+              {
+                "type": "map",
+                "map": [
+                  { "type": "template", "key": "name", "value": "rep_count" },
+                  { "type": "template", "key": "value", "value": "{{DLV - rep_count}}" }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": ["12"],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      },
+      {
+        "accountId": "0",
+        "containerId": "0",
+        "tagId": "5",
+        "name": "GA4 Event - lc_email_opened",
+        "type": "gaawe",
+        "parameter": [
+          { "type": "template", "key": "eventName", "value": "lc_email_opened" },
+          { "type": "tagReference", "key": "measurementId", "value": "GA4 - Configuration" },
+          {
+            "type": "list",
+            "key": "eventParameters",
+            "list": [
+              {
+                "type": "map",
+                "map": [
+                  { "type": "template", "key": "name", "value": "rep_count" },
+                  { "type": "template", "key": "value", "value": "{{DLV - rep_count}}" }
+                ]
+              }
+            ]
+          }
+        ],
+        "firingTriggerId": ["13"],
+        "tagFiringOption": "ONCE_PER_EVENT"
+      }
+    ]
+  }
+}

@@ -54,6 +54,12 @@
   text-transform: none;
 }
 
+.lc-field__required {
+  color: var(--gold);
+  font-style: normal;
+  text-decoration: none;
+}
+
 .lc-field__input,
 .lc-field__select,
 .lc-field__textarea {
@@ -165,8 +171,20 @@
   color: var(--mid);
   font-size: 0.95rem;
   line-height: 1.6;
-  margin-bottom: 1.75rem;
+  margin-bottom: 0.5rem;
   max-width: 640px;
+}
+
+.lc-form__required-note {
+  color: rgba(122, 171, 138, 55%);
+  font-size: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.lc-form__required-note abbr {
+  color: var(--gold);
+  font-style: normal;
+  text-decoration: none;
 }
 
 .lc-form__error {
@@ -206,7 +224,7 @@
 
 .lc-confirm__icon {
   align-items: center;
-  background: rgba(74, 124, 95, 25%);
+  background: rgba(74, 124, 95, 40%);
   border: 2px solid var(--meadow);
   border-radius: 50%;
   color: var(--meadow);
@@ -227,7 +245,7 @@
 }
 
 .lc-confirm__body {
-  color: var(--ink);
+  color: var(--mist);
   font-size: 0.92rem;
   line-height: 1.6;
   margin: 0 auto 1.5rem;
@@ -244,8 +262,8 @@
 
 .lc-rep-chip {
   align-items: center;
-  background: rgba(44, 86, 64, 40%);
-  border: 1px solid rgba(122, 171, 138, 20%);
+  background: rgba(44, 86, 64, 70%);
+  border: 1px solid rgba(122, 171, 138, 50%);
   border-radius: 3px;
   display: flex;
   flex-direction: column;
@@ -263,7 +281,7 @@
 }
 
 .lc-rep-chip__name {
-  color: var(--cream);
+  color: white;
   font-family: var(--font-secondary);
   font-size: 0.95rem;
   font-weight: 700;
@@ -273,6 +291,10 @@
   color: var(--gold);
   font-size: 0.75rem;
   text-decoration: none;
+}
+
+.lc-rep-chip__email:hover {
+  text-decoration: underline;
 }
 
 .lc-confirm__copy-wrap {
@@ -285,16 +307,16 @@
 }
 
 .lc-confirm__copy-msg {
-  background: rgba(0, 0, 0, 20%);
-  border-color: rgba(122, 171, 138, 15%);
+  background: rgba(0, 0, 0, 35%);
+  border-color: rgba(122, 171, 138, 40%);
   color: var(--mist);
   cursor: text;
   font-size: 0.82rem;
 }
 
 .lc-confirm__next {
-  background: rgba(44, 86, 64, 30%);
-  border: 1px solid rgba(122, 171, 138, 15%);
+  background: rgba(44, 86, 64, 55%);
+  border: 1px solid rgba(122, 171, 138, 40%);
   border-radius: 3px;
   margin: 0 auto 1.5rem;
   max-width: 520px;

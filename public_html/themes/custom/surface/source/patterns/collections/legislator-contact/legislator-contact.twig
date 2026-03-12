@@ -9,31 +9,32 @@
   <div class="lc-form" id="lc-form">
     <h3 class="lc-form__title">Contact Your Legislator</h3>
     <p class="lc-form__sub">Fill in your info and we'll connect you with your Vermont House and Senate representatives. Personal messages carry far more weight than form letters.</p>
+    <p class="lc-form__required-note"><abbr title="required">*</abbr> Required fields</p>
 
     <div class="lc-field-row">
       <div class="lc-field">
-        <label class="lc-field__label" for="lc-fname">First Name</label>
-        <input class="lc-field__input" id="lc-fname" type="text" placeholder="Jane" autocomplete="given-name">
+        <label class="lc-field__label" for="lc-fname">First Name <abbr class="lc-field__required" title="required">*</abbr></label>
+        <input class="lc-field__input" id="lc-fname" type="text" placeholder="Jane" autocomplete="given-name" required>
       </div>
       <div class="lc-field">
-        <label class="lc-field__label" for="lc-lname">Last Name</label>
+        <label class="lc-field__label" for="lc-lname">Last Name <span class="lc-field__optional">(optional)</span></label>
         <input class="lc-field__input" id="lc-lname" type="text" placeholder="Smith" autocomplete="family-name">
       </div>
     </div>
 
     <div class="lc-field">
-      <label class="lc-field__label" for="lc-email">Email Address</label>
-      <input class="lc-field__input" id="lc-email" type="email" placeholder="jane@example.com" autocomplete="email">
+      <label class="lc-field__label" for="lc-email">Email Address <abbr class="lc-field__required" title="required">*</abbr></label>
+      <input class="lc-field__input" id="lc-email" type="email" placeholder="jane@example.com" autocomplete="email" required>
     </div>
 
     <div class="lc-field">
-      <label class="lc-field__label" for="lc-town">Your Town</label>
-      <input class="lc-field__input" id="lc-town" type="text" placeholder="e.g. Waterford, Sutton, Newark…" autocomplete="address-level2">
+      <label class="lc-field__label" for="lc-town">Your Town <abbr class="lc-field__required" title="required">*</abbr></label>
+      <input class="lc-field__input" id="lc-town" type="text" placeholder="e.g. Waterford, Sutton, Newark…" autocomplete="address-level2" required>
     </div>
 
     <div class="lc-field">
-      <label class="lc-field__label" for="lc-role">Your Connection</label>
-      <select class="lc-field__select" id="lc-role">
+      <label class="lc-field__label" for="lc-role">Your Connection <abbr class="lc-field__required" title="required">*</abbr></label>
+      <select class="lc-field__select" id="lc-role" required>
         <option value="">Select one…</option>
         <option>Parent of a tuitioning student</option>
         <option>Student</option>
@@ -46,8 +47,8 @@
     </div>
 
     <div class="lc-field">
-      <label class="lc-field__label" for="lc-message">Your Message <span class="lc-field__optional">(personalize for more impact)</span></label>
-      <textarea class="lc-field__textarea" id="lc-message" rows="5">My name is [Your Name] and I am a constituent from [Town]. I am writing to share my strong opposition to proposals that would restrict Vermont's Town Tuition Program. I understand the need for education reform, but eliminating choice and access to independent schools does nothing to save money or improve quality. Please oppose any plan that restricts family choice or consolidates our district against our will.</textarea>
+      <label class="lc-field__label" for="lc-message">Your Message <abbr class="lc-field__required" title="required">*</abbr></label>
+      <textarea class="lc-field__textarea" id="lc-message" rows="5" required>My name is [Your Name] and I am a constituent from [Town] writing as a [Role]. I am writing to share my strong opposition to proposals that would restrict Vermont's Town Tuition Program. I understand the need for education reform, but eliminating choice and access to independent schools does nothing to save money or improve quality. Please oppose any plan that restricts family choice or consolidates our district against our will.</textarea>
     </div>
 
     <p class="lc-form__error" id="lc-form-error" hidden></p>
@@ -69,6 +70,7 @@
 
     <div class="lc-confirm__copy-wrap">
       <textarea class="lc-field__textarea lc-confirm__copy-msg" id="lc-confirm-msg" rows="8" readonly></textarea>
+      <a class="lc-btn lc-btn--primary" id="lc-mailto-btn" role="button">Open in Email App</a>
       <button class="lc-btn lc-btn--ghost" id="lc-copy-btn" type="button">Copy Message</button>
     </div>
 

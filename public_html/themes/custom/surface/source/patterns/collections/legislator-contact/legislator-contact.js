@@ -12,7 +12,7 @@
 
 ((() => {
 
-  const DEFAULT_TEMPLATE = `My name is [Your Name] and I am a constituent from [Town]. I am writing to share my strong opposition to proposals that would restrict Vermont's Town Tuition Program. I understand the need for education reform, but eliminating choice and access to independent schools does nothing to save money or improve quality. Please oppose any plan that restricts family choice or consolidates our district against our will.`;
+  const DEFAULT_TEMPLATE = `My name is [Your Name] and I am a constituent from [Town] writing as a [Role]. I am writing to share my strong opposition to proposals that would restrict Vermont's Town Tuition Program. I understand the need for education reform, but eliminating choice and access to independent schools does nothing to save money or improve quality. Please oppose any plan that restricts family choice or consolidates our district against our will.`;
 
   document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('legislator-contact');
@@ -34,22 +34,41 @@
     const confirmReps = document.getElementById('lc-confirm-reps');
     const confirmMsg  = document.getElementById('lc-confirm-msg');
     const copyBtn     = document.getElementById('lc-copy-btn');
+    const mailtoBtn   = document.getElementById('lc-mailto-btn');
     const restartBtn  = document.getElementById('lc-restart');
 
-    // Auto-personalize message as user types name/town.
-    // Track current substitutions so re-typing restores placeholders first.
+    // ── Analytics ──────────────────────────────────────────────────────────
+    function pushEvent(eventName, data = {}) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: eventName, ...data });
+    }
+
+    // Track first interaction with any form field (once per session)
+    let formStarted = false;
+    [fnameInput, lnameInput, emailInput, townInput, roleInput].forEach((el) => {
+      el?.addEventListener('focus', () => {
+        if (formStarted) return;
+        formStarted = true;
+        pushEvent('lc_form_start');
+      }, { once: true });
+    });
+
+    // Tracks the last-substituted values so we can restore placeholders on change
     let currentName = '[Your Name]';
     let currentTown = '[Town]';
+    let currentRole = '[Role]';
 
     function escRegex(s) {
       return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
+    // Auto-personalize message as user types name/town/role
     function personalizeMessage() {
       const name = [fnameInput.value.trim(), lnameInput.value.trim()].filter(Boolean).join(' ') || '[Your Name]';
       const town = townInput.value.trim() || '[Town]';
+      const role = (roleInput && roleInput.value.trim()) || '[Role]';
 
-      // Restore previous values back to placeholders before re-substituting
+      // Restore previous substituted values back to placeholders before re-substituting
       let msg = messageArea.value;
       if (currentName !== '[Your Name]') {
         msg = msg.replace(new RegExp(escRegex(currentName), 'g'), '[Your Name]');
@@ -57,21 +76,29 @@
       if (currentTown !== '[Town]') {
         msg = msg.replace(new RegExp(escRegex(currentTown), 'g'), '[Town]');
       }
-      msg = msg.replace(/\[Your Name\]/g, name);
+      if (currentRole !== '[Role]') {
+        msg = msg.replace(new RegExp(escRegex(currentRole), 'g'), '[Role]');
+      }
+
+      msg = msg.replace(/\[Your Name\]/g, name).replace(/\[Name\]/g, name);
       msg = msg.replace(/\[Town\]/g, town);
+      msg = msg.replace(/\[Role\]/g, role);
 
       currentName = name;
       currentTown = town;
+      currentRole = role;
       messageArea.value = msg;
     }
 
     [fnameInput, lnameInput, townInput].forEach((el) => {
       el.addEventListener('input', personalizeMessage);
     });
+    if (roleInput) { roleInput.addEventListener('change', personalizeMessage); }
 
     // ── Submit ─────────────────────────────────────────────────────────────
     submitBtn.addEventListener('click', async () => {
       formError.hidden = true;
+      pushEvent('lc_form_submit_attempt');
 
       const fname = fnameInput.value.trim();
       const lname = lnameInput.value.trim();
@@ -79,19 +106,28 @@
       const email = emailInput.value.trim();
       const msg   = messageArea.value.trim();
 
-      if (!fname || !town || !msg) {
-        formError.textContent = 'Please fill in your first name, town, and message before sending.';
+      const role = roleInput ? roleInput.value.trim() : '';
+      if (!fname || !email || !town || !role || !msg) {
+        formError.textContent = 'Please fill in all required fields before sending.';
         formError.hidden = false;
         formError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         return;
       }
+
+      // Final substitution pass — guarantees all placeholders are replaced
+      // even if the user filled fields out of order or edited the message manually
+      const fullName = [fname, lname].filter(Boolean).join(' ');
+      const finalMsg = msg
+        .replace(/\[Your Name\]/g, fullName).replace(/\[Name\]/g, fullName)
+        .replace(/\[Town\]/g, town)
+        .replace(/\[Role\]/g, role);
 
       submitBtn.disabled = true;
       submitBtn.textContent = 'Looking up your representatives…';
 
       try {
         const reps = await resolveReps(town, apiKey);
-        showConfirmation(reps, msg, email);
+        showConfirmation(reps, finalMsg, email);
       } catch (err) {
         formError.textContent = err.message || 'Could not find your representatives. Try entering your full address.';
         formError.hidden = false;
@@ -253,6 +289,7 @@
 
     // ── Show confirmation ──────────────────────────────────────────────────
     function showConfirmation(reps, msg, senderEmail) {
+      pushEvent('lc_confirmation_shown', { rep_count: reps.length });
       const emailAddrs = [];
 
       confirmReps.innerHTML = '';
@@ -278,7 +315,16 @@
         const subject = encodeURIComponent("Please Protect Vermont's Town Tuition Program");
         const body    = encodeURIComponent(msg);
         const cc      = senderEmail ? `&cc=${encodeURIComponent(senderEmail)}` : '';
-        window.location.href = `mailto:${emailAddrs.join(',')}?subject=${subject}&body=${body}${cc}`;
+        const mailtoHref = `mailto:${emailAddrs.join(',')}?subject=${subject}&body=${body}${cc}`;
+        if (mailtoBtn) {
+          mailtoBtn.href = mailtoHref;
+          mailtoBtn.hidden = false;
+          mailtoBtn.addEventListener('click', () => {
+            pushEvent('lc_email_opened', { rep_count: reps.length });
+          }, { once: true });
+        }
+      } else {
+        if (mailtoBtn) { mailtoBtn.hidden = true; }
       }
 
       formView.hidden    = true;
@@ -308,6 +354,8 @@
       if (roleInput) { roleInput.value = ''; }
       currentName        = '[Your Name]';
       currentTown        = '[Town]';
+      currentRole        = '[Role]';
+      formStarted        = false;
       formError.hidden   = true;
       formView.hidden    = false;
       confirmView.hidden = true;
