@@ -3,18 +3,21 @@
 <header id="header" class="site-header{{ modifier ? ' ' ~ modifier }}" data-drupal-selector="site-header" role="banner" data-once="navigation">
   <div class="container site-header__container">
     <div class="site-branding">
-      <a href="{{ logo_url|default('#') }}" class="site-header__logo" rel="home" aria-label="Our Kids Our Schools VT — Home">
-        Our<span>Kids</span>Our<span>Schools</span>VT
+      <a href="{{ logo_url|default('#') }}" class="site-header__logo" rel="home" aria-label="VT Students First — Home">
+        VT<span>Students</span>First
       </a>
     </div>
-    <nav class="site-navigation" role="navigation" aria-label="Main navigation">
+
+    <nav id="site-navigation" class="site-navigation" role="navigation" aria-label="Main navigation" data-drupal-selector="site-navigation">
       {% block menu %}
         {% include '@components/menu-main/menu-main.twig' with {
           'data_menu': data_menu,
           'is_demo': is_demo,
           'items': items
-        } only %}
+        } %}
       {% endblock %}
     </nav>
+
+    {% include '@components/mobile-button/mobile-button.twig' %}
   </div>
 </header>

@@ -8,17 +8,18 @@
   align-self: center;
   appearance: none;
   background: transparent;
-  block-size: 70px;
+  block-size: 44px;
   border: none;
   cursor: pointer;
   display: inline-flex;
   flex-direction: column;
-  inline-size: 70px;
+  inline-size: 44px;
   justify-content: center;
   position: relative;
 
-  &:focus {
-    outline: 2px solid var(--blue-500);
+  &:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
   }
 
   &:active {
@@ -53,63 +54,42 @@
     }
   }
 
-  @media (--desktop) {
+  @media (width > 940px) {
     display: none;
-  }
-
-  .line {
-    fill: none;
-    stroke: var(--blue-500);
-    stroke-width: 6;
-    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1), stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .line1 {
-    stroke-dasharray: 60 207;
-  }
-
-  .line2 {
-    stroke-dasharray: 60 60;
-  }
-
-  .line3 {
-    stroke-dasharray: 60 207;
   }
 }
 
-.mobile-button__icon {
-  background-color: var(--blue-500);
-  block-size: 3px;
-  display: block;
-  inline-size: var(--size-8);
-  margin-block-end: var(--size-3);
-  position: relative;
+.mobile-button svg {
+  height: 32px;
+  width: 32px;
+}
 
-  &::before {
-    background-color: var(--blue-500);
-    block-size: 3px;
-    content: "";
-    inline-size: 100%;
-    inset-block-start: -8px;
-    inset-inline-start: 0;
-    position: absolute;
-    transition: all 0.2s;
-  }
+.line {
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 6;
+  transition:
+    stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-  &::after {
-    background-color: var(--blue-500);
-    block-size: 3px;
-    content: "";
-    inline-size: 100%;
-    inset-block: auto -8px;
-    inset-inline-start: 0;
-    position: absolute;
-    transition: all 0.2s;
-  }
+.line1 {
+  stroke-dasharray: 60 207;
+}
+
+.line2 {
+  stroke-dasharray: 60 60;
+}
+
+.line3 {
+  stroke-dasharray: 60 207;
 }
 
 .mobile-button__text {
-  font-size: var(--font-size-0);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--white);
   text-transform: uppercase;
 }
 

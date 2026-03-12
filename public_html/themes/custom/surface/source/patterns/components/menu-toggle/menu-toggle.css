@@ -3,49 +3,41 @@
  * Button that expands second level nav when clicked.
  */
 
-:where([data-theme="dgsom"]) {
-  --menu-svg-start: var(--size-1);
-  --menu-svg-size: 20px;
-}
-
-:where([data-theme="labs-dynamic"]) {
-  --menu-svg-start: var(--size-1);
-  --menu-svg-size: 20px;
-}
-
 .menu-toggle {
   align-items: center;
   appearance: none;
+  background: none;
   block-size: 2em;
   border: 0;
+  cursor: pointer;
   display: flex;
   inline-size: 2em;
   justify-content: center;
 
-  &:focus {
-    outline: auto 2px var(--midnight-joshua-tree);
+  &:focus-visible {
+    outline: 2px solid var(--gold);
     outline-offset: 2px;
   }
 
-  /* aria-hidden attribute is removed by JS. Button is non-functional  until JS is enabled. */
+  /* aria-hidden attribute is removed by JS. Button is non-functional until JS is enabled. */
   &[aria-hidden="true"] {
     pointer-events: none;
   }
 
-  &[aria-expanded="true"] {
-    svg {
-      transform: rotate(180deg);
-      transition: transform 0.3s ease-in-out;
+  &[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+  }
 
-      @media (--desktop) {
-        transform: none;
-      }
+  /* Desktop: chevron stays pointing down (dropdown, not accordion) */
+  @media (width > 940px) {
+    &[aria-expanded="true"] svg {
+      transform: rotate(180deg);
     }
   }
 
   svg {
-    block-size: var(--menu-svg-size, 1em);
-    inline-size: var(--menu-svg-size, 1em);
-    padding-block-start: var(--menu-svg-start, 0);
+    block-size: 1em;
+    inline-size: 1em;
   }
 }
