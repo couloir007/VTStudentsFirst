@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Renders the schema_has_part entity reference field as a news-section collection.
+ *
+ * Maps to: web/themes/custom/surface/templates/field/
+ * Matches:  node.schema_has_part on any bundle (typically news_updates)
+ *
+ * Available variables:
+ *   - items: list of referenced entity render arrays (full display mode)
+ *   - label: field label
+ *   - entity: the host node
+ *
+ * Each item is a fully-rendered Article node in "teaser" display mode.
+ * We extract title, description, date, topic, and url from the render array
+ * rather than re-querying, keeping this template logic-light.
+ */
+#}
+
+{% set articles = [] %}
+{% for item in items %}
+  {% set article_node = item.content['#node'] %}
+  {% set articles = articles|merge([{
+    title:       article_node.label,
+    description: article_node.schema_description.value,
+    date:        article_node.created.value|date('F j, Y'),
+    date_iso:    article_node.created.value|date('Y-m-d'),
+    topic:       article_node.schema_topic.0.entity.label,
+    url:         path('entity.node.canonical', {'node': article_node.id()})
+  }]) %}
+{% endfor %}
+
+{% include "@collections/news-section/news-section.twig" with {
+  section_label: label|default('News & Updates'),
+  articles: articles
+} only %}

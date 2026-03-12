@@ -27,6 +27,18 @@ foreach (glob(\Drupal::service('extension.list.theme')->getPath('surface') . '/i
 //    $variables['data_menu'] = 'dropdown';
 //}
 
+use Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_preprocess_page_title().
+ */
+function surface_preprocess_page_title(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof NodeInterface) {
+    $variables['node'] = $node;
+  }
+}
+
 /**
  * Implements hook_form_system_theme_settings_alter().
  *

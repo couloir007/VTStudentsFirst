@@ -1,0 +1,35 @@
+{% embed "@layouts/site-container/site-container.twig" %}
+  {% block header %}
+    {% include "@layouts/site-header/site-header.twig" with header_data|default({}) %}
+  {% endblock %}
+
+  {% block main %}
+    <div class="news-page">
+
+      {# Page header band #}
+      {% embed "@layouts/section/section.twig" with {
+        section_class: 'news-page__header section-theme--dark',
+        id: 'news-header'
+      } %}
+        {% block content %}
+          {% if page_title %}
+            <h1 class="news-page__title">{{ page_title }}</h1>
+          {% endif %}
+          {% if page_intro %}
+            <p class="news-page__intro">{{ page_intro }}</p>
+          {% endif %}
+        {% endblock %}
+      {% endembed %}
+
+      {# Article listing via news-section #}
+      {% if news_data %}
+        {% include "@collections/news-section/news-section.twig" with news_data %}
+      {% endif %}
+
+    </div>
+  {% endblock %}
+
+  {% block footer %}
+    {% include "@layouts/site-footer/site-footer.twig" with footer_data|default({}) %}
+  {% endblock %}
+{% endembed %}

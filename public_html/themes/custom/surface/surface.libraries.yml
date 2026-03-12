@@ -243,7 +243,15 @@ paragraphs:
     component:
       dist/css/paragraphs.css: {}
 
+news-section:
+  css:
+    component:
+      source/patterns/collections/news-section/news-section.css: {}
 
+article-item:
+  css:
+    component:
+      source/patterns/components/article-item/article-item.css: {}
 
 search-block-form:
   css:

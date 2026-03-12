@@ -10,3 +10,6 @@
   margin-block: var(--size-9);
 }
 
+.page-title--centered {
+  text-align: center;
+}

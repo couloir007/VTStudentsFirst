@@ -1,0 +1,24 @@
+/**
+ * @file
+ * News page layout styles.
+ */
+
+.news-page__header {
+  padding-block: 4rem 3rem;
+}
+
+.news-page__title {
+  color: var(--cream);
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+}
+
+.news-page__intro {
+  color: var(--mist);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 640px;
+}

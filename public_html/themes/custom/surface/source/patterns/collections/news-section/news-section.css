@@ -1,0 +1,65 @@
+/**
+ * @file
+ * News section collection styles.
+ */
+
+.node--type-news-updates .node__body {
+  padding-block-end: var(--size-9);
+}
+
+.news-section {
+  background-color: var(--section-bg, var(--parchment));
+  border-top: 1px solid var(--section-border, var(--mist));
+}
+
+.news-section__label {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.news-section__lead {
+  color: var(--section-body, var(--mid));
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0 auto 3rem;
+  max-width: 800px;
+  text-align: center;
+}
+
+.news-section__grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+
+  @media (width <= 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (width <= 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.news-section__cta {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.news-section__cta-link {
+  border: 2px solid var(--forest);
+  border-radius: var(--radius, 4px);
+  color: var(--forest);
+  display: inline-block;
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-700);
+  padding: 0.75rem 2rem;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover,
+  &:focus {
+    background-color: var(--forest);
+    color: var(--white);
+  }
+}

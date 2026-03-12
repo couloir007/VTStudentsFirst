@@ -1,0 +1,43 @@
+{{ attach_library('surface/news-section') }}
+
+{% embed "@layouts/section/section.twig" with {
+  section_class: 'news-section section-theme--light',
+  inner_class: 'news-section__inner',
+  id: id,
+  attributes: attributes,
+  modifier: modifier
+} %}
+  {% block content %}
+
+    {% if section_headline %}
+      {% include "@elements/section-headline/section-headline.twig" with {
+        text: section_headline
+      } only %}
+    {% endif %}
+
+    {% if body_text %}
+      <p class="news-section__lead">{{ body_text }}</p>
+    {% endif %}
+
+    {% if articles %}
+      <div class="news-section__grid">
+        {% for article in articles %}
+          {% include "@components/article-item/article-item.twig" with {
+            title: article.title,
+            description: article.description,
+            date: article.date,
+            date_iso: article.date_iso,
+            topic: article.topic,
+            url: article.url
+          } only %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    {% if cta %}
+      <div class="news-section__cta">
+        <a href="{{ cta.url }}" class="news-section__cta-link">{{ cta.title }}</a>
+      </div>
+    {% endif %}
+  {% endblock %}
+{% endembed %}

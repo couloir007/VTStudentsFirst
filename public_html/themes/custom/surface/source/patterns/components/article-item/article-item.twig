@@ -1,0 +1,24 @@
+{{ attach_library('surface/article-item') }}
+<article class="article-item{{ modifier ? ' ' ~ modifier }}{{- attributes ? ' ' ~ attributes.class -}}" {{- attributes ? attributes|without(class) -}}>
+  <div class="article-item__inner">
+    {% if date %}
+      <time class="article-item__date" datetime="{{ date_iso }}">{{ date }}</time>
+    {% endif %}
+    {% if topic %}
+      <span class="article-item__topic">{{ topic }}</span>
+    {% endif %}
+    <h3 class="article-item__title">
+      {% if url %}
+        <a href="{{ url }}" class="article-item__link">{{ title }}</a>
+      {% else %}
+        {{ title }}
+      {% endif %}
+    </h3>
+    {% if description %}
+      <p class="article-item__description">{{ description }}</p>
+    {% endif %}
+    {% if url %}
+      <a href="{{ url }}" class="article-item__read-more" aria-label="Read more: {{ title }}">Read more →</a>
+    {% endif %}
+  </div>
+</article>

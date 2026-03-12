@@ -1,0 +1,52 @@
+{#
+/**
+ * @file
+ * Node template for the news_updates content type, full display mode.
+ *
+ * Maps to: web/themes/custom/surface/templates/node/
+ * Matches:  node--news-updates--full.html.twig
+ *           node--news-updates.html.twig  (fallback)
+ *
+ * For the News & Updates WebPage node, content includes:
+ *   - content.schema_has_part  → rendered by field--node--schema-has-part--news-updates.html.twig
+ *   - content.body             → optional intro text
+ *
+ * The page title is handled by field--node--title.html.twig.
+ * Layout Paragraphs paragraphs (if any) render via content.field_lp_content.
+ */
+#}
+
+{% set classes = [
+  'node',
+  'node--type-news-updates',
+  node.isPromoted() ? 'node--promoted',
+  node.isSticky() ? 'node--sticky',
+  not node.isPublished() ? 'node--unpublished',
+  attributes.class,
+]|join(' ')|trim %}
+
+<article{{ attributes.setAttribute('class', classes) }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  <div{{ content_attributes.addClass('node__content') }}>
+
+    {# Optional intro — body field above the article list #}
+    {% if content.body %}
+      <div class="node__body section__inner prose">
+        {{ content.body|field_value }}
+      </div>
+    {% endif %}
+
+    {# Layout Paragraphs content (if used on this node) #}
+    {% for idx, item in content %}
+      {% if item['#paragraph'] is defined %}
+        {{ item }}
+      {% endif %}
+    {% endfor %}
+
+    {# schema_has_part renders news-section via field--node--schema-has-part--news-updates.html.twig #}
+    {{ content.schema_has_part }}
+
+  </div>
+</article>
