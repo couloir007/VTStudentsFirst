@@ -1,24 +1,21 @@
-uuid: 02cff7a7-97f5-48c0-ab7e-869df135f1a6
+uuid: 3de581ff-f54b-498f-a706-2f5bb978434d
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.schema_has_part
-    - node.type.article
-    - node.type.legislation
     - node.type.news_updates
     - node.type.page
     - node.type.testimonial
-    - node.type.web_site
   module:
     - epp
 third_party_settings:
   epp:
     value: 'target_id: [current-page:query:has_part]'
-id: node.page.schema_has_part
+id: node.news_updates.schema_has_part
 field_name: schema_has_part
 entity_type: node
-bundle: page
+bundle: news_updates
 label: 'Has part'
 description: ''
 required: false
@@ -30,14 +27,17 @@ settings:
   handler_settings:
     target_type: node
     schema_types:
-      CreativeWork: CreativeWork
+      WebPage: WebPage
+      Statement: Statement
+      Quotation: Quotation
+      ItemList: ItemList
+      AudioObject: AudioObject
+      ImageObject: ImageObject
+      VideoObject: VideoObject
     excluded_schema_types: {  }
     ignore_additional_mappings: true
     target_bundles:
-      article: article
-      legislation: legislation
       news_updates: news_updates
       page: page
       testimonial: testimonial
-      web_site: web_site
 field_type: entity_reference

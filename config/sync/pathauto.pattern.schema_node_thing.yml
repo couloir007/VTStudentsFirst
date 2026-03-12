@@ -25,6 +25,7 @@ selection_criteria:
       legislation: legislation
       local_business: local_business
       media_gallery: media_gallery
+      news_updates: news_updates
       organization: organization
       page: page
       person: person

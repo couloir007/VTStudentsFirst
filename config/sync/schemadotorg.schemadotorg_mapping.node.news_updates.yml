@@ -1,0 +1,32 @@
+uuid: d80a5689-7334-4dca-8793-f6fb9be59aae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.news_updates.body
+    - field.field.node.news_updates.schema_about
+    - field.field.node.news_updates.schema_description
+    - field.field.node.news_updates.schema_has_part
+    - field.field.node.news_updates.schema_is_part_of
+    - field.field.node.news_updates.schema_publisher
+    - field.field.node.news_updates.schema_subject_of
+    - node.type.news_updates
+  module:
+    - node
+id: node.news_updates
+target_entity_type_id: node
+target_bundle: news_updates
+schema_type: CollectionPage
+schema_properties:
+  schema_about: about
+  created: dateCreated
+  changed: dateModified
+  schema_description: description
+  schema_has_part: hasPart
+  langcode: inLanguage
+  schema_is_part_of: isPartOf
+  title: name
+  schema_publisher: publisher
+  schema_subject_of: subjectOf
+  body: text
+additional_mappings: {  }

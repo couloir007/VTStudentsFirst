@@ -1,0 +1,22 @@
+uuid: 056d287f-357e-427b-b82a-f67b2271b9bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.news_updates
+id: node.news_updates.rh_redirect_response
+field_name: rh_redirect_response
+entity_type: node
+bundle: news_updates
+label: 'Rabbit Hole redirect response code'
+description: 'Specifies the HTTP response code that should be used when perform a redirect.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

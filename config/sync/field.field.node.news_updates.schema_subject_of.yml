@@ -1,4 +1,4 @@
-uuid: 3e6776c5-0faf-42bf-b02b-30f2e23ccf61
+uuid: 46f7e7d7-a393-4ba7-acbc-de68f4d178c8
 langcode: en
 status: true
 dependencies:
@@ -21,10 +21,10 @@ dependencies:
 third_party_settings:
   epp:
     value: 'target_id: [current-page:query:subject_of]'
-id: node.article.schema_subject_of
+id: node.news_updates.schema_subject_of
 field_name: schema_subject_of
 entity_type: node
-bundle: article
+bundle: news_updates
 label: 'Subject of'
 description: ''
 required: false

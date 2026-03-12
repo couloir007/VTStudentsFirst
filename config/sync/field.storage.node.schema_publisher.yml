@@ -1,15 +1,15 @@
-uuid: 1cc5e1d1-0a65-4021-9466-567d46d4def6
+uuid: 3fdef69f-4606-4e25-8190-f946f5e28ba4
 langcode: en
 status: true
 dependencies:
   module:
     - node
-id: node.schema_description
-field_name: schema_description
+id: node.schema_publisher
+field_name: schema_publisher
 entity_type: node
-type: string_long
+type: entity_reference
 settings:
-  case_sensitive: false
+  target_type: node
 module: core
 locked: false
 cardinality: 1

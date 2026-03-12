@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.schema_is_part_of
     - node.type.article
     - node.type.legislation
+    - node.type.news_updates
     - node.type.page
     - node.type.testimonial
     - node.type.web_site
@@ -35,6 +36,7 @@ settings:
     target_bundles:
       article: article
       legislation: legislation
+      news_updates: news_updates
       page: page
       testimonial: testimonial
       web_site: web_site

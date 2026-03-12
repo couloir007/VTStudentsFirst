@@ -9,6 +9,7 @@ dependencies:
     - node.type.event
     - node.type.legislation
     - node.type.local_business
+    - node.type.news_updates
     - node.type.organization
     - node.type.page
     - node.type.person
@@ -45,6 +46,7 @@ settings:
       event: event
       legislation: legislation
       local_business: local_business
+      news_updates: news_updates
       organization: organization
       page: page
       person: person

@@ -1,0 +1,31 @@
+uuid: f3413a30-1299-4ea2-9798-56a09d565be3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_editorial
+    - node.type.news_updates
+    - paragraphs.paragraphs_type.editorial
+  module:
+    - entity_reference_revisions
+id: node.news_updates.field_editorial
+field_name: field_editorial
+entity_type: node
+bundle: news_updates
+label: 'Editorial information'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      editorial: editorial
+    negate: 0
+    target_bundles_drag_drop:
+      editorial:
+        weight: 0
+        enabled: true
+field_type: entity_reference_revisions

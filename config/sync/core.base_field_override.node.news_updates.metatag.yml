@@ -1,0 +1,20 @@
+uuid: aa749eeb-855c-452e-be88-dc544eed49a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.news_updates
+  module:
+    - metatag
+id: node.news_updates.metatag
+field_name: metatag
+entity_type: node
+bundle: news_updates
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The computed meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag_computed

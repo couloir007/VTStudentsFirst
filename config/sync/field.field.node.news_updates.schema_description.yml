@@ -1,0 +1,19 @@
+uuid: 5f8ef105-3b16-4d6b-855c-30b5b3a79662
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_description
+    - node.type.news_updates
+id: node.news_updates.schema_description
+field_name: schema_description
+entity_type: node
+bundle: news_updates
+label: Description
+description: 'A short summary used in teasers, search results, and meta descriptions. Keep under 300 characters.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long
