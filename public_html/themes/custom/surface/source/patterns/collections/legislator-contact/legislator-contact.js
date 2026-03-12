@@ -18,9 +18,11 @@ Independent schools like St. Johnsbury Academy and Lyndon Institute are not just
 
 Eliminating or restricting the Town Tuition Program does nothing to save money or improve quality. It simply removes access to high-quality education from students who would otherwise never have it. Please oppose any plan that restricts family choice or eliminates access to Vermont's independent schools.`;
 
-  document.addEventListener('DOMContentLoaded', () => {
+  function init() {
     const root = document.getElementById('legislator-contact');
     if (!root) { return; }
+    if (root.dataset.lcInitialized) { return; }
+    root.dataset.lcInitialized = 'true';
 
     const apiKey      = root.dataset.civicApiKey || window.CIVIC_API_KEY || '';
     const formView    = document.getElementById('lc-form');
@@ -57,6 +59,7 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
       }, { once: true });
     });
 
+    // ── Personalization ────────────────────────────────────────────────────
     // Tracks the last-substituted values so we can restore placeholders on change
     let currentName = '[Your Name]';
     let currentTown = '[Town]';
@@ -66,7 +69,6 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
       return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
 
-    // Auto-personalize message as user types name/town/role
     function personalizeMessage() {
       const name = [fnameInput.value.trim(), lnameInput.value.trim()].filter(Boolean).join(' ') || '[Your Name]';
       const town = townInput.value.trim() || '[Town]';
@@ -109,8 +111,8 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
       const town  = townInput.value.trim();
       const email = emailInput.value.trim();
       const msg   = messageArea.value.trim();
+      const role  = roleInput ? roleInput.value.trim() : '';
 
-      const role = roleInput ? roleInput.value.trim() : '';
       if (!fname || !email || !town || !role || !msg) {
         formError.textContent = 'Please fill in all required fields before sending.';
         formError.hidden = false;
@@ -143,14 +145,7 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
     });
 
     // ── Rep resolution ─────────────────────────────────────────────────────
-    // Strategy:
-    //   1. Load vt-house-districts-by-town.json → get House district(s) for town
-    //   2. Load vt-legislators.json → match district to rep email(s)
-    //   3. Match Senate district from county → get senator email(s)
-    //   4. Fall back to Civic API if JSON lookup fails and key is available
     async function resolveReps(town, key) {
-
-      // Storybook / dev: no JSON files available, return mock data
       if (!town) {
         throw new Error('Please enter your town name.');
       }
@@ -163,7 +158,6 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
 
         const normalizedTown = town.trim().toLowerCase();
 
-        // Find matching town entry (districts JSON keyed by town name)
         const townKey = Object.keys(districtData).find(
           (k) => k.toLowerCase() === normalizedTown
         );
@@ -173,51 +167,33 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
         }
 
         const townData = districtData[townKey];
-
-        // townData may be a string district, array of districts, or object with
-        // houseDistrict / senateDistrict keys — normalize to arrays
-        const houseDistricts = extractDistricts(townData, 'house');
+        const houseDistricts  = extractDistricts(townData, 'house');
         const senateDistricts = extractDistricts(townData, 'senate');
-
         const reps = [];
 
-        // Match House reps
         houseDistricts.forEach((district) => {
-          const matches = legislatorData.representatives.filter(
-            (r) => normalizeDistrict(r.district) === normalizeDistrict(district)
-          );
-          matches.forEach((r) => {
-            reps.push({ name: r.name, office: `Vermont House — ${r.district}`, email: r.email });
-          });
+          legislatorData.representatives
+            .filter((r) => normalizeDistrict(r.district) === normalizeDistrict(district))
+            .forEach((r) => reps.push({ name: r.name, office: `Vermont House — ${r.district}`, email: r.email }));
         });
 
-        // Match Senators
         senateDistricts.forEach((district) => {
-          const matches = legislatorData.senators.filter(
-            (s) => normalizeDistrict(s.district) === normalizeDistrict(district)
-          );
-          matches.forEach((s) => {
-            reps.push({ name: s.name, office: `Vermont Senate — ${s.district} District`, email: s.email });
-          });
+          legislatorData.senators
+            .filter((s) => normalizeDistrict(s.district) === normalizeDistrict(district))
+            .forEach((s) => reps.push({ name: s.name, office: `Vermont Senate — ${s.district} District`, email: s.email }));
         });
 
         if (reps.length) { return reps; }
-
         throw new Error('No legislators found for that town in our records.');
 
       } catch (jsonErr) {
-        // Fall back to Civic API if key provided
         if (key) { return resolveViaApi(town, key); }
         throw jsonErr;
       }
     }
 
-    // Extract house or senate district(s) from the town data structure.
-    // Handles multiple formats the districts JSON may use.
     function extractDistricts(townData, chamber) {
       if (!townData) { return []; }
-
-      // Object with explicit keys: { houseDistrict: 'Caledonia-1', senateDistrict: 'Caledonia' }
       if (typeof townData === 'object' && !Array.isArray(townData)) {
         const key = chamber === 'house'
           ? (townData.houseDistrict || townData.house_district || townData.house)
@@ -225,17 +201,8 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
         if (!key) { return []; }
         return Array.isArray(key) ? key : [key];
       }
-
-      // Array of district strings — assume House districts
-      if (Array.isArray(townData)) {
-        return chamber === 'house' ? townData : [];
-      }
-
-      // Plain string — assume House district
-      if (typeof townData === 'string') {
-        return chamber === 'house' ? [townData] : [];
-      }
-
+      if (Array.isArray(townData))    { return chamber === 'house' ? townData : []; }
+      if (typeof townData === 'string') { return chamber === 'house' ? [townData] : []; }
       return [];
     }
 
@@ -249,7 +216,6 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
       return res.json();
     }
 
-    // Civic API fallback
     async function resolveViaApi(town, key) {
       const url = new URL('https://www.googleapis.com/civicinfo/v2/representatives');
       url.searchParams.set('address', `${town}, Vermont`);
@@ -311,14 +277,10 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
 
       confirmMsg.value = msg;
 
-      console.log('Email addresses:', emailAddrs);
-      console.log('Message:', msg);
-      console.log('Sender email:', senderEmail);
-
       if (emailAddrs.length) {
-        const subject = encodeURIComponent("Please Protect Vermont's Town Tuition Program");
-        const body    = encodeURIComponent(msg);
-        const cc      = senderEmail ? `&cc=${encodeURIComponent(senderEmail)}` : '';
+        const subject    = encodeURIComponent("Please Protect Vermont's Town Tuition Program");
+        const body       = encodeURIComponent(msg);
+        const cc         = senderEmail ? `&cc=${encodeURIComponent(senderEmail)}` : '';
         const mailtoHref = `mailto:${emailAddrs.join(',')}?subject=${subject}&body=${body}${cc}`;
         if (mailtoBtn) {
           mailtoBtn.href = mailtoHref;
@@ -374,6 +336,14 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;');
     }
-  });
+  }
+
+  // With JS aggregation, DOMContentLoaded may have already fired by the
+  // time this bundle executes — run immediately in that case.
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 
 }))();
