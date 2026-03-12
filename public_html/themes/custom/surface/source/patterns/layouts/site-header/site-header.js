@@ -57,6 +57,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     e.preventDefault();
 
+    // Close mobile menu if open.
+    const mobileButton = document.querySelector('[data-drupal-selector="mobile-button"]');
+    const nav = document.querySelector('[data-drupal-selector="site-navigation"]');
+    if (mobileButton && nav && nav.classList.contains('is-active')) {
+      if (typeof Drupal !== 'undefined' && Drupal.surfaceMenu) {
+        Drupal.surfaceMenu.collapseMenu();
+      } else {
+        nav.classList.remove('is-active');
+        mobileButton.setAttribute('aria-expanded', 'false');
+      }
+    }
+
     // rAF ensures header height is measured after any layout triggered
     // by the click (e.g. menus closing, class toggles).
     requestAnimationFrame(() => {
