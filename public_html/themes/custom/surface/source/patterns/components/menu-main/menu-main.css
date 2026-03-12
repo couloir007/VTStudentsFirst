@@ -191,7 +191,7 @@
   }
 
   /* ── CTA on mobile ── */
-  .menu-main > .menu__item:last-child .menu__link {
+  .menu-main > .menu__item.menu__item--level-1:last-child .menu__link {
     background: var(--maple);
     color: white !important;
     display: inline-block;
