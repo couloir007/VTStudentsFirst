@@ -125,6 +125,11 @@
 
 /* ── Mobile menu layout ── */
 @media (width <= 940px) {
+
+  .menu-main > .menu__item--level-1.menu__item:last-child .menu__link {
+    margin-left: 0;
+    max-width: 185px;
+  }
   .menu-main {
     display: flex;
     flex-direction: column;
