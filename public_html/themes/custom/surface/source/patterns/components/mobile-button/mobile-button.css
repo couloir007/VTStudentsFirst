@@ -15,6 +15,7 @@
   flex-direction: column;
   inline-size: 44px;
   justify-content: center;
+  margin-inline-end: 5px;
   position: relative;
 
   &:focus-visible {
