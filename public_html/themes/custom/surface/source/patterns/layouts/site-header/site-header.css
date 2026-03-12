@@ -74,6 +74,10 @@ body.gin--vertical-toolbar .site-header {
     padding: 0.75rem 1.25rem;
   }
 
+  .site-header .container {
+    padding-inline-end: var(--size-5);
+  }
+
   .site-navigation {
     background: rgba(10, 22, 17, 97%);
     border-top: 1px solid rgba(122, 171, 138, 15%);
