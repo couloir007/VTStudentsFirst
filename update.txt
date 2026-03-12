@@ -8,8 +8,23 @@ lando composer update "drupal/core-*" -W
 
 ../vendor/drush/drush/drush sql:dump --result-file=../vtchoice-db.sql
 
-lando drush sql:cli < vtchoice-db.sql
+lando drush sql:cli < production_dump.sql
 
 lando drush sql:drop -y
 
 ../vendor/drush/drush/drush sql:dump --extra-dump="--no-owner --no-acl" --result-file=../vtchoice-db.sql
+
+
+# lando ssh -s database -c "pg_dump -h us17.acugis-dns.com -U roundybr -d roundybr_vtkids --format=p --no-owner --no-acl" > backup_postgres_prod.sql
+lando ssh -s database -c "pg_dump -h us17.acugis-dns.com -U roundybr -d roundybr_vtkids --no-owner --no-privileges --format=p" > production_dump.sql
+
+
+
+Export
+lando ssh -s database -c "pg_dump -U postgres -d drupal --format=p" > backup_postgres.sql
+
+Import
+lando db-import production_dump.sql
+
+
+lando drush watchdog:delete all
