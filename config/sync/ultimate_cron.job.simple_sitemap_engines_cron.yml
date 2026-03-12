@@ -1,0 +1,17 @@
+uuid: 9b351271-3a69-4e9e-aaa4-8594b4bb0509
+langcode: en
+status: true
+dependencies:
+  module:
+    - simple_sitemap_engines
+title: 'Submit sitemaps to search engines'
+id: simple_sitemap_engines_cron
+weight: 0
+module: simple_sitemap_engines
+callback: 'simple_sitemap_engines#cron'
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

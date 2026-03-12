@@ -165,6 +165,7 @@ module:
   serialization: 0
   shortcut: 0
   simple_sitemap: 0
+  simple_sitemap_engines: 0
   smart_date: 0
   style_options: 0
   svg_image: 0
