@@ -24,23 +24,19 @@ targetEntityType: node
 bundle: article
 mode: teaser
 content:
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: -100
-    region: content
   schema_description:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 0
     region: content
 hidden:
   body: true
   field_editorial: true
   field_metatag: true
   langcode: true
+  links: true
   schema_about: true
   schema_article_type: true
   schema_citation: true
