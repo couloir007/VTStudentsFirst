@@ -122,7 +122,7 @@
 }
 
 .colalition-members {
-  margin-inline: var(--size-10);
+  margin-block-start: var(--size-9);
 }
 
 
