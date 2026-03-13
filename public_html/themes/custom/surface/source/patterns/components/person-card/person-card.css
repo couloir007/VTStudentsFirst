@@ -106,6 +106,7 @@
   padding-inline-start: var(--size-3);
 }
 
+
 /* Mobile: stack vertically */
 @media (width <= 480px) {
   .person-card__inner {
