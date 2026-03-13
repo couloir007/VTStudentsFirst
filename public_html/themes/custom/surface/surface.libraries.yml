@@ -218,6 +218,11 @@ node:
     component:
       dist/css/node.css: {}
 
+person-card:
+  css:
+    component:
+      dist/css/person-card.css: {}
+
 node-preview-container:
   css:
     component:

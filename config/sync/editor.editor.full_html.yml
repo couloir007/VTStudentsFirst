@@ -29,6 +29,8 @@ settings:
       - sourceEditing
       - undo
       - redo
+      - node
+      - ck5BlockEmbed__default
   plugins:
     ckeditor5_alignment:
       enabled_alignments:
@@ -94,5 +96,7 @@ settings:
       multiBlock: true
     ckeditor5_sourceEditing:
       allowed_tags: {  }
+    media_media:
+      allow_view_mode_override: true
 image_upload:
   status: false

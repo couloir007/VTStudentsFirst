@@ -1,0 +1,24 @@
+.ck5-block-embed-preview {
+  display: inline-block;
+  padding: 1rem;
+  pointer-events: none;
+  border: 2px dashed black;
+}
+
+.ck5-block-embed-preview.ck5-block-embed-inline {
+  padding: 0.25rem;
+}
+
+.ck5-block-embed-preview-wrapper,
+figure.ck5-block-embed-preview-wrapper.ck5-block-embed-inline {
+  display: inline-block;
+}
+
+figure.ck5-block-embed-preview-wrapper {
+  display: block;
+  margin: 0;
+}
+
+figure.ck5-block-embed-preview-wrapper.ck5-block-embed-inline {
+  margin: 0 0.25rem;
+}

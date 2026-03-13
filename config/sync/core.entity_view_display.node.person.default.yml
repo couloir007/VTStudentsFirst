@@ -6,11 +6,15 @@ dependencies:
     - field.field.node.person.body
     - field.field.node.person.field_editorial
     - field.field.node.person.field_metatag
+    - field.field.node.person.field_quote
+    - field.field.node.person.field_school_connection
     - field.field.node.person.schema_additional_name
+    - field.field.node.person.schema_address
     - field.field.node.person.schema_email
     - field.field.node.person.schema_family_name
     - field.field.node.person.schema_given_name
     - field.field.node.person.schema_image
+    - field.field.node.person.schema_job_title
     - field.field.node.person.schema_knows_language
     - field.field.node.person.schema_member_of
     - field.field.node.person.schema_related_link
@@ -21,37 +25,20 @@ dependencies:
     - field.field.node.person.schema_works_for
     - node.type.person
   module:
-    - entity_reference_revisions
+    - address
     - field_group
-    - link
-    - options
     - text
     - user
 third_party_settings:
   field_group:
-    group_general:
-      children:
-        - schema_additional_name
-        - schema_family_name
-        - schema_given_name
-        - schema_image
-        - schema_knows_language
-        - body
-        - title
-      label: General
-      parent_name: ''
-      region: content
-      weight: -20
-      format_type: fieldset
-      format_settings: {  }
     group_contact:
       children:
         - schema_email
         - schema_telephone
       label: Contact
       parent_name: ''
-      region: content
-      weight: -18
+      region: hidden
+      weight: 13
       format_type: fieldset
       format_settings: {  }
     group_organization:
@@ -60,19 +47,19 @@ third_party_settings:
         - schema_works_for
       label: Organization
       parent_name: ''
-      region: content
-      weight: -13
+      region: hidden
+      weight: 14
       format_type: fieldset
       format_settings: {  }
     group_links:
       children:
-        - schema_same_as
         - schema_related_link
+        - schema_same_as
         - schema_significant_link
       label: Links
       parent_name: ''
-      region: content
-      weight: 20
+      region: hidden
+      weight: 16
       format_type: fieldset
       format_settings: {  }
     group_references:
@@ -80,8 +67,8 @@ third_party_settings:
         - schema_subject_of
       label: References
       parent_name: ''
-      region: content
-      weight: 22
+      region: hidden
+      weight: 15
       format_type: fieldset
       format_settings: {  }
     group_editorial:
@@ -89,7 +76,7 @@ third_party_settings:
         - field_editorial
       label: 'Editorial information'
       parent_name: ''
-      region: content
+      region: hidden
       weight: 220
       format_type: details
       format_settings: {  }
@@ -100,55 +87,32 @@ mode: default
 content:
   body:
     type: text_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 18
+    weight: 4
     region: content
-  field_editorial:
-    type: entity_reference_revisions_entity_view
+  field_quote:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_school_connection:
+    type: string
     label: hidden
     settings:
-      view_mode: default
-      link: ''
+      link_to_entity: false
     third_party_settings: {  }
-    weight: 24
+    weight: 2
     region: content
-  links:
+  schema_address:
+    type: address_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: -100
-    region: content
-  schema_additional_name:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 10
-    region: content
-  schema_email:
-    type: email_mailto
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 6
-    region: content
-  schema_family_name:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 11
-    region: content
-  schema_given_name:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 9
+    weight: 0
     region: content
   schema_image:
     type: entity_reference_entity_view
@@ -157,82 +121,30 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 23
+    weight: 5
     region: content
-  schema_knows_language:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 16
-    region: content
-  schema_member_of:
-    type: entity_reference_label
-    label: above
+  schema_job_title:
+    type: string
+    label: hidden
     settings:
-      link: true
-    third_party_settings: {  }
-    weight: 2
-    region: content
-  schema_related_link:
-    type: link
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 0
-    region: content
-  schema_same_as:
-    type: link
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 3
-    region: content
-  schema_significant_link:
-    type: link
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
+      link_to_entity: false
     third_party_settings: {  }
     weight: 1
-    region: content
-  schema_subject_of:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 1
-    region: content
-  schema_telephone:
-    type: basic_string
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 4
-    region: content
-  schema_works_for:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 7
     region: content
 hidden:
+  field_editorial: true
   field_metatag: true
   langcode: true
+  links: true
+  schema_additional_name: true
+  schema_email: true
+  schema_family_name: true
+  schema_given_name: true
+  schema_knows_language: true
+  schema_member_of: true
+  schema_related_link: true
+  schema_same_as: true
+  schema_significant_link: true
+  schema_subject_of: true
+  schema_telephone: true
+  schema_works_for: true

@@ -1,0 +1,9 @@
+ck5_block_embed_ck5BlockEmbed:
+  provider: ck5_block_embed
+  ckeditor5:
+    plugins:
+      - ck5BlockEmbed.Ck5BlockEmbed
+    config:
+      ck5BlockEmbed: {}
+  drupal:
+    deriver: Drupal\ck5_block_embed\Plugin\Deriver\Ck5BlockEmbedDeriver

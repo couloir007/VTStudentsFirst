@@ -1,0 +1,11 @@
+uuid: df093ba8-a2d1-4759-a60c-7bb1fe215867
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.profile_card
+label: 'Profile Card'
+description: ''
+targetEntityType: node
+cache: true

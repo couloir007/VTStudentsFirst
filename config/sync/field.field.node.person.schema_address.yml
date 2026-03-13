@@ -1,0 +1,49 @@
+uuid: 41fddf36-b5cb-4d6e-82cf-b4ddea02ca5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_address
+    - node.type.person
+  module:
+    - address
+id: node.person.schema_address
+field_name: schema_address
+entity_type: node
+bundle: person
+label: Address
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries: {  }
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    addressLine1:
+      override: hidden
+    addressLine2:
+      override: hidden
+    addressLine3:
+      override: hidden
+    postalCode:
+      override: hidden
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
+    locality:
+      override: optional
+    administrativeArea:
+      override: hidden
+  fields: {  }
+field_type: address

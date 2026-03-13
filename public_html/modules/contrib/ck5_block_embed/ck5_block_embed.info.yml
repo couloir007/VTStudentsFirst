@@ -1,0 +1,12 @@
+name: CKEditor5 block embed
+type: module
+description: The CKEditor5 block embed plugin allows administrators to easily embed content blocks, view blocks, and region blocks from the active theme.
+package: CKEditor 5
+core_version_requirement: ^10 || ^11
+dependencies:
+  - drupal:ckeditor5
+
+# Information added by Drupal.org packaging script on 2025-08-06
+version: '1.0.3'
+project: 'ck5_block_embed'
+datestamp: 1754478473

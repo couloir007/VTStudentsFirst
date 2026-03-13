@@ -1,0 +1,55 @@
+{#
+/**
+ * @file
+ * Person profile card component.
+ *
+ * Variables:
+ * - name: Full name string.
+ * - initials: 1-2 character fallback for avatar (derived from name if not set).
+ * - image: Rendered image or URL (optional).
+ * - job_title: Role / occupation string.
+ * - town: Town name string.
+ * - school: School connection string (optional).
+ * - quote: Short personal quote string (optional).
+ */
+#}
+{{ attach_library('surface/person-card') }}
+
+<article class="person-card">
+  <div class="person-card__inner">
+
+    <div class="person-card__avatar">
+      {% if image %}
+        {{ image }}
+      {% else %}
+        {{ initials }}
+      {% endif %}
+    </div>
+
+    <div class="person-card__body">
+      <div class="person-card__top">
+        <div class="person-card__identity">
+          <p class="person-card__name">{{ name }}</p>
+          {% if job_title %}
+            <p class="person-card__role">{{ job_title }}</p>
+          {% endif %}
+        </div>
+
+        {% if town or school %}
+          <div class="person-card__meta">
+            {% if town %}
+              <span class="person-card__tag">{{ town.0['locality']['#value'] }}, VT</span>
+            {% endif %}
+            {% if school %}
+              <span class="person-card__tag person-card__tag--school">{{ school }}</span>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+      {% if quote %}
+        <blockquote class="person-card__quote">{{ quote }}</blockquote>
+      {% endif %}
+    </div>
+  </div>
+</article>

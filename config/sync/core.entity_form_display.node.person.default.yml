@@ -6,11 +6,15 @@ dependencies:
     - field.field.node.person.body
     - field.field.node.person.field_editorial
     - field.field.node.person.field_metatag
+    - field.field.node.person.field_quote
+    - field.field.node.person.field_school_connection
     - field.field.node.person.schema_additional_name
+    - field.field.node.person.schema_address
     - field.field.node.person.schema_email
     - field.field.node.person.schema_family_name
     - field.field.node.person.schema_given_name
     - field.field.node.person.schema_image
+    - field.field.node.person.schema_job_title
     - field.field.node.person.schema_knows_language
     - field.field.node.person.schema_member_of
     - field.field.node.person.schema_related_link
@@ -21,29 +25,29 @@ dependencies:
     - field.field.node.person.schema_works_for
     - node.type.person
   module:
+    - address
     - allowed_formats
     - field_group
     - inline_entity_form
-    - linkit
     - metatag
     - path
-    - telephone
     - text
 third_party_settings:
   field_group:
     group_general:
       children:
-        - schema_additional_name
-        - schema_family_name
-        - schema_given_name
-        - schema_image
-        - schema_knows_language
-        - body
         - title
+        - schema_given_name
+        - schema_family_name
+        - schema_job_title
+        - field_school_connection
+        - body
+        - field_quote
+        - schema_address
       label: General
       region: content
       parent_name: ''
-      weight: -20
+      weight: 0
       format_type: details
       format_settings:
         open: true
@@ -53,49 +57,72 @@ third_party_settings:
         - schema_email
         - schema_telephone
       label: Contact
-      region: content
+      region: hidden
       parent_name: ''
-      weight: -18
-      format_type: details
+      weight: 22
+      format_type: tab
       format_settings:
-        open: true
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
         description: ''
+        required_fields: true
+        open: true
     group_organization:
       children:
-        - schema_member_of
         - schema_works_for
       label: Organization
-      region: content
+      region: hidden
       parent_name: ''
-      weight: -13
-      format_type: details
+      weight: 21
+      format_type: tab
       format_settings:
-        open: true
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
         description: ''
+        required_fields: true
+        open: true
     group_links:
       children:
-        - schema_same_as
         - schema_related_link
+        - schema_same_as
         - schema_significant_link
       label: Links
-      region: content
+      region: hidden
       parent_name: ''
       weight: 20
-      format_type: details
+      format_type: tab
       format_settings:
-        open: true
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
         description: ''
+        required_fields: true
+        open: true
     group_references:
       children:
         - schema_subject_of
       label: References
-      region: content
+      region: hidden
       parent_name: ''
-      weight: 22
-      format_type: details
+      weight: 23
+      format_type: tab
       format_settings:
-        open: true
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
         description: ''
+        required_fields: true
+        open: true
     group_editorial:
       children:
         - field_editorial
@@ -113,7 +140,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 18
+    weight: 6
     region: content
     settings:
       rows: 9
@@ -145,11 +172,27 @@ content:
     third_party_settings: {  }
   field_metatag:
     type: metatag_firehose
-    weight: 99
+    weight: 5
     region: content
     settings:
       sidebar: true
       use_details: true
+    third_party_settings: {  }
+  field_quote:
+    type: text_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_school_connection:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select
@@ -171,25 +214,16 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
-  schema_additional_name:
-    type: string_textfield
-    weight: 10
+  schema_address:
+    type: address_default
+    weight: 8
     region: content
     settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  schema_email:
-    type: email_default
-    weight: 6
-    region: content
-    settings:
-      placeholder: ''
-      size: 60
+      wrapper_type: fieldset
     third_party_settings: {  }
   schema_family_name:
     type: string_textfield
-    weight: 11
+    weight: 3
     region: content
     settings:
       size: 60
@@ -197,29 +231,13 @@ content:
     third_party_settings: {  }
   schema_given_name:
     type: string_textfield
-    weight: 9
+    weight: 2
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   schema_image:
-    type: entity_reference_autocomplete
-    weight: 23
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  schema_knows_language:
-    type: options_select
-    weight: 16
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  schema_member_of:
     type: entity_reference_autocomplete
     weight: 2
     region: content
@@ -229,56 +247,17 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  schema_related_link:
-    type: linkit
-    weight: 0
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-      linkit_profile: default
-      linkit_auto_link_text: true
-    third_party_settings: {  }
-  schema_same_as:
-    type: linkit
-    weight: 3
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-      linkit_profile: default
-      linkit_auto_link_text: true
-    third_party_settings: {  }
-  schema_significant_link:
-    type: linkit
-    weight: 1
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-      linkit_profile: default
-      linkit_auto_link_text: true
-    third_party_settings: {  }
-  schema_subject_of:
-    type: entity_reference_autocomplete
-    weight: 1
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  schema_telephone:
-    type: telephone_default
+  schema_job_title:
+    type: string_textfield
     weight: 4
     region: content
     settings:
+      size: 60
       placeholder: ''
     third_party_settings: {  }
-  schema_works_for:
+  schema_member_of:
     type: entity_reference_autocomplete
-    weight: 7
+    weight: 1
     region: content
     settings:
       match_operator: CONTAINS
@@ -288,6 +267,11 @@ content:
     third_party_settings: {  }
   simple_sitemap:
     weight: 220
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap_index_now:
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -314,7 +298,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 10
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -329,10 +313,19 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   publish_on: true
+  schema_additional_name: true
+  schema_email: true
+  schema_knows_language: true
+  schema_related_link: true
+  schema_same_as: true
+  schema_significant_link: true
+  schema_subject_of: true
+  schema_telephone: true
+  schema_works_for: true
   unpublish_on: true

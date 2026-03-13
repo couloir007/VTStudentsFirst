@@ -23,6 +23,7 @@
         "drupal/autosave_form": "^1.10",
         "drupal/backup_migrate": "5.1.0",
         "drupal/better_exposed_filters": "^7.0",
+        "drupal/ck5_block_embed": "^1.0",
         "drupal/ckeditor5_fullscreen": "^1.0@beta",
         "drupal/color_field": "^3.0",
         "drupal/components": "^3.0@beta",

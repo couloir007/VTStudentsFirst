@@ -73,3 +73,16 @@
     padding-inline: 1.5rem;
   }
 }
+
+.prose__wrapper {
+  margin-block: var(--size-6);
+  margin-inline: auto;
+  max-width: var(--size-prose);
+  text-wrap: pretty;
+
+  p {
+    margin-block: 0;
+    margin-inline: 0;
+    max-width: 100%;
+  }
+}

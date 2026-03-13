@@ -1,10 +1,12 @@
-uuid: dd2cc875-a80c-45d9-a32f-a463d3fc9a7b
+uuid: 2dd57258-12e0-45b7-8577-19439cceb31a
 langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.document.field_media_file
     - media.type.document
   module:
+    - file
     - path
 id: media.document.default
 targetEntityType: media
@@ -16,6 +18,13 @@ content:
     weight: 200
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_media_file:
+    type: file_generic
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
     third_party_settings: {  }
   langcode:
     type: language_select

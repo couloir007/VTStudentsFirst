@@ -1,10 +1,13 @@
-uuid: c1ec1135-8e74-4bf5-9033-096808fa4189
+uuid: e25625a7-441f-43d7-afad-a5ee12bbf4a5
 langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.image.field_media_image
+    - image.style.medium
     - media.type.image
   module:
+    - focal_point
     - path
 id: media.image.default
 targetEntityType: media
@@ -16,6 +19,16 @@ content:
     weight: 200
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_media_image:
+    type: image_focal_point
+    weight: 0
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: medium
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
   langcode:
     type: language_select

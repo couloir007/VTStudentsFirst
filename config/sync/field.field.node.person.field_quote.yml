@@ -1,0 +1,26 @@
+uuid: 4e3c6386-fc51-4920-a031-ac24d702714d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_quote
+    - filter.format.basic_html
+    - filter.format.plain_text
+    - node.type.person
+  module:
+    - text
+id: node.person.field_quote
+field_name: field_quote
+entity_type: node
+bundle: person
+label: quote
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats:
+    - basic_html
+    - plain_text
+field_type: text_long

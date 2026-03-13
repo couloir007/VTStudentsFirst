@@ -15,6 +15,7 @@ module:
   breakpoint: 0
   captcha: 0
   cer: 0
+  ck5_block_embed: 0
   ckeditor5: 0
   components: 0
   config: 0
@@ -125,12 +126,14 @@ module:
   schemadotorg_block_content: 0
   schemadotorg_block_content_status: 0
   schemadotorg_cer: 0
+  schemadotorg_components: 0
   schemadotorg_content_model_documentation: 0
   schemadotorg_content_moderation: 0
   schemadotorg_custom_field: 0
   schemadotorg_devel: 0
   schemadotorg_diagram: 0
   schemadotorg_editorial: 0
+  schemadotorg_embedded_content: 0
   schemadotorg_entity_reference_override: 0
   schemadotorg_epp: 0
   schemadotorg_existing_values_autocomplete_widget: 0

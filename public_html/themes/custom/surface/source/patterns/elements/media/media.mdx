@@ -1,0 +1,26 @@
+import { Meta, Canvas } from '@storybook/blocks';
+import * as MediaStories from './media.stories';
+
+<Meta of={MediaStories} />
+
+# Media
+
+## Media technical specs
+
+* `media` this uses the `<img>` tag in Storybook and in Drupal it uses the full media entity.
+
+#### Square
+
+<Canvas of={MediaStories.Media} />
+
+#### 3:2 Media
+
+<Canvas of={MediaStories.Rectangular32} />
+
+#### 4:3 Media
+
+<Canvas of={MediaStories.Rectangular43} />
+
+#### 16:9 Media
+
+<Canvas of={MediaStories.Rectangular169} />

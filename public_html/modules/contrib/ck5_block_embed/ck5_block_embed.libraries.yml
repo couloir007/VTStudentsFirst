@@ -1,0 +1,16 @@
+ck5_block_embed:
+  js:
+    js/build/ck5BlockEmbed.js: { minified: true }
+  css:
+    theme:
+      css/ck5_block_embed.css: {}
+  dependencies:
+    - core/ckeditor5
+    - core/ckeditor5.essentials
+    - editor/drupal.editor.dialog
+    - core/drupal.dialog.off_canvas
+
+admin:
+  css:
+    theme:
+      css/ck5_block_embed.admin.css: {}

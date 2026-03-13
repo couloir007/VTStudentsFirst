@@ -1,0 +1,32 @@
+{#
+/**
+ * @file
+ * Profile card view mode for Person nodes.
+ *
+ * Uses Schema.org mapped fields:
+ * - schema_name (string)
+ * - schema_job_title (string)
+ * - schema_address (address field, locality)
+ * - field_quote (string, plain)
+ * - schema_image (image, optional)
+ * - field_school_connection (string, plain)
+ */
+#}
+
+
+{% set job_title = content.schema_job_title|field_value %}
+{% set town = content.schema_address|field_value %}
+{% set school = content.field_school_connection|field_value %}
+{% set quote = content.field_quote|field_value %}
+{% set image = content.schema_image|field_value %}
+
+{#{% do ray(image) %}#}
+
+{% include '@components/person-card/person-card.twig' with {
+  'name': label|field_value,
+  'job_title': job_title,
+  'town': town,
+  'school': school,
+  'quote': quote,
+  'image': image,
+} %}

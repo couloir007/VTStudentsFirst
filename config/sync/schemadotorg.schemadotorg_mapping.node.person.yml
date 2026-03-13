@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.person.body
     - field.field.node.person.schema_additional_name
+    - field.field.node.person.schema_address
     - field.field.node.person.schema_email
     - field.field.node.person.schema_family_name
     - field.field.node.person.schema_given_name
@@ -26,6 +27,7 @@ target_bundle: person
 schema_type: Person
 schema_properties:
   schema_additional_name: additionalName
+  schema_address: address
   body: description
   schema_email: email
   schema_family_name: familyName

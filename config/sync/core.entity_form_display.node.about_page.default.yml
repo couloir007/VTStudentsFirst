@@ -3,10 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.about_page.body
+    - field.field.node.about_page.field_body
     - field.field.node.about_page.field_editorial
     - field.field.node.about_page.field_metatag
     - field.field.node.about_page.schema_about
+    - field.field.node.about_page.schema_contributor
+    - field.field.node.about_page.schema_description
     - field.field.node.about_page.schema_has_part
     - field.field.node.about_page.schema_image
     - field.field.node.about_page.schema_is_part_of
@@ -18,7 +20,6 @@ dependencies:
     - allowed_formats
     - field_group
     - inline_entity_form
-    - linkit
     - metatag
     - path
     - text
@@ -26,12 +27,11 @@ third_party_settings:
   field_group:
     group_references:
       children:
-        - schema_about
         - schema_subject_of
       label: References
-      region: content
+      region: hidden
       parent_name: ''
-      weight: 22
+      weight: 20
       format_type: details
       format_settings:
         open: true
@@ -41,22 +41,23 @@ third_party_settings:
         - schema_has_part
         - schema_is_part_of
       label: Hierarchy
-      region: content
+      region: hidden
       parent_name: ''
-      weight: 21
+      weight: 19
       format_type: details
       format_settings:
         open: true
         description: ''
     group_general:
       children:
-        - schema_image
         - title
-        - body
+        - schema_description
+        - field_body
+        - schema_image
       label: General
       region: content
       parent_name: ''
-      weight: -20
+      weight: 0
       format_type: details
       format_settings:
         open: true
@@ -66,9 +67,9 @@ third_party_settings:
         - schema_related_link
         - schema_significant_link
       label: Links
-      region: content
+      region: hidden
       parent_name: ''
-      weight: 20
+      weight: 21
       format_type: details
       format_settings:
         open: true
@@ -88,25 +89,23 @@ targetEntityType: node
 bundle: about_page
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 20
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings:
-      allowed_formats:
-        hide_help: '1'
-        hide_guidelines: '1'
   created:
     type: datetime_timestamp
     weight: 200
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_body:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 8
+      placeholder: ''
+    third_party_settings:
+      allowed_formats:
+        hide_help: '0'
+        hide_guidelines: '0'
   field_editorial:
     type: inline_entity_form_simple
     weight: 221
@@ -122,7 +121,7 @@ content:
     third_party_settings: {  }
   field_metatag:
     type: metatag_firehose
-    weight: 99
+    weight: 5
     region: content
     settings:
       sidebar: true
@@ -150,7 +149,7 @@ content:
     third_party_settings: {  }
   schema_about:
     type: entity_reference_autocomplete
-    weight: 0
+    weight: 1
     region: content
     settings:
       match_operator: CONTAINS
@@ -158,27 +157,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  schema_has_part:
-    type: entity_reference_autocomplete
-    weight: 3
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  schema_image:
-    type: entity_reference_autocomplete
-    weight: 25
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  schema_is_part_of:
+  schema_contributor:
     type: entity_reference_autocomplete
     weight: 2
     region: content
@@ -188,29 +167,17 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  schema_related_link:
-    type: linkit
-    weight: 0
+  schema_description:
+    type: string_textarea
+    weight: 2
     region: content
     settings:
-      placeholder_url: ''
-      placeholder_title: ''
-      linkit_profile: default
-      linkit_auto_link_text: true
+      rows: 3
+      placeholder: 'A short summary for search results and social sharing (under 300 characters).'
     third_party_settings: {  }
-  schema_significant_link:
-    type: linkit
-    weight: 1
-    region: content
-    settings:
-      placeholder_url: ''
-      placeholder_title: ''
-      linkit_profile: default
-      linkit_auto_link_text: true
-    third_party_settings: {  }
-  schema_subject_of:
+  schema_image:
     type: entity_reference_autocomplete
-    weight: 1
+    weight: 4
     region: content
     settings:
       match_operator: CONTAINS
@@ -224,7 +191,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   simple_sitemap_index_now:
-    weight: 130
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -250,11 +217,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  translation:
-    weight: 10
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
     weight: 200
@@ -266,10 +228,16 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   publish_on: true
+  schema_has_part: true
+  schema_is_part_of: true
+  schema_related_link: true
+  schema_significant_link: true
+  schema_subject_of: true
+  translation: true
   unpublish_on: true

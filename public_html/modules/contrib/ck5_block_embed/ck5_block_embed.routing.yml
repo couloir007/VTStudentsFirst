@@ -1,0 +1,27 @@
+ck5_block_embed.dialog:
+  path: '/ck5-block-embed/dialog/{ck5_block_embed_button}/{filter_format}'
+  defaults:
+    _title_callback: '\Drupal\ck5_block_embed\Form\Ck5BlockEmbedDialogForm::title'
+    _form: '\Drupal\ck5_block_embed\Form\Ck5BlockEmbedDialogForm'
+    uuid: null
+  requirements:
+    _custom_access: '\Drupal\ck5_block_embed\Form\Ck5BlockEmbedDialogForm::checkAccess'
+
+ck5_block_embed.preview:
+  path: '/ck5-block-embed/preview/{editor}'
+  options:
+    parameters:
+      editor:
+        type: 'entity:editor'
+  defaults:
+    _controller: '\Drupal\ck5_block_embed\Controller\Ck5BlockEmbedPreviewController::preview'
+  requirements:
+    _custom_access: '\Drupal\ck5_block_embed\Controller\Ck5BlockEmbedPreviewController::checkAccess'
+    _csrf_token: 'TRUE'
+
+ck5_block_embed.ck5_block_embed_button.icon:
+  path: '/ck5-block-embed/icon/{ck5_block_embed_button}'
+  defaults:
+    _controller: 'Drupal\ck5_block_embed\Controller\Ck5BlockEmbedIconController::build'
+  requirements:
+    _custom_access: '\Drupal\ck5_block_embed\Controller\Ck5BlockEmbedIconController::checkAccess'

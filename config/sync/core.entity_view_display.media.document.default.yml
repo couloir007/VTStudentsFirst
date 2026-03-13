@@ -1,14 +1,25 @@
-uuid: c75a04c5-f120-41be-bf0d-ebe816fbe4f2
+uuid: 58069b3e-caf2-465f-9839-ac67e2da27fd
 langcode: en
 status: true
 dependencies:
   config:
+    - field.field.media.document.field_media_file
     - media.type.document
+  module:
+    - file
 id: media.document.default
 targetEntityType: media
 bundle: document
 mode: default
-content: {  }
+content:
+  field_media_file:
+    type: file_default
+    label: visually_hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
 hidden:
   created: true
   langcode: true

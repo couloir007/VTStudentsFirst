@@ -1,0 +1,19 @@
+uuid: 6ddd10e9-d47e-41e7-aaa1-ed251663776f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_job_title
+    - node.type.person
+id: node.person.schema_job_title
+field_name: schema_job_title
+entity_type: node
+bundle: person
+label: 'Job Title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

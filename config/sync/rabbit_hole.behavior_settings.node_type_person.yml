@@ -1,0 +1,14 @@
+uuid: 6a7061a7-3346-4f79-996d-30bc9fd85c95
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.person
+id: node_type_person
+entity_type_id: node_type
+entity_id: person
+action: display_page
+allow_override: 0
+redirect: ''
+redirect_code: 301
+redirect_fallback_action: access_denied

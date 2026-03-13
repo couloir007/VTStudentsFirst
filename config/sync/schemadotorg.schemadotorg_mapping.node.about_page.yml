@@ -3,8 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.about_page.body
     - field.field.node.about_page.schema_about
+    - field.field.node.about_page.schema_contributor
+    - field.field.node.about_page.schema_description
     - field.field.node.about_page.schema_has_part
     - field.field.node.about_page.schema_image
     - field.field.node.about_page.schema_is_part_of
@@ -20,8 +21,10 @@ target_bundle: about_page
 schema_type: AboutPage
 schema_properties:
   schema_about: about
+  schema_contributor: contributor
   created: dateCreated
   changed: dateModified
+  schema_description: description
   schema_has_part: hasPart
   langcode: inLanguage
   schema_is_part_of: isPartOf
@@ -30,5 +33,4 @@ schema_properties:
   schema_related_link: relatedLink
   schema_significant_link: significantLink
   schema_subject_of: subjectOf
-  body: text
 additional_mappings: {  }

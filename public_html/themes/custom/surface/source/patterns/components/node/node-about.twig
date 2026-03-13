@@ -1,0 +1,39 @@
+{{ attach_library('surface/node') }}
+
+{% set classes = [
+  'node',
+  attributes ? attributes.class
+]|join(' ')|trim %}
+
+{% set title_classes = [
+  'node__title',
+  title_attributes ? title_attributes.class
+]|join(' ')|trim %}
+
+{% set content_classes = [
+  'node__content',
+  content_attributes ? content_attributes.class
+]|join(' ')|trim %}
+
+<article class="{{ classes }}" {{ attributes ? attributes|without('class', 'id') }}>
+  {{ title_prefix }}
+  {% if label and not page %}
+    <h2 class="{{ title_classes }}" {{ title_attributes ? title_attributes|without('class') }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+  {{ title_suffix }}
+
+  <div class="{{ content_classes }}" {{ content_attributes ? content_attributes|without('class') }}>
+    <div class="node__inner">
+      <div class="node__body prose">
+        {{ content.field_body|field_value }}
+      </div>
+      <div class="node__people prose">
+        <div class="prose__wrapper">
+          {{ content.schema_contributor|field_value }}
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

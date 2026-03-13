@@ -7,11 +7,15 @@ dependencies:
     - field.field.node.person.body
     - field.field.node.person.field_editorial
     - field.field.node.person.field_metatag
+    - field.field.node.person.field_quote
+    - field.field.node.person.field_school_connection
     - field.field.node.person.schema_additional_name
+    - field.field.node.person.schema_address
     - field.field.node.person.schema_email
     - field.field.node.person.schema_family_name
     - field.field.node.person.schema_given_name
     - field.field.node.person.schema_image
+    - field.field.node.person.schema_job_title
     - field.field.node.person.schema_knows_language
     - field.field.node.person.schema_member_of
     - field.field.node.person.schema_related_link
@@ -232,6 +236,11 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  simple_sitemap_index_now:
+    weight: 130
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   status:
     type: boolean_checkbox
     weight: 220
@@ -256,11 +265,15 @@ hidden:
   created: true
   field_editorial: true
   field_metatag: true
+  field_quote: true
+  field_school_connection: true
   langcode: true
   path: true
   promote: true
   publish_on: true
   scheduler_settings: true
+  schema_address: true
+  schema_job_title: true
   sticky: true
   uid: true
   unpublish_on: true

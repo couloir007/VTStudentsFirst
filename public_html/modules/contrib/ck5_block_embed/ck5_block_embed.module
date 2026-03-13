@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * @file
+ * Module File.
+ */
+
+/**
+ * Implements hook_editor_js_settings_alter().
+ */
+function ck5_block_embed_editor_js_settings_alter(array &$settings) {
+  // Get the current user.
+  $current_user = \Drupal::currentUser();
+
+  // Define which permission to check.
+  $permission_to_check = 'use ck5 block embed button';
+
+  // Check if the user has the permission to access the button.
+  if (!$current_user->hasPermission($permission_to_check)) {
+
+    // Check if the 'formats' key exists to prevent potential errors.
+    if (isset($settings['editor']['formats'])) {
+      $formats = &$settings['editor']['formats'];
+
+      // Use reference to modify the $format array.
+      foreach ($formats as $key => &$format) {
+
+        // Check if toolbar items exist.
+        if (isset($format['editorSettings']['toolbar']['items'])) {
+          // Use reference for modification.
+          $buttons = &$format['editorSettings']['toolbar']['items'];
+
+          // Find the index of the value.
+          $key = array_search('ck5BlockEmbed__default', $buttons);
+
+          // If the value exists in the array, unset it.
+          if ($key !== FALSE) {
+            unset($buttons[$key]);
+          }
+        }
+      }
+    }
+  }
+}

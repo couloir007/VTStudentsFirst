@@ -3,10 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.about_page.body
+    - field.field.node.about_page.field_body
     - field.field.node.about_page.field_editorial
     - field.field.node.about_page.field_metatag
     - field.field.node.about_page.schema_about
+    - field.field.node.about_page.schema_contributor
+    - field.field.node.about_page.schema_description
     - field.field.node.about_page.schema_has_part
     - field.field.node.about_page.schema_image
     - field.field.node.about_page.schema_is_part_of
@@ -15,21 +17,18 @@ dependencies:
     - field.field.node.about_page.schema_subject_of
     - node.type.about_page
   module:
-    - entity_reference_revisions
     - field_group
-    - link
     - text
     - user
 third_party_settings:
   field_group:
     group_references:
       children:
-        - schema_about
         - schema_subject_of
       label: References
       parent_name: ''
-      region: content
-      weight: 22
+      region: hidden
+      weight: 9
       format_type: fieldset
       format_settings: {  }
     group_hierarchy:
@@ -38,19 +37,8 @@ third_party_settings:
         - schema_is_part_of
       label: Hierarchy
       parent_name: ''
-      region: content
-      weight: 21
-      format_type: fieldset
-      format_settings: {  }
-    group_general:
-      children:
-        - schema_image
-        - title
-        - body
-      label: General
-      parent_name: ''
-      region: content
-      weight: -20
+      region: hidden
+      weight: 7
       format_type: fieldset
       format_settings: {  }
     group_links:
@@ -59,8 +47,8 @@ third_party_settings:
         - schema_significant_link
       label: Links
       parent_name: ''
-      region: content
-      weight: 20
+      region: hidden
+      weight: 8
       format_type: fieldset
       format_settings: {  }
     group_editorial:
@@ -68,7 +56,7 @@ third_party_settings:
         - field_editorial
       label: 'Editorial information'
       parent_name: ''
-      region: content
+      region: hidden
       weight: 220
       format_type: details
       format_settings: {  }
@@ -77,42 +65,21 @@ targetEntityType: node
 bundle: about_page
 mode: default
 content:
-  body:
+  field_body:
     type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 20
-    region: content
-  field_editorial:
-    type: entity_reference_revisions_entity_view
     label: hidden
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    weight: 26
-    region: content
-  links:
     settings: {  }
     third_party_settings: {  }
-    weight: -100
+    weight: 1
     region: content
-  schema_about:
-    type: entity_reference_label
+  schema_contributor:
+    type: entity_reference_entity_view
     label: above
     settings:
-      link: true
+      view_mode: profile_card
+      link: false
     third_party_settings: {  }
-    weight: 0
-    region: content
-  schema_has_part:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 3
+    weight: 2
     region: content
   schema_image:
     type: entity_reference_entity_view
@@ -121,48 +88,17 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 25
-    region: content
-  schema_is_part_of:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 2
-    region: content
-  schema_related_link:
-    type: link
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
     weight: 0
     region: content
-  schema_significant_link:
-    type: link
-    label: above
-    settings:
-      trim_length: 80
-      url_only: false
-      url_plain: false
-      rel: ''
-      target: ''
-    third_party_settings: {  }
-    weight: 1
-    region: content
-  schema_subject_of:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 1
-    region: content
 hidden:
+  field_editorial: true
   field_metatag: true
   langcode: true
+  links: true
+  schema_about: true
+  schema_description: true
+  schema_has_part: true
+  schema_is_part_of: true
+  schema_related_link: true
+  schema_significant_link: true
+  schema_subject_of: true

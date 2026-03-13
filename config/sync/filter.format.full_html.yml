@@ -1,11 +1,30 @@
 uuid: 2a7b20cf-2782-4ce9-8dd4-879bb1cfdbb6
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - core.entity_view_mode.media.full
+    - core.entity_view_mode.media.profile_card
+  module:
+    - ck5_block_embed
+    - entity_embed
+    - media
 name: 'Full HTML'
 format: full_html
 weight: 0
 filters:
+  ck5_block_embed:
+    id: ck5_block_embed
+    provider: ck5_block_embed
+    status: true
+    weight: 100
+    settings: {  }
+  entity_embed:
+    id: entity_embed
+    provider: entity_embed
+    status: true
+    weight: 100
+    settings: {  }
   filter_html:
     id: filter_html
     provider: filter
@@ -15,3 +34,16 @@ filters:
       allowed_html: ''
       filter_html_help: true
       filter_html_nofollow: false
+  media_embed:
+    id: media_embed
+    provider: media
+    status: true
+    weight: 100
+    settings:
+      default_view_mode: profile_card
+      allowed_view_modes:
+        default: default
+        full: full
+        profile_card: profile_card
+      allowed_media_types:
+        image: image

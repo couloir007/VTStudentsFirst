@@ -1,0 +1,8 @@
+services:
+  # Define a custom service named 'plugin.manager.ck5_block_embed'
+  plugin.manager.ck5_block_embed:
+    # The class that will be used to instantiate the service. This should be the full namespace of the class.
+    class: Drupal\ck5_block_embed\Ck5BlockEmbedPluginManager
+    # This is the parent service from which the 'plugin.manager.ck5_block_embed' service will inherit. 
+    # In this case, it inherits from the 'default_plugin_manager', which is a base service in Drupal's plugin management system.
+    parent: default_plugin_manager

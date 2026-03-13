@@ -6,6 +6,8 @@ sets:
     types:
       - 'taxonomy_term:DefinedTerm'
       - 'node:Person'
+      - 'media:DataDownload'
+      - 'media:ImageObject'
   campaign:
     label: Campaign
     types:
@@ -13,7 +15,7 @@ sets:
       - 'node:Organization'
       - 'node:Event'
       - 'node:Place'
-      - 'node:CreativeWork'
+      - 'node:Quotation'
       - 'node:Legislation'
       - 'node:WebPage'
   web_site:
