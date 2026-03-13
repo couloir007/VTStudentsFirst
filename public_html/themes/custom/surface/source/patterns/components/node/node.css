@@ -77,11 +77,11 @@
 .prose__wrapper {
   margin-block: var(--size-6);
   margin-inline: auto;
-  max-width: var(--size-prose);
+  max-width: var(--size-tablet);
   text-wrap: pretty;
 
   p {
-    margin-block: 0;
+    margin-block: var(--size-6);
     margin-inline: 0;
     max-width: 100%;
   }

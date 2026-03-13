@@ -16,8 +16,9 @@
   content_attributes ? content_attributes.class
 ]|join(' ')|trim %}
 
-<article class="{{ classes }}" {{ attributes ? attributes|without('class', 'id') }}>
+<article{{ attributes }}>
   {{ title_prefix }}
+  {{ title_suffix }}
   {% if label and not page %}
     <h2 class="{{ title_classes }}" {{ title_attributes ? title_attributes|without('class') }}>
       <a href="{{ url }}" rel="bookmark">{{ label }}</a>
@@ -27,7 +28,7 @@
 
   <div class="{{ content_classes }}" {{ content_attributes ? content_attributes|without('class') }}>
     <div class="node__inner">
-      <div class="node__body prose">
+      <div class="node__body prose__wrapper">
         {{ content.field_body|field_value }}
       </div>
     </div>

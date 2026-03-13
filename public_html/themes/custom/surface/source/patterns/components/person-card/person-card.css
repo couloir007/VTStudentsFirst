@@ -20,15 +20,15 @@
 /* Avatar */
 .person-card__avatar {
   align-items: center;
-  background: var(--maple, #8b1a1a);
-  border-radius: 50%;
-  block-size: 56px;
-  color: var(--white);
+  background: var(--gray-200);
+  border-radius: var(--radius-sm, 6px);
+  block-size: 120px;
+  color: var(--gray-600);
   display: flex;
   flex-shrink: 0;
-  font-size: var(--font-size-4);
+  font-size: var(--font-size-6);
   font-weight: 700;
-  inline-size: 56px;
+  inline-size: 120px;
   justify-content: center;
   letter-spacing: 0.03em;
   overflow: hidden;
@@ -78,7 +78,7 @@
 }
 
 .person-card__tag {
-  background: var(--gray-100);
+  background: var(--grey-200);
   border-radius: 100px;
   color: var(--gray-700);
   font-size: var(--font-size-1);
@@ -106,7 +106,6 @@
   padding-inline-start: var(--size-3);
 }
 
-
 /* Mobile: stack vertically */
 @media (width <= 480px) {
   .person-card__inner {
@@ -116,4 +115,8 @@
   .person-card__top {
     flex-direction: column;
   }
+}
+
+.prose__wrapper .person-card p {
+  margin-block: var(--size-1);
 }

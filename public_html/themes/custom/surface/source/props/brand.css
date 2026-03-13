@@ -43,7 +43,7 @@
   --grey-700: var(--mid);
   --grey-500: var(--mid);
   --grey-300: var(--mist);
-  --grey-200: var(--parchment);
+  --grey-200: #ebe7dd;
   --grey-100: var(--light);
   --black: var(--ink);
   --white: #ffffff;
