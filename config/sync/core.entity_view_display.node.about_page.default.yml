@@ -28,7 +28,7 @@ third_party_settings:
       label: References
       parent_name: ''
       region: hidden
-      weight: 9
+      weight: 10
       format_type: fieldset
       format_settings: {  }
     group_hierarchy:
@@ -38,7 +38,7 @@ third_party_settings:
       label: Hierarchy
       parent_name: ''
       region: hidden
-      weight: 7
+      weight: 8
       format_type: fieldset
       format_settings: {  }
     group_links:
@@ -48,7 +48,7 @@ third_party_settings:
       label: Links
       parent_name: ''
       region: hidden
-      weight: 8
+      weight: 9
       format_type: fieldset
       format_settings: {  }
     group_editorial:
@@ -74,7 +74,7 @@ content:
     region: content
   schema_contributor:
     type: entity_reference_entity_view
-    label: above
+    label: hidden
     settings:
       view_mode: profile_card
       link: false

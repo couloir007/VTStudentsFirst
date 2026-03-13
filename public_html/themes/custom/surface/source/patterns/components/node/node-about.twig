@@ -1,4 +1,5 @@
 {{ attach_library('surface/node') }}
+{{ attach_library('surface/person-card') }}
 
 {% set classes = [
   'node',
@@ -28,11 +29,6 @@
     <div class="node__inner">
       <div class="node__body prose">
         {{ content.field_body|field_value }}
-      </div>
-      <div class="node__people prose">
-        <div class="prose__wrapper">
-          {{ content.schema_contributor|field_value }}
-        </div>
       </div>
     </div>
   </div>
