@@ -34,8 +34,9 @@
 {% set classes = [
   'block-' ~ plugin_id|clean_class,
   'container',
-  'grid',
-  'grid--medium'
+  node and node.bundle() is not same as('about_page') and region == 'content' ? 'container',
+  node and node.bundle() is not same as('about_page') and region == 'content' ? 'grid',
+  node and node.bundle() is not same as('about_page') and region == 'content' ? 'grid--medium'
 ] %}
 
 {% set attributes = attributes.addClass(classes) %}

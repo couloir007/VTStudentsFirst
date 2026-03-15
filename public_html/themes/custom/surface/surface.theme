@@ -27,6 +27,7 @@ foreach (glob(\Drupal::service('extension.list.theme')->getPath('surface') . '/i
 //    $variables['data_menu'] = 'dropdown';
 //}
 
+use Drupal\block\Entity\Block;
 use Drupal\node\NodeInterface;
 
 /**
@@ -36,6 +37,23 @@ function surface_preprocess_page_title(&$variables) {
   $node = \Drupal::routeMatch()->getParameter('node');
   if ($node instanceof NodeInterface) {
     $variables['node'] = $node;
+  }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function surface_preprocess_block(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof NodeInterface) {
+    $variables['node'] = $node;
+  }
+
+  if (isset($variables['elements']['#id'])) {
+    $block = Block::load($variables['elements']['#id']);
+    if ($block) {
+      $variables['region'] = $block->getRegion();
+    }
   }
 }
 
