@@ -56,6 +56,7 @@
 .action-section__tab-buttons {
   border-bottom: 1px solid var(--section-border, rgba(122,171,138,20%));
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
   margin-bottom: 3rem;
@@ -147,6 +148,23 @@
 @media (width <= 768px) {
   .action-section__toolkit {
     padding: 3rem 1.5rem;
+  }
+  .action-section__tab-buttons {
+    border-bottom: none;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+  .action-section__tab-btn {
+    border: 1px solid var(--section-border, rgba(122,171,138,20%));
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    width: auto;
+    flex: 1 1 auto;
+    min-width: 120px;
+  }
+  .action-section__tab-btn.active {
+    background: var(--section-btn-bg, var(--maple));
+    border-color: var(--section-btn-bg, var(--maple));
   }
 }
 
