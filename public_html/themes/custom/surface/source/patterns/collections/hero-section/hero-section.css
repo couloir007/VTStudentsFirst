@@ -48,7 +48,7 @@
   display: flex;
   flex-wrap: wrap;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   gap: 0.75rem;
   letter-spacing: 0.18em;
   margin-bottom: 1.5rem;
@@ -79,7 +79,7 @@
 }
 
 .hero-section__subheadline {
-  color: var(--section-body, var(--mist));
+  color: var(--section-body, var(--white));
   font-size: clamp(1.05rem, 1.8vw, 1.25rem);
   font-weight: 300;
   line-height: 1.65;
@@ -94,14 +94,13 @@
 }
 
 .hero-section__btn-primary {
-  background: var(--section-btn-bg, var(--maple-dark));
+  background: var(--maple-darker);
   border: none;
   border-radius: 2px;
   color: var(--section-btn-color, white);
   cursor: pointer;
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
   letter-spacing: 0.1em;
   padding: 1rem 2rem;
   text-decoration: none;
@@ -122,7 +121,6 @@
   cursor: pointer;
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
   letter-spacing: 0.1em;
   padding: 1rem 2rem;
   text-decoration: none;
