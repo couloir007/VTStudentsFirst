@@ -15,6 +15,7 @@
       if (isDesktopNav()) {
         secondLevelNavMenus.forEach((el) => {
           el.querySelector(buttonSelector).setAttribute('aria-expanded', 'false');
+          el.classList.remove('is-active-menu-parent');
           el.querySelector('[data-drupal-selector="menu-main--level-2"]').classList.remove(
             'is-active-menu-parent'
           );
@@ -22,12 +23,14 @@
       }
 
       button.setAttribute('aria-expanded', 'true');
+      topLevelMenuItem.classList.add('is-active-menu-parent');
       topLevelMenuItem
         .querySelector('[data-drupal-selector="menu-main--level-2"]')
         .classList.add('is-active-menu-parent');
     } else {
       button.setAttribute('aria-expanded', 'false');
       topLevelMenuItem.classList.remove('is-touch-event');
+      topLevelMenuItem.classList.remove('is-active-menu-parent');
       topLevelMenuItem
         .querySelector('[data-drupal-selector="menu-main--level-2"]')
         .classList.remove('is-active-menu-parent');

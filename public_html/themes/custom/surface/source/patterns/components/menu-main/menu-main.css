@@ -61,9 +61,16 @@
 /* ── Dropdown panel ── */
 .translate__container {
   left: 0;
+  pointer-events: none;
   position: absolute;
   top: 100%;
+  visibility: hidden;
   z-index: 100;
+}
+
+.is-active-menu-parent .translate__container {
+  pointer-events: auto;
+  visibility: visible;
 }
 
 .menu-main--level-2 {
@@ -80,7 +87,7 @@
   padding: 0.5rem 0;
   pointer-events: none;
   transform: translateY(-4px);
-  transition: opacity 0.15s, transform 0.15s;
+  transition: opacity 0.15s, transform 0.15s, visibility 0.15s;
 }
 
 .menu-main--level-2.is-active-menu-parent {
@@ -155,7 +162,9 @@
   /* ── Mobile dropdown panel ── */
   .translate__container {
     box-sizing: border-box;
+    pointer-events: auto;
     position: static;
+    visibility: visible;
     width: 100%;
   }
 
