@@ -104,7 +104,6 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
     // ── Submit ─────────────────────────────────────────────────────────────
     submitBtn.addEventListener('click', async () => {
       formError.hidden = true;
-      pushEvent('lc_form_submit_attempt');
 
       const fname = fnameInput.value.trim();
       const lname = lnameInput.value.trim();
@@ -112,6 +111,8 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
       const email = emailInput.value.trim();
       const msg   = messageArea.value.trim();
       const role  = roleInput ? roleInput.value.trim() : '';
+
+      pushEvent('lc_form_submit_attempt', { role });
 
       if (!fname || !email || !town || !role || !msg) {
         formError.textContent = 'Please fill in all required fields before sending.';

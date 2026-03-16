@@ -3,12 +3,13 @@
 <div class="legislator-contact{{ modifier ? ' ' ~ modifier }}"
   id="legislator-contact"
   {% if civic_api_key %}data-civic-api-key="{{ civic_api_key }}"{% endif %}
+  {% if data_base %}data-data-base="{{ data_base }}"{% endif %}
 >
 
   {# ── Form view (default) ────────────────────────────────────────────── #}
   <div class="lc-form" id="lc-form">
-    <h3 class="lc-form__title">Contact Your Legislator</h3>
-    <p class="lc-form__sub">Fill in your info and we'll connect you with your Vermont House and Senate representatives. Personal messages carry far more weight than form letters.</p>
+    <h3 class="lc-form__title">Contact Your Legislators</h3>
+    <p class="lc-form__sub">Enter your info and we'll find your Vermont House and Senate representatives. Then write your message in your own words — personal emails from real constituents carry far more weight than form letters.</p>
     <p class="lc-form__required-note"><abbr title="required">*</abbr> Required fields</p>
 
     <div class="lc-field-row">
@@ -46,33 +47,47 @@
       </select>
     </div>
 
-    <div class="lc-field">
-      <label class="lc-field__label" for="lc-message">Your Message <abbr class="lc-field__required" title="required">*</abbr></label>
-      <textarea class="lc-field__textarea" id="lc-message" rows="10" required>My name is [Your Name] and I am a constituent from [Town] writing as a [Role]. I am writing to strongly oppose any proposals that would restrict Vermont's Town Tuition Program.
+    {# ── Tips + textarea side by side ───────────────────────────────────── #}
+    <div class="lc-message-layout">
 
-Independent schools like St. Johnsbury Academy and Lyndon Institute are not just educational institutions — they are economic engines that attract young families, support local businesses, and help counter Vermont's demographic decline. Families in our communities have told me directly they would leave Vermont if their children could no longer attend these schools. That ripple effect would be devastating.
+      <div class="lc-tips">
+        <h4 class="lc-tips__heading">Tips for writing your message</h4>
+        <ul class="lc-tips__list">
+          <li><strong>Introduce yourself.</strong> Your name, your town, how long you've lived there, and your connection to the issue. Legislators respond to constituents they can picture.</li>
+          <li><strong>Be specific about your school.</strong> Name the school — St. Johnsbury Academy, Lyndon Institute, Thetford Academy, Burr and Burton Academy, Riverside School. Generic references are easier to ignore.</li>
+          <li><strong>Tell your story.</strong> Why did you choose this school? What would it mean to lose access? A single personal detail is more persuasive than any statistic.</li>
+          <li><strong>Reference Act 73.</strong> Act 73 already reduced the number of schools eligible for public tuition from 46 to 18. Further restrictions compound that harm.</li>
+          <li><strong>Be respectful.</strong> Your representative may not understand how tuitioning works in rural Vermont. You're more likely to move someone by educating them than by lecturing them.</li>
+          <li><strong>Ask for something specific.</strong> End with a clear request — oppose the bill, support an amendment, hold a public hearing in your community.</li>
+        </ul>
+      </div>
 
-Eliminating or restricting the Town Tuition Program does nothing to save money or improve quality. It simply removes access to high-quality education from students who would otherwise never have it. Please oppose any plan that restricts family choice or eliminates access to Vermont's independent schools.</textarea>
+      <div class="lc-field lc-field--message">
+        <label class="lc-field__label" for="lc-message">Your Message <abbr class="lc-field__required" title="required">*</abbr></label>
+        <textarea class="lc-field__textarea" id="lc-message" rows="14" required placeholder="Write your message here in your own words. The tips on the left are here to help."></textarea>
+      </div>
+
     </div>
 
     <p class="lc-form__error" id="lc-form-error" hidden></p>
 
     <button class="lc-btn lc-btn--primary lc-btn--full" id="lc-submit-btn" type="button">
-      Send to My Legislators →
+      Find My Representatives →
     </button>
 
-    <p class="lc-form__note">We'll match your town to your representatives and send on your behalf. We never share your information. You can also contact the <a href="https://governor.vermont.gov/contact-us-requests" target="_blank" rel="noopener">Governor's Office directly</a>.</p>
+    <p class="lc-form__note">We'll match your town to your representatives and open your email app with your message ready to send. We never share your information. You can also contact the <a href="https://governor.vermont.gov/contact-us-requests" target="_blank" rel="noopener">Governor's Office directly</a>.</p>
   </div>
 
   {# ── Confirmation view (shown after submit) ─────────────────────────── #}
   <div class="lc-confirm" id="lc-confirm" hidden>
     <div class="lc-confirm__icon">✓</div>
-    <h3 class="lc-confirm__headline">Message ready to send!</h3>
+    <h3 class="lc-confirm__headline">Ready to send!</h3>
     <p class="lc-confirm__body">Your email client should open with your message pre-addressed to your representative(s). If it didn't open, copy your message below and paste it into your own email.</p>
 
     <div class="lc-confirm__reps" id="lc-confirm-reps"></div>
 
     <div class="lc-confirm__copy-wrap">
+      <label class="lc-field__label" for="lc-confirm-msg">Your message</label>
       <textarea class="lc-field__textarea lc-confirm__copy-msg" id="lc-confirm-msg" rows="8" readonly></textarea>
       <a class="lc-btn lc-btn--primary" id="lc-mailto-btn" role="button">Open in Email App</a>
       <button class="lc-btn lc-btn--ghost" id="lc-copy-btn" type="button">Copy Message</button>
@@ -83,7 +98,7 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
       <ul class="lc-confirm__next-list">
         <li>Share this page with a neighbor on Front Porch Forum or Facebook</li>
         <li>Attend your local school board meeting and speak during public comment</li>
-        <li>Write a letter to your local paper using the templates in our toolkit below</li>
+        <li>Write a letter to your local paper</li>
       </ul>
     </div>
 
