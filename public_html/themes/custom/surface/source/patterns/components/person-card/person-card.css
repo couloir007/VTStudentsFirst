@@ -8,6 +8,11 @@
   border: 1px solid var(--gray-200);
   border-radius: var(--radius-md, 8px);
   padding: var(--size-5);
+  margin-block-end: var(--size-3);
+}
+
+.person-card:last-child {
+  margin-block-end: 0;
 }
 
 /* Horizontal layout: avatar left, content right */

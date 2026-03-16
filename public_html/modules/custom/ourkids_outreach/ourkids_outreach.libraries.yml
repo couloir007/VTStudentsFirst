@@ -1,0 +1,9 @@
+outreach:
+  version: VERSION
+  css:
+    theme:
+      css/outreach.css: {}
+  js:
+    js/outreach.js: {}
+  dependencies:
+    - core/drupal

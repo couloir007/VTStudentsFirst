@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * OurKids Legislator Outreach module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function ourkids_outreach_theme(): array {
+  return [
+    'ourkids_outreach_page' => [
+      'variables' => [
+        'representatives' => [],
+        'senators'        => [],
+      ],
+    ],
+  ];
+}

@@ -1,0 +1,10 @@
+#
+# Configuration to ignore specific configs during drush cex.
+#
+drush:
+  conf:
+    config:
+      export:
+        skip-config:
+          - brevo.settings
+          - brevo_mailer.settings

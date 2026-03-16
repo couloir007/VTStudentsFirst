@@ -143,6 +143,7 @@ class ComposerStaticInit62e63ef21cb66c11fb7ccb3f385630ee
         ),
         'N' =>
         array (
+            'Nyholm\\Psr7\\' => 12,
             'Nette\\' => 6,
         ),
         'M' =>
@@ -174,6 +175,7 @@ class ComposerStaticInit62e63ef21cb66c11fb7ccb3f385630ee
             'Http\\Discovery\\' => 15,
             'Http\\Client\\' => 12,
             'Http\\Adapter\\Guzzle7\\' => 21,
+            'Html2Text\\' => 10,
         ),
         'G' =>
         array (
@@ -226,6 +228,7 @@ class ComposerStaticInit62e63ef21cb66c11fb7ccb3f385630ee
         'B' =>
         array (
             'Brick\\Math\\' => 11,
+            'Brevo\\Client\\' => 13,
         ),
         'A' =>
         array (
@@ -511,6 +514,10 @@ class ComposerStaticInit62e63ef21cb66c11fb7ccb3f385630ee
         array (
             0 => __DIR__ . '/..' . '/phpstan/phpstan-deprecation-rules/src',
         ),
+        'Nyholm\\Psr7\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/nyholm/psr7/src',
+        ),
         'Nette\\' =>
         array (
             0 => __DIR__ . '/..' . '/nette/schema/src',
@@ -587,6 +594,10 @@ class ComposerStaticInit62e63ef21cb66c11fb7ccb3f385630ee
         'Http\\Adapter\\Guzzle7\\' =>
         array (
             0 => __DIR__ . '/..' . '/php-http/guzzle7-adapter/src',
+        ),
+        'Html2Text\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/html2text/html2text/src',
         ),
         'GuzzleHttp\\Psr7\\' =>
         array (
@@ -736,6 +747,10 @@ class ComposerStaticInit62e63ef21cb66c11fb7ccb3f385630ee
         'Brick\\Math\\' =>
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
+        ),
+        'Brevo\\Client\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/getbrevo/brevo-php/lib',
         ),
         'Asm89\\Stack\\' =>
         array (

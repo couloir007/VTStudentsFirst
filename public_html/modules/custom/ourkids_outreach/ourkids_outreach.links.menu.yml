@@ -1,0 +1,6 @@
+ourkids_outreach.legislator_outreach:
+  title: 'Legislator Outreach'
+  description: 'Send tracked outreach emails to Vermont legislators.'
+  route_name: ourkids_outreach.legislator_outreach
+  parent: system.admin
+  weight: 99

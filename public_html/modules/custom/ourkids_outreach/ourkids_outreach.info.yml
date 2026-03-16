@@ -1,0 +1,7 @@
+name: 'OurKids Legislator Outreach'
+type: module
+description: 'Admin tool for sending tracked outreach emails to Vermont legislators.'
+core_version_requirement: ^10 || ^11
+package: OurKidsOurSchoolsVT
+dependencies:
+  - drupal:system

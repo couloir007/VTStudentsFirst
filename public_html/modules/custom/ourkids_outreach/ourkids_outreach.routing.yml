@@ -1,0 +1,7 @@
+ourkids_outreach.legislator_outreach:
+  path: '/admin/ourkids/legislator-outreach'
+  defaults:
+    _controller: '\Drupal\ourkids_outreach\Controller\LegislatorOutreachController::page'
+    _title: 'Legislator Outreach'
+  requirements:
+    _permission: 'administer site configuration'

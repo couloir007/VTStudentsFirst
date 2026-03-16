@@ -1,0 +1,96 @@
+{#
+/**
+ * @file
+ * Legislator outreach admin page.
+ *
+ * Variables:
+ * - representatives: Array of House legislator data.
+ * - senators: Array of Senate legislator data.
+ */
+#}
+
+<div class="ourkids-outreach">
+
+  <div class="ourkids-outreach__intro">
+    <p>Click each legislator's name to open a pre-composed email in your mail app. Each email contains a unique tracking link. Progress is saved in your browser.</p>
+    <p class="ourkids-outreach__counts">
+      <strong id="outreach-sent-count">0</strong> sent &nbsp;·&nbsp;
+      <strong>{{ representatives|length + senators|length }}</strong> total
+    </p>
+    <button class="ourkids-outreach__reset" id="outreach-reset" type="button">Reset progress</button>
+  </div>
+
+  <div class="ourkids-outreach__tabs">
+    <button class="ourkids-outreach__tab is-active" data-tab="house" type="button">
+      House <span class="ourkids-outreach__tab-count">({{ representatives|length }})</span>
+    </button>
+    <button class="ourkids-outreach__tab" data-tab="senate" type="button">
+      Senate <span class="ourkids-outreach__tab-count">({{ senators|length }})</span>
+    </button>
+  </div>
+
+  <div class="ourkids-outreach__panel is-active" id="outreach-panel-house">
+    <table class="ourkids-outreach__table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>District</th>
+          <th>Email</th>
+          <th>Ref</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for leg in representatives %}
+          <tr class="ourkids-outreach__row" data-ref="{{ leg.ref }}">
+            <td>
+              <a class="ourkids-outreach__mailto" href="{{ leg.mailto }}" data-ref="{{ leg.ref }}">
+                {{ leg.name }}
+              </a>
+            </td>
+            <td>{{ leg.district }}</td>
+            <td><a href="mailto:{{ leg.email }}">{{ leg.email }}</a></td>
+            <td><code>{{ leg.ref }}</code></td>
+            <td>
+              <button class="ourkids-outreach__mark" data-ref="{{ leg.ref }}" type="button">Mark sent</button>
+              <span class="ourkids-outreach__sent-badge" hidden>✓ Sent</span>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ourkids-outreach__panel" id="outreach-panel-senate">
+    <table class="ourkids-outreach__table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>District</th>
+          <th>Email</th>
+          <th>Ref</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for leg in senators %}
+          <tr class="ourkids-outreach__row" data-ref="{{ leg.ref }}">
+            <td>
+              <a class="ourkids-outreach__mailto" href="{{ leg.mailto }}" data-ref="{{ leg.ref }}">
+                {{ leg.name }}
+              </a>
+            </td>
+            <td>{{ leg.district }}</td>
+            <td><a href="mailto:{{ leg.email }}">{{ leg.email }}</a></td>
+            <td><code>{{ leg.ref }}</code></td>
+            <td>
+              <button class="ourkids-outreach__mark" data-ref="{{ leg.ref }}" type="button">Mark sent</button>
+              <span class="ourkids-outreach__sent-badge" hidden>✓ Sent</span>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
