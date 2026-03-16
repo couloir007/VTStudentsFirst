@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.person.field_metatag
     - field.field.node.person.field_quote
     - field.field.node.person.field_school_connection
+    - field.field.node.person.field_weight
     - field.field.node.person.schema_additional_name
     - field.field.node.person.schema_address
     - field.field.node.person.schema_email
@@ -267,6 +268,7 @@ hidden:
   field_metatag: true
   field_quote: true
   field_school_connection: true
+  field_weight: true
   langcode: true
   path: true
   promote: true
