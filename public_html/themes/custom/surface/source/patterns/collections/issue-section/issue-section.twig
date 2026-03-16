@@ -12,7 +12,8 @@
       {% if section_label %}
         {% include "@elements/section-label/section-label.twig" with {
           text: section_label,
-          class: 'issue-section__label'
+          class: 'issue-section__label',
+          modifier: 'light'
         } only %}
       {% endif %}
 

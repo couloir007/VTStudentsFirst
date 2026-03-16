@@ -1,0 +1,37 @@
+{#
+/**
+ * @file
+ * Footer block template.
+ *
+ * Passes two Drupal menus into the site-footer component:
+ * - footer-navigate  → Navigate column
+ * - footer-involved  → Get Involved column
+ *
+ * Create these two menus in Drupal admin:
+ *   Structure → Menus → Add menu
+ *   Machine names: footer-navigate, footer-involved
+ * Then place the Footer block in the Footer region.
+ */
+#}
+
+{% set footer_nav_items = [] %}
+{% set footer_action_items = [] %}
+
+{% for item in drupal_menu('footer-navigate') %}
+  {% set footer_nav_items = footer_nav_items|merge([{
+    'title': item.title,
+    'url': item.url,
+  }]) %}
+{% endfor %}
+
+{% for item in drupal_menu('footer-involved') %}
+  {% set footer_action_items = footer_action_items|merge([{
+    'title': item.title,
+    'url': item.url,
+  }]) %}
+{% endfor %}
+
+{% include '@layouts/site-footer/site-footer.twig' with {
+  'footer_nav_items': footer_nav_items,
+  'footer_action_items': footer_action_items,
+} %}

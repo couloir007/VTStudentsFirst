@@ -41,7 +41,8 @@
 .testimonial__attribution {
   color: var(--section-label, var(--meadow));
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.8rem;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }

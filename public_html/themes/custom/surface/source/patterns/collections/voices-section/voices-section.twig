@@ -11,7 +11,8 @@
     {% if section_label %}
       {% include "@elements/section-label/section-label.twig" with {
         text: section_label,
-        class: 'voices-section__label'
+        class: 'voices-section__label',
+        modifier: 'warm'
       } only %}
     {% endif %}
     {% if section_headline %}
@@ -32,6 +33,6 @@
       </div>
     {% endif %}
 
-    <p style="margin-top:2rem; font-size:0.9rem; color:var(--mid); font-style:italic;">Your story matters. <a href="#act" style="color:var(--maple); text-decoration:underline;">Share it with us →</a></p>
+    <p class="voices-section__cta">Your story matters. <a href="#action" class="voices-section__cta-link">Share it with us →</a></p>
   {% endblock %}
 {% endembed %}

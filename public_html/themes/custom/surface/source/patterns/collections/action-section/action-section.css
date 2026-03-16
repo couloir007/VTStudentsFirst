@@ -13,7 +13,7 @@
 }
 
 .action-section__lead {
-  color: var(--section-body, var(--cream));
+  color: var(--white, var(--cream));
   font-size: clamp(1.1rem, 2vw, 1.35rem);
   line-height: 1.6;
   max-width: 580px;

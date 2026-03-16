@@ -3,12 +3,6 @@
   border-top: 1px solid var(--section-border, var(--mist));
 }
 
-.voices-section__label {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
 .voices-section__headline {
   text-align: center;
 }
@@ -32,5 +26,26 @@
 @media (width <= 600px) {
   .voices-section__grid {
     grid-template-columns: 1fr;
+  }
+}
+
+.voices-section__cta {
+  color: var(--section-body, var(--mid));
+  font-size: 1.25rem;
+  font-style: italic;
+  margin-top: 2rem;
+
+  a {
+    font-weight: 600;
+  }
+}
+
+.voices-section__cta-link {
+  color: var(--maple);
+  text-decoration: underline;
+  transition: color 0.15s;
+
+  &:hover {
+    color: var(--maple-dark);
   }
 }

@@ -11,7 +11,8 @@
     {% if section_label %}
       {% include "@elements/section-label/section-label.twig" with {
         text: section_label,
-        class: 'accountability-section__label'
+        class: 'accountability-section__label',
+        modifier: 'warm'
       } only %}
     {% endif %}
     {% if section_headline %}

@@ -17,7 +17,7 @@
 .position-item__num {
   align-items: center;
   background: var(--section-headline, var(--forest));
-  color: var(--section-accent, var(--gold));
+  color: var(--cream, var(--gold));
   display: flex;
   font-family: var(--font-secondary);
   font-size: 1rem;

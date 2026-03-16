@@ -203,14 +203,15 @@
 
 .lc-form__note {
   color: var(--mid);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   line-height: 1.55;
   margin-top: 1rem;
   text-align: center;
 }
 
 .lc-form__note a {
-  color: var(--sage);
+  color: #508160;
+  font-weight: 600;
   transition: color 0.15s;
 }
 

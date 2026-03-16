@@ -9,7 +9,9 @@
 }
 
 .site-header {
-  border-bottom: 1px solid rgba(122, 171, 138, 15%);
+  border-bottom: 1px solid rgba(122, 171, 138, 35%);
+  backdrop-filter: blur(10px);
+  background: rgba(10, 22, 17, 85%);
   left: 0;
   padding: 1rem 2.5rem;
   position: fixed;
@@ -19,17 +21,17 @@
   z-index: 500;
 }
 
-.site-header::before {
-  backdrop-filter: blur(10px);
-  background: rgba(10, 22, 17, 85%);
-  bottom: 0;
-  content: '';
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: -1;
-}
+/*.site-header::before {*/
+/*  backdrop-filter: blur(10px);*/
+/*  background: rgba(10, 22, 17, 85%);*/
+/*  bottom: 0;*/
+/*  content: '';*/
+/*  left: 0;*/
+/*  position: absolute;*/
+/*  right: 0;*/
+/*  top: 0;*/
+/*  z-index: -1;*/
+/*}*/
 
 body.toolbar-fixed .site-header {
   top: var(
@@ -75,7 +77,7 @@ body.gin--vertical-toolbar .site-header {
   }
 
   .site-navigation {
-    background: rgba(10, 22, 17, 97%);
+    background: rgba(10, 22, 17, 98%);
     border-top: 1px solid rgba(122, 171, 138, 15%);
     bottom: 0;
     box-sizing: border-box;
@@ -106,7 +108,7 @@ body.gin--vertical-toolbar .site-header {
 /* ── Front page transparent/scrolled ── */
 .path-frontpage .site-header--scrolled::before {
   backdrop-filter: blur(10px);
-  background: rgba(10, 22, 17, 92%);
+  background: rgba(10, 22, 17, 98%);
 }
 
 .path-frontpage .site-header--scrolled {
