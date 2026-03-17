@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.schema_has_part
     - node.type.about_page
     - node.type.article
+    - node.type.contact_page
     - node.type.legislation
     - node.type.news_updates
     - node.type.page
@@ -37,6 +38,7 @@ settings:
     target_bundles:
       about_page: about_page
       article: article
+      contact_page: contact_page
       legislation: legislation
       news_updates: news_updates
       page: page

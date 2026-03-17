@@ -6,6 +6,7 @@ dependencies:
     - field.storage.node.schema_subject_of
     - node.type.about_page
     - node.type.article
+    - node.type.contact_page
     - node.type.edu_organization
     - node.type.event
     - node.type.legislation
@@ -44,6 +45,7 @@ settings:
     target_bundles:
       about_page: about_page
       article: article
+      contact_page: contact_page
       edu_organization: edu_organization
       event: event
       legislation: legislation

@@ -1,0 +1,47 @@
+uuid: 96f78019-8218-4b35-9633-436c8cd8055d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_is_part_of
+    - node.type.about_page
+    - node.type.article
+    - node.type.contact_page
+    - node.type.legislation
+    - node.type.news_updates
+    - node.type.page
+    - node.type.testimonial
+    - node.type.web_site
+  module:
+    - epp
+third_party_settings:
+  epp:
+    value: 'target_id: [current-page:query:is_part_of]'
+id: node.contact_page.schema_is_part_of
+field_name: schema_is_part_of
+entity_type: node
+bundle: contact_page
+label: 'Is part of'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'schemadotorg:node'
+  handler_settings:
+    target_type: node
+    schema_types:
+      CreativeWork: CreativeWork
+    excluded_schema_types: {  }
+    ignore_additional_mappings: true
+    target_bundles:
+      about_page: about_page
+      article: article
+      contact_page: contact_page
+      legislation: legislation
+      news_updates: news_updates
+      page: page
+      testimonial: testimonial
+      web_site: web_site
+field_type: entity_reference

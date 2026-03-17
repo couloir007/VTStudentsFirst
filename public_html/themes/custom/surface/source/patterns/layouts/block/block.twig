@@ -25,17 +25,9 @@
   {% endif %}
   {{ title_suffix }}
 
-  {% if content_wrapper %}
-    <div class="{{ content_classes }}" {{ content_attributes ? content_attributes|without('class') }}>
-  {% endif %}
-
-    {% block content %}
-      {{ content }}
-    {% endblock %}
-
-  {% if content_wrapper %}
-    </div>
-  {% endif %}
+  {% block content %}
+    {{ content }}
+  {% endblock %}
 
 {% if block_wrapper %}
   </div>

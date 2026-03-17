@@ -1,0 +1,49 @@
+uuid: 317a69ba-2841-40a8-a9e8-001fc725396b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.contact_page.body
+    - field.field.node.contact_page.field_editorial
+    - field.field.node.contact_page.field_metatag
+    - field.field.node.contact_page.schema_about
+    - field.field.node.contact_page.schema_has_part
+    - field.field.node.contact_page.schema_image
+    - field.field.node.contact_page.schema_is_part_of
+    - field.field.node.contact_page.schema_related_link
+    - field.field.node.contact_page.schema_significant_link
+    - field.field.node.contact_page.schema_subject_of
+    - node.type.contact_page
+  module:
+    - text
+    - user
+id: node.contact_page.teaser
+targetEntityType: node
+bundle: contact_page
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 19
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -100
+    region: content
+hidden:
+  field_editorial: true
+  field_metatag: true
+  langcode: true
+  schema_about: true
+  schema_has_part: true
+  schema_image: true
+  schema_is_part_of: true
+  schema_related_link: true
+  schema_significant_link: true
+  schema_subject_of: true

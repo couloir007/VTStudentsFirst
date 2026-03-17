@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Share Your Story page component.
+ *
+ * Used in two contexts:
+ *   1. Drupal — webform--testimonial-submission.html.twig passes {{ form }}
+ *      which renders the complete Drupal webform with all fields and CSRF token.
+ *   2. Storybook — stories pass no form variable, so the static mock renders.
+ *
+ * Variables:
+ * - section_label: Label above the title.
+ * - title: Page heading.
+ * - lead: Intro paragraph.
+ * - form: Rendered Drupal webform (optional — Drupal context only).
+ */
+#}
+
+{{ attach_library('surface/share-your-story') }}
+
+<div class="share-story section-theme--warm">
+  <div class="share-story__inner">
+
+    <div class="share-story__header">
+      {% include "@elements/section-label/section-label.twig" with {
+        text: section_label ?? 'Your Voice Matters',
+        modifier: 'warm'
+      } only %}
+      <h1 class="share-story__title">{{ title ?? 'Share Your Story' }}</h1>
+      <p class="share-story__lead">{{ lead ?? 'Legislators respond to real people with real stories. Tell us what independent schools mean to your family and community — your words may be the ones that make a difference.' }}</p>
+    </div>
+
+    <div class="share-story__form">
+      <form{{ attributes }}>
+        {{ title_prefix }}
+        {{ children }}
+        {{ title_suffix }}
+      </form>
+
+    </div>
+  </div>
+</div>

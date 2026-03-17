@@ -4,6 +4,7 @@
   grid-template-rows: 1fr auto;
   min-height: 100vh;
   overflow: hidden;
+  padding-block-start: 0;
 }
 
 .hero-section__bg {

@@ -1,10 +1,10 @@
 :root {
-  --site-header-height: var(--size-20);
+  --site-header-height: 69px;
 }
 
 @media (width <= 940px) {
   :root {
-    --site-header-height: var(--size-16);
+    --site-header-height: 69px;
   }
 }
 

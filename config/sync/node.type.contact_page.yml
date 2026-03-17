@@ -1,0 +1,26 @@
+uuid: b72cae57-b4dd-46ee-b4c8-9671eeb55cce
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+    - type_tray
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+      - footer
+    parent: ''
+  type_tray:
+    type_category: page
+    type_thumbnail: ''
+    type_icon: /modules/contrib/schemadotorg/modules/schemadotorg_type_tray/images/schemadotorg_type_tray/icon/creative_work.png
+    existing_nodes_link_text: 'View existing <em class="placeholder">Contact Page</em> content'
+    type_weight: -20
+name: 'Contact Page'
+type: contact_page
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

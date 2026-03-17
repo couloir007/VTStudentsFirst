@@ -1,0 +1,245 @@
+uuid: 305aebdb-5e78-479d-9bfc-6720a4976ef0
+langcode: en
+status: open
+dependencies: {  }
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: testimonial_submission
+title: 'Share Your Story'
+description: 'Testimonial and coalition signup form for OurKidsOurSchoolsVT.'
+categories: {  }
+elements: |
+  name:
+    '#type': textfield
+    '#title': 'Your Name'
+    '#required': true
+    '#placeholder': 'Jane Smith'
+    '#autocomplete': 'name'
+  email:
+    '#type': email
+    '#title': 'Email Address'
+    '#required': true
+    '#placeholder': 'jane@example.com'
+    '#autocomplete': 'email'
+    '#description': 'We will never share your email address.'
+  town:
+    '#type': textfield
+    '#title': 'Your Town'
+    '#required': true
+    '#placeholder': 'e.g. Burke, Waterford, Thetford…'
+  role:
+    '#type': select
+    '#title': 'Your Connection'
+    '#required': true
+    '#empty_option': 'Select one…'
+    '#options':
+      parent: 'Parent of a tuitioning student'
+      student: 'Student'
+      alumni: 'Alumni of an independent school'
+      teacher: 'Teacher / School staff'
+      employer: 'Local employer / Business owner'
+      community: 'Community member / Neighbor'
+      other: 'Other'
+  school_connection:
+    '#type': textfield
+    '#title': 'School Connection'
+    '#placeholder': 'e.g. St. Johnsbury Academy, Lyndon Institute…'
+    '#description': 'Which school are you connected to?'
+  testimonial:
+    '#type': textarea
+    '#title': 'Your Story'
+    '#required': true
+    '#rows': 6
+    '#placeholder': 'Tell us what independent schools mean to your family and community, and what losing access would mean for you.'
+    '#description': 'Please share as much or as little as you are comfortable with.'
+  permission_to_publish:
+    '#type': checkbox
+    '#title': 'I give OurKidsOurSchoolsVT permission to publish my story (with my name and town) on this website and in campaign materials.'
+    '#required': false
+  opt_in:
+    '#type': checkbox
+    '#title': 'Keep me informed about OurKidsOurSchoolsVT updates and actions.'
+    '#required': false
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: /share-your-story
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: false
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_preview_link: false
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: inline
+  confirmation_url: ''
+  confirmation_title: 'Thank you for sharing your story.'
+  confirmation_message: '<p>Your submission has been received. If you gave permission to publish, your story may appear on this site. We will be in touch if we have any questions.</p><p><a href="/">Return to the homepage</a></p>'
+  confirmation_attributes: {  }
+  confirmation_back: false
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+  submission_ignore_empty: false
+  submission_purge: false
+  submission_purge_days: 0
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles:
+      - administrator
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles:
+      - administrator
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles:
+      - administrator
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles:
+      - administrator
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  duplicate:
+    roles:
+      - administrator
+    users: {  }
+    permissions: {  }
+  test:
+    roles:
+      - administrator
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles:
+      - administrator
+    users: {  }
+    permissions: {  }
+handlers: {  }
+variants: {  }

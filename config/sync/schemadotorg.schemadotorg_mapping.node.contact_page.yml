@@ -1,0 +1,34 @@
+uuid: bf8b80d3-16bc-47d8-948c-87d4b8185239
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.contact_page.body
+    - field.field.node.contact_page.schema_about
+    - field.field.node.contact_page.schema_has_part
+    - field.field.node.contact_page.schema_image
+    - field.field.node.contact_page.schema_is_part_of
+    - field.field.node.contact_page.schema_related_link
+    - field.field.node.contact_page.schema_significant_link
+    - field.field.node.contact_page.schema_subject_of
+    - node.type.contact_page
+  module:
+    - node
+id: node.contact_page
+target_entity_type_id: node
+target_bundle: contact_page
+schema_type: ContactPage
+schema_properties:
+  schema_about: about
+  created: dateCreated
+  changed: dateModified
+  schema_has_part: hasPart
+  langcode: inLanguage
+  schema_is_part_of: isPartOf
+  title: name
+  schema_image: primaryImageOfPage
+  schema_related_link: relatedLink
+  schema_significant_link: significantLink
+  schema_subject_of: subjectOf
+  body: text
+additional_mappings: {  }

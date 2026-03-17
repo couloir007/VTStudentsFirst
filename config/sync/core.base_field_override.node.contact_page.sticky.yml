@@ -1,0 +1,22 @@
+uuid: cc9b5a12-f542-42a5-83c8-1c11953e7857
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.contact_page
+id: node.contact_page.sticky
+field_name: sticky
+entity_type: node
+bundle: contact_page
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

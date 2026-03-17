@@ -1,0 +1,18 @@
+uuid: c965f45f-4760-49ec-ad37-453f908193b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.contact_page
+id: node.contact_page.unpublish_on
+field_name: unpublish_on
+entity_type: node
+bundle: contact_page
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

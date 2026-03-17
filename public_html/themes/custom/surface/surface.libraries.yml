@@ -605,3 +605,8 @@ accountability-section:
   dependencies:
     - surface/section
     - surface/card-item
+
+share-your-story:
+  css:
+    component:
+      dist/css/share-your-story.css: {}

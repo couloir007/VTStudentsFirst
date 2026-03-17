@@ -1,0 +1,59 @@
+uuid: 05bd6d0f-092a-4124-83cd-644d6d2c5945
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.schema_about
+    - node.type.about_page
+    - node.type.article
+    - node.type.contact_page
+    - node.type.edu_organization
+    - node.type.event
+    - node.type.legislation
+    - node.type.local_business
+    - node.type.news_updates
+    - node.type.organization
+    - node.type.page
+    - node.type.person
+    - node.type.place
+    - node.type.testimonial
+    - node.type.web_site
+  module:
+    - epp
+third_party_settings:
+  epp:
+    value: 'target_id: [current-page:query:about]'
+id: node.contact_page.schema_about
+field_name: schema_about
+entity_type: node
+bundle: contact_page
+label: About
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'schemadotorg:node'
+  handler_settings:
+    target_type: node
+    schema_types:
+      Thing: Thing
+    excluded_schema_types: {  }
+    ignore_additional_mappings: false
+    target_bundles:
+      about_page: about_page
+      article: article
+      contact_page: contact_page
+      edu_organization: edu_organization
+      event: event
+      legislation: legislation
+      local_business: local_business
+      news_updates: news_updates
+      organization: organization
+      page: page
+      person: person
+      place: place
+      testimonial: testimonial
+      web_site: web_site
+field_type: entity_reference

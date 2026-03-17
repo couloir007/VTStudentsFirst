@@ -18,6 +18,7 @@ selection_criteria:
     bundles:
       about_page: about_page
       article: article
+      contact_page: contact_page
       creative_work: creative_work
       edu_organization: edu_organization
       event: event

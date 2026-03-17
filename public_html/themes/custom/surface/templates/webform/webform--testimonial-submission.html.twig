@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Webform template for the testimonial submission form.
+ *
+ * Passes the Drupal form render array into the share-your-story Storybook
+ * component via the `form` variable. The component renders {{ form }} when
+ * present, falling back to the static mock in Storybook.
+ */
+#}
+
+{% include '@layouts/share-your-story/share-your-story.twig' with {
+  'section_label': 'Your Voice Matters',
+  'title': 'Share Your Story',
+  'lead': 'Legislators respond to real people with real stories. Tell us what independent schools mean to your family and community — your words may be the ones that make a difference.',
+  'form': form,
+} %}

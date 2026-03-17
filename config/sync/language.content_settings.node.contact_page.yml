@@ -1,0 +1,16 @@
+uuid: d746bdd6-a507-4ffc-b4b1-226dc32d29ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.contact_page
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.contact_page
+target_entity_type_id: node
+target_bundle: contact_page
+default_langcode: site_default
+language_alterable: false

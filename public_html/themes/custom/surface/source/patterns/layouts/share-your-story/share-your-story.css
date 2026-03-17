@@ -1,0 +1,145 @@
+/**
+ * @file
+ * Share Your Story page styles.
+ */
+
+.share-story {
+  background-color: var(--parchment, #f9f5ef);
+  min-block-size: 100vh;
+  padding-block: var(--size-12);
+}
+
+.share-story__inner {
+  margin-inline: auto;
+  max-inline-size: 680px;
+  padding-inline: var(--section-padding-h, 2.5rem);
+
+  @media (width <= 768px) {
+    padding-inline: var(--size-4);
+  }
+}
+
+/* Header */
+.share-story__header {
+  margin-block-end: var(--size-8);
+}
+
+.share-story__title {
+  color: var(--forest, #1d3a2a);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  margin-block: var(--size-3) var(--size-4);
+}
+
+.share-story__lead {
+  color: var(--mid, #4a5a4e);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  max-inline-size: 580px;
+}
+
+/* Webform field overrides — warm theme */
+.share-story__form .form-item label {
+  color: var(--forest, #1d3a2a);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.share-story__form .form-item .description {
+  color: var(--mid, #4a5a4e);
+  font-size: 0.82rem;
+  margin-block-start: 0.25rem;
+}
+
+.share-story__form input[type="text"],
+.share-story__form input[type="email"],
+.share-story__form select,
+.share-story__form textarea {
+  background: white;
+  border: 1px solid rgba(74, 90, 78, 0.3);
+  border-radius: 3px;
+  color: var(--ink, #1a1a1a);
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.share-story__form input[type="text"]:focus,
+.share-story__form input[type="email"]:focus,
+.share-story__form select:focus,
+.share-story__form textarea:focus {
+  border-color: var(--meadow, #336644);
+  outline: 2px solid rgba(51, 102, 68, 0.2);
+  outline-offset: 2px;
+}
+
+.share-story__form textarea {
+  line-height: 1.65;
+  resize: vertical;
+}
+
+.share-story__form .form-item {
+  margin-block-end: 1.5rem;
+}
+
+/* Checkboxes */
+.share-story__form input[type="checkbox"] {
+  accent-color: var(--maple, #8b1a1a);
+  block-size: 1rem;
+  inline-size: 1rem;
+  margin-inline-end: 0.5rem;
+}
+
+.share-story__form .form-type-checkbox label {
+  font-family: inherit;
+  font-size: 0.92rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Submit button */
+.share-story__form .form-actions .button--primary,
+.share-story__form .form-submit {
+  background: var(--maple, #8b1a1a);
+  border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 0.85rem 2.5rem;
+  text-transform: uppercase;
+  transition: background 0.2s;
+}
+
+.share-story__form .form-actions .button--primary:hover,
+.share-story__form .form-submit:hover {
+  background: #6b1212;
+}
+
+/* Confirmation message */
+.webform-confirmation {
+  background: white;
+  border: 1px solid rgba(74, 90, 78, 0.2);
+  border-radius: 6px;
+  padding: var(--size-8);
+  text-align: center;
+}
+
+.webform-confirmation p {
+  color: var(--mid, #4a5a4e);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.webform-confirmation a {
+  color: var(--maple, #8b1a1a);
+}
+
+
