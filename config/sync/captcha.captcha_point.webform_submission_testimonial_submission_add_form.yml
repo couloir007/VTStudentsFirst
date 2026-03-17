@@ -1,0 +1,7 @@
+uuid: 5171c9d4-e620-4786-8ba5-c8c088968c79
+langcode: en
+status: true
+dependencies: {  }
+formId: webform_submission_testimonial_submission_add_form
+captchaType: recaptcha/reCAPTCHA
+label: webform-submission-testimonial-submission-add-form

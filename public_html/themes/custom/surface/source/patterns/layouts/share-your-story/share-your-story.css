@@ -142,4 +142,6 @@
   color: var(--maple, #8b1a1a);
 }
 
-
+.share-story form .form-item__label.option {
+  max-width: 90%;
+}

@@ -6334,6 +6334,65 @@
             "install-path": "../../public_html/modules/contrib/google_tag"
         },
         {
+            "name": "drupal/honey",
+            "version": "1.1.1",
+            "version_normalized": "1.1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/honey.git",
+                "reference": "1.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/honey-1.1.1.zip",
+                "reference": "1.1.1",
+                "shasum": "2e420a419a208301d264d8ecce3929062ca1cef8"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10 || ^11"
+            },
+            "type": "drupal-theme",
+            "extra": {
+                "drupal": {
+                    "version": "1.1.1",
+                    "datestamp": "1724093351",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "installation-source": "dist",
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "eojthebrave",
+                    "homepage": "https://www.drupal.org/user/79230"
+                },
+                {
+                    "name": "finnsky",
+                    "homepage": "https://www.drupal.org/user/2755993"
+                },
+                {
+                    "name": "jhodgdon",
+                    "homepage": "https://www.drupal.org/user/155601"
+                },
+                {
+                    "name": "kostyashupenko",
+                    "homepage": "https://www.drupal.org/user/3281537"
+                }
+            ],
+            "description": "Created for the Drupal User Guide to demonstrate installing themes",
+            "homepage": "https://www.drupal.org/project/honey",
+            "support": {
+                "source": "https://git.drupalcode.org/project/honey"
+            },
+            "install-path": "../../public_html/themes/contrib/honey"
+        },
+        {
             "name": "drupal/honeypot",
             "version": "2.2.2",
             "version_normalized": "2.2.2.0",

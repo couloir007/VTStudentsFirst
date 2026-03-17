@@ -3,7 +3,7 @@
         'name' => 'drupal/recommended-project',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'f03e1482c5c4416a1ab6864908ec03ad3438c15c',
+        'reference' => '76e15658d471d60c2a68afa98b90d68f467674a6',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -955,6 +955,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/honey' => array(
+            'pretty_version' => '1.1.1',
+            'version' => '1.1.1.0',
+            'reference' => '1.1.1',
+            'type' => 'drupal-theme',
+            'install_path' => __DIR__ . '/../../public_html/themes/contrib/honey',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/honeypot' => array(
             'pretty_version' => '2.2.2',
             'version' => '2.2.2.0',
@@ -1291,7 +1300,7 @@
         'drupal/recommended-project' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'f03e1482c5c4416a1ab6864908ec03ad3438c15c',
+            'reference' => '76e15658d471d60c2a68afa98b90d68f467674a6',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

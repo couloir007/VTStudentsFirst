@@ -12,19 +12,19 @@ id: testimonial_submission
 title: 'Share Your Story'
 description: 'Testimonial and coalition signup form for OurKidsOurSchoolsVT.'
 categories: {  }
-elements: |
+elements: |-
   name:
     '#type': textfield
     '#title': 'Your Name'
     '#required': true
     '#placeholder': 'Jane Smith'
-    '#autocomplete': 'name'
+    '#autocomplete': name
   email:
     '#type': email
     '#title': 'Email Address'
     '#required': true
-    '#placeholder': 'jane@example.com'
-    '#autocomplete': 'email'
+    '#placeholder': jane@example.com
+    '#autocomplete': email
     '#description': 'We will never share your email address.'
   town:
     '#type': textfield
@@ -38,12 +38,12 @@ elements: |
     '#empty_option': 'Select one…'
     '#options':
       parent: 'Parent of a tuitioning student'
-      student: 'Student'
+      student: Student
       alumni: 'Alumni of an independent school'
       teacher: 'Teacher / School staff'
       employer: 'Local employer / Business owner'
       community: 'Community member / Neighbor'
-      other: 'Other'
+      other: Other
   school_connection:
     '#type': textfield
     '#title': 'School Connection'
@@ -58,8 +58,7 @@ elements: |
     '#description': 'Please share as much or as little as you are comfortable with.'
   permission_to_publish:
     '#type': checkbox
-    '#title': 'I give OurKidsOurSchoolsVT permission to publish my story (with my name and town) on this website and in campaign materials.'
-    '#required': false
+    '#title': 'I give OurKidsOurSchoolsVT permission to publish my story (with my initials and town) on this website and in campaign materials.'
   opt_in:
     '#type': checkbox
     '#title': 'Keep me informed about OurKidsOurSchoolsVT updates and actions.'

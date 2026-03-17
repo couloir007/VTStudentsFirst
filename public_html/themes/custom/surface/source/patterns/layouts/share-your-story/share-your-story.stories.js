@@ -76,7 +76,7 @@ function attachInteractivity(container) {
 }
 
 export default {
-  title: 'Pages/Share Your Story',
+  title: 'Layouts/Share Your Story',
   tags: ['autodocs'],
   decorators: [
     (story) => {
