@@ -6,3 +6,7 @@
 body .region--content {
   padding-block-start: 68px;
 }
+
+body.user-logged-in .region--content {
+  padding-block-start: 62px;
+}
