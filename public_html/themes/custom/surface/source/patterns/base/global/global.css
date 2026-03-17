@@ -196,6 +196,10 @@ pre {
   margin: 0;
 }
 
+p {
+  margin-block-start: var(--size-4);
+}
+
 blockquote {
   font-family: var(--font-secondary);
   font-style: italic;
