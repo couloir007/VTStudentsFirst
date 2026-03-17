@@ -1,0 +1,33 @@
+{#
+/**
+ * @file paragraph--events-section.html.twig
+ *
+ * Paragraph bundle: EventsSection
+ * Component:        @collections/events-section/events-section.twig
+ *
+ * Fields
+ *   field_section_label (string)
+ *   field_events (entity_reference_revisions)
+ */
+#}
+{% set items = [] %}
+{% for item in paragraph.field_events %}
+  {% set entity = item.entity %}
+  {% set items = items|merge([{
+    'month':  entity.field_event_month.value,
+    'day':    entity.field_event_day.value,
+    'title':  entity.field_event_title.value,
+    'body':   entity.field_event_body.value,
+    'meta':   entity.field_event_meta.value,
+    'signup': entity.field_event_show_signup.value ? {
+      'placeholder': 'your@email.com',
+      'label': 'Notify Me'
+    } : null
+  }]) %}
+{% endfor %}
+
+{% include "@collections/events-section/events-section.twig" with {
+  'label': paragraph.field_section_label.value,
+  'items': items,
+  'attributes': attributes
+} only %}

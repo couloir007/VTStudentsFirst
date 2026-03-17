@@ -6,6 +6,7 @@ dependencies:
     - core.entity_form_mode.node.inline_entity_form
     - field.field.node.event.body
     - field.field.node.event.field_editorial
+    - field.field.node.event.field_meeting_meta
     - field.field.node.event.field_metatag
     - field.field.node.event.schema_about
     - field.field.node.event.schema_event_schedule
@@ -50,6 +51,11 @@ content:
     third_party_settings: {  }
   simple_sitemap:
     weight: 220
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap_index_now:
+    weight: 130
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -98,6 +104,7 @@ content:
 hidden:
   body: true
   field_editorial: true
+  field_meeting_meta: true
   field_metatag: true
   publish_on: true
   scheduler_settings: true

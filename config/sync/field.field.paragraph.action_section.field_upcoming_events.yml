@@ -1,0 +1,29 @@
+uuid: 375519af-7b8f-458d-bab1-be5d49f56f78
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_upcoming_events
+    - node.type.event
+    - paragraphs.paragraphs_type.action_section
+id: paragraph.action_section.field_upcoming_events
+field_name: field_upcoming_events
+entity_type: paragraph
+bundle: action_section
+label: 'Upcoming Events'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      event: event
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

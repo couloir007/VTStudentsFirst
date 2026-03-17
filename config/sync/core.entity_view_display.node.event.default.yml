@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.event.body
     - field.field.node.event.field_editorial
+    - field.field.node.event.field_meeting_meta
     - field.field.node.event.field_metatag
     - field.field.node.event.schema_about
     - field.field.node.event.schema_event_schedule
@@ -16,64 +17,11 @@ dependencies:
     - node.type.event
   module:
     - entity_reference_revisions
-    - field_group
     - link
     - options
     - smart_date
     - text
     - user
-third_party_settings:
-  field_group:
-    group_references:
-      children:
-        - schema_about
-        - schema_subject_of
-      label: References
-      parent_name: ''
-      region: content
-      weight: 22
-      format_type: fieldset
-      format_settings: {  }
-    group_general:
-      children:
-        - schema_event_type
-        - body
-        - title
-        - schema_image
-      label: General
-      parent_name: ''
-      region: content
-      weight: -20
-      format_type: fieldset
-      format_settings: {  }
-    group_event:
-      children:
-        - schema_event_schedule
-      label: Event
-      parent_name: ''
-      region: content
-      weight: -17
-      format_type: fieldset
-      format_settings: {  }
-    group_editorial:
-      children:
-        - field_editorial
-      label: 'Editorial information'
-      parent_name: ''
-      region: content
-      weight: 220
-      format_type: details
-      format_settings: {  }
-    group_links:
-      children:
-        - schema_related_link
-        - schema_significant_link
-      label: Links
-      parent_name: ''
-      region: content
-      weight: 20
-      format_type: fieldset
-      format_settings: {  }
 id: node.event.default
 targetEntityType: node
 bundle: event
@@ -84,7 +32,7 @@ content:
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 18
+    weight: 3
     region: content
   field_editorial:
     type: entity_reference_revisions_entity_view
@@ -93,7 +41,14 @@ content:
       view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 23
+    weight: 14
+    region: content
+  field_meeting_meta:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
     region: content
   links:
     settings: {  }
@@ -106,7 +61,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 0
+    weight: 11
     region: content
   schema_event_schedule:
     type: smartdate_default
@@ -128,14 +83,14 @@ content:
         decimals: 2
         suffix: h
     third_party_settings: {  }
-    weight: 0
+    weight: 6
     region: content
   schema_event_type:
     type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 2
     region: content
   schema_image:
     type: entity_reference_entity_view
@@ -144,7 +99,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 25
+    weight: 4
     region: content
   schema_related_link:
     type: link
@@ -156,7 +111,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 0
+    weight: 8
     region: content
   schema_significant_link:
     type: link
@@ -168,7 +123,7 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 1
+    weight: 9
     region: content
   schema_subject_of:
     type: entity_reference_label
@@ -176,7 +131,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 1
+    weight: 12
     region: content
 hidden:
   field_metatag: true

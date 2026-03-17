@@ -1,0 +1,19 @@
+uuid: d0816200-58e7-4fef-8cdd-b6eefc67bb7e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_meeting_meta
+field_name: field_meeting_meta
+entity_type: node
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

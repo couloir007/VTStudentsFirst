@@ -1,0 +1,22 @@
+{{ attach_library('surface/events-section') }}
+<div class="events-section{{ modifier ? ' ' ~ modifier }}{{- attributes ? ' ' ~ attributes.class -}}" {{- attributes ? attributes|without(class) -}}>
+  <div class="events-section__inner">
+    {% if label %}
+      <p class="events-section__label">{{ label }}</p>
+    {% endif %}
+
+    <div class="events-section__grid">
+      {% for item in items %}
+        {% include "@components/event-item/event-item.twig" with {
+          month: item.month,
+          day: item.day,
+          title: item.title,
+          body: item.body,
+          meta: item.meta,
+          signup: item.signup,
+          modifier: 'event-item--grid'
+        } only %}
+      {% endfor %}
+    </div>
+  </div>
+</div>

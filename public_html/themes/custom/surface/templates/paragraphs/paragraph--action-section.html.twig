@@ -19,16 +19,31 @@
  * ToolkitTab paragraph bundle and replace this block with an er_rev loop.
  */
 #}
-{% set steps = preprocessed_steps|default([]) %}
-{#
-  Old method that triggered SecurityError in sandbox:
-  {% for item in paragraph.field_steps.referencedEntities() %}
-    {% set steps = steps|merge([{
-      headline: item.field_step_title.value,
-      body:     item.field_step_body.value,
-    }]) %}
-  {% endfor %}
-#}
+{% set steps = [] %}
+{% for item in paragraph.field_steps %}
+  {% set steps = steps|merge([{
+    headline: item.entity.field_step_title.value,
+    body:     item.entity.field_step_body.value,
+  }]) %}
+{% endfor %}
+
+{% set event_items = [] %}
+{% for item in paragraph.field_upcoming_events %}
+  {% set entity = item.entity %}
+  {% do ray(entity.schema_event_schedule.value) %}
+  {% set event_items = event_items|merge([{
+    'month':  entity.schema_event_schedule.value|date('M'),
+    'day':    entity.schema_event_schedule.value|date('j'),
+    'title':  entity.label,
+    'body':   entity.body.value,
+    'meta':   entity.field_meeting_meta.value,
+  }]) %}
+{% endfor %}
+
+{% set events = event_items ? {
+  label: 'Upcoming Events',
+  items: event_items
+} : null %}
 
 {% set toolkit = {
   headline: 'Advocacy Toolkit',
@@ -101,15 +116,13 @@
   ],
 } %}
 
-{% set civic_api_key = civic_api_key|default('AIzaSyDGCir12xKAayOFH4cjDNsZknmzNMbsoCo') %}
-
 {% include "@collections/action-section/action-section.twig" with {
   section_label:    paragraph.field_section_label.value,
   section_headline: paragraph.field_section_headline.value,
   body_text:        paragraph.field_intro_text.processed,
+  events:           events,
   steps:            steps,
   toolkit:          toolkit,
-  civic_api_key:    civic_api_key,
   attributes:       attributes,
-  'id':               paragraph.field_section_url.value,
+  'id':             paragraph.field_section_url.value,
 } only %}

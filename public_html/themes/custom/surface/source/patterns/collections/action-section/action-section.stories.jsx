@@ -1,5 +1,6 @@
 import actionSection from './action-section.twig';
 import '../legislator-contact/legislator-contact.twig';
+import { Default as EventsData } from '../../collections/events-section/events-section.stories.jsx';
 
 const settings = {
   title: 'Collections/Action Section',
@@ -8,6 +9,7 @@ const settings = {
 export const Default = {
   render: (args) => actionSection(args),
   args: {
+    events_data: EventsData.args,
     section_label: 'Take Action',
     section_headline: 'Four ways to make<br>an <em>impact today.</em>',
     body_text: 'The most powerful advocacy happens when real constituents make direct, personal contact. As one NEK advocate put it: <em>"We need more people to get involved, raise concerns, and share personal stories."</em>',

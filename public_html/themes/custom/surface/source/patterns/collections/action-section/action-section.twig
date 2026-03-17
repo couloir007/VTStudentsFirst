@@ -42,14 +42,15 @@
     {% endif %}
 
 
-    {% if events %}
+{% if events %}
       <div class="action-section__events">
         <p class="action-section__events-label">
           {% include "@elements/section-label/section-label.twig" with {
             text: events.label|default('Upcoming Events'),
-            modifier: 'light',
+            modifier: 'dark',
           } only %}
         </p>
+
         {% for event in events.items %}
           {% include "@components/event-item/event-item.twig" with {
             month: event.month,

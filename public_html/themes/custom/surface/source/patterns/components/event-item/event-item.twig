@@ -12,10 +12,10 @@
       <h4 class="event-item__title">{{ title }}</h4>
     {% endif %}
     {% if body %}
-      <p class="event-item__body">{{ body }}</p>
+      <p class="event-item__body">{{ body|raw }}</p>
     {% endif %}
     {% if meta %}
-      <p class="event-item__meta">{{ meta }}</p>
+      <p class="event-item__meta">{{ meta|raw }}</p>
     {% endif %}
     {% if signup %}
       <div class="event-item__signup">

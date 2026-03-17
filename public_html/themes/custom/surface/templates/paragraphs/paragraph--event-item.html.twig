@@ -1,0 +1,28 @@
+{#
+/**
+ * @file paragraph--event-item.html.twig
+ *
+ * Paragraph bundle: EventItem
+ * Component:        @components/event-item/event-item.twig
+ *
+ * Fields
+ *   field_event_month (string)
+ *   field_event_day   (string)
+ *   field_event_title (string)
+ *   field_event_body  (text_long)
+ *   field_event_meta  (string)
+ *   field_event_show_signup (boolean)
+ */
+#}
+{% include "@components/event-item/event-item.twig" with {
+  'month': paragraph.field_event_month.value,
+  'day': paragraph.field_event_day.value,
+  'title': paragraph.field_event_title.value,
+  'body': paragraph.field_event_body.value,
+  'meta': paragraph.field_event_meta.value,
+  'signup': paragraph.field_event_show_signup.value ? {
+    'placeholder': 'your@email.com',
+    'label': 'Notify Me'
+  } : null,
+  'modifier': 'event-item--grid'
+} only %}

@@ -8,18 +8,65 @@ dependencies:
     - field.field.paragraph.action_section.field_section_label
     - field.field.paragraph.action_section.field_section_url
     - field.field.paragraph.action_section.field_steps
+    - field.field.paragraph.action_section.field_upcoming_events
     - paragraphs.paragraphs_type.action_section
+  module:
+    - entity_reference_revisions
+    - text
 id: paragraph.action_section.default
 targetEntityType: paragraph
 bundle: action_section
 mode: default
-content: {  }
+content:
+  field_intro_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_section_headline:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_section_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_section_url:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_steps:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_upcoming_events:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
 hidden:
   created: true
-  field_intro_text: true
-  field_section_headline: true
-  field_section_label: true
-  field_section_url: true
-  field_steps: true
   status: true
   uid: true

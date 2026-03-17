@@ -1,22 +1,22 @@
-uuid: 16df22de-8ec9-4304-a2a4-1e1a5c40c3a5
+uuid: d8a139ec-88a2-4d29-a10c-da5241772d0c
 langcode: en
 status: true
 dependencies:
   config:
-    - system.menu.main
+    - system.menu.footer
   module:
     - system
   theme:
     - surface
-id: surface_mainnavigation_2
+id: surface_footer
 theme: surface
 region: footer
 weight: 0
 provider: null
-plugin: 'system_menu_block:main'
+plugin: 'system_menu_block:footer'
 settings:
-  id: 'system_menu_block:main'
-  label: 'Main navigation'
+  id: 'system_menu_block:footer'
+  label: Footer
   label_display: '0'
   provider: system
   level: 1

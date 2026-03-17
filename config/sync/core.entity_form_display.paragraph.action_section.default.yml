@@ -8,6 +8,7 @@ dependencies:
     - field.field.paragraph.action_section.field_section_label
     - field.field.paragraph.action_section.field_section_url
     - field.field.paragraph.action_section.field_steps
+    - field.field.paragraph.action_section.field_upcoming_events
     - paragraphs.paragraphs_type.action_section
   module:
     - paragraphs
@@ -66,6 +67,16 @@ content:
       features:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
+    third_party_settings: {  }
+  field_upcoming_events:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true
