@@ -18,3 +18,19 @@ function ourkids_outreach_theme(): array {
     ],
   ];
 }
+
+/**
+ * Implements hook_mail().
+ */
+function ourkids_outreach_mail(string $key, array &$message, array $params): void {
+  if ($key !== 'legislator_outreach') {
+    return;
+  }
+
+  $message['subject']                    = $params['subject'];
+  $message['body'][]                     = $params['body'];
+  $message['headers']['Content-Type']    = 'text/html; charset=UTF-8';
+  $message['headers']['From']            = $params['headers']['From'];
+  $message['headers']['Reply-To']        = $params['headers']['Reply-To'];
+  $message['headers']['MIME-Version']    = '1.0';
+}

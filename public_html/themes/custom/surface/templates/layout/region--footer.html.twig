@@ -1,15 +1,15 @@
 {#
 /**
  * @file
- * Surface's theme override to display the footer region.
+ * Surface theme override for the footer region.
  *
- * Available variables:
- * - content: The content for this region, typically blocks.
- * - attributes: HTML attributes for the region <div>.
- * - region: The name of the region variable as defined in the theme's
- *   .info.yml file.
+ * Embeds site-footer.twig and overrides the branding and menu blocks
+ * with real Drupal content.
  *
- * @see template_preprocess_region()
+ * Drupal menu setup:
+ *   Create two menus in Structure → Menus:
+ *   - Machine name: footer-navigate  → Navigate column
+ *   - Machine name: footer-involved  → Get Involved column
  */
 #}
 
@@ -17,32 +17,10 @@
   {% embed '@layouts/site-footer/site-footer.twig' with {
     'site_extra': site_extra is not empty ? site_extra : false,
   } %}
+
     {% block branding %}
-      {% include '@components/site-branding/site-branding.twig' with {
-        'site_name': site_name,
-        'modifier': 'site-branding--footer ' ~ logo_style,
-        'logo': footer_logo,
-      } only %}
-
-      {% include '@components/menu-social/menu-social.twig' with {
-        'facebook_url': facebook_url ? facebook_url,
-        'twitter_url': twitter_url ? twitter_url,
-        'instagram_url': instagram_url ? instagram_url,
-        'youtube_url': youtube_url ? youtube_url,
-        'linkedin_url': linkedin_url ? linkedin_url
-      } only %}
-
-      {% if site_credit %}
-        {% include '@components/site-credit/site-credit.twig' with {
-          'site_credit': site_credit
-        } only %}
-      {% endif %}
-    {% endblock %}
-
-    {% block menu %}
-      {{ drupal_menu('footer', expand=true) }}
+      <h3 class="site-footer__logo">Our<span>Kids</span>Our<span>Schools</span>VT</h3>
+      <p class="site-footer__desc">A coalition of Vermont parents, educators, employers, and community members committed to protecting equitable public education access for rural students.</p>
     {% endblock %}
   {% endembed %}
-
-
 {% endif %}

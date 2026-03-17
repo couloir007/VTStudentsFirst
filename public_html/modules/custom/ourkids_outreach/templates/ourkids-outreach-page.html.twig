@@ -2,17 +2,13 @@
 /**
  * @file
  * Legislator outreach admin page.
- *
- * Variables:
- * - representatives: Array of House legislator data.
- * - senators: Array of Senate legislator data.
  */
 #}
 
 <div class="ourkids-outreach">
 
   <div class="ourkids-outreach__intro">
-    <p>Click each legislator's name to open a pre-composed email in your mail app. Each email contains a unique tracking link. Progress is saved in your browser.</p>
+    <p>Preview and send a tracked email to each legislator. Each email contains a unique tracking link. Progress is saved in your browser.</p>
     <p class="ourkids-outreach__counts">
       <strong id="outreach-sent-count">0</strong> sent &nbsp;·&nbsp;
       <strong>{{ representatives|length + senators|length }}</strong> total
@@ -37,22 +33,18 @@
           <th>District</th>
           <th>Email</th>
           <th>Ref</th>
-          <th>Status</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
         {% for leg in representatives %}
           <tr class="ourkids-outreach__row" data-ref="{{ leg.ref }}">
-            <td>
-              <a class="ourkids-outreach__mailto" href="{{ leg.mailto }}" data-ref="{{ leg.ref }}">
-                {{ leg.name }}
-              </a>
-            </td>
+            <td><strong>{{ leg.name }}</strong></td>
             <td>{{ leg.district }}</td>
             <td><a href="mailto:{{ leg.email }}">{{ leg.email }}</a></td>
             <td><code>{{ leg.ref }}</code></td>
             <td>
-              <button class="ourkids-outreach__mark" data-ref="{{ leg.ref }}" type="button">Mark sent</button>
+              <button class="ourkids-outreach__preview-btn" data-ref="{{ leg.ref }}" type="button">Preview &amp; Send</button>
               <span class="ourkids-outreach__sent-badge" hidden>✓ Sent</span>
             </td>
           </tr>
@@ -69,22 +61,18 @@
           <th>District</th>
           <th>Email</th>
           <th>Ref</th>
-          <th>Status</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
         {% for leg in senators %}
           <tr class="ourkids-outreach__row" data-ref="{{ leg.ref }}">
-            <td>
-              <a class="ourkids-outreach__mailto" href="{{ leg.mailto }}" data-ref="{{ leg.ref }}">
-                {{ leg.name }}
-              </a>
-            </td>
+            <td><strong>{{ leg.name }}</strong></td>
             <td>{{ leg.district }}</td>
             <td><a href="mailto:{{ leg.email }}">{{ leg.email }}</a></td>
             <td><code>{{ leg.ref }}</code></td>
             <td>
-              <button class="ourkids-outreach__mark" data-ref="{{ leg.ref }}" type="button">Mark sent</button>
+              <button class="ourkids-outreach__preview-btn" data-ref="{{ leg.ref }}" type="button">Preview &amp; Send</button>
               <span class="ourkids-outreach__sent-badge" hidden>✓ Sent</span>
             </td>
           </tr>
@@ -93,4 +81,29 @@
     </table>
   </div>
 
+</div>
+
+{# ── Preview modal ───────────────────────────────────────────────────────── #}
+<div class="ourkids-modal" id="outreach-modal" hidden>
+  <div class="ourkids-modal__backdrop"></div>
+  <div class="ourkids-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="outreach-modal-title">
+    <div class="ourkids-modal__header">
+      <h2 class="ourkids-modal__title" id="outreach-modal-title">Preview Email</h2>
+      <button class="ourkids-modal__close" id="outreach-modal-close" type="button" aria-label="Close">✕</button>
+    </div>
+    <div class="ourkids-modal__meta">
+      <p><strong>To:</strong> <span id="modal-to"></span></p>
+      <p><strong>Subject:</strong> <span id="modal-subject"></span></p>
+    </div>
+    <div class="ourkids-modal__body">
+      <iframe id="modal-preview" title="Email preview" frameborder="0"></iframe>
+    </div>
+    <div class="ourkids-modal__footer">
+      <button class="ourkids-outreach__send-btn" id="outreach-send-btn" type="button">Send Email</button>
+      <button class="ourkids-modal__cancel" id="outreach-modal-cancel" type="button">Cancel</button>
+      <span class="ourkids-outreach__sending" id="outreach-sending" hidden>Sending…</span>
+      <span class="ourkids-outreach__send-success" id="outreach-send-success" hidden>✓ Sent successfully</span>
+      <span class="ourkids-outreach__send-error" id="outreach-send-error" hidden></span>
+    </div>
+  </div>
 </div>

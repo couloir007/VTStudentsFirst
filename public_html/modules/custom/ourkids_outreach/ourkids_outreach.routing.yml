@@ -5,3 +5,22 @@ ourkids_outreach.legislator_outreach:
     _title: 'Legislator Outreach'
   requirements:
     _permission: 'administer site configuration'
+
+ourkids_outreach.preview:
+  path: '/admin/ourkids/legislator-outreach/preview'
+  defaults:
+    _controller: '\Drupal\ourkids_outreach\Controller\LegislatorOutreachController::preview'
+    _title: 'Preview Email'
+  requirements:
+    _permission: 'administer site configuration'
+  methods: [GET]
+
+ourkids_outreach.send:
+  path: '/admin/ourkids/legislator-outreach/send'
+  defaults:
+    _controller: '\Drupal\ourkids_outreach\Controller\LegislatorOutreachController::send'
+    _title: 'Send Email'
+  requirements:
+    _permission: 'administer site configuration'
+    _csrf_token: 'TRUE'
+  methods: [POST]

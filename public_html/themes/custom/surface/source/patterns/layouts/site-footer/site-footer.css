@@ -45,7 +45,7 @@
 .site-footer__col-title {
   color: white;
   font-family: var(--font-secondary);
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   margin-bottom: 1.5rem;
 }
 
@@ -59,9 +59,9 @@
 }
 
 .site-footer__list a {
-  color: var(--mist);
-  font-size: 0.9rem;
-  text-decoration: none;
+  color: var(--white);
+  font-size: 0.95rem;
+  text-decoration: underline;
   transition: color 0.2s;
 }
 

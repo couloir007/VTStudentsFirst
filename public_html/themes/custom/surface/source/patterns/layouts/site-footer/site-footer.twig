@@ -3,33 +3,41 @@
 <footer class="site-footer">
   <div class="site-footer__inner">
     <div class="site-footer__brand">
-      <h3 class="site-footer__logo">Our<span>Kids</span>Our<span>Schools</span>VT</h3>
-      <p class="site-footer__desc">A coalition of Vermont parents, educators, employers, and community members committed to protecting equitable public education access for rural students.</p>
+      {% block branding %}
+        <h3 class="site-footer__logo">Our<span>Kids</span>Our<span>Schools</span>VT</h3>
+        <p class="site-footer__desc">A coalition of Vermont parents, educators, employers, and community members committed to protecting equitable public education access for rural students.</p>
+      {% endblock %}
     </div>
 
-    {% if footer_nav_items %}
-      <div class="site-footer__col">
-        <h4 class="site-footer__col-title">Navigate</h4>
-        <ul class="site-footer__list">
-          {% for item in footer_nav_items %}
-            <li><a href="{{ item.url }}">{{ item.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-    {% endif %}
+    <div class="site-footer__col">
+      <h4 class="site-footer__col-title">Navigate</h4>
+      <ul class="site-footer__list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/#issue">The Issue</a></li>
+        <li><a href="/#stakes">What's at Stake</a></li>
+        <li><a href="/#positions">Our Position</a></li>
+        <li><a href="/#accountability">Accountability</a></li>
+        <li><a href="/#voices">Community Voices</a></li>
+        <li><a href="/#action">Take Action</a></li>
+      </ul>
+    </div>
 
-    {% if footer_action_items %}
-      <div class="site-footer__col">
-        <h4 class="site-footer__col-title">Get Involved</h4>
-        <ul class="site-footer__list">
-          {% for item in footer_action_items %}
-            <li><a href="{{ item.url }}">{{ item.title }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-    {% endif %}
-
+    <div class="site-footer__col">
+      <h4 class="site-footer__col-title">Get Involved</h4>
+      <ul class="site-footer__list">
+        <li><a href="/#action">Contact Your Legislator</a></li>
+        <li><a href="/share-your-story">Share Your Story</a></li>
+        <li><a href="/contact">Contact Us</a></li>
+      </ul>
+    </div>
   </div>
+
+  {% if site_extra %}
+    <div class="site-footer__extra">
+      {{ site_extra }}
+    </div>
+  {% endif %}
+
   <div class="site-footer__bottom">
     <div class="site-footer__bottom-inner">
       <span>©2026 OurKidsOurSchoolsVT.org — All rights reserved</span>
