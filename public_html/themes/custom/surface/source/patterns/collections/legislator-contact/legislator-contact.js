@@ -3,21 +3,27 @@
  *
  * Form-first legislator contact flow:
  *   1. User fills in name, email, town, role, message
- *   2. Town is matched to VT House district via vt-house-districts-by-town.json
+ *   2. Town is matched to VT district via vt-districts-by-town.json
  *      then cross-referenced with vt-legislators.json for email addresses.
  *      Falls back to Google Civic Information API if a key is provided.
  *   3. mailto: link is opened with rep email(s) pre-addressed
  *   4. Confirmation view shown with copy fallback
  */
 
-((() => {
+(function () {
+  'use strict';
 
-  const DEFAULT_TEMPLATE = `My name is [Your Name] and I am a constituent from [Town] writing as a [Role]. I am writing to strongly oppose any proposals that would restrict Vermont's Town Tuition Program.
-
-Independent schools like St. Johnsbury Academy and Lyndon Institute are not just educational institutions — they are economic engines that attract young families, support local businesses, and help counter Vermont's demographic decline. Families in our communities have told me directly they would leave Vermont if their children could no longer attend these schools. That ripple effect would be devastating.
-
-Eliminating or restricting the Town Tuition Program does nothing to save money or improve quality. It simply removes access to high-quality education from students who would otherwise never have it. Please oppose any plan that restricts family choice or eliminates access to Vermont's independent schools.`;
-
+/**
+ * @file legislator-contact.js
+ *
+ * Form-first legislator contact flow:
+ *   1. User fills in name, email, town, role, message
+ *   2. Town is matched to VT House district via vt-districts-by-town.json
+ *      then cross-referenced with vt-legislators.json for email addresses.
+ *      Falls back to Google Civic Information API if a key is provided.
+ *   3. mailto: link is opened with rep email(s) pre-addressed
+ *   4. Confirmation view shown with copy fallback
+ */
   function init() {
     const root = document.getElementById('legislator-contact');
     if (!root) { return; }
@@ -151,54 +157,79 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
         throw new Error('Please enter your town name.');
       }
 
+      let districtData, legislatorData;
       try {
-        const [districtData, legislatorData] = await Promise.all([
-          fetchJson('/themes/custom/surface/data/vt-house-districts-by-town.json'),
+        [districtData, legislatorData] = await Promise.all([
+          fetchJson('/themes/custom/surface/data/vt-districts-by-town.json'),
           fetchJson('/themes/custom/surface/data/vt-legislators.json'),
         ]);
-
-        const normalizedTown = town.trim().toLowerCase();
-
-        const townKey = Object.keys(districtData).find(
-          (k) => k.toLowerCase() === normalizedTown
-        );
-
-        if (!townKey) {
-          throw new Error(`"${town}" was not found in our Vermont town list. Check the spelling and try again.`);
-        }
-
-        const townData = districtData[townKey];
-        const houseDistricts  = extractDistricts(townData, 'house');
-        const senateDistricts = extractDistricts(townData, 'senate');
-        const reps = [];
-
-        houseDistricts.forEach((district) => {
-          legislatorData.representatives
-            .filter((r) => normalizeDistrict(r.district) === normalizeDistrict(district))
-            .forEach((r) => reps.push({ name: r.name, office: `Vermont House — ${r.district}`, email: r.email }));
-        });
-
-        senateDistricts.forEach((district) => {
-          legislatorData.senators
-            .filter((s) => normalizeDistrict(s.district) === normalizeDistrict(district))
-            .forEach((s) => reps.push({ name: s.name, office: `Vermont Senate — ${s.district} District`, email: s.email }));
-        });
-
-        if (reps.length) { return reps; }
-        throw new Error('No legislators found for that town in our records.');
-
-      } catch (jsonErr) {
+      } catch (fetchErr) {
         if (key) { return resolveViaApi(town, key); }
-        throw jsonErr;
+        throw fetchErr;
       }
+
+      const normalizedTown = town.trim().toLowerCase();
+
+      // Prompt for clarification when town name is ambiguous.
+      const ambiguous = {
+        'barre':      ['Barre City', 'Barre Town'],
+        'newport':    ['Newport City', 'Newport Town'],
+        'st. albans': ['St. Albans City', 'St. Albans Town'],
+        'rutland':    ['Rutland City', 'Rutland Town'],
+        'essex':      ['Essex', 'Essex Junction'],
+      };
+
+      if (ambiguous[normalizedTown]) {
+        const options = ambiguous[normalizedTown].join(' or ');
+        throw new Error(`Did you mean ${options}? Please be more specific.`);
+      }
+
+      let townKey = Object.keys(districtData).find(
+        (k) => k.toLowerCase() === normalizedTown
+      );
+
+      if (!townKey) {
+        throw new Error(`"${town}" was not found in our Vermont town list. Check the spelling and try again.`);
+      }
+
+      const townData = districtData[townKey];
+      let houseDistricts   = extractDistricts(townData, 'house');
+      const senateDistricts = extractDistricts(townData, 'senate');
+
+      // For multi-district towns pick one house and one senate district at random.
+      if (houseDistricts.length > 1) {
+        houseDistricts = [houseDistricts[Math.floor(Math.random() * houseDistricts.length)]];
+      }
+
+      let selectedSenateDistricts = senateDistricts;
+      if (senateDistricts.length > 1) {
+        selectedSenateDistricts = [senateDistricts[Math.floor(Math.random() * senateDistricts.length)]];
+      }
+
+      const reps = [];
+
+      houseDistricts.forEach((district) => {
+        legislatorData.representatives
+          .filter((r) => normalizeDistrict(r.district) === normalizeDistrict(district))
+          .forEach((r) => reps.push({ name: r.name, office: `Vermont House — ${r.district}`, email: r.email }));
+      });
+
+      selectedSenateDistricts.forEach((district) => {
+        legislatorData.senators
+          .filter((s) => normalizeDistrict(s.district) === normalizeDistrict(district))
+          .forEach((s) => reps.push({ name: s.name, office: `Vermont Senate — ${s.district} District`, email: s.email }));
+      });
+
+      if (reps.length) { return reps; }
+      throw new Error('No legislators found for that town in our records.');
     }
 
     function extractDistricts(townData, chamber) {
       if (!townData) { return []; }
       if (typeof townData === 'object' && !Array.isArray(townData)) {
         const key = chamber === 'house'
-          ? (townData.houseDistrict || townData.house_district || townData.house)
-          : (townData.senateDistrict || townData.senate_district || townData.senate);
+          ? (townData.houseDistricts || townData.houseDistrict || townData.house_district || townData.house)
+          : (townData.senateDistricts || townData.senateDistrict || townData.senate_district || townData.senate);
         if (!key) { return []; }
         return Array.isArray(key) ? key : [key];
       }
@@ -313,15 +344,12 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
 
     // ── Restart ────────────────────────────────────────────────────────────
     restartBtn.addEventListener('click', () => {
-      messageArea.value  = DEFAULT_TEMPLATE;
+      messageArea.value  = '';
       fnameInput.value   = '';
       lnameInput.value   = '';
       emailInput.value   = '';
       townInput.value    = '';
       if (roleInput) { roleInput.value = ''; }
-      currentName        = '[Your Name]';
-      currentTown        = '[Town]';
-      currentRole        = '[Role]';
       formStarted        = false;
       formError.hidden   = true;
       formView.hidden    = false;
@@ -338,7 +366,6 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
         .replace(/"/g, '&quot;');
     }
   }
-
   // With JS aggregation, DOMContentLoaded may have already fired by the
   // time this bundle executes — run immediately in that case.
   if (document.readyState === 'loading') {
@@ -347,4 +374,4 @@ Eliminating or restricting the Town Tuition Program does nothing to save money o
     init();
   }
 
-}))();
+}());

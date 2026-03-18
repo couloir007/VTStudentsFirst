@@ -81,9 +81,9 @@
             {% for tab in toolkit.tabs %}
               <div id="tab-{{ tab.id }}" class="action-section__tab-panel{{ loop.first ? ' active' : '' }}">
                 {% if tab.id == 'legislator' %}
-{#                  {% include "@collections/legislator-contact/legislator-contact.twig" with {#}
-{#                    civic_api_key: civic_api_key,#}
-{#                  } only %}#}
+                  {% include "@collections/legislator-contact/legislator-contact.twig" with {
+                    civic_api_key: civic_api_key,
+                  } only %}
                 {% else %}
                   <div class="action-section__toolkit-grid">
                     {% for item in tab.items %}
