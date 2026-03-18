@@ -38,6 +38,10 @@
     const lnameInput  = document.getElementById('lc-lname');
     const emailInput  = document.getElementById('lc-email');
     const townInput   = document.getElementById('lc-town');
+    const districtPickerWrap       = document.getElementById('lc-district-picker');
+    const districtSelect            = document.getElementById('lc-district');
+    const senateDistrictPickerWrap  = document.getElementById('lc-senate-district-picker');
+    const senateDistrictSelect      = document.getElementById('lc-senate-district');
     const roleInput   = document.getElementById('lc-role');
     const messageArea = document.getElementById('lc-message');
     const submitBtn   = document.getElementById('lc-submit-btn');
@@ -63,6 +67,80 @@
         formStarted = true;
         pushEvent('lc_form_start');
       }, { once: true });
+    });
+
+    // ── District picker ────────────────────────────────────────────────────
+    let cachedDistrictData = null;
+
+    async function maybeShowDistrictPicker() {
+      const town = townInput.value.trim();
+      if (!town) { hideDistrictPicker(); return; }
+
+      try {
+        if (!cachedDistrictData) {
+          cachedDistrictData = await fetchJson('/themes/custom/surface/data/vt-districts-by-town.json');
+        }
+        const normalizedTown = town.toLowerCase();
+        const ambiguous = ['barre', 'newport', 'st. albans', 'rutland', 'essex'];
+        if (ambiguous.includes(normalizedTown)) { hideDistrictPicker(); return; }
+
+        const townKey = Object.keys(cachedDistrictData).find((k) => k.toLowerCase() === normalizedTown);
+        if (!townKey) { hideDistrictPicker(); return; }
+
+        const townData       = cachedDistrictData[townKey];
+        const houseDistricts = townData.houseDistricts  || [];
+        const senateDistricts = townData.senateDistricts || [];
+
+        // House picker.
+        if (houseDistricts.length > 1) {
+          if (districtPickerWrap.hidden) {
+            districtSelect.innerHTML = '<option value="">Not sure — choose one for me</option>';
+            houseDistricts.forEach((d) => {
+              const opt = document.createElement('option');
+              opt.value = d;
+              opt.textContent = d;
+              districtSelect.appendChild(opt);
+            });
+            districtPickerWrap.hidden = false;
+          }
+        } else {
+          districtPickerWrap.hidden = true;
+          districtSelect.innerHTML  = '<option value="">Not sure — choose one for me</option>';
+        }
+
+        // Senate picker.
+        if (senateDistricts.length > 1) {
+          if (senateDistrictPickerWrap.hidden) {
+            senateDistrictSelect.innerHTML = '<option value="">Not sure — choose one for me</option>';
+            senateDistricts.forEach((d) => {
+              const opt = document.createElement('option');
+              opt.value = d;
+              opt.textContent = d;
+              senateDistrictSelect.appendChild(opt);
+            });
+            senateDistrictPickerWrap.hidden = false;
+          }
+        } else {
+          senateDistrictPickerWrap.hidden = true;
+          senateDistrictSelect.innerHTML  = '<option value="">Not sure — choose one for me</option>';
+        }
+
+      } catch (e) {
+        hideDistrictPicker();
+      }
+    }
+
+    function hideDistrictPicker() {
+      districtPickerWrap.hidden      = true;
+      districtSelect.innerHTML       = '<option value="">Not sure — choose one for me</option>';
+      senateDistrictPickerWrap.hidden = true;
+      senateDistrictSelect.innerHTML  = '<option value="">Not sure — choose one for me</option>';
+    }
+
+    let townInputTimer = null;
+    townInput.addEventListener('input', () => {
+      clearTimeout(townInputTimer);
+      townInputTimer = setTimeout(maybeShowDistrictPicker, 300);
     });
 
     // ── Personalization ────────────────────────────────────────────────────
@@ -138,8 +216,29 @@
       submitBtn.disabled = true;
       submitBtn.textContent = 'Looking up your representatives…';
 
+      // If district picker is not yet shown, check now in case user
+      // submitted without blurring the town field first.
+      const houseWasHidden  = districtPickerWrap.hidden;
+      const senateWasHidden = senateDistrictPickerWrap.hidden;
+
+      await maybeShowDistrictPicker();
+
+      const houseJustAppeared  = houseWasHidden  && !districtPickerWrap.hidden;
+      const senateJustAppeared = senateWasHidden && !senateDistrictPickerWrap.hidden;
+
+      if (houseJustAppeared || senateJustAppeared) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Find My Representatives →';
+        const firstPicker = houseJustAppeared ? districtPickerWrap : senateDistrictPickerWrap;
+        firstPicker.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        (houseJustAppeared ? districtSelect : senateDistrictSelect).focus();
+        return;
+      }
+
       try {
-        const reps = await resolveReps(town, apiKey);
+        const chosenDistrict       = districtSelect && !districtPickerWrap.hidden ? districtSelect.value : '';
+        const chosenSenateDistrict = senateDistrictSelect && !senateDistrictPickerWrap.hidden ? senateDistrictSelect.value : '';
+        const reps = await resolveReps(town, apiKey, chosenDistrict, chosenSenateDistrict);
         showConfirmation(reps, finalMsg, email);
       } catch (err) {
         formError.textContent = err.message || 'Could not find your representatives. Try entering your full address.';
@@ -152,7 +251,7 @@
     });
 
     // ── Rep resolution ─────────────────────────────────────────────────────
-    async function resolveReps(town, key) {
+    async function resolveReps(town, key, chosenDistrict = '', chosenSenateDistrict = '') {
       if (!town) {
         throw new Error('Please enter your town name.');
       }
@@ -196,14 +295,20 @@
       let houseDistricts   = extractDistricts(townData, 'house');
       const senateDistricts = extractDistricts(townData, 'senate');
 
-      // For multi-district towns pick one house and one senate district at random.
+      // Use chosen district if provided, otherwise pick randomly.
       if (houseDistricts.length > 1) {
-        houseDistricts = [houseDistricts[Math.floor(Math.random() * houseDistricts.length)]];
+        const pick = chosenDistrict && houseDistricts.includes(chosenDistrict)
+          ? chosenDistrict
+          : houseDistricts[Math.floor(Math.random() * houseDistricts.length)];
+        houseDistricts = [pick];
       }
 
       let selectedSenateDistricts = senateDistricts;
       if (senateDistricts.length > 1) {
-        selectedSenateDistricts = [senateDistricts[Math.floor(Math.random() * senateDistricts.length)]];
+        const pick = chosenSenateDistrict && senateDistricts.includes(chosenSenateDistrict)
+          ? chosenSenateDistrict
+          : senateDistricts[Math.floor(Math.random() * senateDistricts.length)];
+        selectedSenateDistricts = [pick];
       }
 
       const reps = [];
@@ -350,6 +455,8 @@
       emailInput.value   = '';
       townInput.value    = '';
       if (roleInput) { roleInput.value = ''; }
+      hideDistrictPicker();
+      senateDistrictPickerWrap.hidden = true;
       formStarted        = false;
       formError.hidden   = true;
       formView.hidden    = false;

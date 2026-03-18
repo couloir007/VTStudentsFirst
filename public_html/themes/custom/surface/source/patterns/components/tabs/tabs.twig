@@ -1,8 +1,8 @@
 {{ attach_library('surface/tabs') }}
 
 <h2 id="{{ id }}" class="visually-hidden">{{ heading|t }}</h2>
-<nav role="navigation" class="tabs-wrapper" aria-labelledby="{{ aria }}" {{ data }}>
-  <ul class="tabs {{ modifier }}">
+<nav role="navigation" class="tabs-wrapper" aria-labelledby="{{ id }}" {{ data }}>
+  <ul class="tabs {{ modifier }}" role="tablist">
     {{ tabs }}
   </ul>
 </nav>

@@ -11,11 +11,9 @@
         const tabs = el.querySelector('.tabs');
         const activeTab = tabs.querySelector('.is-active');
 
-        if (this.isTabsMobileLayout() && !activeTab.matches('.tabs__tab:first-child')) {
-          const newActiveTab = activeTab.cloneNode(true);
+        if (this.isTabsMobileLayout() && activeTab && !activeTab.matches('.tabs__tab:first-child')) {
           const firstTab = tabs.querySelector('.tabs__tab:first-child');
-          tabs.insertBefore(newActiveTab, firstTab);
-          tabs.removeChild(activeTab);
+          tabs.insertBefore(activeTab, firstTab);
         }
       });
 
@@ -24,6 +22,42 @@
         el.addEventListener('click', (e) => {
           e.preventDefault();
           this.toggleTabs();
+        });
+      });
+
+      // Tabs keyboard navigation
+      once('surfaceTabsKeyboard', '[role="tablist"]', context).forEach((tablist) => {
+        const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+
+        tablist.addEventListener('keydown', (e) => {
+          let index = tabs.indexOf(document.activeElement);
+
+          if (index < 0) return;
+
+          let newIndex;
+          switch (e.key) {
+            case 'ArrowRight':
+            case 'ArrowDown':
+              newIndex = (index + 1) % tabs.length;
+              break;
+            case 'ArrowLeft':
+            case 'ArrowUp':
+              newIndex = (index - 1 + tabs.length) % tabs.length;
+              break;
+            case 'Home':
+              newIndex = 0;
+              break;
+            case 'End':
+              newIndex = tabs.length - 1;
+              break;
+            default:
+              return;
+          }
+
+          if (newIndex !== undefined) {
+            tabs[newIndex].focus();
+            e.preventDefault();
+          }
         });
       });
     },

@@ -20,6 +20,10 @@
   flex-direction: column;
   gap: 0.4rem;
   margin-bottom: 1.25rem;
+
+  &[hidden] {
+    display: none;
+  }
 }
 
 .lc-field-row {
@@ -39,23 +43,30 @@
   }
 }
 
+.lc-field__hint {
+  font-size: var(--size-3);
+  color: var(--color-text-muted, #666);
+  margin-block: 0;
+  font-style: italic;
+}
+
 .lc-field__label {
   color: var(--mid);
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .lc-field__optional {
-  color: #4a7c5f;
-  font-size: 0.85rem;
+  color: rgba(122, 171, 138, 55%);
+  font-size: 0.7rem;
   letter-spacing: 0;
   text-transform: none;
 }
 
 .lc-field__required {
-  color: var(--maple);
+  color: var(--gold);
   font-style: normal;
   text-decoration: none;
 }
@@ -114,9 +125,9 @@
   cursor: pointer;
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   padding: 0.85rem 2rem;
   text-align: center;
   text-decoration: none;
@@ -127,12 +138,12 @@
 }
 
 .lc-btn--primary {
-  background: #a05020;
+  background: #ba5c24;
   color: white;
 }
 
 .lc-btn--primary:hover {
-  background: #80401a;
+  background: #9a4a1a;
 }
 
 .lc-btn--primary:disabled {
@@ -142,14 +153,25 @@
 
 .lc-btn--ghost {
   background: transparent;
-  border: 1px solid rgba(122, 171, 138, 45%);
-  color: #2c5640;
+  border: 1px solid rgba(245, 240, 232, 40%);
+  color: #7a766e;
 }
 
 .lc-btn--ghost:hover {
-  background: rgba(122, 171, 138, 8%);
-  border-color: rgba(122, 171, 138, 70%);
-  color: #1d3a2a;
+  background: rgba(245, 240, 232, 12%);
+  border-color: rgba(245, 240, 232, 65%);
+  color: #5a564e;
+}
+
+.lc-confirm .lc-btn--ghost {
+  border-color: rgba(245, 240, 232, 60%);
+  color: #e8e4dc;
+}
+
+.lc-confirm .lc-btn--ghost:hover {
+  background: rgba(245, 240, 232, 12%);
+  border-color: rgba(245, 240, 232, 80%);
+  color: #ffffff;
 }
 
 .lc-btn--full {
@@ -177,25 +199,23 @@
 }
 
 .lc-form__required-note {
-  color: rgba(73, 177, 107, 100%);
-  font-weight: 600;
-  font-size: 1rem;
+  color: rgba(122, 171, 138, 70%);
+  font-size: 0.82rem;
   margin-bottom: 1.5rem;
 }
 
 .lc-form__required-note abbr {
-  color: var(--maple);
+  color: var(--gold);
   font-style: normal;
   text-decoration: none;
 }
 
 .lc-form__error {
-  background: rgba(192, 98, 42, 10%);
-  border: 1px solid #c0622a;
+  background: rgba(192, 98, 42, 12%);
+  border: 1px solid rgba(192, 98, 42, 35%);
   border-radius: 3px;
-  color: #a05020;
-  font-size: 1rem;
-  font-weight: 600;
+  color: #f4b48a;
+  font-size: 0.95rem;
   line-height: 1.5;
   margin-bottom: 1rem;
   padding: 0.75rem 1rem;
@@ -203,15 +223,14 @@
 
 .lc-form__note {
   color: var(--mid);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   line-height: 1.55;
   margin-top: 1rem;
   text-align: center;
 }
 
 .lc-form__note a {
-  color: #508160;
-  font-weight: 600;
+  color: var(--sage);
   transition: color 0.15s;
 }
 
@@ -277,10 +296,10 @@
 }
 
 .lc-rep-chip__office {
-  color: #c8ddd0;
+  color: #9ecfb0;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
@@ -311,9 +330,9 @@
 }
 
 .lc-confirm__copy-msg {
-  background: rgba(0, 0, 0, 50%);
+  background: rgba(0, 0, 0, 35%);
   border-color: rgba(122, 171, 138, 40%);
-  color: white;
+  color: #e8e4dc;
   cursor: text;
   font-size: 0.92rem;
 }
@@ -329,16 +348,16 @@
 }
 
 .lc-confirm__next-label {
-  color: #ebc97e;
+  color: #f5d78e;
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
   margin-bottom: 0.75rem;
   text-transform: uppercase;
 }
 
 .lc-confirm__next-list {
-  color: white;
+  color: #e8e4dc;
   display: flex;
   flex-direction: column;
   font-size: 0.95rem;
@@ -373,7 +392,7 @@
 
 .lc-tips {
   background: var(--parchment, #f9f5ef);
-  border-radius: var(--radius-4, 8px);
+  border-radius: var(--radius-md, 8px);
   box-sizing: border-box;
   height: 100%;
   padding: var(--size-5);

@@ -4,8 +4,8 @@
   attributes ? attributes.class
 ]|join(' ')|trim %}
 
-<li class="{{ classes }}" {{ attributes ? attributes|without('class') }}>
-  {{ link }}
+<li class="{{ classes }}" {{ attributes ? attributes|without('class') }} role="presentation">
+  {{ link|merge({'#attributes': {'role': 'tab', 'aria-selected': is_active ? 'true' : 'false'}}) }}
   {% if is_active and level == 'primary' %}
     <button class="tabs__trigger" aria-label="{{ 'Tabs display toggle'|t }}" aria-expanded="false">
       <span class="tabs__trigger-icon">

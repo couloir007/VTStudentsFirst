@@ -33,6 +33,22 @@
       <input class="lc-field__input" id="lc-town" type="text" placeholder="e.g. Waterford, Sutton, Newark…" autocomplete="address-level2" required>
     </div>
 
+    <div class="lc-field lc-field--district-picker" id="lc-district-picker" hidden>
+      <label class="lc-field__label" for="lc-district">Your House District</label>
+      <p class="lc-field__hint">Your town spans more than one House district. If you know yours, choose it — otherwise select <em>Not sure</em> and we'll pick one for you.</p>
+      <select class="lc-field__select" id="lc-district">
+        <option value="">Not sure — choose one for me</option>
+      </select>
+    </div>
+
+    <div class="lc-field lc-field--district-picker" id="lc-senate-district-picker" hidden>
+      <label class="lc-field__label" for="lc-senate-district">Your Senate District</label>
+      <p class="lc-field__hint">Your town spans more than one Senate district. If you know yours, choose it — otherwise select <em>Not sure</em> and we'll pick one for you.</p>
+      <select class="lc-field__select" id="lc-senate-district">
+        <option value="">Not sure — choose one for me</option>
+      </select>
+    </div>
+
     <div class="lc-field">
       <label class="lc-field__label" for="lc-role">Your Connection <abbr class="lc-field__required" title="required">*</abbr></label>
       <select class="lc-field__select" id="lc-role" required>
@@ -56,7 +72,7 @@
           <li><strong>Introduce yourself.</strong> Your name, your town, how long you've lived there, and your connection to the issue. Legislators respond to constituents they can picture.</li>
           <li><strong>Be specific about your school.</strong> Name the school — St. Johnsbury Academy, Lyndon Institute, Thetford Academy, Burr and Burton Academy, Riverside School. Generic references are easier to ignore.</li>
           <li><strong>Tell your story.</strong> Why did you choose this school? What would it mean to lose access? A single personal detail is more persuasive than any statistic.</li>
-          <li><strong>Reference Act 73.</strong> Act 73 already reduced the number of schools eligible for public tuition from 46 to 18. Further restrictions will harm rural communities.</li>
+          <li><strong>Reference Act 73.</strong> Act 73 already reduced the number of schools eligible for public tuition from 46 to 18. Further restrictions compound that harm.</li>
           <li><strong>Be respectful.</strong> Your representative may not understand how tuitioning works in rural Vermont. You're more likely to move someone by educating them than by lecturing them.</li>
           <li><strong>Ask for something specific.</strong> End with a clear request — oppose the bill, support an amendment, hold a public hearing in your community.</li>
         </ul>
