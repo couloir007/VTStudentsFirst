@@ -55,14 +55,18 @@ body.gin--vertical-toolbar .site-header {
 .site-header__logo {
   color: white;
   font-family: var(--font-secondary);
-  font-size: 22.4px;
   font-weight: 700;
   text-decoration: none;
   z-index: 1;
   /* Prevent Android WebView font inflation */
   text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+
+  font-size: 1.4rem !important;
+  line-height: 1.2 !important;
 }
+
+
 
 .site-header__logo span {
   color: var(--gold);
