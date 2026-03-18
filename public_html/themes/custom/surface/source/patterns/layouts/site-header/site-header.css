@@ -59,6 +59,9 @@ body.gin--vertical-toolbar .site-header {
   font-weight: 700;
   text-decoration: none;
   z-index: 1;
+  /* Prevent Android WebView font inflation */
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 .site-header__logo span {
