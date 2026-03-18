@@ -70,7 +70,107 @@
     });
 
     // ── District picker ────────────────────────────────────────────────────
-    let cachedDistrictData = null;
+    let cachedLegislatorData = null;
+    let cachedDistrictData   = null;
+
+    // ── Salutation ──────────────────────────────────────────────────────────
+    function buildSalutation(reps) {
+      const house   = reps.filter((r) => r.office.includes('House'));
+      const senate  = reps.filter((r) => r.office.includes('Senate'));
+
+      const SUFFIXES = new Set(['jr', 'sr', 'ii', 'iii', 'iv', 'v', 'esq', 'phd', 'md']);
+      function lastName(rep) {
+        const parts = rep.name.trim().split(/\s+/);
+        if (parts.length > 1 && SUFFIXES.has(parts[parts.length - 1].toLowerCase().replace(/\.$/, ''))) {
+          return parts[parts.length - 2];
+        }
+        return parts[parts.length - 1];
+      }
+
+      function joinNames(names) {
+        if (names.length === 1) return names[0];
+        return names.slice(0, -1).join(', ') + ' & ' + names[names.length - 1];
+      }
+
+      const parts = [];
+      if (house.length) {
+        const title = house.length > 1 ? 'Representatives' : 'Representative';
+        parts.push(`${title} ${joinNames(house.map(lastName))}`);
+      }
+      if (senate.length) {
+        const title = senate.length > 1 ? 'Senators' : 'Senator';
+        parts.push(`${title} ${joinNames(senate.map(lastName))}`);
+      }
+
+      return parts.length ? `Dear ${parts.join(' & ')},\n\n` : '';
+    }
+
+    let currentSalutation = '';
+
+    function applySalutation(salutation) {
+      const current = messageArea.value;
+      // Replace previous salutation if present, otherwise prepend.
+      if (currentSalutation && current.startsWith(currentSalutation)) {
+        messageArea.value = salutation + current.slice(currentSalutation.length);
+      } else if (!current || current === currentSalutation) {
+        messageArea.value = salutation;
+      } else if (salutation && !current.startsWith(salutation)) {
+        messageArea.value = salutation + current.replace(/^Dear [^,\n]+,\n\n/, '');
+      }
+      currentSalutation = salutation;
+    }
+
+    async function updateSalutation() {
+      const town = townInput.value.trim();
+      if (!town) { return; }
+
+      try {
+        if (!cachedDistrictData) {
+          cachedDistrictData = await fetchJson('/themes/custom/surface/data/vt-districts-by-town.json');
+        }
+        if (!cachedLegislatorData) {
+          cachedLegislatorData = await fetchJson('/themes/custom/surface/data/vt-legislators.json');
+        }
+
+        const normalizedTown = town.toLowerCase();
+        const townKey = Object.keys(cachedDistrictData).find((k) => k.toLowerCase() === normalizedTown);
+        if (!townKey) { return; }
+
+        const townData        = cachedDistrictData[townKey];
+        let houseDistricts    = townData.houseDistricts  || [];
+        let senateDistricts   = townData.senateDistricts || [];
+
+        // Use picker selection if visible.
+        if (!districtPickerWrap.hidden && districtSelect.value) {
+          houseDistricts = [districtSelect.value];
+        } else if (houseDistricts.length > 1) {
+          houseDistricts = [houseDistricts[0]]; // first for preview
+        }
+        if (!senateDistrictPickerWrap.hidden && senateDistrictSelect.value) {
+          senateDistricts = [senateDistrictSelect.value];
+        } else if (senateDistricts.length > 1) {
+          senateDistricts = [senateDistricts[0]];
+        }
+
+        const reps = [];
+        houseDistricts.forEach((d) => {
+          cachedLegislatorData.representatives
+            .filter((r) => normalizeDistrict(r.district) === normalizeDistrict(d))
+            .forEach((r) => reps.push({ name: r.name, office: `House — ${r.district}` }));
+        });
+        senateDistricts.forEach((d) => {
+          cachedLegislatorData.senators
+            .filter((s) => normalizeDistrict(s.district) === normalizeDistrict(d))
+            .forEach((s) => reps.push({ name: s.name, office: `Senate — ${d}` }));
+        });
+
+        if (reps.length) {
+          applySalutation(buildSalutation(reps));
+        }
+      } catch (e) {
+        // Fail silently — salutation is a convenience, not critical.
+      }
+    }
 
     async function maybeShowDistrictPicker() {
       const town = townInput.value.trim();
@@ -140,8 +240,15 @@
     let townInputTimer = null;
     townInput.addEventListener('input', () => {
       clearTimeout(townInputTimer);
-      townInputTimer = setTimeout(maybeShowDistrictPicker, 300);
+      townInputTimer = setTimeout(async () => {
+        await maybeShowDistrictPicker();
+        await updateSalutation();
+      }, 300);
     });
+
+    // Re-run salutation when user picks a specific district.
+    districtSelect.addEventListener('change', updateSalutation);
+    senateDistrictSelect.addEventListener('change', updateSalutation);
 
     // ── Personalization ────────────────────────────────────────────────────
     // Tracks the last-substituted values so we can restore placeholders on change
@@ -456,6 +563,7 @@
     // ── Restart ────────────────────────────────────────────────────────────
     restartBtn.addEventListener('click', () => {
       messageArea.value  = '';
+      currentSalutation  = '';
       fnameInput.value   = '';
       lnameInput.value   = '';
       emailInput.value   = '';
