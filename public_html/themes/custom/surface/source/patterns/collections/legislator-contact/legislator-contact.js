@@ -397,6 +397,11 @@
     // ── Show confirmation ──────────────────────────────────────────────────
     function showConfirmation(reps, msg, senderEmail) {
       pushEvent('lc_confirmation_shown', { rep_count: reps.length });
+      pushEvent('lc_form_submit', {
+        rep_count:      reps.length,
+        house_district: reps.find((r) => r.office.includes('House'))?.office  || '',
+        senate_district: reps.find((r) => r.office.includes('Senate'))?.office || '',
+      });
       const emailAddrs = [];
 
       confirmReps.innerHTML = '';
@@ -440,6 +445,7 @@
       try {
         await navigator.clipboard.writeText(confirmMsg.value);
         copyBtn.textContent = '✓ Copied!';
+        pushEvent('lc_message_copied', { rep_count: confirmMsg.value.length });
         setTimeout(() => { copyBtn.textContent = 'Copy Message'; }, 2500);
       } catch {
         confirmMsg.select();
