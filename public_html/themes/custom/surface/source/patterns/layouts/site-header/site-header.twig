@@ -3,9 +3,14 @@
 <header id="header" class="site-header{{ modifier ? ' ' ~ modifier }}" data-drupal-selector="site-header" role="banner" data-once="navigation">
   <div class="container site-header__container">
     <div class="site-branding">
-      <a href="{{ logo_url|default('#') }}" class="site-header__logo" rel="home" aria-label="OurKidsOurSchoolsVT — Home">
-        Our<span>Kids</span>Our<span>Schools</span>VT
+{#      <a href="{{ logo_url|default('#') }}" class="site-header__logo" rel="home" aria-label="OurKidsOurSchoolsVT — Home">#}
+{#        Our<span>Kids</span>Our<span>Schools</span>VT#}
+{#      </a>#}
+      <a href="/" class="site-header__logo" rel="home" aria-label="OurKidsOurSchoolsVT — Home">
+        <img src="/themes/custom/surface/images/logo.png" alt="" aria-hidden="true">
+        <span class="visually-hidden">OurKidsOurSchoolsVT</span>
       </a>
+
     </div>
 
     <nav id="site-navigation" class="site-navigation" role="navigation" aria-label="Main navigation" data-drupal-selector="site-navigation">

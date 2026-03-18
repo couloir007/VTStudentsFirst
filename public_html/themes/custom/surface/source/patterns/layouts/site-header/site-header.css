@@ -64,6 +64,10 @@ body.gin--vertical-toolbar .site-header {
 
   font-size: 1.4rem !important;
   line-height: 1.2 !important;
+
+  img {
+    max-width: 243px;
+  }
 }
 
 
