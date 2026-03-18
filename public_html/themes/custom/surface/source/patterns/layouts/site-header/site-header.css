@@ -64,10 +64,6 @@ body.gin--vertical-toolbar .site-header {
   -webkit-text-size-adjust: 100%;
 }
 
-.site-branding {
-  max-width: 245px;
-}
-
 .site-header__logo span {
   color: var(--gold);
 }
