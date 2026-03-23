@@ -19,10 +19,6 @@
     &:first-child {
       margin-block-start: 0;
     }
-
-    &:last-child {
-      margin-block-end: 0;
-    }
   }
 
   :where([class~='lead']):not(:where([class~='not-prose'] *)) {
@@ -182,7 +178,6 @@
 
   :where(ul):not(:where([class~='not-prose'] *)) {
     list-style-type: disc;
-    margin-block: var(--size-6);
     padding-inline-start: var(--size-8);
   }
 
@@ -192,20 +187,10 @@
 
   :where(ol > li):not(:where([class~='not-prose'] *)) {
     padding-inline-start: var(--size-2);
-
-    &::marker {
-      color: var(--gray-400);
-      font-weight: var(--font-weight-400);
-    }
   }
 
   :where(ul > li):not(:where([class~='not-prose'] *)) {
     padding-inline-start: var(--size-2);
-
-    &::marker {
-      color: var(--gray-400);
-      font-weight: var(--font-weight-400);
-    }
   }
 
   :where(> ul > li p):not(:where([class~='not-prose'] *)) {

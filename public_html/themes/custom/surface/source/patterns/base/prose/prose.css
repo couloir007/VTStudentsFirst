@@ -163,9 +163,6 @@
     padding-inline-start: var(--size-8);
   }
 
-  :where(ul):not(:where([class~='not-prose'] *)) {
-    margin-block: var(--size-6);
-  }
 
   :where(li):not(:where([class~='not-prose'] *)) {
     margin-block: var(--size-3);
@@ -173,18 +170,10 @@
 
   :where(ol > li):not(:where([class~='not-prose'] *)) {
     padding-inline-start: var(--size-2);
-
-    &::marker {
-      color: var(--grey-500);
-    }
   }
 
   :where(ul > li):not(:where([class~='not-prose'] *)) {
     padding-inline-start: var(--size-2);
-
-    &::marker {
-      color: var(--grey-500);
-    }
   }
 
   :where(> ul > li p):not(:where([class~='not-prose'] *)) {
@@ -241,9 +230,6 @@
     margin-block-start: 0;
   }
 
-  :where(:last-child):not(:where([class~='not-prose'] *)) {
-    margin-block-end: 0;
-  }
 
   :where(.media--view-mode-box-1-1):not(:where([class~='not-prose'] *)) {
     img {

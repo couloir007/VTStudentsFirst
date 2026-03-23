@@ -217,7 +217,7 @@ legend {
 
 ul,
 menu {
-  color: var(--white);
+  color: var(--section-body, var(--white));
   list-style: disc;
   margin-block-start: 0.75rem;
   padding-inline-start: 1.5rem;
