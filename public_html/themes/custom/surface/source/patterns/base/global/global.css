@@ -215,9 +215,15 @@ legend {
   padding: 0;
 }
 
-ol,
 ul,
 menu {
+  color: var(--white);
+  list-style: disc;
+  margin-block-start: 0.75rem;
+  padding-inline-start: 1.5rem;
+}
+
+ol {
   list-style: none;
   margin: 0;
   padding: 0;
