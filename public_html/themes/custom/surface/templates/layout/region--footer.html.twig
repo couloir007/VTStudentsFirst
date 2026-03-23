@@ -13,7 +13,7 @@
  */
 #}
 
-{% if content %}
+
   {% embed '@layouts/site-footer/site-footer.twig' with {
     'site_extra': site_extra is not empty ? site_extra : false,
   } %}
@@ -25,4 +25,4 @@
         for rural students.</p>
     {% endblock %}
   {% endembed %}
-{% endif %}
+
