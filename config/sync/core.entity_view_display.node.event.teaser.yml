@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.event.body
+    - field.field.node.event.field_body
     - field.field.node.event.field_editorial
     - field.field.node.event.field_meeting_meta
     - field.field.node.event.field_metatag
@@ -63,6 +64,7 @@ content:
     weight: 0
     region: content
 hidden:
+  field_body: true
   field_editorial: true
   field_metatag: true
   langcode: true

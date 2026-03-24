@@ -43,10 +43,7 @@
             modifier: 'date-badge--event'
           } only %}
         {% endif %}
-        {{ content.body|field_value }}
-        {% if content.field_editorial|field_value %}
-          {{ content.field_editorial|field_value }}
-        {% endif %}
+        {{ content.field_body|field_value }}
         {% if content.field_meeting_meta|field_value %}
           <p class="meeting-meta">{{ content.field_meeting_meta|field_raw('value')|raw }}</p>
         {% endif %}

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.event.body
+    - field.field.node.event.field_body
     - field.field.node.event.field_editorial
     - field.field.node.event.field_meeting_meta
     - field.field.node.event.field_metatag
@@ -29,10 +30,17 @@ mode: default
 content:
   body:
     type: text_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
     region: content
   field_editorial:
     type: entity_reference_revisions_entity_view
@@ -87,7 +95,7 @@ content:
     region: content
   schema_event_type:
     type: list_default
-    label: above
+    label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 2
