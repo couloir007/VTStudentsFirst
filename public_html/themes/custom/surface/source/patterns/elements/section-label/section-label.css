@@ -26,12 +26,12 @@
 /* Dark / forest sections — light label */
 .section-label--dark,
 .section-label--forest {
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
 }
 
 .section-label--dark::before,
 .section-label--forest::before {
-  background: rgba(255, 255, 255, 0.85);
+  background: #ffffff;
 }
 
 /* Warm / parchment sections — dark brown label */

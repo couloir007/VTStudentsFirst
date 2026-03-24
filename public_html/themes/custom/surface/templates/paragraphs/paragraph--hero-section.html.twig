@@ -12,6 +12,7 @@
  *   field_cta_secondary    (link)         → cta_secondary {url, title}
  *   field_stat_items       (er_rev)       → stats[] from StatItem paragraphs
  *                                           each child: field_stat_number, field_stat_label
+ *   field_upcoming_events  (er)           → events from Event nodes
  */
 #}
 {% set stats = [] %}
@@ -38,6 +39,23 @@
   } %}
 {% endif %}
 
+{% set event_items = [] %}
+{% for item in paragraph.field_upcoming_events %}
+  {% set entity = item.entity %}
+  {% set event_items = event_items|merge([{
+    'month':  entity.schema_event_schedule.value|date('M'),
+    'day':    entity.schema_event_schedule.value|date('j'),
+    'title':  entity.label,
+    'body':   entity.body.value,
+    'meta':   entity.field_meeting_meta.value,
+  }]) %}
+{% endfor %}
+
+{% set events = event_items ? {
+  label: 'Upcoming Events',
+  items: event_items
+} : null %}
+
 {% include "@collections/hero-section/hero-section.twig" with {
   eyebrow:       'Vermont Public Education',
   headline:      paragraph.field_section_headline.value,
@@ -46,5 +64,6 @@
   cta_secondary: cta_secondary,
   stats:         stats,
   attributes:    attributes,
-  'id':               paragraph.field_section_url.value,
+  events:        events,
+  'id':          paragraph.field_section_url.value,
 } only %}

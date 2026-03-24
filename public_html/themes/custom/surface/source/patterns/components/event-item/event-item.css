@@ -110,3 +110,7 @@
     gap: 1rem;
   }
 }
+
+.hero-section__events .event-item {
+  color: var(--white);
+}

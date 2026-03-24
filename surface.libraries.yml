@@ -550,6 +550,10 @@ hero-section:
   css:
     component:
       dist/css/hero-section.css: {}
+  dependencies:
+    - surface/stat-item
+    - surface/event-item
+    - surface/section-label
 
 issue-section:
   css:
@@ -596,6 +600,7 @@ action-section:
     dist/js/action-section.js: {}
   dependencies:
     - surface/step-item
+    - surface/event-item
     - surface/section-label
     - surface/section-headline
 

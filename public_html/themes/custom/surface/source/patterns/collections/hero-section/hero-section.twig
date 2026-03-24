@@ -48,5 +48,29 @@
         {% endfor %}
       </div>
     {% endif %}
+
+    {% if events %}
+      <div class="section__inner">
+        <div class="hero-section__events">
+          <p class="hero-section__events-label">
+            {% include "@elements/section-label/section-label.twig" with {
+              text: events.label|default('Upcoming Events'),
+              modifier: 'dark',
+            } only %}
+          </p>
+
+          {% for event in events.items %}
+            {% include "@components/event-item/event-item.twig" with {
+              month: event.month,
+              day: event.day,
+              title: event.title,
+              body: event.body,
+              meta: event.meta,
+              signup: event.signup
+            } only %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
   {% endblock %}
 {% endembed %}

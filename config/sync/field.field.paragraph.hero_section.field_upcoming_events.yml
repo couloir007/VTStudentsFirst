@@ -1,0 +1,29 @@
+uuid: 6a6d7fd6-8a65-46e1-81f0-d98a6645e02e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_upcoming_events
+    - node.type.event
+    - paragraphs.paragraphs_type.hero_section
+id: paragraph.hero_section.field_upcoming_events
+field_name: field_upcoming_events
+entity_type: paragraph
+bundle: hero_section
+label: 'Upcoming Events'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      event: event
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

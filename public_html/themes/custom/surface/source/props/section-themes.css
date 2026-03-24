@@ -15,9 +15,9 @@
 /* ── Semantic token defaults (dark theme — most sections start dark) ── */
 :where([class*="section-theme"]) {
   --section-bg:          var(--forest);
-  --section-headline:    var(--cream);
-  --section-body:        var(--mist);
-  --section-label:       var(--sage);
+  --section-headline:    var(--white);
+  --section-body:        var(--white);
+  --section-label:       var(--white);
   --section-accent:      var(--gold);
   --section-border:      rgba(122, 171, 138, 20%);  /* sage tint */
   --section-card-bg:     rgba(255, 255, 255, 6%);
@@ -31,9 +31,9 @@
 /* ── Dark  (--forest background) ───────────────────────────────────── */
 .section-theme--dark {
   --section-bg:          var(--forest);
-  --section-headline:    var(--cream);
-  --section-body:        var(--mist);
-  --section-label:       var(--sage);
+  --section-headline:    var(--white);
+  --section-body:        var(--white);
+  --section-label:       var(--white);
   --section-accent:      var(--gold);
   --section-border:      rgba(122, 171, 138, 20%);
   --section-card-bg:     rgba(255, 255, 255, 6%);
@@ -79,9 +79,9 @@
 /* ── Bold  (--maple-darker background) ─────────────────────────────── */
 .section-theme--bold {
   --section-bg:          var(--maple-darker);
-  --section-headline:    #ffffff;
-  --section-body:        var(--cream);
-  --section-label:       var(--mist);
+  --section-headline:    var(--white);
+  --section-body:        var(--white);
+  --section-label:       var(--white);
   --section-accent:      var(--gold);
   --section-border:      rgba(245, 240, 232, 20%);
   --section-card-bg:     rgba(0, 0, 0, 15%);

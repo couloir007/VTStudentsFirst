@@ -8,18 +8,74 @@ dependencies:
     - field.field.paragraph.hero_section.field_intro_text
     - field.field.paragraph.hero_section.field_section_headline
     - field.field.paragraph.hero_section.field_stat_items
+    - field.field.paragraph.hero_section.field_upcoming_events
     - paragraphs.paragraphs_type.hero_section
+  module:
+    - entity_reference_revisions
+    - link
+    - text
 id: paragraph.hero_section.default
 targetEntityType: paragraph
 bundle: hero_section
 mode: default
-content: {  }
+content:
+  field_cta_primary:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_cta_secondary:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_intro_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_section_headline:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_stat_items:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_upcoming_events:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
 hidden:
   created: true
-  field_cta_primary: true
-  field_cta_secondary: true
-  field_intro_text: true
-  field_section_headline: true
-  field_stat_items: true
   status: true
   uid: true
