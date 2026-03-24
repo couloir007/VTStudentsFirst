@@ -131,7 +131,7 @@
     color: var(--black);
   }
 
-  .meeting-meta a {
+  a {
     font-weight: bold;
     text-decoration: underline;
   }
