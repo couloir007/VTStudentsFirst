@@ -104,4 +104,35 @@
 /*  }*/
 /*}*/
 
+.node--view-mode-full {
+  background: var(--grey-200);
 
+  .node__title {
+    color: var(--gray-900);
+  }
+
+  .date-badge--event {
+    background: var(--section-card-bg, rgba(255, 255, 255, 45%));
+    border: 1px solid var(--section-border, rgba(0, 0, 0, 10%));
+    block-size: var(--size-20);
+    inline-size: var(--size-20);
+    border-radius: 3px;
+
+    .date-badge__month {
+      color: var(--pine);
+    }
+
+    .date-badge__day {
+      color: var(--forest);
+    }
+  }
+
+  ul {
+    color: var(--black);
+  }
+
+  .meeting-meta a {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}

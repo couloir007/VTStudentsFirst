@@ -16,17 +16,27 @@
 ]|join(' ')|trim %}
 
 <article class="{{ classes }}" {{ attributes ? attributes|without('class', 'id') }}>
+  {{ title_prefix }}
+  {% if label and not page %}
+    <h2 class="{{ title_classes }}" {{ title_attributes ? title_attributes|without('class') }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+  {{ title_suffix }}
+
   <div class="{{ content_classes }}" {{ content_attributes ? content_attributes|without('class') }}>
     <div class="node__inner">
-      {% if content.schema_citation %}
+      {% set lead = lead|default(content.schema_citation|field_value) %}
+      {% if lead %}
         <div class="prose">
-            <span class="issue-section__lead">
-              <p>{{ content.schema_citation|field_value }}</p>
-            </span>
+            <div class="issue-section__lead">
+              <p>{{ lead|raw }}</p>
+            </div>
         </div>
       {% endif %}
 
       {{ content.body }}
+      {{ content|without('body', 'schema_citation') }}
     </div>
   </div>
 </article>

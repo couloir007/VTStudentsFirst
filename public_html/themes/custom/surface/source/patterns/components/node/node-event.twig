@@ -1,0 +1,56 @@
+{{ attach_library('surface/node') }}
+{{ attach_library('surface/person-card') }}
+
+{% set classes = [
+  'node',
+  attributes ? attributes.class
+]|join(' ')|trim %}
+
+{% set title_classes = [
+  'node__title',
+  title_attributes ? title_attributes.class
+]|join(' ')|trim %}
+
+{% set content_classes = [
+  'node__content',
+  content_attributes ? content_attributes.class
+]|join(' ')|trim %}
+
+{% do ray(content) %}
+
+<article{{ attributes }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+  {% if label and not page %}
+    <h2 class="{{ title_classes }}" {{ title_attributes ? title_attributes|without('class') }}>
+      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
+    </h2>
+  {% endif %}
+  {{ title_suffix }}
+
+  <div class="{{ content_classes }}" {{ content_attributes ? content_attributes|without('class') }}>
+    <div class="node__inner">
+      <div class="node__body prose__wrapper">
+        {% set event_date = content.schema_event_schedule|field_value|first %}
+        {% if event_date %}
+          {% set month = month|default(event_date.value|date('M')) %}
+          {% set day = day|default(event_date.value|date('j')) %}
+        {% endif %}
+        {% if month and day %}
+          {% include "@elements/date-badge/date-badge.twig" with {
+            month: month,
+            day: day,
+            modifier: 'date-badge--event'
+          } only %}
+        {% endif %}
+        {{ content.body|field_value }}
+        {% if content.field_editorial|field_value %}
+          {{ content.field_editorial|field_value }}
+        {% endif %}
+        {% if content.field_meeting_meta|field_value %}
+          <p class="meeting-meta">{{ content.field_meeting_meta|field_raw('value')|raw }}</p>
+        {% endif %}
+        </div>
+    </div>
+  </div>
+</article>
