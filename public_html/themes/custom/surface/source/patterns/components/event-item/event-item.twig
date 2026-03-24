@@ -9,7 +9,13 @@
 
   <div class="event-item__details">
     {% if title %}
-      <h4 class="event-item__title">{{ title }}</h4>
+      <h4 class="event-item__title">
+        {% if url %}
+          <a href="{{ url }}">{{ title }}</a>
+        {% else %}
+          {{ title }}
+        {% endif %}
+      </h4>
     {% endif %}
     {% if body %}
       <p class="event-item__body">{{ body|raw }}</p>

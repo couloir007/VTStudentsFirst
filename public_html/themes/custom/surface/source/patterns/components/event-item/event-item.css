@@ -29,6 +29,15 @@
   font-weight: 700;
   line-height: 1.25;
   margin-bottom: 0.4rem;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .event-item__body {

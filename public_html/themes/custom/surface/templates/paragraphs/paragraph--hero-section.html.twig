@@ -48,6 +48,7 @@
     'title':  entity.label,
     'body':   entity.body.value,
     'meta':   entity.field_meeting_meta.value,
+    'url':    path('entity.node.canonical', {'node': entity.id()}),
   }]) %}
 {% endfor %}
 
