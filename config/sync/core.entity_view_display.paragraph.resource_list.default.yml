@@ -1,0 +1,24 @@
+uuid: 6b4d401c-3299-4a70-9152-7fe09bd5dc80
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resource_list.field_resource_items
+    - paragraphs.paragraphs_type.resource_list
+  module:
+    - entity_reference_revisions
+id: paragraph.resource_list.default
+targetEntityType: paragraph
+bundle: resource_list
+mode: default
+content:
+  field_resource_items:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

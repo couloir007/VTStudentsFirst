@@ -1,0 +1,36 @@
+uuid: 37920973-ffd7-4cf4-bc1b-b4099273bec9
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.schema_type
+field_name: schema_type
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: opinion
+      label: 'Opinion / Commentary'
+    -
+      value: news
+      label: News
+    -
+      value: legislation
+      label: Legislation
+    -
+      value: government
+      label: Government
+    -
+      value: research
+      label: Research
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

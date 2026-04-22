@@ -1,0 +1,21 @@
+uuid: da01a653-aa81-4940-9016-5c1c38cba887
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.schema_date_published
+    - paragraphs.paragraphs_type.resource_item
+  module:
+    - datetime
+id: paragraph.resource_item.schema_date_published
+field_name: schema_date_published
+entity_type: paragraph
+bundle: resource_item
+label: 'Date Published'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

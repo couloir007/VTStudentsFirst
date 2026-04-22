@@ -1,0 +1,16 @@
+uuid: 8c168eaa-25b4-4f11-86bc-e4db8a9fad67
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resource_list.field_resource_items
+    - paragraphs.paragraphs_type.resource_list
+  module:
+    - paragraphs
+id: paragraph.resource_list
+target_entity_type_id: paragraph
+target_bundle: resource_list
+schema_type: ItemList
+schema_properties:
+  field_resource_items: itemListElement
+additional_mappings: {  }

@@ -1,0 +1,20 @@
+uuid: 089d5805-40c1-4cd9-aef8-49fa0a6c0302
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - paragraphs
+id: paragraph.schema_date_published
+field_name: schema_date_published
+entity_type: paragraph
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

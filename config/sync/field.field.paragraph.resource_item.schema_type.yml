@@ -1,0 +1,21 @@
+uuid: 112a09bd-278b-4a97-abd4-12176e26a101
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.schema_type
+    - paragraphs.paragraphs_type.resource_item
+  module:
+    - options
+id: paragraph.resource_item.schema_type
+field_name: schema_type
+entity_type: paragraph
+bundle: resource_item
+label: 'Resource Type'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

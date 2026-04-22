@@ -1,0 +1,23 @@
+uuid: 6ef0b057-8696-4c2c-80e4-c91725a7b9e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.schema_url
+    - paragraphs.paragraphs_type.resource_item
+  module:
+    - link
+id: paragraph.resource_item.schema_url
+field_name: schema_url
+entity_type: paragraph
+bundle: resource_item
+label: URL
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 16
+field_type: link

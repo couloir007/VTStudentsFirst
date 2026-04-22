@@ -1,0 +1,26 @@
+uuid: 90425463-9c59-4942-9dfe-f91d2d2a9183
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.resource_item.schema_date_published
+    - field.field.paragraph.resource_item.schema_description
+    - field.field.paragraph.resource_item.schema_name
+    - field.field.paragraph.resource_item.schema_publisher
+    - field.field.paragraph.resource_item.schema_type
+    - field.field.paragraph.resource_item.schema_url
+    - paragraphs.paragraphs_type.resource_item
+  module:
+    - paragraphs
+id: paragraph.resource_item
+target_entity_type_id: paragraph
+target_bundle: resource_item
+schema_type: CreativeWork
+schema_properties:
+  schema_name: 'name,headline'
+  schema_url: url
+  schema_description: description
+  schema_date_published: datePublished
+  schema_publisher: publisher
+  schema_type: additionalType
+additional_mappings: {  }

@@ -1,0 +1,19 @@
+uuid: 7b757675-cbfe-4e0a-8351-f52ec0a37241
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.schema_publisher
+    - paragraphs.paragraphs_type.resource_item
+id: paragraph.resource_item.schema_publisher
+field_name: schema_publisher
+entity_type: paragraph
+bundle: resource_item
+label: Publisher
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,15 @@
+uuid: 92adfc0d-a86d-42a1-b59c-96efa3930e26
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: resource_list
+label: 'Resource List'
+icon_uuid: null
+icon_default: null
+description: null
+behavior_plugins: {  }
