@@ -8,6 +8,7 @@ use Drupal\Core\Plugin\PluginFormInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\moderated_content_bulk_publish\AdminModeration;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Access\AccessResult;
 
 /**
@@ -50,8 +51,16 @@ class UnpublishCurrentRevisionAction extends ActionBase {
       \Drupal::logger('moderated_content_bulk_publish')->notice("Executing unpublish latest revision of ".$entity->label());
 
       $adminModeration = new AdminModeration($entity, NodeInterface::NOT_PUBLISHED);
-      $entity = $adminModeration->unpublish();
+      $error_message = '';
+      $markup = '';
+      $entity = $adminModeration->unpublish($error_message, $markup);
 
+      if (!isset($entity) && !empty($error_message)) {
+        \Drupal::Messenger()->addWarning(mb_convert_encoding($error_message, 'UTF-8'));
+        $htmlelement = Markup::create($markup);
+        \Drupal::Messenger()->addWarning($htmlelement);
+        return $error_message;
+      }
       //check if published
       if ($entity->isPublished()){
         $msg = "Something went wrong, the entity must be unpublished by this point.  Review your content moderation configuration make sure you have archive state which sets current revision and a draft state and try again.";

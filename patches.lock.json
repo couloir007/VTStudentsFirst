@@ -1,0 +1,17 @@
+{
+    "_hash": "31e6012d281cc66ee320610d197c172afce8896563a0aeead2e9b801608b46b5",
+    "patches": {
+        "drupal/redirect": [
+            {
+                "package": "drupal/redirect",
+                "description": "Support for wildcards",
+                "url": "https://www.drupal.org/files/issues/2025-09-05/support_for_wildcards-2831605-154.patch",
+                "sha256": "e91fd714944d65dbbce105720f89f1deaaab2482cae2e7583ff87645e901a9df",
+                "depth": 1,
+                "extra": {
+                    "provenance": "root"
+                }
+            }
+        ]
+    }
+}

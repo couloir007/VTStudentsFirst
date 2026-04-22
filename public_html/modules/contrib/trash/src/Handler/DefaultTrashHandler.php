@@ -12,6 +12,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\trash\Exception\UnrestorableEntityException;
 use Drupal\trash\PathAlias\PathAliasIntegrationTrait;
 use Drupal\trash\TrashManagerInterface;
+use Drupal\trash\Validation\TrashAwareUniqueFieldValueValidator;
 
 /**
  * Provides the default trash handler.
@@ -49,7 +50,11 @@ class DefaultTrashHandler implements TrashHandlerInterface {
   /**
    * {@inheritdoc}
    */
-  public function preTrashDelete(EntityInterface $entity): void {}
+  public function preTrashDelete(EntityInterface $entity): void {
+    // Ensure that Pathauto doesn't try to auto-create aliases when deleting an
+    // entity.
+    $this->skipPathauto($entity);
+  }
 
   /**
    * {@inheritdoc}
@@ -69,10 +74,17 @@ class DefaultTrashHandler implements TrashHandlerInterface {
     // Run entity validation for fieldable entities to check for conflicts.
     if ($entity instanceof FieldableEntityInterface) {
       $violations = $entity->validate();
-      if ($violations->count() > 0) {
-        // Get the first violation message for the exception.
-        $message = $violations->get(0)->getMessage();
-        throw new UnrestorableEntityException((string) $message);
+
+      // Find only violations from constraints validated by
+      // TrashAwareUniqueFieldValueValidator. This catches any constraint whose
+      // validatedBy() returns TrashAwareUniqueFieldValueValidator itself or a
+      // parent class (e.g., UniqueFieldValueValidator, which is aliased to it
+      // via the service container).
+      foreach ($violations as $violation) {
+        $validator_class = ltrim($violation->getConstraint()->validatedBy(), '\\');
+        if (is_a(TrashAwareUniqueFieldValueValidator::class, $validator_class, TRUE)) {
+          throw new UnrestorableEntityException((string) $violation->getMessage());
+        }
       }
     }
   }
@@ -80,7 +92,11 @@ class DefaultTrashHandler implements TrashHandlerInterface {
   /**
    * {@inheritdoc}
    */
-  public function preTrashRestore(EntityInterface $entity): void {}
+  public function preTrashRestore(EntityInterface $entity): void {
+    // Ensure that Pathauto doesn't try to auto-create aliases when restoring an
+    // entity.
+    $this->skipPathauto($entity);
+  }
 
   /**
    * {@inheritdoc}

@@ -16,6 +16,7 @@
     ],
     "require": {
         "composer/installers": "^2.0",
+        "cweagans/composer-patches": "^2.0",
         "defuse/php-encryption": "^2.4",
         "drupal/admin_dialogs": "^1.0",
         "drupal/admin_toolbar": "^3.5",
@@ -121,6 +122,7 @@
     "config": {
         "allow-plugins": {
             "composer/installers": true,
+            "cweagans/composer-patches": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,

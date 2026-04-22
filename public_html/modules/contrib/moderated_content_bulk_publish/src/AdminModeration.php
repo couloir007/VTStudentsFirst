@@ -29,7 +29,7 @@ class AdminModeration
     /**
      * Unpublish current revision.
      */
-    public function unpublish() {
+    public function unpublish(&$error_message = '', &$markup = '') {
       $user = \Drupal::currentUser();
       $currentLang = \Drupal::languageManager()->getCurrentLanguage()->getId();
       $allLanguages = AdminHelper::getAllEnabledLanguages();
@@ -40,6 +40,22 @@ class AdminModeration
       }
       foreach ($allLanguages as $langcode => $languageName) {
         if ($this->entity->hasTranslation($langcode)) {
+          // Add a hook that allows verifications outside of moderated_content_bulk_publish.
+          $bundle = $this->entity->bundle();
+          $nid = $this->entity->id();
+          $hookObject = new HookObject();
+          $hookObject->nid = $nid;
+          $hookObject->bundle = $bundle;
+          $hookObject->langcode = $langcode;
+          $hookObject->show_button = TRUE;
+          $hookObject->markup = $markup;
+          $hookObject->error_message = $error_message;
+          \Drupal::moduleHandler()->invokeAll('moderated_content_bulk_publish_verify_unpublish', [$hookObject]);
+          if (!$hookObject->show_button) {
+            $markup = $hookObject->markup;
+            $error_message = $hookObject->error_message;
+            return NULL;
+          }
           \Drupal::logger('moderated_content_bulk_publish')->notice(
             mb_convert_encoding("Unpublish $langcode for " . $this->id . " in moderated_content_bulk_publish", 'UTF-8')
           );
@@ -53,6 +69,7 @@ class AdminModeration
             $current_uid = \Drupal::currentUser()->id();
             $this->entity->setRevisionUserId($current_uid);
           }
+          $this->entity->setSyncing(TRUE);
           $this->entity->setRevisionTranslationAffected(TRUE);
           if ($user->hasPermission('moderated content bulk unpublish')) {
             if ($langcode == $currentLang) {
@@ -163,7 +180,7 @@ class AdminModeration
             if ($this->getConfig()->get('retain_revision_info')) {
               // Retain the original revision information.
               // Modify the revision message to include publication information.
-              $revision_message = $this->entity->getRevisionLogMessage();
+              $revision_message = (string) ($this->entity->getRevisionLogMessage() ?? '');
               $publish_date = \Drupal::service('date.formatter')->format($now, 'short');
               $publishing_user = \Drupal::currentUser()->getDisplayName();
               $msg = t('@message -- Bulk published by @user on @date', [
@@ -276,6 +293,7 @@ class AdminModeration
             $this->entity->setRevisionUserId($current_uid);
           }
 
+          $this->entity->setSyncing(TRUE);
           $this->entity->setRevisionTranslationAffected(TRUE);
           if ($user->hasPermission('moderated content bulk archive')) {
             if ($langcode == $currentLang) {

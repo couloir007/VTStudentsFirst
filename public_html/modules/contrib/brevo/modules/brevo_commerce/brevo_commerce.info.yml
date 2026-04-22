@@ -7,7 +7,7 @@ dependencies:
   - commerce:commerce_checkout
   - brevo:brevo
 
-# Information added by Drupal.org packaging script on 2026-02-06
-version: '1.0.5'
+# Information added by Drupal.org packaging script on 2026-03-21
+version: '1.0.6'
 project: 'brevo'
-datestamp: 1770392995
+datestamp: 1774120340

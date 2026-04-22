@@ -7,7 +7,7 @@ dependencies:
   - geocoder:geocoder_field
   - geofield:geofield
 
-# Information added by Drupal.org packaging script on 2026-03-11
-version: '8.x-4.31'
+# Information added by Drupal.org packaging script on 2026-04-20
+version: '8.x-4.34'
 project: 'geocoder'
-datestamp: 1773269482
+datestamp: 1776679746

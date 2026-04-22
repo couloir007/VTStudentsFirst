@@ -102,6 +102,58 @@ class RedirectRepository {
     // Load redirects by hash. A direct query is used to improve performance.
     try {
       $rid = $this->connection->query('SELECT rid FROM {redirect} WHERE hash IN (:hashes[]) AND enabled = 1 ORDER BY LENGTH(redirect_source__query) DESC', [':hashes[]' => $hashes])->fetchField();
+      $wildcard_path = FALSE;
+      if (empty($rid) && $this->config->get('wildcard_enabled')) {
+        // Check for a wildcard pattern.
+        $source_path = mb_strtolower($source_path);
+        $patterns = $this->connection
+          ->query("SELECT rid, language, redirect_source__path AS pattern, redirect_source__query as query FROM {redirect} WHERE enabled = 1 AND redirect_source__path LIKE '%*%' ORDER BY LENGTH(CONCAT(redirect_source__path, redirect_source__query)) ASC")
+          ->fetchAll();
+        $wildcard_matches = [];
+        foreach ($patterns as $rule) {
+          $rule->pattern = mb_strtolower($rule->pattern);
+          $rule->query = unserialize($rule->query, ['allowed_classes' => FALSE]) ?? [];
+          // phpcs:ignore Drupal.Functions.DiscouragedFunctions.Discouraged
+          if (empty(array_diff_assoc($rule->query, $query)) && fnmatch($rule->pattern, $source_path)) {
+            // If the original rule ends in /*, it's a folder redirect and should
+            // also match the plain folder without slash.
+            if (str_ends_with($rule->pattern, '/*')) {
+              $expr = '!' . str_replace('/*', '(\/.*)', $rule->pattern) . '!';
+              if (!preg_match($expr, $source_path, $matches)) {
+                continue;
+              }
+              $rule->wildcard_value = $matches[1];
+            }
+            $wildcard_matches[$rule->language] = $rule;
+          }
+        }
+
+        if (!empty($wildcard_matches)) {
+          $wildcard_language = '';
+          if (array_key_exists($language, $wildcard_matches)) {
+            $wildcard_language = $language;
+          }
+          elseif (array_key_exists(Language::LANGCODE_NOT_SPECIFIED, $wildcard_matches)) {
+            $wildcard_language = Language::LANGCODE_NOT_SPECIFIED;
+          }
+          if (!empty($wildcard_language)) {
+            $rid = $wildcard_matches[$wildcard_language]->rid;
+            $pattern = $wildcard_matches[$wildcard_language]->pattern;
+            $tr = [
+              '*' => '',
+            ];
+            if (empty($rule->wildcard_value)) {
+              $tr = ['/*' => ''] + $tr;
+            }
+            $raw_pattern = strtr($pattern, $tr);
+            $wildcard_path = ltrim($source_path, '/');
+            if (str_starts_with($wildcard_path, $raw_pattern)) {
+              $wildcard_path = substr($wildcard_path, strlen($raw_pattern));
+            }
+            $wildcard_path = ltrim($wildcard_path, '/');
+          }
+        }
+      }
     }
     catch (\Exception) {
       // Return early in case the query failed. This can only happen if the
@@ -128,6 +180,11 @@ class RedirectRepository {
         return $recursive;
       }
 
+      // Reset set redirect URL with wildcard path.
+      if (isset($wildcard_path) && !str_contains($redirect->getRedirect()['uri'], "entity:")) {
+        $redirect_url = str_replace(' ', '%20', str_replace("internal:", "", str_replace("*", $wildcard_path, $redirect->getRedirect()['uri'])));
+        $redirect->setRedirect($redirect_url);
+      }
       return $redirect;
     }
 

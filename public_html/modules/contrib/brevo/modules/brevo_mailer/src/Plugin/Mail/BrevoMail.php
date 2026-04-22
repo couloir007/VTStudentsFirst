@@ -91,10 +91,19 @@ class BrevoMail implements MailInterface, ContainerFactoryPluginInterface {
       $message['body'] = implode("\n\n", $message['body']);
     }
 
-    // If text format is specified in settings, run the message through it.
-    $format = $this->brevoMailerConfig->get('format_filter');
-    if (!empty($format)) {
-      $message['body'] = check_markup($message['body'], $format, $message['langcode']);
+    // Determine if the message contains HTML content by checking the
+    // Content-Type header or the explicit 'html' parameter.
+    $content_type = $message['headers']['Content-Type'] ?? '';
+    $is_html = str_contains($content_type, 'text/html')
+      || (isset($message['params']['html']) && $message['params']['html']);
+
+    // Only apply the text format filter to non-HTML messages. Applying it to
+    // HTML messages would escape tags and break the markup.
+    if (!$is_html) {
+      $format = $this->brevoMailerConfig->get('format_filter');
+      if (!empty($format)) {
+        $message['body'] = check_markup($message['body'], $format, $message['langcode']);
+      }
     }
 
     // Skip theme formatting if the message does not support HTML.
@@ -267,9 +276,22 @@ class BrevoMail implements MailInterface, ContainerFactoryPluginInterface {
       $brevo_message['textContent'] = $converter->getText();
     }
 
-    // Include custom MIME headers (for example, 'X-My-Header').
+    // Exclude standard headers that are already handled by the structured
+    // Brevo message format (sender, to, cc, bcc, replyTo, subject, etc.).
+    // Passing them again in the headers array can interfere with how Brevo
+    // constructs the MIME message, especially Content-Type boundaries.
+    $excluded_headers = [
+      'content-type',
+      'mime-version',
+      'from',
+      'to',
+      'subject',
+      'cc',
+      'bcc',
+      'reply-to',
+    ];
     foreach ($message['headers'] as $key => $value) {
-      if (!str_contains($key, 'X-')) {
+      if (!in_array(strtolower($key), $excluded_headers)) {
         $brevo_message['headers'][$key] = $value;
       }
     }
@@ -302,7 +324,7 @@ class BrevoMail implements MailInterface, ContainerFactoryPluginInterface {
         }
         elseif (!empty($attachment['filecontent']) && !empty($attachment['filename'])) {
           $attachments[] = [
-            'content' => $attachment['filecontent'],
+            'content' => base64_encode($attachment['filecontent']),
             'name' => $attachment['filename'],
           ];
         }

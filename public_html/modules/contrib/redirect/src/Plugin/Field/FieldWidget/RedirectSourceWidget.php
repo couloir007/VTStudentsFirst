@@ -3,6 +3,7 @@
 namespace Drupal\redirect\Plugin\Field\FieldWidget;
 
 use Drupal\Component\Utility\UrlHelper;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\WidgetBase;
@@ -51,6 +52,13 @@ class RedirectSourceWidget extends WidgetBase {
   protected RedirectRepository $redirectRepository;
 
   /**
+   * The config factory.
+   *
+   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   */
+  protected ConfigFactoryInterface $configFactory;
+
+  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -58,6 +66,7 @@ class RedirectSourceWidget extends WidgetBase {
     $widget->requestStack = $container->get('request_stack');
     $widget->router = $container->get('router');
     $widget->redirectRepository = $container->get('redirect.repository');
+    $widget->configFactory = $container->get('config.factory');
     return $widget;
   }
 
@@ -84,6 +93,11 @@ class RedirectSourceWidget extends WidgetBase {
       '#attributes' => ['data-disable-refocus' => 'true'],
     ];
 
+    $redirectSettings = $this->configFactory->get('redirect.settings');
+    if ($redirectSettings->get('wildcard_enabled')) {
+      $element['path']['#description'] = $this->t("Specify pages by using their paths. The '*' character is a wildcard. An example path is /user/* for every user page.");
+    }
+
     // If creating new URL add checks.
     if ($items->getEntity()->isNew()) {
       $element['status_box'] = [
@@ -104,9 +118,9 @@ class RedirectSourceWidget extends WidgetBase {
           $url = Url::fromRoute('entity.path_alias.add_form');
           if ($url->access()) {
             $element['status_box'][]['#markup'] = '<div class="messages messages--warning">' . $this->t('The source path %path is likely a valid path. It is preferred to <a href="@url-alias">create URL aliases</a> for existing paths rather than redirects.', [
-              '%path' => $source_path,
-              '@url-alias' => $url->toString(),
-            ]) . '</div>';
+                '%path' => $source_path,
+                '@url-alias' => $url->toString(),
+              ]) . '</div>';
           }
         }
         catch (ResourceNotFoundException) {

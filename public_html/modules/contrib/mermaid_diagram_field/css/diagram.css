@@ -25,6 +25,10 @@
   margin: auto;
 }
 
+.mermaid-diagram svg a:hover {
+  outline: 4px dashed currentColor;
+}
+
 .mermaid-diagram svg a:focus {
   outline-width: 4px;
   outline-color: currentColor;

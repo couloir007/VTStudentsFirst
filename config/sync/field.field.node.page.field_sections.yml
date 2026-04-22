@@ -11,6 +11,7 @@ dependencies:
     - paragraphs.paragraphs_type.issue_section
     - paragraphs.paragraphs_type.myth_section
     - paragraphs.paragraphs_type.positions_section
+    - paragraphs.paragraphs_type.resource_list
     - paragraphs.paragraphs_type.stakes_section
     - paragraphs.paragraphs_type.voices_section
   module:
@@ -37,6 +38,7 @@ settings:
       stakes_section: stakes_section
       voices_section: voices_section
       issue_section: issue_section
+      resource_list: resource_list
     negate: 0
     target_bundles_drag_drop:
       accountability_section:
@@ -56,6 +58,9 @@ settings:
         enabled: true
       positions_section:
         weight: 4
+        enabled: true
+      resource_list:
+        weight: 8
         enabled: true
       stakes_section:
         weight: 5

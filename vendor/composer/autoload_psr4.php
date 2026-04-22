@@ -12,6 +12,7 @@ return array(
     'mglaman\\PHPStanDrupal\\' => array($vendorDir . '/mglaman/phpstan-drupal/src'),
     'enshrined\\svgSanitize\\' => array($vendorDir . '/enshrined/svg-sanitize/src'),
     'dekor\\' => array($vendorDir . '/dekor/php-array-table/src'),
+    'cweagans\\Composer\\' => array($vendorDir . '/cweagans/composer-patches/src', $vendorDir . '/cweagans/composer-configurable-plugin/src'),
     'ZipStream\\' => array($vendorDir . '/maennchen/zipstream-php/src'),
     'Wikimedia\\Composer\\Merge\\V2\\' => array($vendorDir . '/wikimedia/composer-merge-plugin/src'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
