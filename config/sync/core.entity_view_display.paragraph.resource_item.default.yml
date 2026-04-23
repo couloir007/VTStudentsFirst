@@ -14,6 +14,7 @@ dependencies:
     - datetime
     - link
     - options
+    - text
 id: paragraph.resource_item.default
 targetEntityType: paragraph
 bundle: resource_item
@@ -29,7 +30,7 @@ content:
     weight: 5
     region: content
   schema_description:
-    type: basic_string
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }

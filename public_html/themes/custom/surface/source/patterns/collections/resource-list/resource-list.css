@@ -1,0 +1,21 @@
+.resource-list {
+  background-color: var(--section-bg, var(--light));
+  border-top: 1px solid var(--section-border, var(--mist));
+}
+
+.resource-list__inner {
+  max-width: var(--content-max-width, 860px);
+}
+
+.resource-list__headline {
+  margin-block-end: 2.5rem;
+}
+
+.resource-list__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

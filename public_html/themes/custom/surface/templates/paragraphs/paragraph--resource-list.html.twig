@@ -1,0 +1,44 @@
+{#
+/**
+ * @file paragraph--resource-list.html.twig
+ *
+ * Paragraph bundle: ResourceList
+ * Component:        @collections/resource-list/resource-list.twig
+ *
+ * Fields
+ *   field_resource_items (er_rev) → resource_items[] from ResourceItem paragraphs
+ *     each child:
+ *       schema_name           → title
+ *       schema_url            → url
+ *       schema_description    → summary
+ *       schema_type           → type
+ *       schema_publisher      → publisher
+ *       schema_date_published → date
+ *
+ * TODO: Add field_section_label and field_headline to this paragraph type
+ *       and replace the hardcoded values below.
+ */
+#}
+{{ attach_library('surface/resource-list') }}
+
+{% set resource_items = [] %}
+{% for item in paragraph.field_resource_items %}
+  {% set entity = item.entity %}
+  {% set resource_items = resource_items|merge([{
+    title:     entity.schema_name.value,
+    url:       entity.schema_url.uri,
+    summary:   entity.schema_description.value,
+    type:      entity.schema_type.value,
+    publisher: entity.schema_publisher.value,
+    date:      entity.schema_date_published.value,
+  }]) %}
+{% endfor %}
+
+{% include "@collections/resource-list/resource-list.twig" with {
+  section_label:  paragraph.field_section_label.value,
+  headline:       paragraph.field_section_headline.value|raw,
+  resource_items: resource_items,
+  attributes:     attributes,
+} only %}
+
+{#'This is what public education looks like in the <em>Northeast Kingdom.</em>'#}

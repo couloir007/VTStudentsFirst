@@ -25,6 +25,15 @@ targetEntityType: node
 bundle: page
 mode: default
 content:
+  field_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -43,7 +52,6 @@ hidden:
   body: true
   field_editorial: true
   field_metatag: true
-  field_sections: true
   langcode: true
   schema_about: true
   schema_has_part: true

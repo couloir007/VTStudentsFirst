@@ -4,11 +4,9 @@
   view_mode ? 'node--view-mode-' ~ view_mode|clean_class
 ]%}
 
-
-
 {% set attributes = attributes.addClass(classes) %}
 
-{% include '@components/node/node.twig' with {
+{% include '@components/node-homepage/node-homepage.twig' with {
   'attributes': attributes,
   'title_prefix': title_prefix,
   'title_suffix': title_suffix,
@@ -16,5 +14,5 @@
   'page': page,
   'image': image,
   'url': url,
-  'content': content|without('field_image', 'links')
+  'content': content.schema_main_entity,
 } %}

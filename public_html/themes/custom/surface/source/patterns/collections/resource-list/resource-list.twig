@@ -1,0 +1,49 @@
+{#
+/**
+ * @file resource-list.twig
+ *
+ * Component:  @collections/resource-list/resource-list.twig
+ * Storybook:  Collections/Resource List
+ *
+ * Variables:
+ *   section_label  (string)  — optional section label
+ *   headline       (string)  — optional section headline
+ *   resource_items (array)   — list of resource items, each with:
+ *     title     (string) required
+ *     url       (string) required
+ *     summary   (string) plain text
+ *     type      (string) — opinion | news | legislation | government | research
+ *     publisher (string) — e.g. VTDigger
+ *     date      (string) — YYYY-MM-DD
+ */
+#}
+
+<section class="resource-list section section-theme--light">
+  <div class="section__inner resource-list__inner">
+
+    {% if section_label %}
+      {% include "@elements/section-label/section-label.twig" with {
+        text: section_label,
+        modifier: 'light',
+      } only %}
+    {% endif %}
+
+    {% if headline %}
+      <h2 class="section-headline resource-list__headline">{{ headline|raw }}</h2>
+    {% endif %}
+
+    <ul class="resource-list__items">
+      {% for item in resource_items %}
+        {% include "@elements/resource-item/resource-item.twig" with {
+          title:     item.title,
+          url:       item.url,
+          summary:   item.summary,
+          type:      item.type,
+          publisher: item.publisher,
+          date:      item.date,
+        } only %}
+      {% endfor %}
+    </ul>
+
+  </div>
+</section>

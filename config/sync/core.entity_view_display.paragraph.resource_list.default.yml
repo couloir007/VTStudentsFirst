@@ -4,6 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.resource_list.field_resource_items
+    - field.field.paragraph.resource_list.field_section_headline
+    - field.field.paragraph.resource_list.field_section_label
     - paragraphs.paragraphs_type.resource_list
   module:
     - entity_reference_revisions
@@ -14,10 +16,25 @@ mode: default
 content:
   field_resource_items:
     type: entity_reference_revisions_entity_view
-    label: above
+    label: hidden
     settings:
       view_mode: default
       link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_section_headline:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_section_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
     third_party_settings: {  }
     weight: 0
     region: content

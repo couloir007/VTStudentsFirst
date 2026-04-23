@@ -1,0 +1,52 @@
+{{ attach_library('surface/resource-item') }}
+
+{#
+/**
+ * @file resource-item.twig
+ *
+ * Component:  @elements/resource-item/resource-item.twig
+ * Storybook:  Elements/Resource Item
+ *
+ * Variables:
+ *   title     (string) required  — link text / article headline
+ *   url       (string) required  — external URL
+ *   summary   (string)           — plain text description
+ *   type      (string)           — opinion | news | legislation | government | research
+ *   publisher (string)           — e.g. VTDigger
+ *   date      (string)           — YYYY-MM-DD
+ */
+#}
+
+{% set type_labels = {
+  'opinion':     'Opinion',
+  'news':        'News',
+  'legislation': 'Legislation',
+  'government':  'Government',
+  'research':    'Research',
+} %}
+
+<li class="resource-item">
+  <div class="resource-item__meta">
+    {% if type and type_labels[type] %}
+      <span class="resource-item__type resource-item__type--{{ type }}">
+        {{ type_labels[type] }}
+      </span>
+    {% endif %}
+    {% if publisher %}
+      <span class="resource-item__publisher">{{ publisher }}</span>
+    {% endif %}
+    {% if date %}
+      <time class="resource-item__date" datetime="{{ date }}">
+        {{ date|date('F j, Y') }}
+      </time>
+    {% endif %}
+  </div>
+
+  <a class="resource-item__link" href="{{ url }}" target="_blank" rel="noopener noreferrer">
+    <h3 class="resource-item__title">{{ title }}</h3>
+  </a>
+
+  {% if summary %}
+    <p class="resource-item__summary">{{ summary|striptags }}</p>
+  {% endif %}
+</li>

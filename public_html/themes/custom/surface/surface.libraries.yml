@@ -625,3 +625,17 @@ date:
   css:
     component:
       dist/css/date.css: {}
+
+resource-item:
+  css:
+    component:
+      dist/css/resource-item.css: {}
+
+resource-list:
+  css:
+    component:
+      dist/css/resource-list.css: {}
+  dependencies:
+    - surface/section
+    - surface/resource-item
+
