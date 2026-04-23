@@ -16,11 +16,12 @@ lando drush sql:drop -y
 
 
 # lando ssh -s database -c "pg_dump -h us17.acugis-dns.com -U roundybr -d roundybr_vtkids --format=p --no-owner --no-acl" > backup_postgres_prod.sql
+# Production Export
 lando ssh -s database -c "pg_dump -h us17.acugis-dns.com -U roundybr -d roundybr_vtkids --no-owner --no-privileges --format=p" > production_dump.sql
 
 
 
-Export
+# Local Export
 lando ssh -s database -c "pg_dump -U postgres -d drupal --no-owner --no-privileges --format=p" > backup_postgres.sql
 
 Import
