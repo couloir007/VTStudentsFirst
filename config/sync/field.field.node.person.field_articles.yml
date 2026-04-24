@@ -1,0 +1,74 @@
+uuid: 497b7dd0-503b-4e57-a2da-c1aca44fff4b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_articles
+    - node.type.person
+    - paragraphs.paragraphs_type.resource_item
+id: node.person.field_articles
+field_name: field_articles
+entity_type: node
+bundle: person
+label: Articles
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      resource_item: resource_item
+    negate: 0
+    target_bundles_drag_drop:
+      accountability_section:
+        weight: 17
+        enabled: false
+      action_section:
+        weight: 18
+        enabled: false
+      card_item:
+        weight: 19
+        enabled: false
+      editorial:
+        weight: 20
+        enabled: false
+      from_library:
+        weight: 21
+        enabled: false
+      hero_section:
+        weight: 22
+        enabled: false
+      issue_section:
+        weight: 23
+        enabled: false
+      myth_section:
+        weight: 24
+        enabled: false
+      position_item:
+        weight: 25
+        enabled: false
+      positions_section:
+        weight: 26
+        enabled: false
+      resource_item:
+        weight: 27
+        enabled: true
+      resource_list:
+        weight: 28
+        enabled: false
+      stakes_section:
+        weight: 29
+        enabled: false
+      stat_item:
+        weight: 30
+        enabled: false
+      step_item:
+        weight: 31
+        enabled: false
+      voices_section:
+        weight: 32
+        enabled: false
+field_type: entity_reference

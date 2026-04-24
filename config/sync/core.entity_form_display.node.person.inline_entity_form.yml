@@ -1,10 +1,11 @@
 uuid: f06e3722-06eb-45cc-8b0c-7dcc907bc84f
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_form_mode.node.inline_entity_form
     - field.field.node.person.body
+    - field.field.node.person.field_articles
     - field.field.node.person.field_editorial
     - field.field.node.person.field_hide_title
     - field.field.node.person.field_metatag
@@ -265,6 +266,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_articles: true
   field_editorial: true
   field_hide_title: true
   field_metatag: true

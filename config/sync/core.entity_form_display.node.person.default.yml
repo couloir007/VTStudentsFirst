@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.person.body
+    - field.field.node.person.field_articles
     - field.field.node.person.field_editorial
     - field.field.node.person.field_hide_title
     - field.field.node.person.field_metatag
@@ -29,6 +30,7 @@ dependencies:
   module:
     - address
     - allowed_formats
+    - entity_browser_entity_form
     - field_group
     - inline_entity_form
     - metatag
@@ -38,6 +40,7 @@ third_party_settings:
   field_group:
     group_general:
       children:
+        - schema_image
         - field_weight
         - title
         - schema_given_name
@@ -55,87 +58,6 @@ third_party_settings:
       format_settings:
         open: true
         description: ''
-    group_contact:
-      children:
-        - schema_email
-        - schema_telephone
-      label: Contact
-      region: hidden
-      parent_name: ''
-      weight: 23
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        label_as_html: false
-        formatter: closed
-        description: ''
-        required_fields: true
-        open: true
-    group_organization:
-      children:
-        - schema_works_for
-      label: Organization
-      region: hidden
-      parent_name: ''
-      weight: 22
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        label_as_html: false
-        formatter: closed
-        description: ''
-        required_fields: true
-        open: true
-    group_links:
-      children:
-        - schema_related_link
-        - schema_same_as
-        - schema_significant_link
-      label: Links
-      region: hidden
-      parent_name: ''
-      weight: 21
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        label_as_html: false
-        formatter: closed
-        description: ''
-        required_fields: true
-        open: true
-    group_references:
-      children:
-        - schema_subject_of
-      label: References
-      region: hidden
-      parent_name: ''
-      weight: 24
-      format_type: tab
-      format_settings:
-        classes: ''
-        show_empty_fields: false
-        id: ''
-        label_as_html: false
-        formatter: closed
-        description: ''
-        required_fields: true
-        open: true
-    group_editorial:
-      children:
-        - field_editorial
-      label: 'Editorial information'
-      region: content
-      parent_name: ''
-      weight: 5
-      format_type: details_sidebar
-      format_settings:
-        description: 'Track the editorial decisions and status of a document.'
 id: node.person.default
 targetEntityType: node
 bundle: person
@@ -143,7 +65,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 9
+    weight: 12
     region: content
     settings:
       rows: 9
@@ -162,18 +84,23 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_editorial:
-    type: inline_entity_form_simple
-    weight: 221
+  field_articles:
+    type: inline_entity_form_complex
+    weight: 2
     region: content
     settings:
       form_mode: default
       override_labels: false
       label_singular: ''
       label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
       collapsible: false
       collapsed: false
       revision: false
+      removed_reference: optional
     third_party_settings: {  }
   field_hide_title:
     type: boolean_checkbox
@@ -184,7 +111,7 @@ content:
     third_party_settings: {  }
   field_metatag:
     type: metatag_firehose
-    weight: 9
+    weight: 7
     region: content
     settings:
       sidebar: true
@@ -192,7 +119,7 @@ content:
     third_party_settings: {  }
   field_quote:
     type: text_textarea
-    weight: 10
+    weight: 13
     region: content
     settings:
       rows: 5
@@ -200,7 +127,7 @@ content:
     third_party_settings: {  }
   field_school_connection:
     type: string_textfield
-    weight: 8
+    weight: 11
     region: content
     settings:
       size: 60
@@ -208,27 +135,27 @@ content:
     third_party_settings: {  }
   field_weight:
     type: number
-    weight: 2
+    weight: 6
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   path:
     type: path
-    weight: 7
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   schema_address:
     type: address_default
-    weight: 11
+    weight: 14
     region: content
     settings:
       wrapper_type: fieldset
     third_party_settings: {  }
   schema_family_name:
     type: string_textfield
-    weight: 6
+    weight: 9
     region: content
     settings:
       size: 60
@@ -236,23 +163,53 @@ content:
     third_party_settings: {  }
   schema_given_name:
     type: string_textfield
-    weight: 5
+    weight: 8
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   schema_image:
-    type: entity_reference_autocomplete
-    weight: 3
+    type: inline_entity_form_complex
+    weight: 5
     region: content
     settings:
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: true
       match_operator: CONTAINS
-      match_limit: 10
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+      removed_reference: optional
+    third_party_settings:
+      entity_browser_entity_form:
+        entity_browser_id: _none
+  schema_job_title:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  schema_job_title:
+  simple_sitemap:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
     type: string_textfield
     weight: 7
     region: content
@@ -260,49 +217,21 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  schema_member_of:
-    type: entity_reference_autocomplete
-    weight: 2
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  simple_sitemap:
-    weight: 8
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  status:
-    type: boolean_checkbox
-    weight: 4
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  title:
-    type: string_textfield
-    weight: 4
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   url_redirects:
-    weight: 6
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
+  field_editorial: true
   langcode: true
   promote: true
   publish_on: true
   schema_additional_name: true
   schema_email: true
   schema_knows_language: true
+  schema_member_of: true
   schema_related_link: true
   schema_same_as: true
   schema_significant_link: true

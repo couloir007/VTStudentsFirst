@@ -2,18 +2,8 @@
 /**
  * @file node--person.html.twig
  *
- * Drupal template for Person nodes (full page view mode).
+ * Drupal template for Person nodes — full page view mode.
  * Maps Drupal fields → @components/node-person/node-person.twig
- *
- * Fields:
- *   schema_name            → name (from label)
- *   schema_job_title       → job_title
- *   schema_address         → town (locality)
- *   field_school_connection → school
- *   field_quote            → quote
- *   schema_image           → image
- *   body                   → bio
- *   field_articles         → articles (entity ref to Article nodes)
  */
 #}
 
@@ -25,28 +15,33 @@
 
 {% set attributes = attributes.addClass(classes) %}
 
+{% set schools = [] %}
+{% for s in node.field_school_connection %}
+  {% set schools = schools|merge([s.value]) %}
+{% endfor %}
+
 {% set articles = [] %}
 {% for item in node.field_articles %}
-  {% set article = item.entity %}
-  {% if article %}
+  {% set para = item.entity %}
+  {% if para %}
     {% set articles = articles|merge([{
-      title:    article.label,
-      url:      path('entity.node.canonical', {'node': article.id()}),
-      date:     article.schema_date_published.value|date('F j, Y'),
-      date_iso: article.schema_date_published.value|date('Y-m-d'),
-      topic:    article.field_topic.value,
+      title:    para.schema_name.value,
+      url:      para.schema_url.uri,
+      date:     para.schema_date_published.value|date('F j, Y'),
+      date_iso: para.schema_date_published.value|date('Y-m-d'),
+      topic:    para.schema_type.value,
     }]) %}
   {% endif %}
 {% endfor %}
 
 {% include '@components/node-person/node-person.twig' with {
-  attributes:  attributes,
-  name:        label,
-  job_title:   node.schema_job_title.value,
-  town:        node.schema_address.locality,
-  school:      node.field_school_connection.value,
-  quote:       node.field_quote.value,
-  image:       content.schema_image,
-  bio:         node.body.processed,
-  articles:    articles,
+  attributes: attributes,
+  name:       label,
+  job_title:  node.schema_job_title.value,
+  town:       node.schema_address.locality,
+  school:     schools,
+  quote:      node.field_quote.value,
+  image:      content.schema_image,
+  bio:        node.body.processed,
+  articles:   articles,
 } only %}

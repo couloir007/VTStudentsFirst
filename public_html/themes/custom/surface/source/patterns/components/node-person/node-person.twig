@@ -2,19 +2,16 @@
 /**
  * @file node-person.twig
  *
- * Component:  @components/node-person/node-person.twig
- * Storybook:  Components/Person Profile
- *
  * Variables:
- *   name           (string) required  — full name
- *   job_title      (string)           — role / occupation
- *   town           (string)           — town name, VT
- *   school         (string)           — school connection
- *   quote          (string)           — pull quote
- *   image          (string|rendered)  — image src or rendered img
- *   bio            (string)           — long-form bio (trusted HTML, use |raw)
- *   articles       (array)            — related articles: { title, url, date, topic }
- *   attributes     (object)
+ *   name       (string) required
+ *   job_title  (string)
+ *   town       (string)
+ *   school     (string|array) — single school or array of schools
+ *   quote      (string)
+ *   image      (string|rendered)
+ *   bio        (string) trusted HTML
+ *   articles   (array) { title, url, date, date_iso, topic }
+ *   attributes (object)
  */
 #}
 {{ attach_library('surface/node-person') }}
@@ -48,7 +45,13 @@
             <span class="node-person__tag">{{ town }}, VT</span>
           {% endif %}
           {% if school %}
-            <span class="node-person__tag node-person__tag--school">{{ school }}</span>
+            {% if school is iterable %}
+              {% for s in school %}
+                <span class="node-person__tag node-person__tag--school">{{ s }}</span>
+              {% endfor %}
+            {% else %}
+              <span class="node-person__tag node-person__tag--school">{{ school }}</span>
+            {% endif %}
           {% endif %}
         </div>
       </div>

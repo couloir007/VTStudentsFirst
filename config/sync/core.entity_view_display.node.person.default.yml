@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.person.body
+    - field.field.node.person.field_articles
     - field.field.node.person.field_editorial
     - field.field.node.person.field_hide_title
     - field.field.node.person.field_metatag
@@ -93,6 +94,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 4
+    region: content
+  field_articles:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 223
     region: content
   field_hide_title:
     type: boolean
