@@ -87,10 +87,10 @@
 }
 
 .mobile-button__text {
+  color: var(--white);
   font-family: var(--font-mono);
   font-size: 0.8rem;
   letter-spacing: 0.08em;
-  color: var(--white);
   text-transform: uppercase;
 }
 

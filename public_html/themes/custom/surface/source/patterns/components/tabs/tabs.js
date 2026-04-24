@@ -11,7 +11,11 @@
         const tabs = el.querySelector('.tabs');
         const activeTab = tabs.querySelector('.is-active');
 
-        if (this.isTabsMobileLayout() && activeTab && !activeTab.matches('.tabs__tab:first-child')) {
+        if (
+          this.isTabsMobileLayout() &&
+          activeTab &&
+          !activeTab.matches('.tabs__tab:first-child')
+        ) {
           const firstTab = tabs.querySelector('.tabs__tab:first-child');
           tabs.insertBefore(activeTab, firstTab);
         }
@@ -30,7 +34,7 @@
         const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
 
         tablist.addEventListener('keydown', (e) => {
-          let index = tabs.indexOf(document.activeElement);
+          const index = tabs.indexOf(document.activeElement);
 
           if (index < 0) return;
 

@@ -53,6 +53,7 @@ module:
   environment_indicator_toolbar: 0
   environment_indicator_ui: 0
   epp: 0
+  estimated_read_time: 0
   existing_values_autocomplete_widget: 0
   field: 0
   field_group: 0

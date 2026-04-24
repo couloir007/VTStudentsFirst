@@ -78,6 +78,7 @@ return array(
     'PHPStan\\' => array($vendorDir . '/phpstan/phpstan-deprecation-rules/src'),
     'Nyholm\\Psr7\\' => array($vendorDir . '/nyholm/psr7/src'),
     'Nette\\' => array($vendorDir . '/nette/schema/src', $vendorDir . '/nette/utils/src'),
+    'Mtownsend\\ReadTime\\' => array($vendorDir . '/mtownsend/read-time/src'),
     'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),
     'MabeEnum\\' => array($vendorDir . '/marc-mabe/php-enum/src'),
     'League\\Csv\\' => array($vendorDir . '/league/csv/src'),

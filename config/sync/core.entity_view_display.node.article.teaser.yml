@@ -7,9 +7,11 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.field_editorial
     - field.field.node.article.field_metatag
+    - field.field.node.article.field_read_time
     - field.field.node.article.schema_about
     - field.field.node.article.schema_article_type
     - field.field.node.article.schema_citation
+    - field.field.node.article.schema_date_published
     - field.field.node.article.schema_description
     - field.field.node.article.schema_image
     - field.field.node.article.schema_related_link
@@ -35,11 +37,13 @@ hidden:
   body: true
   field_editorial: true
   field_metatag: true
+  field_read_time: true
   langcode: true
   links: true
   schema_about: true
   schema_article_type: true
   schema_citation: true
+  schema_date_published: true
   schema_image: true
   schema_related_link: true
   schema_significant_link: true

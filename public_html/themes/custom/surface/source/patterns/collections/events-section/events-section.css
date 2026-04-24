@@ -1,7 +1,7 @@
 .events-section {
+  border-top: 1px solid var(--section-border, rgba(245, 240, 232, 10%));
   margin-top: 3.5rem;
   padding-top: 2.5rem;
-  border-top: 1px solid var(--section-border, rgba(245, 240, 232, 10%));
 }
 
 .events-section__label {
@@ -33,7 +33,7 @@
   padding-bottom: 1.5rem;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .events-section__grid {
     grid-template-columns: 1fr;
   }

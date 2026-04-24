@@ -258,6 +258,11 @@ article-item:
     component:
       source/patterns/components/article-item/article-item.css: {}
 
+node-article-body:
+  css:
+    component:
+      source/patterns/components/node-article-body/node-article-body.css: {}
+
 search-block-form:
   css:
     component:

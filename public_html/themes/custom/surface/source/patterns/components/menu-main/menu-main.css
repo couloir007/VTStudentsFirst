@@ -47,8 +47,8 @@
 }
 
 .menu-main .menu-toggle svg {
-  fill: white;
   color: white;
+  fill: white;
   height: 0.85em;
   transition: transform 0.2s;
   width: 0.85em;
@@ -76,14 +76,14 @@
 .menu-main--level-2 {
   background: var(--forest);
   border-top: 2px solid var(--maple);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 20%);
   display: flex;
   flex-direction: column;
   gap: 0;
   list-style: none;
   margin: 0;
   min-width: 180px;
-  opacity: 0;
+  opacity: 0%;
   padding: 0.5rem 0;
   pointer-events: none;
   transform: translateY(-4px);
@@ -91,7 +91,7 @@
 }
 
 .menu-main--level-2.is-active-menu-parent {
-  opacity: 1;
+  opacity: 100%;
   pointer-events: auto;
   transform: translateY(0);
 }
@@ -112,7 +112,7 @@
 }
 
 .menu-main--level-2 .menu__link:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 8%);
   color: white;
 }
 
@@ -175,7 +175,7 @@
     flex-direction: column;
     max-height: 0;
     min-width: 0;
-    opacity: 1;
+    opacity: 100%;
     overflow: hidden;
     padding: 0;
     pointer-events: none;

@@ -36,6 +36,7 @@ return array(
     'e39a8b23c42d4e1452234d762b03835a' => $vendorDir . '/ramsey/uuid/src/functions.php',
     'fbeead2280a8f3911a1fe6dd034f7d5e' => $vendorDir . '/mkalkbrenner/php-htmldiff-advanced/src/HtmlDiffAdvancedInterface.php',
     '96f8d8288528d52059397cad6ec61f17' => $vendorDir . '/mkalkbrenner/php-htmldiff-advanced/src/HtmlDiffAdvanced.php',
+    'ec9aedd0b36e308886408c6bd15d18f2' => $vendorDir . '/mtownsend/read-time/src/helpers.php',
     '3074abeef0bacf5811f59e9dee6311d1' => $vendorDir . '/spatie/ray/src/helpers.php',
     'a4a119a56e50fbb293281d9a48007e0e' => $vendorDir . '/symfony/polyfill-php80/bootstrap.php',
 );

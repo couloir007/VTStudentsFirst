@@ -30,14 +30,14 @@
 }
 
 .issue-grid {
-  grid-template-columns: 1fr;
   gap: 2rem;
+  grid-template-columns: 1fr;
 
-  @media (min-width: 767px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+  @media (width >= 767px) {
     align-items: start;
+    display: grid;
+    gap: 4rem;
+    grid-template-columns: 1fr 1fr;
     margin-top: 3rem;
 
   }
@@ -71,10 +71,10 @@
 
 .issue-section__lead p {
   border-left: 3px solid var(--gold);
-  margin-bottom: 2rem;
-  padding-left: 1.5rem;
+  color: var(--forest);
   font-size: 1.2rem;
   font-weight: 400;
-  color: var(--forest);
   line-height: 1.7;
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
 }

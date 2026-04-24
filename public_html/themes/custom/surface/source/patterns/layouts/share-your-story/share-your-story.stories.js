@@ -88,11 +88,12 @@ export default {
 };
 
 export const Default = {
-  render: () => shareYourStoryTemplate({
-    section_label: 'Your Voice Matters',
-    title: 'Share Your Story',
-    lead: 'Legislators respond to real people with real stories. Tell us what independent schools mean to your family and community — your words may be the ones that make a difference.',
-  }),
+  render: () =>
+    shareYourStoryTemplate({
+      section_label: 'Your Voice Matters',
+      title: 'Share Your Story',
+      lead: 'Legislators respond to real people with real stories. Tell us what independent schools mean to your family and community — your words may be the ones that make a difference.',
+    }),
 };
 
 export const Confirmation = {

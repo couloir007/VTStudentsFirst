@@ -24,11 +24,30 @@
   padding: 0.2em 0.6em;
   text-transform: uppercase;
 
-  &.resource-item__type--opinion    { background-color: var(--parchment); color: var(--ink); }
-  &.resource-item__type--news        { background-color: var(--mist);     color: var(--ink); }
-  &.resource-item__type--legislation { background-color: var(--forest);   color: var(--light); }
-  &.resource-item__type--government  { background-color: var(--ink);      color: var(--light); }
-  &.resource-item__type--research    { background-color: var(--maple);    color: var(--light); }
+  &.resource-item__type--opinion {
+    background-color: var(--parchment);
+    color: var(--ink);
+  }
+
+  &.resource-item__type--news {
+    background-color: var(--mist);
+    color: var(--ink);
+  }
+
+  &.resource-item__type--legislation {
+    background-color: var(--forest);
+    color: var(--light);
+  }
+
+  &.resource-item__type--government {
+    background-color: var(--ink);
+    color: var(--light);
+  }
+
+  &.resource-item__type--research {
+    background-color: var(--maple);
+    color: var(--light);
+  }
 }
 
 .resource-item__publisher {

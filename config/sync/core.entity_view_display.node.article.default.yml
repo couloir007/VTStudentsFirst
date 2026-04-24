@@ -6,9 +6,11 @@ dependencies:
     - field.field.node.article.body
     - field.field.node.article.field_editorial
     - field.field.node.article.field_metatag
+    - field.field.node.article.field_read_time
     - field.field.node.article.schema_about
     - field.field.node.article.schema_article_type
     - field.field.node.article.schema_citation
+    - field.field.node.article.schema_date_published
     - field.field.node.article.schema_description
     - field.field.node.article.schema_image
     - field.field.node.article.schema_related_link
@@ -17,7 +19,10 @@ dependencies:
     - field.field.node.article.schema_topic
     - node.type.article
   module:
+    - datetime
+    - estimated_read_time
     - field_group
+    - media
     - text
     - user
 third_party_settings:
@@ -38,7 +43,7 @@ third_party_settings:
       label: Links
       parent_name: ''
       region: hidden
-      weight: 2
+      weight: 10
       format_type: fieldset
       format_settings: {  }
     group_references:
@@ -48,7 +53,7 @@ third_party_settings:
       label: References
       parent_name: ''
       region: hidden
-      weight: 4
+      weight: 11
       format_type: fieldset
       format_settings: {  }
 id: node.article.default
@@ -63,12 +68,40 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
+  field_read_time:
+    type: estimated_read_time_text
+    label: hidden
+    settings:
+      tokenized_string: '@minutes min read'
+    third_party_settings: {  }
+    weight: 2
+    region: content
   schema_citation:
     type: basic_string
     label: hidden
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  schema_date_published:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: published_date
+    third_party_settings: {  }
+    weight: 221
+    region: content
+  schema_image:
+    type: media_thumbnail
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 3
     region: content
 hidden:
   field_editorial: true
@@ -78,7 +111,6 @@ hidden:
   schema_about: true
   schema_article_type: true
   schema_description: true
-  schema_image: true
   schema_related_link: true
   schema_significant_link: true
   schema_subject_of: true

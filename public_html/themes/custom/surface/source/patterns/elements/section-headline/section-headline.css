@@ -1,15 +1,15 @@
 .section-headline {
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
   color: var(--forest);
-  margin-top: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   margin-bottom: 1.5rem;
+  margin-top: 0;
 }
 
 .section-headline em {
-  font-style: italic;
   color: var(--maple);
+  font-style: italic;
 }
 
 .section-headline--light {

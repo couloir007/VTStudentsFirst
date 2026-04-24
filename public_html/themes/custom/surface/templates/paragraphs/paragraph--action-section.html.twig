@@ -32,8 +32,8 @@
   {% set entity = item.entity %}
   {% do ray(entity.schema_event_schedule.value) %}
   {% set event_items = event_items|merge([{
-    'month':  entity.schema_event_schedule.value|date('M'),
-    'day':    entity.schema_event_schedule.value|date('j'),
+    'month':  entity.schema_event_schedule.value ? entity.schema_event_schedule.value|date('M') : '',
+    'day':    entity.schema_event_schedule.value ? entity.schema_event_schedule.value|date('j') : '',
     'title':  entity.label,
     'body':   entity.body.value,
     'meta':   entity.field_meeting_meta.value,

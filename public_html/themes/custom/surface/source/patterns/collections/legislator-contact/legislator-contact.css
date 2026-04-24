@@ -44,10 +44,10 @@
 }
 
 .lc-field__hint {
-  font-size: var(--size-3);
   color: var(--color-text-muted, #666);
-  margin-block: 0;
+  font-size: var(--size-3);
   font-style: italic;
+  margin-block: 0;
 }
 
 .lc-field__label {
@@ -121,6 +121,7 @@
 /* ── Buttons ──────────────────────────────────────────────────────────────── */
 
 .lc-btn {
+  border: none;
   border-radius: 3px;
   cursor: pointer;
   display: inline-block;
@@ -134,7 +135,6 @@
   text-transform: uppercase;
   transition: background 0.2s, border-color 0.2s, opacity 0.2s;
   white-space: nowrap;
-  border: none;
 }
 
 .lc-btn--primary {
@@ -148,7 +148,7 @@
 
 .lc-btn--primary:disabled {
   cursor: wait;
-  opacity: 0.55;
+  opacity: 55%;
 }
 
 .lc-btn--ghost {
@@ -171,7 +171,7 @@
 .lc-confirm .lc-btn--ghost:hover {
   background: rgba(245, 240, 232, 12%);
   border-color: rgba(245, 240, 232, 80%);
-  color: #ffffff;
+  color: #fff;
 }
 
 .lc-btn--full {
@@ -379,14 +379,14 @@
 .lc-message-layout {
   display: grid;
   gap: var(--size-6);
-  grid-template-columns: 1fr 1fr;
   grid-auto-rows: 1fr;
-  margin-block-start: var(--size-4);
+  grid-template-columns: 1fr 1fr;
   margin-block-end: var(--size-6);
+  margin-block-start: var(--size-4);
 
   @media (width <= 768px) {
-    grid-template-columns: 1fr;
     grid-auto-rows: auto;
+    grid-template-columns: 1fr;
   }
 }
 

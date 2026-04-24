@@ -5,10 +5,10 @@
 
 .person-card {
   background: var(--white);
-  border: 1px solid color-mix(in srgb, var(--forest) 40%, transparent);
+  border: 1px solid color-mix(in sRGB, var(--forest) 40%, transparent);
   border-radius: var(--radius-md, 8px);
-  padding: var(--size-5);
   margin-block-end: var(--size-3);
+  padding: var(--size-5);
 }
 
 .colalition-members .view__row:last-child .person-card {
@@ -17,17 +17,17 @@
 
 /* Horizontal layout: avatar left, content right */
 .person-card__inner {
+  align-items: flex-start;
   display: flex;
   gap: var(--size-4);
-  align-items: flex-start;
 }
 
 /* Avatar */
 .person-card__avatar {
   align-items: center;
   background: var(--gray-200);
-  border-radius: var(--radius-sm, 6px);
   block-size: 120px;
+  border-radius: var(--radius-sm, 6px);
   color: var(--gray-600);
   display: flex;
   flex-shrink: 0;
@@ -52,11 +52,11 @@
 }
 
 .person-card__top {
-  display: flex;
-  justify-content: space-between;
   align-items: flex-start;
+  display: flex;
   flex-wrap: wrap;
   gap: var(--size-2);
+  justify-content: space-between;
   margin-block-end: var(--size-3);
 }
 

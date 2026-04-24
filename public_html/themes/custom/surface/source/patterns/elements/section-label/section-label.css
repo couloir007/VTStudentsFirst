@@ -1,6 +1,6 @@
 .section-label {
   align-items: center;
-  color: var(--section-label, var(--meadow, #336644));
+  color: var(--section-label, var(--meadow, #364));
   display: flex;
   font-family: var(--font-mono, 'DM Mono', monospace);
   font-size: 0.8rem;
@@ -15,7 +15,7 @@
 }
 
 .section-label::before {
-  background: var(--section-label, var(--meadow, #336644));
+  background: var(--section-label, var(--meadow, #364));
   content: '';
   display: inline-block;
   flex-shrink: 0;
@@ -26,12 +26,12 @@
 /* Dark / forest sections — light label */
 .section-label--dark,
 .section-label--forest {
-  color: #ffffff;
+  color: #fff;
 }
 
 .section-label--dark::before,
 .section-label--forest::before {
-  background: #ffffff;
+  background: #fff;
 }
 
 /* Warm / parchment sections — dark brown label */
@@ -45,11 +45,11 @@
 
 /* Light sections — default meadow works, but ensure it passes */
 .section-label--light {
-  color: var(--meadow, #336644);
+  color: var(--meadow, #364);
 }
 
 .section-label--light::before {
-  background: var(--meadow, #336644);
+  background: var(--meadow, #364);
 }
 
 /* Sage modifier */

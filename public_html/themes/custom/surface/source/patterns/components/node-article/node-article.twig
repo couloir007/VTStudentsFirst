@@ -1,42 +1,19 @@
-{{ attach_library('surface/node') }}
+{{ attach_library('surface/node-article') }}
 
 {% set classes = [
   'node',
   attributes ? attributes.class
 ]|join(' ')|trim %}
 
-{% set title_classes = [
-  'node__title',
-  title_attributes ? title_attributes.class
-]|join(' ')|trim %}
-
-{% set content_classes = [
-  'node__content',
-  content_attributes ? content_attributes.class
-]|join(' ')|trim %}
-
 <article class="{{ classes }}" {{ attributes ? attributes|without('class', 'id') }}>
   {{ title_prefix }}
-  {% if label and not page %}
-    <h2 class="{{ title_classes }}" {{ title_attributes ? title_attributes|without('class') }}>
-      <a href="{{ url }}" rel="bookmark">{{ label }}</a>
-    </h2>
-  {% endif %}
   {{ title_suffix }}
 
-  <div class="{{ content_classes }}" {{ content_attributes ? content_attributes|without('class') }}>
-    <div class="node__inner">
-      {% set lead = lead|default(content.schema_citation|field_value) %}
-      {% if lead %}
-        <div class="prose">
-            <div class="issue-section__lead">
-              <p>{{ lead|raw }}</p>
-            </div>
-        </div>
-      {% endif %}
+  {% include '@components/node-article-body/node-article-body.twig' with {
+    date:       content.schema_date_published|field_value,
+    read_time:  content.field_read_time|field_value,
+    lead:       content.schema_citation|field_value,
+    body:       content.body|field_value,
+  } only %}
 
-      {{ content.body }}
-      {{ content|without('body', 'schema_citation') }}
-    </div>
-  </div>
 </article>

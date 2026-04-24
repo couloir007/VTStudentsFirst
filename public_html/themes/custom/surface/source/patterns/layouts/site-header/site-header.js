@@ -14,11 +14,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Close dropdown subnavs on scroll.
-  window.addEventListener('scroll', () => {
-    if (typeof Drupal !== 'undefined' && Drupal.surface && Drupal.surface.areAnySubNavsOpen()) {
-      Drupal.surface.closeAllSubNav();
-    }
-  }, { passive: true });
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (typeof Drupal !== 'undefined' && Drupal.surface && Drupal.surface.areAnySubNavsOpen()) {
+        Drupal.surface.closeAllSubNav();
+      }
+    },
+    { passive: true }
+  );
 
   // Scroll-to-floor: header slides from full toolbar offset down to
   // #toolbar-administration height (the persistent bar), never below it.

@@ -96,13 +96,17 @@
   padding-block-start: 0;
 }
 
-/*.node--type-about-page .node__inner {*/
-/*  padding-inline: 0;*/
+/* .node--type-about-page .node__inner { */
 
-/*  .prose__wrapper {*/
-/*    margin-inline: 0;*/
-/*  }*/
-/*}*/
+/*  padding-inline: 0; */
+
+/*  .prose__wrapper { */
+
+/*    margin-inline: 0; */
+
+/*  } */
+
+/* } */
 
 .node--view-mode-full {
   background: var(--grey-200);
@@ -113,10 +117,10 @@
 
   .date-badge--event {
     background: var(--section-card-bg, rgba(255, 255, 255, 45%));
-    border: 1px solid var(--section-border, rgba(0, 0, 0, 10%));
     block-size: var(--size-20);
-    inline-size: var(--size-20);
+    border: 1px solid var(--section-border, rgba(0, 0, 0, 10%));
     border-radius: 3px;
+    inline-size: var(--size-20);
 
     .date-badge__month {
       color: var(--pine);

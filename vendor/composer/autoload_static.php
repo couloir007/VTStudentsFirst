@@ -37,6 +37,7 @@ class ComposerStaticInitee6b7cbaa657713c6f0fa2a4d6b1eb74
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         'fbeead2280a8f3911a1fe6dd034f7d5e' => __DIR__ . '/..' . '/mkalkbrenner/php-htmldiff-advanced/src/HtmlDiffAdvancedInterface.php',
         '96f8d8288528d52059397cad6ec61f17' => __DIR__ . '/..' . '/mkalkbrenner/php-htmldiff-advanced/src/HtmlDiffAdvanced.php',
+        'ec9aedd0b36e308886408c6bd15d18f2' => __DIR__ . '/..' . '/mtownsend/read-time/src/helpers.php',
         '3074abeef0bacf5811f59e9dee6311d1' => __DIR__ . '/..' . '/spatie/ray/src/helpers.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
     );
@@ -152,6 +153,7 @@ class ComposerStaticInitee6b7cbaa657713c6f0fa2a4d6b1eb74
         ),
         'M' =>
         array (
+            'Mtownsend\\ReadTime\\' => 19,
             'Masterminds\\' => 12,
             'MabeEnum\\' => 9,
         ),
@@ -531,6 +533,10 @@ class ComposerStaticInitee6b7cbaa657713c6f0fa2a4d6b1eb74
         array (
             0 => __DIR__ . '/..' . '/nette/schema/src',
             1 => __DIR__ . '/..' . '/nette/utils/src',
+        ),
+        'Mtownsend\\ReadTime\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/mtownsend/read-time/src',
         ),
         'Masterminds\\' =>
         array (

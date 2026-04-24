@@ -59,7 +59,7 @@
 .share-story__form select,
 .share-story__form textarea {
   background: white;
-  border: 1px solid rgba(74, 90, 78, 0.3);
+  border: 1px solid rgba(74, 90, 78, 30%);
   border-radius: 3px;
   color: var(--ink, #1a1a1a);
   font-size: 1rem;
@@ -72,8 +72,8 @@
 .share-story__form input[type="email"]:focus,
 .share-story__form select:focus,
 .share-story__form textarea:focus {
-  border-color: var(--meadow, #336644);
-  outline: 2px solid rgba(51, 102, 68, 0.2);
+  border-color: var(--meadow, #364);
+  outline: 2px solid rgba(51, 102, 68, 20%);
   outline-offset: 2px;
 }
 
@@ -126,7 +126,7 @@
 /* Confirmation message */
 .webform-confirmation {
   background: white;
-  border: 1px solid rgba(74, 90, 78, 0.2);
+  border: 1px solid rgba(74, 90, 78, 20%);
   border-radius: 6px;
   padding: var(--size-8);
   text-align: center;

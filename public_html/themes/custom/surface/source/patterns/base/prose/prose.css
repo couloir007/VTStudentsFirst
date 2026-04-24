@@ -172,6 +172,11 @@
     padding-inline-start: var(--size-2);
   }
 
+  ul {
+    color: var(--section-body, var(--forest));
+  }
+
+
   :where(ul > li):not(:where([class~='not-prose'] *)) {
     padding-inline-start: var(--size-2);
   }

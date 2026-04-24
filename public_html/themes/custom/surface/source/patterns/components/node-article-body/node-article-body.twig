@@ -1,0 +1,38 @@
+{{ attach_library('surface/node-article-body') }}
+
+<div class="node-article-body{{ modifier ? ' ' ~ modifier }}{{- attributes ? ' ' ~ attributes.class -}}"{{- attributes ? ' ' ~ attributes|without('class') -}}>
+  <header class="node-article-body__header">
+    {% if topic %}
+      <span class="node-article-body__topic">{{ topic }}</span>
+    {% endif %}
+    {% if author %}
+      <address class="node-article-body__byline">
+        By
+        {% if author_url %}
+          <a rel="author" href="{{ author_url }}">{{ author }}</a>
+        {% else %}
+          <span>{{ author }}</span>
+        {% endif %}
+      </address>
+    {% endif %}
+    {% if date or read_time %}
+      <div class="node-article-body__meta">
+        {% if date %}
+          <time class="node-article-body__date" datetime="{{ date_iso }}">{{ date }}</time>
+        {% endif %}
+        {% if read_time %}
+          <span class="node-article-body__read-time">{{ read_time }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="node-article-body__content">
+    {% if lead %}
+      <p class="node-article-body__lead">{{ lead|raw }}</p>
+    {% endif %}
+    {% if body %}
+      <div class="node-article-body__body prose">{{ body|raw }}</div>
+    {% endif %}
+  </div>
+</div>

@@ -1,7 +1,7 @@
 .section {
+  padding-block: 6rem;
   position: relative;
   width: 100%;
-  padding-block: 6rem;
 }
 
 .section__inner {
@@ -18,6 +18,3 @@
   }
 }
 
-.section-theme--light {}
-
-.section-theme--bold {}

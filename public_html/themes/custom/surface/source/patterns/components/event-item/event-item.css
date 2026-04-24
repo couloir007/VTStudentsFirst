@@ -2,10 +2,10 @@
 
 .event-item {
   align-items: flex-start;
+  border-bottom: 1px solid var(--section-border, rgba(245, 240, 232, 15%));
   display: flex;
   gap: 1.5rem;
   padding: 1.5rem 0;
-  border-bottom: 1px solid var(--section-border, rgba(245, 240, 232, 15%));
 }
 
 .event-item:last-child {
@@ -52,8 +52,8 @@
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   margin-bottom: 0;
+  text-transform: uppercase;
 
   a {
     font-weight: 700;

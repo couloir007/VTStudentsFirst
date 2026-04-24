@@ -10,8 +10,8 @@
 
 .step-item__content {
   display: flex;
-  flex-direction: column;
   flex: 1;
+  flex-direction: column;
 }
 
 .step-item__num {

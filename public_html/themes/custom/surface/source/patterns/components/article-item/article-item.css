@@ -13,14 +13,14 @@
 
   &:hover {
     border-color: var(--sage);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 8%);
   }
 }
 
 .article-item__inner {
   display: flex;
-  flex-direction: column;
   flex: 1;
+  flex-direction: column;
   gap: 0.5rem;
   padding: 1.5rem;
 }

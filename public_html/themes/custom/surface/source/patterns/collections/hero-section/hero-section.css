@@ -141,8 +141,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  padding-block: 2rem;
   margin-block-end: 2rem;
+  padding-block: 2rem;
   z-index: 3;
 }
 

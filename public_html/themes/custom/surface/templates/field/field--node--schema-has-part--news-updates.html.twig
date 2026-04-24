@@ -23,8 +23,8 @@
   {% set articles = articles|merge([{
     title:       article_node.label,
     description: article_node.schema_description.value,
-    date:        article_node.created.value|date('F j, Y'),
-    date_iso:    article_node.created.value|date('Y-m-d'),
+    date:        article_node.created.value ? article_node.created.value|date('F j, Y') : '',
+    date_iso:    article_node.created.value ? article_node.created.value|date('Y-m-d') : '',
     topic:       article_node.schema_topic.0.entity.label,
     url:         path('entity.node.canonical', {'node': article_node.id()})
   }]) %}
