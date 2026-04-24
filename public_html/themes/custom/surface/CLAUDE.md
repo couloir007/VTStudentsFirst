@@ -11,6 +11,8 @@ See the `docs/` directory for deeper documentation:
 - `docs/STORYBOOK.md` — Storybook component development
 - `docs/COMPONENTS.md` — Component reference and conventions
 - `../../DRUPAL.md` — Content types, paragraph types, modules, config sync (repo root)
+- `../../modules/custom/ourkids_outreach/CLAUDE.md` — Legislator outreach module
+- `../../modules/custom/ourkids_schemadotorg/CLAUDE.md` — Schema.org customization module
 
 ---
 

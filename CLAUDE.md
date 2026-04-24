@@ -4,14 +4,17 @@
 
 **OurKidsOurSchoolsVT** (ourkidsourschoolsvt.org) is a Drupal 10 advocacy campaign site for a Vermont coalition preserving school choice and tuitioning access in rural towns that depend on independent schools — St. Johnsbury Academy, Lyndon Institute, Burr and Burton Academy, Thetford Academy, and Riverside School.
 
-**Stack:** Drupal 10 · Composer · Drush · Lando (local) · Pantheon (hosting)  
+**Stack:** Drupal 10 · Composer · Drush · Lando (local) · Pantheon (hosting)
 **Frontend:** Custom `surface` theme · Vite · Storybook · PostCSS · Biome · Stylelint
 
 **Deeper documentation:**
-- `public_html/themes/custom/surface/TEMPLATES.md` — Drupal template system
-- `public_html/themes/custom/surface/STORYBOOK.md` — Storybook component development
-- `public_html/themes/custom/surface/COMPONENTS.md` — Component reference and conventions
+- `public_html/themes/custom/surface/CLAUDE.md` — theme-level detail
+- `public_html/themes/custom/surface/docs/TEMPLATES.md` — Drupal template system
+- `public_html/themes/custom/surface/docs/STORYBOOK.md` — Storybook component development
+- `public_html/themes/custom/surface/docs/COMPONENTS.md` — Component reference and conventions
 - `DRUPAL.md` — Content types, paragraph types, modules, config sync
+- `public_html/modules/custom/ourkids_outreach/CLAUDE.md` — Legislator outreach module
+- `public_html/modules/custom/ourkids_schemadotorg/CLAUDE.md` — Schema.org customization module
 
 ---
 
@@ -37,10 +40,16 @@
       surface.info.yml                   ← theme info + Twig namespaces
       surface.libraries.yml              ← CSS/JS library definitions
       surface.theme                      ← main PHP preprocess hooks
-      TEMPLATES.md
-      STORYBOOK.md
-      COMPONENTS.md
-    modules/custom/ourkids_outreach/     ← custom legislator outreach module
+      CLAUDE.md                          ← theme-level docs
+      docs/
+        TEMPLATES.md
+        STORYBOOK.md
+        COMPONENTS.md
+    modules/custom/
+      ourkids_outreach/                  ← legislator outreach admin tool
+        CLAUDE.md
+      ourkids_schemadotorg/              ← Schema.org JSON-LD customizations
+        CLAUDE.md
     templates/                           ← Drupal Twig templates
       content/                           ← node--*.html.twig
       paragraphs/                        ← paragraph--*.html.twig
@@ -57,6 +66,7 @@ drush status                  # Check Drupal status
 drush cr                      # Clear all caches — run after any config/template/PHP change
 drush cim                     # Import config from sync/
 drush cex                     # Export config to sync/
+drush en module_name          # Enable a module
 ```
 
 ---
@@ -91,6 +101,16 @@ npm run stylelint:fix         # Fix CSS (Stylelint)
 
 ---
 
+## Custom Modules
+
+### ourkids_outreach
+Admin tool at `/admin/ourkids/legislator-outreach` for sending tracked HTML emails to Vermont legislators. Reads `vt-legislators.json` from the surface theme data directory. Requires `administer site configuration` permission. See `public_html/modules/custom/ourkids_outreach/CLAUDE.md` for full detail.
+
+### ourkids_schemadotorg
+Custom Schema.org JSON-LD alterations via SchemaBlueprints hooks. Fixes HTML leakage in `description` fields, moves `jobTitle` to the correct entity level on Person nodes, adds `sameAs` for E-E-A-T. Add new bundles by creating a class in `src/JsonLd/`. See `public_html/modules/custom/ourkids_schemadotorg/CLAUDE.md` for full detail.
+
+---
+
 ## CSS Architecture
 
 - PostCSS with `postcss-nested` (CSS nesting), `postcss-preset-env`, `postcss-import`
@@ -102,9 +122,12 @@ npm run stylelint:fix         # Fix CSS (Stylelint)
 
 ## Critical Rules
 
-1. `display: flex` overrides `[hidden]` — add `&[hidden] { display: none }` to any flex container that toggles visibility
-2. Always use `only` on Twig component includes from paragraph templates
-3. `drush cr` after any PHP change, new library, or new template suggestion
-4. `|striptags` for plain text fields, `|raw` only for trusted HTML
-5. Theme suggestions: always `$suggestions[] = 'suggestion'` — never splice or reverse
-6. `field_sections` ≠ `schema_main_entity` — homepage paragraphs go in `schema_main_entity`; other page sections go in `field_sections`
+1. Never edit `dist/` directly — always edit source, run `vite:build`
+2. Never use relative Twig paths — always `@namespace/`
+3. Never hardcode hex colors — always `var(--token)`
+4. `display: flex` overrides `[hidden]` — add `&[hidden] { display: none }` to any flex container that toggles visibility
+5. `field_sections` ≠ `schema_main_entity` — homepage paragraphs go in `schema_main_entity`; other sections in `field_sections`
+6. Always `only` on Twig component includes from paragraph templates
+7. `drush cr` after any PHP change, new library, or new template suggestion
+8. `|striptags` for plain text fields, `|raw` only for trusted HTML
+9. Theme suggestions: always `$suggestions[] = 'suggestion'` — never splice or reverse
