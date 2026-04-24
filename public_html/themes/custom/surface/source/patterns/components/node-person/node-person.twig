@@ -6,11 +6,11 @@
  *   name       (string) required
  *   job_title  (string)
  *   town       (string)
- *   school     (string|array) — single school or array of schools
+ *   school     (string|array)
  *   quote      (string)
  *   image      (string|rendered)
  *   bio        (string) trusted HTML
- *   articles   (array) { title, url, date, date_iso, topic }
+ *   articles   (array) { title, url, topic, date, date_iso }
  *   attributes (object)
  */
 #}
@@ -78,7 +78,9 @@
             {% if article.topic %}
               <span class="node-person__article-topic">{{ article.topic }}</span>
             {% endif %}
-            <a class="node-person__article-link" href="{{ article.url }}">{{ article.title }}</a>
+            <a class="node-person__article-link" href="{{ article.url }}" target="_blank" rel="noopener noreferrer">
+              {{ article.title }}
+            </a>
             {% if article.date %}
               <time class="node-person__article-date" datetime="{{ article.date_iso }}">{{ article.date }}</time>
             {% endif %}

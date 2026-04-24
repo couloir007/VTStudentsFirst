@@ -1,0 +1,10 @@
+uuid: 1b7bbb21-f22e-4c48-b823-3d357b4b075b
+langcode: en
+status: true
+dependencies: {  }
+id: contributions
+label: Contributions
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

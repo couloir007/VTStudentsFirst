@@ -21,15 +21,15 @@
 {% endfor %}
 
 {% set articles = [] %}
-{% for item in node.field_articles %}
+{% for item in node.field_contributions %}
   {% set para = item.entity %}
   {% if para %}
     {% set articles = articles|merge([{
-      title:    para.schema_name.value,
+      title:    para.schema_url.title,
       url:      para.schema_url.uri,
-      date:     para.schema_date_published.value|date('F j, Y'),
-      date_iso: para.schema_date_published.value|date('Y-m-d'),
-      topic:    para.schema_type.value,
+      topic:    para.field_topic.value,
+      date:     para.schema_date_published.value ? para.schema_date_published.value|date('F j, Y') : null,
+      date_iso: para.schema_date_published.value ? para.schema_date_published.value|date('Y-m-d') : null,
     }]) %}
   {% endif %}
 {% endfor %}

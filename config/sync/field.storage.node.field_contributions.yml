@@ -1,12 +1,12 @@
-uuid: 2199b238-275d-4c4a-8822-ff413b0a8c3a
+uuid: d0de53f7-77f8-4740-9300-60cae709d0f8
 langcode: en
 status: true
 dependencies:
   module:
     - node
     - paragraphs
-id: node.field_articles
-field_name: field_articles
+id: node.field_contributions
+field_name: field_contributions
 entity_type: node
 type: entity_reference
 settings:

@@ -1,0 +1,23 @@
+uuid: 5e836b8a-c06a-494e-878f-cf6183723bc3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.schema_url
+    - paragraphs.paragraphs_type.contributions
+  module:
+    - link
+id: paragraph.contributions.schema_url
+field_name: schema_url
+entity_type: paragraph
+bundle: contributions
+label: URL
+description: 'URL of the item.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 16
+field_type: link

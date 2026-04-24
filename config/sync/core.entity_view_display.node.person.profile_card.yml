@@ -5,7 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.profile_card
     - field.field.node.person.body
-    - field.field.node.person.field_articles
+    - field.field.node.person.field_contributions
     - field.field.node.person.field_editorial
     - field.field.node.person.field_hide_title
     - field.field.node.person.field_metatag
@@ -83,7 +83,7 @@ content:
     region: content
 hidden:
   body: true
-  field_articles: true
+  field_contributions: true
   field_editorial: true
   field_hide_title: true
   field_metatag: true

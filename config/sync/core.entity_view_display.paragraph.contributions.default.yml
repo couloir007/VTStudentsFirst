@@ -1,0 +1,47 @@
+uuid: c3cecac8-4576-49ed-a335-dd02798e0bc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contributions.field_topic
+    - field.field.paragraph.contributions.schema_date_published
+    - field.field.paragraph.contributions.schema_url
+    - paragraphs.paragraphs_type.contributions
+  module:
+    - datetime
+    - link
+    - options
+id: paragraph.contributions.default
+targetEntityType: paragraph
+bundle: contributions
+mode: default
+content:
+  field_topic:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  schema_date_published:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: html_date
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  schema_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

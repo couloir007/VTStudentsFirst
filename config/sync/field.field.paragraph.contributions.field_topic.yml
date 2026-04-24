@@ -1,0 +1,21 @@
+uuid: 22034009-d2f0-4cda-bdd5-61ea27fb1fc4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_topic
+    - paragraphs.paragraphs_type.contributions
+  module:
+    - options
+id: paragraph.contributions.field_topic
+field_name: field_topic
+entity_type: paragraph
+bundle: contributions
+label: topic
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

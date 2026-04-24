@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.person.body
-    - field.field.node.person.field_articles
+    - field.field.node.person.field_contributions
     - field.field.node.person.field_editorial
     - field.field.node.person.field_hide_title
     - field.field.node.person.field_metatag
@@ -50,6 +50,7 @@ third_party_settings:
         - body
         - field_quote
         - schema_address
+        - field_contributions
       label: General
       region: content
       parent_name: ''
@@ -84,9 +85,9 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_articles:
+  field_contributions:
     type: inline_entity_form_complex
-    weight: 2
+    weight: 15
     region: content
     settings:
       form_mode: default

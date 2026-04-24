@@ -1,16 +1,16 @@
-uuid: 497b7dd0-503b-4e57-a2da-c1aca44fff4b
+uuid: c895c2b8-1831-436a-886f-9b1e225e8717
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_articles
+    - field.storage.node.field_contributions
     - node.type.person
-    - paragraphs.paragraphs_type.resource_item
-id: node.person.field_articles
-field_name: field_articles
+    - paragraphs.paragraphs_type.contributions
+id: node.person.field_contributions
+field_name: field_contributions
 entity_type: node
 bundle: person
-label: Articles
+label: Contributions
 description: ''
 required: false
 translatable: false
@@ -20,55 +20,58 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      resource_item: resource_item
+      contributions: contributions
     negate: 0
     target_bundles_drag_drop:
       accountability_section:
-        weight: 17
-        enabled: false
-      action_section:
         weight: 18
         enabled: false
-      card_item:
+      action_section:
         weight: 19
         enabled: false
-      editorial:
+      card_item:
         weight: 20
         enabled: false
-      from_library:
+      contributions:
         weight: 21
-        enabled: false
-      hero_section:
+        enabled: true
+      editorial:
         weight: 22
         enabled: false
-      issue_section:
+      from_library:
         weight: 23
         enabled: false
-      myth_section:
+      hero_section:
         weight: 24
         enabled: false
-      position_item:
+      issue_section:
         weight: 25
         enabled: false
-      positions_section:
+      myth_section:
         weight: 26
         enabled: false
-      resource_item:
+      position_item:
         weight: 27
-        enabled: true
-      resource_list:
+        enabled: false
+      positions_section:
         weight: 28
         enabled: false
-      stakes_section:
+      resource_item:
         weight: 29
         enabled: false
-      stat_item:
+      resource_list:
         weight: 30
         enabled: false
-      step_item:
+      stakes_section:
         weight: 31
         enabled: false
-      voices_section:
+      stat_item:
         weight: 32
+        enabled: false
+      step_item:
+        weight: 33
+        enabled: false
+      voices_section:
+        weight: 34
         enabled: false
 field_type: entity_reference

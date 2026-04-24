@@ -1,0 +1,40 @@
+uuid: e2baa822-a530-4c0c-9327-5f2ac91643c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contributions.field_topic
+    - field.field.paragraph.contributions.schema_date_published
+    - field.field.paragraph.contributions.schema_url
+    - paragraphs.paragraphs_type.contributions
+  module:
+    - datetime
+    - link
+id: paragraph.contributions.default
+targetEntityType: paragraph
+bundle: contributions
+mode: default
+content:
+  field_topic:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  schema_date_published:
+    type: datetime_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  schema_url:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
