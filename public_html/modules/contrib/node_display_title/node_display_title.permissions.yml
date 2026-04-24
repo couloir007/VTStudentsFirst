@@ -1,0 +1,9 @@
+manage display title field settings:
+  title: 'Manage any display title field'
+  description: 'Allows a user to manage display title settings.'
+access display title field:
+  title: 'Access any display title field'
+  description: 'Allows a user to access display title field on the form.'
+
+permission_callbacks:
+  - Drupal\node_display_title\NodeDisplayTitlePermissions::permissions

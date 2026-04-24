@@ -1,0 +1,107 @@
+<?php
+
+/**
+ * @file
+ * Contains node_display_title.module.
+ */
+
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function node_display_title_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.node_display_title':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Enables one to use both an admin title and a display title for a node.') . '</p>';
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function node_display_title_entity_base_field_info(EntityTypeInterface $entity_type) {
+  $fields = [];
+
+  switch ($entity_type->id()) {
+    case 'node':
+      $fields['display_title'] = BaseFieldDefinition::create('string')
+        ->setLabel(t('Display title'))
+        ->setSettings([
+          'max_length' => 255,
+          'text_processing' => 0,
+        ])
+        ->setDefaultValue('')
+        ->setDisplayOptions('form', [
+          'type' => 'string_textfield',
+        ])
+        ->setDisplayConfigurable('form', TRUE)
+        ->setDisplayConfigurable('view', FALSE);
+      break;
+
+  }
+
+  return $fields;
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function node_display_title_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (array_key_exists('display_title', $form)) {
+    /** @var \Drupal\node\NodeInterface $node */
+    $node = $form_state->getFormObject()->getEntity();
+
+    $current_user = \Drupal::currentUser();
+    $access = $current_user->hasPermission('access display title field') || $current_user->hasPermission("access {$node->bundle()} display title field");
+
+    if ($access) {
+      $config = \Drupal::configFactory()->getEditable('node_display_title.settings');
+      $bundles = $config->get('bundles');
+
+      // Check if the bundle can have the field.
+      $access = is_array($bundles) && !empty($bundles[$node->bundle()]);
+    }
+
+    $form['display_title']['#access'] = $access;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_load().
+ */
+function node_display_title_node_load($nodes) {
+  if (\Drupal::service('router.admin_context')->isAdminRoute()) {
+    return;
+  }
+
+  $nid = reset($nodes)->id();
+  $url = \Drupal::request()->getRequestUri();
+
+  // Show default values on the edit/delete forms.
+  if (strpos($url, "node/{$nid}/edit") !== FALSE ||
+    strpos($url, "node/{$nid}/delete") !== FALSE
+  ) {
+    return;
+  }
+
+  /** @var \Drupal\node\NodeInterface $node */
+  foreach ($nodes as $node) {
+    if ($title = $node->get('display_title')->getString()) {
+      $node->set('title', $title);
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_type_build().
+ */
+function node_display_title_entity_type_build(array &$entity_types) {
+  $entity_types['node']->setClass('Drupal\node_display_title\Entity\NodeDisplayTitle');
+}

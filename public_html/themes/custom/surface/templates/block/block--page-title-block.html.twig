@@ -31,6 +31,10 @@
  */
 #}
 
+{# Hide the page title block entirely for Person nodes with field_hide_title checked #}
+{% if node and node.bundle() == 'person' and node.field_hide_title.value %}
+{% else %}
+
 {% set classes = [
   'block-' ~ plugin_id|clean_class,
   'container',
@@ -55,3 +59,5 @@
   {% endblock %}
 
 {% endembed %}
+
+{% endif %}

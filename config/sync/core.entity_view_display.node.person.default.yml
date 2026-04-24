@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.person.body
     - field.field.node.person.field_editorial
+    - field.field.node.person.field_hide_title
     - field.field.node.person.field_metatag
     - field.field.node.person.field_quote
     - field.field.node.person.field_school_connection
@@ -92,6 +93,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 4
+    region: content
+  field_hide_title:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 222
     region: content
   field_quote:
     type: text_default

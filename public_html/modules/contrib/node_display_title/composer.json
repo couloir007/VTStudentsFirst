@@ -1,0 +1,26 @@
+{
+  "name": "drupal/node_display_title",
+  "description": "Enables one to use both an admin title and a display title for a node.",
+  "type": "drupal-module",
+  "license": "GPL-2.0-or-later",
+  "keywords": ["Drupal"],
+  "homepage": "https://www.drupal.org/project/node_display_title",
+  "authors": [
+    {
+      "name": "Begun",
+      "homepage": "https://www.drupal.org/u/begun",
+      "role": "Maintainer"
+    },
+    {
+      "name": "Viktor Holovachek (AstonVictor)",
+      "homepage": "https://www.drupal.org/u/astonvictor",
+      "role": "Maintainer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/node_display_title",
+    "source": "https://git.drupalcode.org/project/node_display_title"
+  },
+  "require": { }
+}

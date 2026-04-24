@@ -1,0 +1,4 @@
+node_display_title.settings:
+  title: 'Manage node display title settings'
+  route_name: node_display_title.settings
+  parent: system.admin_config_content

@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.profile_card
     - field.field.node.person.body
     - field.field.node.person.field_editorial
+    - field.field.node.person.field_hide_title
     - field.field.node.person.field_metatag
     - field.field.node.person.field_quote
     - field.field.node.person.field_school_connection
@@ -139,6 +140,7 @@ content:
     region: content
 hidden:
   field_editorial: true
+  field_hide_title: true
   field_metatag: true
   field_weight: true
   langcode: true

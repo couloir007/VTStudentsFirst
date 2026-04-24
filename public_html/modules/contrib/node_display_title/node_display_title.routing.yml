@@ -1,0 +1,7 @@
+node_display_title.settings:
+  path: '/admin/config/content/display-title-settings'
+  defaults:
+    _form: '\Drupal\node_display_title\Form\NodeDisplayTitleForm'
+    _title: 'Manage node display title settings'
+  requirements:
+    _permission: 'manage display title field settings'

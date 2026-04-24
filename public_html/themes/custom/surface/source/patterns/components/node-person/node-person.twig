@@ -1,0 +1,88 @@
+{#
+/**
+ * @file node-person.twig
+ *
+ * Component:  @components/node-person/node-person.twig
+ * Storybook:  Components/Person Profile
+ *
+ * Variables:
+ *   name           (string) required  — full name
+ *   job_title      (string)           — role / occupation
+ *   town           (string)           — town name, VT
+ *   school         (string)           — school connection
+ *   quote          (string)           — pull quote
+ *   image          (string|rendered)  — image src or rendered img
+ *   bio            (string)           — long-form bio (trusted HTML, use |raw)
+ *   articles       (array)            — related articles: { title, url, date, topic }
+ *   attributes     (object)
+ */
+#}
+{{ attach_library('surface/node-person') }}
+
+<article class="node-person{{- attributes ? ' ' ~ attributes.class -}}"{{- attributes ? ' ' ~ attributes|without('class') -}}>
+
+  <header class="node-person__header">
+    <div class="node-person__header-inner">
+
+      <div class="node-person__avatar">
+        {% if image %}
+          {% if image is iterable %}
+            {{ image }}
+          {% else %}
+            <img src="{{ image }}" alt="{{ name }}" loading="lazy">
+          {% endif %}
+        {% else %}
+          <span class="node-person__initials">
+            {% set name_parts = name|split(' ') %}{{ (name_parts[0]|first ~ (name_parts[1] is defined ? name_parts[1]|first : ''))|upper }}
+          </span>
+        {% endif %}
+      </div>
+
+      <div class="node-person__identity">
+        <h1 class="node-person__name">{{ name }}</h1>
+        {% if job_title %}
+          <p class="node-person__role">{{ job_title }}</p>
+        {% endif %}
+        <div class="node-person__tags">
+          {% if town %}
+            <span class="node-person__tag">{{ town }}, VT</span>
+          {% endif %}
+          {% if school %}
+            <span class="node-person__tag node-person__tag--school">{{ school }}</span>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+
+    {% if quote %}
+      <blockquote class="node-person__quote">{{ quote }}</blockquote>
+    {% endif %}
+  </header>
+
+  {% if bio %}
+    <div class="node-person__bio prose">
+      {{ bio|raw }}
+    </div>
+  {% endif %}
+
+  {% if articles %}
+    <aside class="node-person__articles">
+      <h2 class="node-person__articles-heading">Contributions</h2>
+      <ul class="node-person__articles-list">
+        {% for article in articles %}
+          <li class="node-person__article-item">
+            {% if article.topic %}
+              <span class="node-person__article-topic">{{ article.topic }}</span>
+            {% endif %}
+            <a class="node-person__article-link" href="{{ article.url }}">{{ article.title }}</a>
+            {% if article.date %}
+              <time class="node-person__article-date" datetime="{{ article.date_iso }}">{{ article.date }}</time>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </aside>
+  {% endif %}
+
+</article>

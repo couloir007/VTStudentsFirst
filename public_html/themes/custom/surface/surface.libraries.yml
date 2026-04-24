@@ -644,3 +644,9 @@ resource-list:
     - surface/section
     - surface/resource-item
 
+node-person:
+  css:
+    component:
+      dist/css/node-person.css: {}
+  dependencies:
+    - surface/person-card

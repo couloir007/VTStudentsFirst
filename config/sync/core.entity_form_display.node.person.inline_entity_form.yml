@@ -6,6 +6,7 @@ dependencies:
     - core.entity_form_mode.node.inline_entity_form
     - field.field.node.person.body
     - field.field.node.person.field_editorial
+    - field.field.node.person.field_hide_title
     - field.field.node.person.field_metatag
     - field.field.node.person.field_quote
     - field.field.node.person.field_school_connection
@@ -265,6 +266,7 @@ content:
 hidden:
   created: true
   field_editorial: true
+  field_hide_title: true
   field_metatag: true
   field_quote: true
   field_school_connection: true

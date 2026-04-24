@@ -1,0 +1,9 @@
+node_display_title.settings:
+  type: config_object
+  label: 'Node Display Title settings'
+  mapping:
+    bundles:
+      type: sequence
+      label: 'Node bundles'
+      sequence:
+        type: string

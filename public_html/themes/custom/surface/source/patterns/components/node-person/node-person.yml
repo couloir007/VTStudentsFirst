@@ -1,0 +1,16 @@
+---
+name:      'Sean Montague'
+job_title: 'Web Developer, Volunteer'
+town:      'Burke'
+school:    'St. Johnsbury Academy'
+quote:     'School choice is part of the package deal that makes it worth living here. Remove it and you change the calculation for every family weighing whether to stay.'
+bio: >
+  <p>Sean Montague lives in Burke Hollow, Vermont with his family. He has been a resident of the Northeast Kingdom for over twelve years, drawn here in part by the quality of education available to his children through Vermont's tuitioning system.</p>
+  <p>His children attend St. Johnsbury Academy and Riverside School. He volunteers as a web developer for OurKidsOurSchoolsVT, building the technical infrastructure the coalition uses to reach families across Vermont and connect them with their legislators.</p>
+  <p>Sean works remotely as a federal employee with the Smithsonian's National Museum of Natural History. He has written about the economic and educational stakes of Vermont's school choice debate for VTDigger.</p>
+articles:
+  - title:    'Our Independent Schools Are More Than Just Educational Institutions — They Are Social and Economic Cornerstones'
+    url:      'https://vtdigger.org/2025/07/07/sean-montague-our-independent-schools-are-more-than-just-educational-institutions-they-are-social-and-economic-cornerstones/'
+    date:     'July 7, 2025'
+    date_iso: '2025-07-07'
+    topic:    'Opinion'

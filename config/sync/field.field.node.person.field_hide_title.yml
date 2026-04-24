@@ -1,0 +1,21 @@
+uuid: 8a231606-924d-4749-a8d4-595ba6c52dad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_title
+    - node.type.person
+id: node.person.field_hide_title
+field_name: field_hide_title
+entity_type: node
+bundle: person
+label: 'Hide Name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

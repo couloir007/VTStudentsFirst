@@ -1,0 +1,201 @@
+.node-person {
+  margin-inline: auto;
+  max-width: 860px;
+  padding-block: 0 4rem;
+  padding-block-start: var(--section-padding-v, 2.5rem);
+  padding-inline: var(--section-padding-h, 2.5rem);
+
+  @media (width <= 600px) {
+    padding-block: 2rem 3rem;
+    padding-inline: 1.5rem;
+  }
+}
+
+/* ── Header ────────────────────────────────────────────────────────── */
+
+.node-person__header {
+  border-block-end: 1px solid var(--mist);
+  margin-block-end: 2.5rem;
+  padding-block-end: 2rem;
+}
+
+.node-person__header-inner {
+  align-items: flex-start;
+  display: flex;
+  gap: 2rem;
+  margin-block-end: 1.5rem;
+
+  @media (width <= 560px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* ── Avatar ────────────────────────────────────────────────────────── */
+
+.node-person__avatar {
+  align-items: center;
+  background: var(--mist);
+  block-size: 140px;
+  border-radius: var(--radius-md, 8px);
+  color: var(--forest);
+  display: flex;
+  flex-shrink: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  inline-size: 140px;
+  justify-content: center;
+  letter-spacing: 0.03em;
+  overflow: hidden;
+
+  img {
+    block-size: 100%;
+    inline-size: 100%;
+    object-fit: cover;
+  }
+}
+
+/* ── Identity ──────────────────────────────────────────────────────── */
+
+.node-person__identity {
+  flex: 1;
+  padding-block-start: 0.25rem;
+}
+
+.node-person__name {
+  color: var(--forest);
+  font-family: var(--font-secondary);
+  font-size: clamp(1.5rem, 1rem + 2.5vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 0.4rem;
+}
+
+.node-person__role {
+  color: var(--mid);
+  font-size: 1rem;
+  margin: 0 0 0.75rem;
+}
+
+.node-person__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+
+  @media (width <= 560px) {
+    justify-content: center;
+  }
+}
+
+.node-person__tag {
+  background: var(--parchment);
+  border-radius: 100px;
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding-block: 0.2em;
+  padding-inline: 0.75em;
+  white-space: nowrap;
+
+  &.node-person__tag--school {
+    background: color-mix(in srgb, var(--maple) 12%, transparent);
+    color: var(--maple);
+  }
+}
+
+/* ── Quote ─────────────────────────────────────────────────────────── */
+
+.node-person__quote {
+  border-inline-start: 3px solid var(--maple);
+  color: var(--mid);
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.6;
+  margin: 0;
+  padding-block: 0.25rem;
+  padding-inline-start: 1.25rem;
+}
+
+/* ── Bio ───────────────────────────────────────────────────────────── */
+
+.node-person__bio {
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-block-end: 2.5rem;
+
+  p { margin-block: 0 1em; }
+  p:last-child { margin-block-end: 0; }
+}
+
+/* ── Articles ──────────────────────────────────────────────────────── */
+
+.node-person__articles {
+  border-block-start: 1px solid var(--mist);
+  padding-block-start: 2rem;
+}
+
+.node-person__articles-heading {
+  color: var(--forest);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin: 0 0 1.25rem;
+  text-transform: uppercase;
+}
+
+.node-person__articles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.node-person__article-item {
+  border-block-end: 1px solid var(--mist);
+  display: grid;
+  gap: 0.2rem 1rem;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  padding-block: 1rem;
+
+  &:first-child {
+    border-block-start: 1px solid var(--mist);
+  }
+
+  @media (width <= 560px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.node-person__article-topic {
+  color: var(--maple);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.node-person__article-link {
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    color: var(--maple);
+    text-decoration: underline;
+  }
+}
+
+.node-person__article-date {
+  color: var(--mid);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
