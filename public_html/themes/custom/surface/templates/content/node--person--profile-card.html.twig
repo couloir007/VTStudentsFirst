@@ -25,6 +25,7 @@
 {#{% do ray(image) %}#}
 
 {% include '@components/person-card/person-card.twig' with {
+  'url': url,
   'name': label|field_value,
   'job_title': job_title,
   'town': town,

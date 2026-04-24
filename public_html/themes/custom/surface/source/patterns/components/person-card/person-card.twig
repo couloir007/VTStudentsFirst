@@ -16,7 +16,6 @@
 {{ attach_library('surface/person-card') }}
 <article class="person-card">
   <div class="person-card__inner">
-
     <div class="person-card__avatar">
       {% if image %}
         {{ image }}
@@ -28,7 +27,7 @@
     <div class="person-card__body">
       <div class="person-card__top">
         <div class="person-card__identity">
-          <p class="person-card__name">{{ name }}</p>
+          <a href="{{ url }}" class="person-card__name">{{ name }}</a>
           {% if job_title %}
             <p class="person-card__role">{{ job_title }}</p>
           {% endif %}
