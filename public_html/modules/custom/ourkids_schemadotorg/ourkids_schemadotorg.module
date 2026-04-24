@@ -9,9 +9,51 @@ declare(strict_types=1);
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\node\NodeInterface;
 use Drupal\ourkids_schemadotorg\JsonLd\PersonJsonLd;
 use Drupal\ourkids_schemadotorg\JsonLd\ArticleJsonLd;
+
+/**
+ * Implements hook_schemadotorg_jsonld_alter().
+ *
+ * Fires on the outer ProfilePage data array.
+ * - Removes jobTitle from ProfilePage wrapper.
+ * - Injects jobTitle into mainEntity.Person.
+ */
+function ourkids_schemadotorg_schemadotorg_jsonld_alter(array &$data, RouteMatchInterface $route_match, BubbleableMetadata $bubbleable_metadata): void {
+  $node = $route_match->getParameter('node');
+  if (!($node instanceof NodeInterface) || $node->bundle() !== 'person') {
+    return;
+  }
+
+  $job_title = ($node->hasField('schema_job_title') && !$node->get('schema_job_title')->isEmpty())
+    ? $node->get('schema_job_title')->value
+    : NULL;
+
+  // Walk the top-level data array.
+  foreach ($data as $key => &$value) {
+    if (!is_array($value)) {
+      continue;
+    }
+    $type = $value['@type'] ?? NULL;
+
+    if ($type === 'Person') {
+      // Inject jobTitle onto Person.
+      if ($job_title) {
+        $value['jobTitle'] = $job_title;
+      }
+    }
+    else {
+      // Remove jobTitle from ProfilePage and any other wrapper types.
+      unset($value['jobTitle']);
+    }
+  }
+  unset($value);
+
+  // Also remove from top level if SchemaBlueprints placed it directly.
+  unset($data['jobTitle']);
+}
 
 /**
  * Implements hook_schemadotorg_jsonld_schema_type_entity_alter().
