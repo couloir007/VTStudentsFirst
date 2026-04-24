@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for OurKidsOurSchoolsVT Schema.org module.
+ */
+
+declare(strict_types=1);
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Render\BubbleableMetadata;
+use Drupal\node\NodeInterface;
+use Drupal\ourkids_schemadotorg\JsonLd\PersonJsonLd;
+use Drupal\ourkids_schemadotorg\JsonLd\ArticleJsonLd;
+
+/**
+ * Implements hook_schemadotorg_jsonld_schema_type_entity_alter().
+ */
+function ourkids_schemadotorg_schemadotorg_jsonld_schema_type_entity_alter(array &$data, EntityInterface $entity, mixed $mapping, BubbleableMetadata $bubbleable_metadata): void {
+  if (!($entity instanceof NodeInterface)) {
+    return;
+  }
+
+  match ($entity->bundle()) {
+    'person'  => PersonJsonLd::alter($data, $entity, $bubbleable_metadata),
+    'article' => ArticleJsonLd::alter($data, $entity, $bubbleable_metadata),
+    default   => NULL,
+  };
+}

@@ -42,6 +42,6 @@
   school:     schools,
   quote:      node.field_quote.value,
   image:      content.schema_image,
-  bio:        node.body.processed,
+  bio:        content.body|field_value,
   articles:   articles,
 } only %}

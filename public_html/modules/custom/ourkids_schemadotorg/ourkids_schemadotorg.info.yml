@@ -1,0 +1,8 @@
+name: 'OurKidsOurSchoolsVT Schema.org'
+type: module
+description: 'Custom Schema.org JSON-LD alterations for OurKidsOurSchoolsVT.'
+package: Custom
+core_version_requirement: ^10 || ^11
+dependencies:
+  - schemadotorg:schemadotorg
+  - schemadotorg:schemadotorg_jsonld

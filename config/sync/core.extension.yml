@@ -97,6 +97,7 @@ module:
   module_filter: 0
   node: 0
   options: 0
+  ourkids_schemadotorg: 0
   page_cache: 0
   paragraphs_library: 0
   path: 0
