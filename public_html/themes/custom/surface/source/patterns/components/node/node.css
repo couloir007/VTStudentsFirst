@@ -8,6 +8,11 @@
   width: 100%;
 }
 
+.node--type-about-page {
+  padding-block-start: var(--section-padding-v, 2.5rem);
+}
+
+
 .node__meta {
   align-items: center;
   color: var(--gray-700);
