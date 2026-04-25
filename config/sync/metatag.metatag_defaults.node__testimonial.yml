@@ -1,8 +1,0 @@
-uuid: 4e632c32-ddfd-4705-8311-26f8d27d9db5
-langcode: en
-status: true
-dependencies: {  }
-id: node__testimonial
-label: 'Content: Testimonial'
-tags:
-  robots: noindex

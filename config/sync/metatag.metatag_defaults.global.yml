@@ -8,4 +8,18 @@ id: global
 label: Global
 tags:
   canonical_url: '[current-page:url]'
+  description: "Thousands of Vermont students in rural towns attend their local academy through tuitioning, the mechanism Vermont uses to deliver public education where no public high school exists. Three bills moving through the Legislature threaten to eliminate that choice. We're fighting to keep it."
+  og_country_name: USA
+  og_description: "Thousands of Vermont students in rural towns attend their local academy through tuitioning, the mechanism Vermont uses to deliver public education where no public high school exists. Three bills moving through the Legislature threaten to eliminate that choice. We're fighting to keep it."
+  og_image: /sites/default/files/2026-04/social-card.png
+  og_image_alt: 'A dark green graphic with gold horizontal bars at the top and bottom edges. A mountain silhouette fills the lower right portion of the image. White and gold bold text reads: Protecting School Choice in Rural Vermont. Smaller gray text below reads: For families, communities, and the schools that serve them. The website address ourkidsourschoolsvt.org appears in gold. The OurKidsOurSchoolsVT logo appears in the lower right corner with Kids and Schools in gold and the remaining text in white.'
+  og_image_height: '630'
+  og_image_secure_url: 'https://ourkidsourschoolsvt.org/sites/default/files/2026-04/social-card.png'
+  og_image_type: image/png
+  og_image_width: '1200'
+  og_region: Vermont
   title: '[current-page:title] | [site:name]'
+  twitter_cards_description: "Thousands of Vermont students in rural towns attend their local academy through tuitioning, the mechanism Vermont uses to deliver public education where no public high school exists. Three bills moving through the Legislature threaten to eliminate that choice. We're fighting to keep it."
+  twitter_cards_image: /sites/default/files/2026-04/social-card.png
+  twitter_cards_image_alt: 'A dark green graphic with gold horizontal bars at the top and bottom edges. A mountain silhouette fills the lower right portion of the image. White and gold bold text reads: Protecting School Choice in Rural Vermont. Smaller gray text below reads: For families, communities, and the schools that serve them. The website address ourkidsourschoolsvt.org appears in gold. The OurKidsOurSchoolsVT logo appears in the lower right corner with Kids and Schools in gold and the remaining text in white.'
+  twitter_cards_type: summary_large_image
