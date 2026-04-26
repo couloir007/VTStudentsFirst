@@ -14,6 +14,13 @@
       margin-inline: 1.5rem;
     }
   }
+
+  @media (width <= 400px) {
+    .lc-btn--primary.lc-btn--full {
+      padding-inline: 0.5rem;
+      font-size: 12px;
+    }
+  }
 }
 
 .action-section__header {
