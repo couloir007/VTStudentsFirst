@@ -4,6 +4,18 @@
   color: var(--section-headline, white);
 }
 
+.action-section .section__inner {
+  @media (width <= 768px) {
+    padding-inline: 0;
+
+    .action-section__steps,
+    .action-section__header,
+    .action-section__events {
+      margin-inline: 1.5rem;
+    }
+  }
+}
+
 .action-section__header {
   margin-bottom: 5rem;
 }
