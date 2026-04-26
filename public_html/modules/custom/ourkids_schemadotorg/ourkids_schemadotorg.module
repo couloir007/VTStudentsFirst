@@ -8,51 +8,42 @@
 declare(strict_types=1);
 
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Render\BubbleableMetadata;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\node\NodeInterface;
 use Drupal\ourkids_schemadotorg\JsonLd\PersonJsonLd;
 use Drupal\ourkids_schemadotorg\JsonLd\ArticleJsonLd;
+use Drupal\ourkids_schemadotorg\JsonLd\ProfilePageJsonLd;
 
 /**
  * Implements hook_schemadotorg_jsonld_alter().
  *
- * Fires on the outer ProfilePage data array.
- * - Removes jobTitle from ProfilePage wrapper.
- * - Injects jobTitle into mainEntity.Person.
+ * At this point schemadotorg_additional_mappings has already run and wrapped
+ * the entity in a WebPage:
+ *
+ *   $data['schemadotorg_jsonld_entity'] = WebPage + ['mainEntity' => Article]
  */
 function ourkids_schemadotorg_schemadotorg_jsonld_alter(array &$data, RouteMatchInterface $route_match, BubbleableMetadata $bubbleable_metadata): void {
   $node = $route_match->getParameter('node');
-  if (!($node instanceof NodeInterface) || $node->bundle() !== 'person') {
+  if (!($node instanceof NodeInterface)) {
     return;
   }
 
-  $job_title = ($node->hasField('schema_job_title') && !$node->get('schema_job_title')->isEmpty())
-    ? $node->get('schema_job_title')->value
-    : NULL;
+  $entity = &$data['schemadotorg_jsonld_entity'];
 
-  // Walk the top-level data array.
-  foreach ($data as $key => &$value) {
-    if (!is_array($value)) {
-      continue;
-    }
-    $type = $value['@type'] ?? NULL;
+  if ($node->bundle() === 'article') {
+    // articleBody should be plain text, not rendered HTML.
+    // Replace it with a clean version from body.processed.
+    $articleBody = $data['schemadotorg_jsonld_entity']['articleBody'];
+    $data['schemadotorg_jsonld_entity']['articleBody'] = trim(strip_tags($articleBody));
 
-    if ($type === 'Person') {
-      // Inject jobTitle onto Person.
-      if ($job_title) {
-        $value['jobTitle'] = $job_title;
-      }
-    }
-    else {
-      // Remove jobTitle from ProfilePage and any other wrapper types.
-      unset($value['jobTitle']);
-    }
+    // Description Clean
+    $description = preg_replace('/<\/p>\s*<p[^>]*>/i', "\n\n", $data['schemadotorg_jsonld_entity']['description']);
+    $data['schemadotorg_jsonld_entity']['description'] = trim(strip_tags($description));
+
+    return;
   }
-  unset($value);
-
-  // Also remove from top level if SchemaBlueprints placed it directly.
-  unset($data['jobTitle']);
 }
 
 /**
@@ -63,9 +54,9 @@ function ourkids_schemadotorg_schemadotorg_jsonld_schema_type_entity_alter(array
     return;
   }
 
-  match ($entity->bundle()) {
-    'person'  => PersonJsonLd::alter($data, $entity, $bubbleable_metadata),
-    'article' => ArticleJsonLd::alter($data, $entity, $bubbleable_metadata),
-    default   => NULL,
+  match ($data['@type'] ?? NULL) {
+    'Person'      => PersonJsonLd::alter($data, $entity, $bubbleable_metadata),
+    'ProfilePage' => ProfilePageJsonLd::alter($data, $entity, $bubbleable_metadata),
+    default       => NULL,
   };
 }

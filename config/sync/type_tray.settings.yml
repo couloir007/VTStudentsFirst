@@ -5,8 +5,8 @@ categories:
   page: Page
   content: Content
   organization: Organization
-  education: Education
   place: Place
+  education: Education
   food: Food
   media: Media
   medical_organization: 'Medical organization'

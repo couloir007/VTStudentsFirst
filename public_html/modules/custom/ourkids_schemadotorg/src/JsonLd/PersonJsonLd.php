@@ -25,18 +25,6 @@ class PersonJsonLd {
       $data['description'] = trim(strip_tags($text));
     }
 
-    // Add sameAs from schema_same_as (multi-value link field).
-    if ($entity->hasField('schema_same_as') && !$entity->get('schema_same_as')->isEmpty()) {
-      $same_as = [];
-      foreach ($entity->get('schema_same_as') as $item) {
-        if (!empty($item->uri)) {
-          $same_as[] = $item->uri;
-        }
-      }
-      if ($same_as) {
-        $data['sameAs'] = count($same_as) === 1 ? $same_as[0] : $same_as;
-      }
-    }
   }
 
 }

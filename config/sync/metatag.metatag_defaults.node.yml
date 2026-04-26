@@ -22,3 +22,5 @@ tags:
   twitter_cards_image: 'https://ourkidsourschoolsvt.org/sites/default/files/2026-04/social-card.png'
   twitter_cards_image_alt: 'A dark green graphic with gold horizontal bars at the top and bottom edges. A mountain silhouette fills the lower right portion of the image. White and gold bold text reads: Protecting School Choice in Rural Vermont. Smaller gray text below reads: For families, communities, and the schools that serve them. The website address ourkidsourschoolsvt.org appears in gold. The OurKidsOurSchoolsVT logo appears in the lower right corner with Kids and Schools in gold and the remaining text in white.'
   twitter_cards_type: summary_large_image
+  article_modified_time: '[node:changed:html_datetime]'
+  og_updated_time: '[node:changed:html_datetime]'

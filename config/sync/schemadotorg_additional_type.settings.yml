@@ -1,15 +1,8 @@
 _core:
   default_config_hash: YR6-2Dur2O5VhL-qeMWps2FmBHTJxNz0vO_7EbgcSMQ
 default_types:
-  - AdministrativeArea
   - Article
-  - CivicStructure
-  - EducationalOrganization
   - Event
-  - FoodEstablishment
-  - LocalBusiness
-  - MedicalOrganization
-  - MedicalBusiness
   - Organization
   - WebPage
 required_types:
@@ -24,7 +17,6 @@ default_allowed_values:
   WebPage:
     about_page: 'About Page'
     contact_page: 'Contact Page'
-    medical_web_page: 'Medical Web Page'
 default_field_values: {  }
 field_access: {  }
 jsonld_values: {  }
