@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.place.schema_latitude
     - field.field.node.place.schema_longitude
     - field.field.node.place.schema_related_link
+    - field.field.node.place.schema_sending_schools
     - field.field.node.place.schema_significant_link
     - field.field.node.place.schema_subject_of
     - field.field.node.place.schema_telephone
@@ -21,6 +22,7 @@ target_bundle: place
 schema_type: Place
 schema_properties:
   schema_address: address
+  schema_sending_schools: amenityFeature
   body: description
   schema_image: image
   schema_latitude: latitude

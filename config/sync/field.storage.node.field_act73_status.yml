@@ -1,0 +1,24 @@
+uuid: 70c9624e-47c8-4569-a931-6974843a9fa4
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_act73_status
+field_name: field_act73_status
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'yes'
+      label: 'Yes'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

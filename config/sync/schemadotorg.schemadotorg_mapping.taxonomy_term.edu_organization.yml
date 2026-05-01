@@ -1,0 +1,20 @@
+uuid: ba82173e-6d4b-4350-be39-0a5c7a271a01
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.edu_organization.schema_address
+    - field.field.taxonomy_term.edu_organization.schema_image
+    - taxonomy.vocabulary.edu_organization
+  module:
+    - taxonomy
+id: taxonomy_term.edu_organization
+target_entity_type_id: taxonomy_term
+target_bundle: edu_organization
+schema_type: EducationalOrganization
+schema_properties:
+  schema_address: address
+  description: description
+  schema_image: image
+  name: name
+additional_mappings: {  }

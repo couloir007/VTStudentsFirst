@@ -1,0 +1,28 @@
+uuid: f998d457-c14e-49a4-8ff0-3cfef51dbb66
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.schema_image
+    - taxonomy.vocabulary.edu_organization
+id: taxonomy_term.edu_organization.schema_image
+field_name: schema_image
+entity_type: taxonomy_term
+bundle: edu_organization
+label: Image
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'schemadotorg:media'
+  handler_settings:
+    target_type: media
+    schema_types:
+      ImageObject: ImageObject
+    excluded_schema_types: {  }
+    ignore_additional_mappings: false
+    target_bundles:
+      image: image
+field_type: entity_reference

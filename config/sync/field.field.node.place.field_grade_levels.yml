@@ -1,0 +1,21 @@
+uuid: 893e0544-a041-441b-bd2c-d96fbf3eb801
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_grade_levels
+    - node.type.place
+  module:
+    - options
+id: node.place.field_grade_levels
+field_name: field_grade_levels
+entity_type: node
+bundle: place
+label: 'Grade Levels'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

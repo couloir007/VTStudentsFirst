@@ -1,0 +1,9 @@
+uuid: 7e414e52-7b6e-4317-9c95-aea3be29e374
+langcode: en
+status: true
+dependencies: {  }
+name: 'Educational Organization'
+vid: edu_organization
+description: null
+weight: 0
+new_revision: false

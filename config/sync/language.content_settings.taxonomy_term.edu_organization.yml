@@ -1,0 +1,16 @@
+uuid: 45b2f4d1-0c54-46a1-a198-77e2cdab136e
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.edu_organization
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: taxonomy_term.edu_organization
+target_entity_type_id: taxonomy_term
+target_bundle: edu_organization
+default_langcode: site_default
+language_alterable: false

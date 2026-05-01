@@ -1,0 +1,27 @@
+uuid: c11a7715-e664-44d2-a558-3a4512ec6add
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_grade_levels
+field_name: field_grade_levels
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: k_8
+      label: K-8
+    -
+      value: k_6
+      label: K-6
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -4,13 +4,18 @@ status: true
 dependencies:
   config:
     - field.field.node.place.body
+    - field.field.node.place.field_act73_status
     - field.field.node.place.field_editorial
+    - field.field.node.place.field_grade_levels
     - field.field.node.place.field_metatag
+    - field.field.node.place.field_notes
     - field.field.node.place.schema_address
+    - field.field.node.place.schema_geo
     - field.field.node.place.schema_image
     - field.field.node.place.schema_latitude
     - field.field.node.place.schema_longitude
     - field.field.node.place.schema_related_link
+    - field.field.node.place.schema_sending_schools
     - field.field.node.place.schema_significant_link
     - field.field.node.place.schema_subject_of
     - field.field.node.place.schema_telephone
@@ -19,7 +24,9 @@ dependencies:
     - address
     - entity_reference_revisions
     - field_group
+    - geofield
     - link
+    - options
     - text
     - user
 third_party_settings:
@@ -87,6 +94,13 @@ content:
     third_party_settings: {  }
     weight: 18
     region: content
+  field_act73_status:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 223
+    region: content
   field_editorial:
     type: entity_reference_revisions_entity_view
     label: hidden
@@ -95,6 +109,20 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 24
+    region: content
+  field_grade_levels:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 222
+    region: content
+  field_notes:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 224
     region: content
   links:
     settings: {  }
@@ -107,6 +135,15 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  schema_geo:
+    type: geofield_default
+    label: above
+    settings:
+      output_format: wkt
+      output_escape: true
+    third_party_settings: {  }
+    weight: 221
     region: content
   schema_image:
     type: entity_reference_entity_view
@@ -150,6 +187,14 @@ content:
       target: ''
     third_party_settings: {  }
     weight: 0
+    region: content
+  schema_sending_schools:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 225
     region: content
   schema_significant_link:
     type: link

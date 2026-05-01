@@ -1,0 +1,16 @@
+uuid: 4d07d2b1-2cf9-451d-8312-6af9ab88396e
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 5dwjL74mpq5vT3Xs5cRMH3FfJUC5438pHDToawEvdfk
+name: geofield_map_default_icon_style
+label: 'GeofieldMap Default Icon Style (34x34)'
+effects:
+  5d91fbd4-b0f7-43e0-b7a4-21b19cec068c:
+    uuid: 5d91fbd4-b0f7-43e0-b7a4-21b19cec068c
+    id: image_resize
+    weight: 1
+    data:
+      width: 34
+      height: 34

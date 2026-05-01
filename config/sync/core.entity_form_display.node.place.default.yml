@@ -4,13 +4,18 @@ status: true
 dependencies:
   config:
     - field.field.node.place.body
+    - field.field.node.place.field_act73_status
     - field.field.node.place.field_editorial
+    - field.field.node.place.field_grade_levels
     - field.field.node.place.field_metatag
+    - field.field.node.place.field_notes
     - field.field.node.place.schema_address
+    - field.field.node.place.schema_geo
     - field.field.node.place.schema_image
     - field.field.node.place.schema_latitude
     - field.field.node.place.schema_longitude
     - field.field.node.place.schema_related_link
+    - field.field.node.place.schema_sending_schools
     - field.field.node.place.schema_significant_link
     - field.field.node.place.schema_subject_of
     - field.field.node.place.schema_telephone
@@ -19,6 +24,7 @@ dependencies:
     - address
     - allowed_formats
     - field_group
+    - geofield
     - inline_entity_form
     - linkit
     - metatag
@@ -30,26 +36,26 @@ third_party_settings:
     group_contact:
       children:
         - schema_address
-        - schema_latitude
         - schema_longitude
+        - schema_latitude
         - schema_telephone
       label: Contact
       region: content
       parent_name: ''
-      weight: -18
+      weight: 1
       format_type: details
       format_settings:
         open: true
         description: ''
     group_general:
       children:
-        - schema_image
-        - body
         - title
+        - body
+        - schema_image
       label: General
       region: content
       parent_name: ''
-      weight: -20
+      weight: 0
       format_type: details
       format_settings:
         open: true
@@ -60,7 +66,7 @@ third_party_settings:
       label: References
       region: content
       parent_name: ''
-      weight: 22
+      weight: 4
       format_type: details
       format_settings:
         open: true
@@ -71,7 +77,7 @@ third_party_settings:
       label: 'Editorial information'
       region: content
       parent_name: ''
-      weight: 220
+      weight: 7
       format_type: details_sidebar
       format_settings:
         description: 'Track the editorial decisions and status of a document.'
@@ -82,7 +88,7 @@ third_party_settings:
       label: Links
       region: content
       parent_name: ''
-      weight: 20
+      weight: 3
       format_type: details
       format_settings:
         open: true
@@ -105,9 +111,9 @@ content:
       allowed_formats:
         hide_help: '1'
         hide_guidelines: '1'
-  created:
-    type: datetime_timestamp
-    weight: 200
+  field_act73_status:
+    type: options_select
+    weight: 223
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -124,33 +130,33 @@ content:
       collapsed: false
       revision: false
     third_party_settings: {  }
+  field_grade_levels:
+    type: options_select
+    weight: 222
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_metatag:
     type: metatag_firehose
-    weight: 99
+    weight: 8
     region: content
     settings:
       sidebar: true
       use_details: true
     third_party_settings: {  }
-  langcode:
-    type: language_select
-    weight: 200
+  field_notes:
+    type: string_textarea
+    weight: 224
     region: content
     settings:
-      include_locked: true
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   path:
     type: path
-    weight: 220
+    weight: 10
     region: content
     settings: {  }
-    third_party_settings: {  }
-  promote:
-    type: boolean_checkbox
-    weight: 210
-    region: content
-    settings:
-      display_label: true
     third_party_settings: {  }
   schema_address:
     type: address_default
@@ -158,6 +164,13 @@ content:
     region: content
     settings:
       wrapper_type: fieldset
+    third_party_settings: {  }
+  schema_geo:
+    type: geofield_latlon
+    weight: 2
+    region: content
+    settings:
+      html5_geolocation: false
     third_party_settings: {  }
   schema_image:
     type: entity_reference_autocomplete
@@ -193,6 +206,16 @@ content:
       linkit_profile: default
       linkit_auto_link_text: true
     third_party_settings: {  }
+  schema_sending_schools:
+    type: entity_reference_autocomplete
+    weight: 225
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   schema_significant_link:
     type: linkit
     weight: 1
@@ -205,7 +228,7 @@ content:
     third_party_settings: {  }
   schema_subject_of:
     type: entity_reference_autocomplete
-    weight: 1
+    weight: 4
     region: content
     settings:
       match_operator: CONTAINS
@@ -221,20 +244,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   simple_sitemap:
-    weight: 220
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 220
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  sticky:
-    type: boolean_checkbox
-    weight: 210
+    weight: 6
     region: content
     settings:
       display_label: true
@@ -247,26 +263,18 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  translation:
-    weight: 10
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  uid:
-    type: entity_reference_autocomplete
-    weight: 200
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  created: true
+  langcode: true
+  promote: true
   publish_on: true
+  simple_sitemap_index_now: true
+  sticky: true
+  translation: true
+  uid: true
   unpublish_on: true

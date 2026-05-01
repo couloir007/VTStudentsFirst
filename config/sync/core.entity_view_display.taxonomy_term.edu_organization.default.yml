@@ -1,0 +1,41 @@
+uuid: 63e0bb73-cf9f-4dab-bdad-a36d45812da6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.edu_organization.schema_address
+    - field.field.taxonomy_term.edu_organization.schema_image
+    - taxonomy.vocabulary.edu_organization
+  module:
+    - address
+    - text
+id: taxonomy_term.edu_organization.default
+targetEntityType: taxonomy_term
+bundle: edu_organization
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  schema_address:
+    type: address_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 150
+    region: content
+  schema_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+hidden:
+  langcode: true
