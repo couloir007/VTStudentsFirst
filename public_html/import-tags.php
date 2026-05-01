@@ -141,8 +141,8 @@ foreach ($article_tags as $path => $tags) {
 
   // Get existing tag IDs to avoid duplicates.
   $existing_tids = [];
-  if ($node->hasField('field_tags')) {
-    foreach ($node->get('field_tags')->referencedEntities() as $existing_term) {
+  if ($node->hasField('schema_topic')) {
+    foreach ($node->get('schema_topic')->referencedEntities() as $existing_term) {
       $existing_tids[$existing_term->id()] = TRUE;
     }
   }
@@ -190,8 +190,8 @@ foreach ($article_tags as $path => $tags) {
 
   // Append new tags to existing ones.
   if ($new_tids) {
-    $current = $node->get('field_tags')->getValue();
-    $node->set('field_tags', array_merge($current, $new_tids));
+    $current = $node->get('schema_topic')->getValue();
+    $node->set('schema_topic', array_merge($current, $new_tids));
     $node->save();
     echo "  → Saved " . count($new_tids) . " new tag(s)\n";
   }
