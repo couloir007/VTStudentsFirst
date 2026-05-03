@@ -29,7 +29,7 @@
 
     {# Tuitioning towns section — body intro + view list #}
     {% include "@collections/tuitioning-towns-section/tuitioning-towns-section.twig" with {
-      body_text:  content.body|render|trim ?: null,
+      body_text:  content.body|field_value,
       towns_view: drupal_view('tuitioning_towns', 'block_2'),
     } only %}
 

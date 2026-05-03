@@ -25,12 +25,6 @@
 } %}
   {% block content %}
 
-    {% if section_label %}
-      {% include "@elements/section-label/section-label.twig" with {
-        text: section_label,
-        modifier: 'light',
-      } only %}
-    {% endif %}
 
     {% if headline %}
       {% include "@elements/section-headline/section-headline.twig" with {
@@ -41,7 +35,7 @@
     {% endif %}
 
     {% if body_text %}
-      <div class="tuitioning-towns-section__intro prose">
+      <div class="tuitioning-towns-section__intro">
         {{ body_text|raw }}
       </div>
     {% endif %}

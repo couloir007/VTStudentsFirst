@@ -221,7 +221,7 @@ foreach ($towns as [$title, $su, $district, $grade_info, $grade_level, $act73]) 
     }
 
     $node->set('body', [
-      'value'  => "<p><strong>District:</strong> {$district} ({$su}). Grades: {$grade_info}.</p>",
+      'value'  => "<p>{$district} ({$su}). Grades: {$grade_info}.</p>",
       'format' => 'full_html',
     ]);
 

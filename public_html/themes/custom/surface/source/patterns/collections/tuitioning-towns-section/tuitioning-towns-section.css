@@ -6,10 +6,11 @@
 
 .tuitioning-towns-section {
   border-top: 1px solid var(--section-border, var(--mist));
+  padding-block: 3rem;
 }
 
 .tuitioning-towns-section__inner {
-  padding-block: var(--size-16);
+  padding-block: 0;
 }
 
 .tuitioning-towns-section__headline {
@@ -68,6 +69,7 @@
   /* Town name — first column */
   & tbody td:first-child {
     font-weight: var(--font-weight-600);
+    color: var(--maple-dark);
 
     & a {
       color: var(--maple-dark);

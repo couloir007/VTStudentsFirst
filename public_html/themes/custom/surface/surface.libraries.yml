@@ -650,3 +650,8 @@ node-person:
       dist/css/node-person.css: {}
   dependencies:
     - surface/person-card
+
+tuitioning-towns-section:
+  css:
+    component:
+      dist/css/tuitioning-towns-section.css: {}
