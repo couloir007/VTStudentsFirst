@@ -15,6 +15,7 @@ use Drupal\node\NodeInterface;
 use Drupal\ourkids_schemadotorg\JsonLd\PersonJsonLd;
 use Drupal\ourkids_schemadotorg\JsonLd\ArticleJsonLd;
 use Drupal\ourkids_schemadotorg\JsonLd\ProfilePageJsonLd;
+use Drupal\ourkids_schemadotorg\JsonLd\TuitioningTownsPageJsonLd;
 
 /**
  * Implements hook_schemadotorg_jsonld_alter().
@@ -31,6 +32,9 @@ function ourkids_schemadotorg_schemadotorg_jsonld_alter(array &$data, RouteMatch
   }
 
   $entity = &$data['schemadotorg_jsonld_entity'];
+
+  // Tuitioning towns listing page — inject ItemList mainEntity.
+  TuitioningTownsPageJsonLd::alter($data, $node, $bubbleable_metadata);
 
   if ($node->bundle() === 'article') {
     // articleBody should be plain text, not rendered HTML.
