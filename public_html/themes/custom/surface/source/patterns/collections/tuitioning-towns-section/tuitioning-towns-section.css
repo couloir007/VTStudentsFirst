@@ -7,6 +7,10 @@
 .tuitioning-towns-section {
   border-top: 1px solid var(--section-border, var(--mist));
   padding-block: 3rem;
+
+  .page-title {
+    margin-block-start: 0;
+  }
 }
 
 .tuitioning-towns-section__inner {

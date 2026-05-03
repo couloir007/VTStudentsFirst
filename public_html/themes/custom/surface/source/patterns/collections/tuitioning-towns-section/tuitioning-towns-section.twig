@@ -15,6 +15,7 @@
 #}
 
 {{ attach_library('surface/tuitioning-towns-section') }}
+{{ attach_library('surface/page-title') }}
 
 {% embed "@layouts/section/section.twig" with {
   section_class: 'tuitioning-towns-section section-theme--light',
@@ -25,6 +26,9 @@
 } %}
   {% block content %}
 
+    <h1 class="page-title section-headline section-headline--black tuitioning-towns-section__headline">
+      <span>Vermont Tuitioning Communities</span>
+    </h1>
 
     {% if headline %}
       {% include "@elements/section-headline/section-headline.twig" with {
