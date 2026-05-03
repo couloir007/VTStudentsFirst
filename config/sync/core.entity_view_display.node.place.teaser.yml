@@ -22,7 +22,6 @@ dependencies:
     - field.field.node.place.schema_telephone
     - node.type.place
   module:
-    - address
     - text
     - user
 id: node.place.teaser
@@ -31,33 +30,11 @@ bundle: place
 mode: teaser
 content:
   body:
-    type: text_summary_or_trimmed
-    label: hidden
-    settings:
-      trim_length: 600
-    third_party_settings: {  }
-    weight: 17
-    region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: -100
-    region: content
-  schema_address:
-    type: address_default
+    type: text_default
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 150
-    region: content
-  schema_image:
-    type: entity_reference_entity_view
-    label: hidden
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    weight: 8
+    weight: 0
     region: content
 hidden:
   field_act73_status: true
@@ -66,7 +43,10 @@ hidden:
   field_metatag: true
   field_notes: true
   langcode: true
+  links: true
+  schema_address: true
   schema_geo: true
+  schema_image: true
   schema_latitude: true
   schema_longitude: true
   schema_related_link: true

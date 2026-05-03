@@ -1,0 +1,37 @@
+{% set classes = [
+  'node',
+  'node--type-' ~ node.bundle|clean_class,
+  not node.isPublished() ? 'node--unpublished',
+  view_mode ? 'node--view-mode-' ~ view_mode|clean_class
+] %}
+
+{% set attributes = attributes.addClass(classes) %}
+
+<article {{ attributes }}>
+  {{ title_prefix }}
+  {{ title_suffix }}
+
+  <div class="node__content">
+
+    {# schema_main_entity — primary paragraph sections #}
+    {% for idx, item in content.schema_main_entity %}
+      {% if item['#paragraph'] is defined %}
+        {{ item }}
+      {% endif %}
+    {% endfor %}
+
+    {# field_sections — supplementary paragraph sections #}
+    {% for idx, item in content.field_sections %}
+      {% if item['#paragraph'] is defined %}
+        {{ item }}
+      {% endif %}
+    {% endfor %}
+
+    {# Tuitioning towns section — body intro + view list #}
+    {% include "@collections/tuitioning-towns-section/tuitioning-towns-section.twig" with {
+      body_text:  content.body|render|trim ?: null,
+      towns_view: drupal_view('tuitioning_towns', 'block_2'),
+    } only %}
+
+  </div>
+</article>

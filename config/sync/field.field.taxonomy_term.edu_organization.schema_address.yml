@@ -7,6 +7,24 @@ dependencies:
     - taxonomy.vocabulary.edu_organization
   module:
     - address
+    - content_translation
+third_party_settings:
+  content_translation:
+    translation_sync:
+      langcode: langcode
+      country_code: country_code
+      administrative_area: administrative_area
+      locality: locality
+      dependent_locality: dependent_locality
+      postal_code: postal_code
+      sorting_code: sorting_code
+      address_line1: address_line1
+      address_line2: address_line2
+      address_line3: address_line3
+      organization: organization
+      given_name: given_name
+      additional_name: additional_name
+      family_name: family_name
 id: taxonomy_term.edu_organization.schema_address
 field_name: schema_address
 entity_type: taxonomy_term
@@ -15,19 +33,43 @@ label: Address
 description: ''
 required: false
 translatable: true
-default_value: {  }
+default_value:
+  -
+    langcode: null
+    country_code: US
+    administrative_area: VT
+    locality: ''
+    dependent_locality: null
+    postal_code: ''
+    sorting_code: null
+    address_line1: ''
+    address_line2: ''
+    address_line3: null
+    organization: ''
+    given_name: null
+    additional_name: null
+    family_name: null
 default_value_callback: ''
 settings:
-  available_countries: {  }
-  langcode_override: null
+  available_countries:
+    US: US
+  langcode_override: ''
   field_overrides:
     givenName:
-      override: optional
+      override: hidden
     additionalName:
-      override: optional
+      override: hidden
     familyName:
-      override: optional
+      override: hidden
     organization:
       override: optional
+    addressLine2:
+      override: optional
+    addressLine3:
+      override: hidden
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
   fields: {  }
 field_type: address

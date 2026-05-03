@@ -1,0 +1,56 @@
+{#
+/**
+ * @file tuitioning-towns-section.twig
+ *
+ * Component:  @collections/tuitioning-towns-section/tuitioning-towns-section.twig
+ * Storybook:  Collections/Tuitioning Towns Section
+ *
+ * Variables:
+ *   section_label  (string) — optional eyebrow label
+ *   headline       (string) — optional section headline
+ *   body_text      (string) — optional intro prose (trusted HTML)
+ *   towns_view     (string) — rendered view markup (passed from Drupal template)
+ *                             In Storybook, pass a stub list instead.
+ */
+#}
+
+{{ attach_library('surface/tuitioning-towns-section') }}
+
+{% embed "@layouts/section/section.twig" with {
+  section_class: 'tuitioning-towns-section section-theme--light',
+  inner_class: 'tuitioning-towns-section__inner',
+  id: id,
+  attributes: attributes,
+  modifier: modifier
+} %}
+  {% block content %}
+
+    {% if section_label %}
+      {% include "@elements/section-label/section-label.twig" with {
+        text: section_label,
+        modifier: 'light',
+      } only %}
+    {% endif %}
+
+    {% if headline %}
+      {% include "@elements/section-headline/section-headline.twig" with {
+        text: headline,
+        modifier: 'black',
+        class: 'tuitioning-towns-section__headline'
+      } only %}
+    {% endif %}
+
+    {% if body_text %}
+      <div class="tuitioning-towns-section__intro prose">
+        {{ body_text|raw }}
+      </div>
+    {% endif %}
+
+    {% if towns_view %}
+      <div class="tuitioning-towns-section__list">
+        {{ towns_view|raw }}
+      </div>
+    {% endif %}
+
+  {% endblock %}
+{% endembed %}

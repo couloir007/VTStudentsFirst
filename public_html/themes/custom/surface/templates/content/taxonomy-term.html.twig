@@ -30,12 +30,14 @@
 
 {% set attributes = attributes.setAttribute('id', 'taxonomy-term-' ~ term.id).addClass(classes) %}
 
-{% include '@components/taxonomy-term/taxonomy-term.twig' with {
-  'attributes': attributes,
-  'title_prefix': title_prefix,
-  'title_suffix': title_suffix,
-  'name': name,
-  'page': page,
-  'url': url,
-  'content': content
-} %}
+{{ content }}
+
+{#{% include '@components/taxonomy-term/taxonomy-term.twig' with {#}
+{#  'attributes': attributes,#}
+{#  'title_prefix': title_prefix,#}
+{#  'title_suffix': title_suffix,#}
+{#  'name': name,#}
+{#  'page': page,#}
+{#  'url': url,#}
+{#  'content': content#}
+{#} %}#}

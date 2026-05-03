@@ -7,6 +7,11 @@
   margin-block-end: var(--size-6);
   position: relative; /* Anchor after pseudo-element. */
 
+  h2 {
+    font-size: var(--font-size-24);
+  }
+
+
   & .node__meta {
     margin-block-end: var(--size-4);
 

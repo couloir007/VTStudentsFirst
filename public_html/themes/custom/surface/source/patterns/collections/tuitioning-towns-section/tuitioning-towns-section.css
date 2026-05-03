@@ -1,0 +1,108 @@
+/**
+ * @file tuitioning-towns-section.css
+ *
+ * Styles for the Tuitioning Towns Section collection.
+ */
+
+.tuitioning-towns-section {
+  border-top: 1px solid var(--section-border, var(--mist));
+}
+
+.tuitioning-towns-section__inner {
+  padding-block: var(--size-16);
+}
+
+.tuitioning-towns-section__headline {
+  margin-block-end: var(--size-6);
+}
+
+.tuitioning-towns-section__intro {
+  color: var(--section-body, var(--mid));
+  margin-block-end: var(--size-10);
+  max-inline-size: 72ch;
+}
+
+/* ── View table ───────────────────────────────────────────────────────────── */
+
+.tuitioning-towns-section__list {
+
+  /* Views table reset — use design system tokens */
+  & .views-table,
+  & table {
+    border-collapse: collapse;
+    inline-size: 100%;
+  }
+
+  & thead th {
+    background-color: var(--forest);
+    color: var(--white);
+    font-size: var(--font-size-1);
+    font-weight: var(--font-weight-700);
+    letter-spacing: 0.04em;
+    padding-block: var(--size-3);
+    padding-inline: var(--size-4);
+    text-align: start;
+    text-transform: uppercase;
+  }
+
+  & tbody tr {
+    border-block-end: 1px solid var(--mist);
+
+    &:last-child {
+      border-block-end: none;
+    }
+
+    &:hover {
+      background-color: var(--cream);
+    }
+  }
+
+  & tbody td {
+    color: var(--ink);
+    font-size: var(--font-size-1);
+    padding-block: var(--size-3);
+    padding-inline: var(--size-4);
+    vertical-align: top;
+  }
+
+  /* Town name — first column */
+  & tbody td:first-child {
+    font-weight: var(--font-weight-600);
+
+    & a {
+      color: var(--maple-dark);
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  /* Sending schools — second column */
+  & tbody td:last-child {
+    color: var(--mid);
+  }
+
+  @media (--mobile-only) {
+    & thead {
+      display: none;
+    }
+
+    & tbody tr {
+      display: grid;
+      gap: var(--size-1);
+      padding-block: var(--size-4);
+      padding-inline: var(--size-4);
+    }
+
+    & tbody td {
+      display: block;
+      padding: 0;
+
+      &:first-child {
+        font-size: var(--font-size-2);
+      }
+    }
+  }
+}
