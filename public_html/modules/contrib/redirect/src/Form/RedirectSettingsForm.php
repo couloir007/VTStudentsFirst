@@ -49,13 +49,8 @@ class RedirectSettingsForm extends ConfigFormBase {
       '#type' => 'checkbox',
       '#title' => $this->t('Automatically create redirects when URL aliases are changed.'),
       '#default_value' => $config->get('auto_redirect'),
-      '#disabled' => $this->moduleHandler->moduleExists('path'),
-    ];
-    $form['redirect_wildcard_enabled'] = [
-      '#type' => 'checkbox',
-      '#title' => $this->t('Enable wildcard support'),
-      '#default_value' => $config->get('wildcard_enabled'),
-      '#description' => $this->t('Enable support for wildcards, e.g. /user/* will redirect every user page. <strong>Note that this feature has a certain performance impact</strong>.'),
+      // Disable only if the Path module is missing.
+      '#disabled' => !$this->moduleHandler->moduleExists('path'),
     ];
     $form['redirect_passthrough_querystring'] = [
       '#type' => 'checkbox',

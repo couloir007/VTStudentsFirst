@@ -25,9 +25,6 @@ redirect.settings:
     route_normalizer_enabled:
       type: boolean
       label: 'Enforce clean and canonical URLs.'
-    wildcard_enabled:
-      type: boolean
-      label: 'Enable wildcard redirects.'
 
 action.configuration.redirect_delete_action:
   type: action_configuration_default

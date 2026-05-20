@@ -44,7 +44,12 @@ class RedirectRepository {
   protected RequestStack $requestStack;
 
   /**
-   * Constructs a \Drupal\redirect\EventSubscriber\RedirectRequestSubscriber object.
+   * The prefix list service.
+   */
+  protected RedirectPrefixList $prefixList;
+
+  /**
+   * Constructs a \Drupal\redirect\EventSubscriber\RedirectRequestSubscriber.
    *
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $manager
    *   The entity type manager.
@@ -54,8 +59,10 @@ class RedirectRepository {
    *   The config factory.
    * @param \Symfony\Component\HttpFoundation\RequestStack|null $request_stack
    *   The request stack.
+   * @param \Drupal\redirect\RedirectPrefixList|null $prefix_list
+   *   The prefix list service.
    */
-  public function __construct(EntityTypeManagerInterface $manager, Connection $connection, ConfigFactoryInterface $config_factory, ?RequestStack $request_stack = NULL) {
+  public function __construct(EntityTypeManagerInterface $manager, Connection $connection, ConfigFactoryInterface $config_factory, ?RequestStack $request_stack = NULL, ?RedirectPrefixList $prefix_list = NULL) {
     $this->manager = $manager;
     $this->connection = $connection;
     $this->config = $config_factory->get('redirect.settings');
@@ -65,6 +72,12 @@ class RedirectRepository {
       $request_stack = \Drupal::requestStack();
     }
     $this->requestStack = $request_stack;
+    if (!$prefix_list) {
+      @trigger_error('Calling ' . __METHOD__ . ' without the $prefix_list argument is deprecated in redirect:1.12.0 and it will be required in redirect:2.0.0. See https://www.drupal.org/project/redirect/issues/3451531', E_USER_DEPRECATED);
+      // @phpstan-ignore globalDrupalDependencyInjection.useDependencyInjection
+      $prefix_list = \Drupal::service('redirect.prefix_list');
+    }
+    $this->prefixList = $prefix_list;
   }
 
   /**
@@ -86,6 +99,15 @@ class RedirectRepository {
    */
   public function findMatchingRedirect($source_path, array $query = [], $language = Language::LANGCODE_NOT_SPECIFIED, ?CacheableMetadata $cacheable_metadata = NULL) {
     $source_path = ltrim($source_path, '/');
+
+    // If the source path has at least two path components, check if the
+    // first part does have any redirects. This saves a lot of lookups for sites
+    // that don't have any redirects on common prefixes such as /node or
+    // /admin.
+    if ($this->prefixList && !$this->prefixList->hasRedirectsWithPrefix($source_path)) {
+      return NULL;
+    }
+
     $hashes = [Redirect::generateHash($source_path, $query, $language)];
     if ($language != Language::LANGCODE_NOT_SPECIFIED) {
       $hashes[] = Redirect::generateHash($source_path, $query, Language::LANGCODE_NOT_SPECIFIED);
@@ -102,58 +124,6 @@ class RedirectRepository {
     // Load redirects by hash. A direct query is used to improve performance.
     try {
       $rid = $this->connection->query('SELECT rid FROM {redirect} WHERE hash IN (:hashes[]) AND enabled = 1 ORDER BY LENGTH(redirect_source__query) DESC', [':hashes[]' => $hashes])->fetchField();
-      $wildcard_path = FALSE;
-      if (empty($rid) && $this->config->get('wildcard_enabled')) {
-        // Check for a wildcard pattern.
-        $source_path = mb_strtolower($source_path);
-        $patterns = $this->connection
-          ->query("SELECT rid, language, redirect_source__path AS pattern, redirect_source__query as query FROM {redirect} WHERE enabled = 1 AND redirect_source__path LIKE '%*%' ORDER BY LENGTH(CONCAT(redirect_source__path, redirect_source__query)) ASC")
-          ->fetchAll();
-        $wildcard_matches = [];
-        foreach ($patterns as $rule) {
-          $rule->pattern = mb_strtolower($rule->pattern);
-          $rule->query = unserialize($rule->query, ['allowed_classes' => FALSE]) ?? [];
-          // phpcs:ignore Drupal.Functions.DiscouragedFunctions.Discouraged
-          if (empty(array_diff_assoc($rule->query, $query)) && fnmatch($rule->pattern, $source_path)) {
-            // If the original rule ends in /*, it's a folder redirect and should
-            // also match the plain folder without slash.
-            if (str_ends_with($rule->pattern, '/*')) {
-              $expr = '!' . str_replace('/*', '(\/.*)', $rule->pattern) . '!';
-              if (!preg_match($expr, $source_path, $matches)) {
-                continue;
-              }
-              $rule->wildcard_value = $matches[1];
-            }
-            $wildcard_matches[$rule->language] = $rule;
-          }
-        }
-
-        if (!empty($wildcard_matches)) {
-          $wildcard_language = '';
-          if (array_key_exists($language, $wildcard_matches)) {
-            $wildcard_language = $language;
-          }
-          elseif (array_key_exists(Language::LANGCODE_NOT_SPECIFIED, $wildcard_matches)) {
-            $wildcard_language = Language::LANGCODE_NOT_SPECIFIED;
-          }
-          if (!empty($wildcard_language)) {
-            $rid = $wildcard_matches[$wildcard_language]->rid;
-            $pattern = $wildcard_matches[$wildcard_language]->pattern;
-            $tr = [
-              '*' => '',
-            ];
-            if (empty($rule->wildcard_value)) {
-              $tr = ['/*' => ''] + $tr;
-            }
-            $raw_pattern = strtr($pattern, $tr);
-            $wildcard_path = ltrim($source_path, '/');
-            if (str_starts_with($wildcard_path, $raw_pattern)) {
-              $wildcard_path = substr($wildcard_path, strlen($raw_pattern));
-            }
-            $wildcard_path = ltrim($wildcard_path, '/');
-          }
-        }
-      }
     }
     catch (\Exception) {
       // Return early in case the query failed. This can only happen if the
@@ -166,9 +136,13 @@ class RedirectRepository {
       if (in_array($rid, $this->foundRedirects)) {
         throw new RedirectLoopException('/' . $source_path, $rid);
       }
-      $this->foundRedirects[] = $rid;
-
       $redirect = $this->load($rid);
+      // The redirect could be found by the direct db query in ::findByHash(),
+      // but other modules (e.g. Trash) might prevent it from being loaded.
+      if (!$redirect instanceof Redirect) {
+        return NULL;
+      }
+      $this->foundRedirects[] = $rid;
       if ($cacheable_metadata) {
         $cacheable_metadata->addCacheableDependency($redirect);
       }
@@ -180,11 +154,6 @@ class RedirectRepository {
         return $recursive;
       }
 
-      // Reset set redirect URL with wildcard path.
-      if (isset($wildcard_path) && !str_contains($redirect->getRedirect()['uri'], "entity:")) {
-        $redirect_url = str_replace(' ', '%20', str_replace("internal:", "", str_replace("*", $wildcard_path, $redirect->getRedirect()['uri'])));
-        $redirect->setRedirect($redirect_url);
-      }
       return $redirect;
     }
 
@@ -206,11 +175,17 @@ class RedirectRepository {
   protected function findByRedirect(Redirect $redirect, $language, ?CacheableMetadata $cacheable_metadata = NULL) {
     $uri = $redirect->getRedirectUrl();
     $base_url = $this->requestStack->getCurrentRequest()->getBaseUrl();
-    $generated_url = $uri->toString(TRUE);
-    $path = ltrim(substr($generated_url->getGeneratedUrl(), strlen($base_url)), '/');
+    if ($uri->isRouted()) {
+      $path = $uri->getInternalPath();
+    }
+    else {
+      $generated_url = $uri->toString(TRUE);
+      $path = ltrim(substr($generated_url->getGeneratedUrl(), strlen($base_url)), '/');
+      $cacheable_metadata?->addCacheableDependency($generated_url);
+
+    }
     $query = $uri->getOption('query') ?: [];
-    $return_value = $this->findMatchingRedirect($path, $query, $language, $cacheable_metadata);
-    return $return_value ? $return_value->addCacheableDependency($generated_url) : $return_value;
+    return $this->findMatchingRedirect($path, $query, $language, $cacheable_metadata);
   }
 
   /**
@@ -256,8 +231,8 @@ class RedirectRepository {
    * @param int $redirect_id
    *   The redirect id.
    *
-   * @return \Drupal\redirect\Entity\Redirect
-   *   The redirect entity.
+   * @return \Drupal\redirect\Entity\Redirect|null
+   *   The redirect entity or NULL if no redirect was found.
    */
   public function load($redirect_id) {
     return $this->manager->getStorage('redirect')->load($redirect_id);

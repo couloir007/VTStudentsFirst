@@ -3,18 +3,16 @@
 namespace Drupal\redirect\Plugin\Field\FieldWidget;
 
 use Drupal\Component\Utility\UrlHelper;
-use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Field\Attribute\FieldWidget;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Routing\AccessAwareRouterInterface;
-use Drupal\Core\Url;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\redirect\RedirectRepository;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 
 /**
  * Plugin implementation of the 'link' widget for the redirect module.
@@ -34,6 +32,11 @@ use Symfony\Component\Routing\Exception\ResourceNotFoundException;
  *   }
  * )
  */
+#[FieldWidget(
+  id: 'redirect_source',
+  label: new TranslatableMarkup('Redirect source'),
+  field_types: ['link'],
+)]
 class RedirectSourceWidget extends WidgetBase {
 
   /**
@@ -52,13 +55,6 @@ class RedirectSourceWidget extends WidgetBase {
   protected RedirectRepository $redirectRepository;
 
   /**
-   * The config factory.
-   *
-   * @var \Drupal\Core\Config\ConfigFactoryInterface
-   */
-  protected ConfigFactoryInterface $configFactory;
-
-  /**
    * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
@@ -66,7 +62,6 @@ class RedirectSourceWidget extends WidgetBase {
     $widget->requestStack = $container->get('request_stack');
     $widget->router = $container->get('router');
     $widget->redirectRepository = $container->get('redirect.repository');
-    $widget->configFactory = $container->get('config.factory');
     return $widget;
   }
 
@@ -92,61 +87,6 @@ class RedirectSourceWidget extends WidgetBase {
       '#field_prefix' => $this->requestStack->getCurrentRequest()->getSchemeAndHttpHost() . '/',
       '#attributes' => ['data-disable-refocus' => 'true'],
     ];
-
-    $redirectSettings = $this->configFactory->get('redirect.settings');
-    if ($redirectSettings->get('wildcard_enabled')) {
-      $element['path']['#description'] = $this->t("Specify pages by using their paths. The '*' character is a wildcard. An example path is /user/* for every user page.");
-    }
-
-    // If creating new URL add checks.
-    if ($items->getEntity()->isNew()) {
-      $element['status_box'] = [
-        '#prefix' => '<div id="redirect-link-status">',
-        '#suffix' => '</div>',
-      ];
-
-      $source_path = $form_state->getValue(['redirect_source', 0, 'path']);
-      if ($source_path) {
-        $source_path = trim($source_path);
-
-        // Warning about creating a redirect from a valid path.
-        // @todo Hmm... exception driven logic. Find a better way how to
-        //   determine if we have a valid path.
-        try {
-          $this->router->match('/' . $form_state->getValue(['redirect_source', 0, 'path']));
-
-          $url = Url::fromRoute('entity.path_alias.add_form');
-          if ($url->access()) {
-            $element['status_box'][]['#markup'] = '<div class="messages messages--warning">' . $this->t('The source path %path is likely a valid path. It is preferred to <a href="@url-alias">create URL aliases</a> for existing paths rather than redirects.', [
-                '%path' => $source_path,
-                '@url-alias' => $url->toString(),
-              ]) . '</div>';
-          }
-        }
-        catch (ResourceNotFoundException) {
-          // Do nothing, expected behavior.
-        }
-        catch (AccessDeniedHttpException) {
-          // @todo Source lookup results in an access denied, deny access?
-        }
-
-        // Warning about the path being already redirected.
-        $parsed_url = UrlHelper::parse($source_path);
-        $path = $parsed_url['path'] ?? NULL;
-        if (!empty($path)) {
-          $redirects = $this->redirectRepository->findBySourcePath($path);
-          if (!empty($redirects)) {
-            $redirect = array_shift($redirects);
-            $element['status_box'][]['#markup'] = '<div class="messages messages--warning">' . $this->t('The base source path %source is already being redirected. Do you want to <a href="@edit-page">edit the existing redirect</a>?', ['%source' => $source_path, '@edit-page' => $redirect->toUrl('edit-form')->toString()]) . '</div>';
-          }
-        }
-      }
-
-      $element['path']['#ajax'] = [
-        'callback' => 'redirect_source_link_get_status_messages',
-        'wrapper' => 'redirect-link-status',
-      ];
-    }
 
     return $element;
   }

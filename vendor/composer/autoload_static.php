@@ -205,7 +205,6 @@ class ComposerStaticInitee6b7cbaa657713c6f0fa2a4d6b1eb74
             'Drupal\\rat\\' => 11,
             'Drupal\\Core\\' => 12,
             'Drupal\\Composer\\Plugin\\Scaffold\\' => 32,
-            'Drupal\\Composer\\Plugin\\ProjectMessage\\' => 38,
             'Drupal\\Component\\' => 17,
             'DrupalFinder\\' => 13,
             'DrupalCodeGenerator\\' => 20,
@@ -670,10 +669,6 @@ class ComposerStaticInitee6b7cbaa657713c6f0fa2a4d6b1eb74
         array (
             0 => __DIR__ . '/..' . '/drupal/core-composer-scaffold',
         ),
-        'Drupal\\Composer\\Plugin\\ProjectMessage\\' =>
-        array (
-            0 => __DIR__ . '/..' . '/drupal/core-project-message',
-        ),
         'Drupal\\Component\\' =>
         array (
             0 => __DIR__ . '/../..' . '/public_html/core/lib/Drupal/Component',
@@ -688,7 +683,7 @@ class ComposerStaticInitee6b7cbaa657713c6f0fa2a4d6b1eb74
         ),
         'Doctrine\\Persistence\\' =>
         array (
-            0 => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence',
+            0 => __DIR__ . '/..' . '/doctrine/persistence/src',
         ),
         'Doctrine\\Deprecations\\' =>
         array (
