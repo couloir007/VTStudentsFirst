@@ -9,7 +9,17 @@ include:
 variables:
   OPT_IN_TEST_NEXT_MINOR: 1
   OPT_IN_TEST_PREVIOUS_MAJOR: 1
+  # The previous major jobs are the oldest-core baseline, so run them
+  # automatically instead of manually.
+  _AUTORUN_PREVIOUS_MAJOR: 'all'
   _CSPELL_WORDS: 'Csvg, Cpath, Unrestorable, trashable'
+
+# Test against the oldest core release the module supports, so the pipeline
+# catches anything that only works on a newer minor. The default and 'next
+# minor' jobs cover the other end of the range.
+composer (previous major):
+  variables:
+    DRUPAL_CORE: '10.3.0'
 
 composer-lint:
   allow_failure: false

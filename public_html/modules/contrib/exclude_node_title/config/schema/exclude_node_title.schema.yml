@@ -26,3 +26,9 @@ exclude_node_title.settings:
         sequence:
           type: machine_name
           label: 'View mode name'
+    nid_list:
+      type: sequence
+      label: 'Node IDs to exclude'
+      sequence:
+        type: integer
+        label: 'Node ID'

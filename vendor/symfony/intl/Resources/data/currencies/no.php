@@ -900,11 +900,11 @@ return [
         ],
         'SLE' => [
             'SLE',
-            'sierraleonsk leone',
+            'sierraleonske leone',
         ],
         'SLL' => [
             'SLL',
-            'sierraleonsk leone (1964–2022)',
+            'sierraleonske leone (1964—2022)',
         ],
         'SOS' => [
             'SOS',
@@ -1078,10 +1078,6 @@ return [
             'XCD',
             'østkaribiske dollar',
         ],
-        'XCG' => [
-            'Cg.',
-            'karibiske gylden',
-        ],
         'XEU' => [
             'XEU',
             'europeisk valutaenhet',
@@ -1157,10 +1153,6 @@ return [
         'ZWD' => [
             'ZWD',
             'zimbabwiske dollar (1980–2008)',
-        ],
-        'ZWG' => [
-            'ZWG',
-            'zimbabwiske gull',
         ],
         'ZWL' => [
             'ZWL',

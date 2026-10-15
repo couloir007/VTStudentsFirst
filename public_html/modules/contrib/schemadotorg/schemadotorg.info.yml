@@ -13,10 +13,9 @@ dependencies:
   - 'drupal:image'
   - 'drupal:link'
   - 'drupal:options'
-  - 'drupal:telephone'
   - 'drupal:text'
 
-# Information added by Drupal.org packaging script on 2026-03-05
-version: '1.0.0-alpha37'
+# Information added by Drupal.org packaging script on 2026-09-08
+version: '1.0.0-alpha39'
 project: 'schemadotorg'
-datestamp: 1772716811
+datestamp: 1788877492

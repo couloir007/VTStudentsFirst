@@ -900,11 +900,11 @@ return [
         ],
         'SLE' => [
             'SLE',
-            'sierraleonský leone',
+            'sierro-leonský leone',
         ],
         'SLL' => [
             'SLL',
-            'sierraleonský leone (1964—2022)',
+            'sierro-leonský leone (1964—2022)',
         ],
         'SOS' => [
             'SOS',
@@ -1078,10 +1078,6 @@ return [
             'EC$',
             'východokaribský dolar',
         ],
-        'XCG' => [
-            'Cg.',
-            'karibský gulden',
-        ],
         'XEU' => [
             'ECU',
             'evropská měnová jednotka',
@@ -1157,10 +1153,6 @@ return [
         'ZWD' => [
             'ZWD',
             'zimbabwský dolar (1980–2008)',
-        ],
-        'ZWG' => [
-            'ZWG',
-            'zimbabwský zlatý',
         ],
         'ZWL' => [
             'ZWL',

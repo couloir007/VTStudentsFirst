@@ -2,10 +2,6 @@
 
 return [
     'Names' => [
-        'KGS' => [
-            'KGS',
-            'Kyrgyzstani Som',
-        ],
         'USD' => [
             '$',
             'US Dollar',
@@ -14,9 +10,9 @@ return [
             'VEF',
             'Venezuelan Bolívar',
         ],
-        'XCG' => [
-            'Cg.',
-            'Caribbean Guilder',
+        'VES' => [
+            'VES',
+            'VES',
         ],
     ],
 ];

@@ -1,9 +1,6 @@
 <?php
 
 return [
-    'UserAssignedNames' => [
-        'XK' => 'Kosowo',
-    ],
     'Names' => [
         'AD' => 'Andoor',
         'AE' => 'Emira Arab Ini',
@@ -34,7 +31,6 @@ return [
         'BM' => 'Bermid',
         'BN' => 'Burney',
         'BO' => 'Boliwi',
-        'BQ' => 'Pays-Bas bu Caraïbe',
         'BR' => 'Beresil',
         'BS' => 'Bahamas',
         'BT' => 'Butaŋ',
@@ -70,7 +66,6 @@ return [
         'EC' => 'Ekwaatër',
         'EE' => 'Estoni',
         'EG' => 'Esipt',
-        'EH' => 'Sahara bu sowwu',
         'ER' => 'Eritere',
         'ES' => 'Españ',
         'ET' => 'Ecopi',
@@ -110,7 +105,6 @@ return [
         'IL' => 'Israyel',
         'IM' => 'Dunu Maan',
         'IN' => 'End',
-        'IO' => 'Terituwaaru Brëtaañ ci Oseyaa Enjeŋ',
         'IQ' => 'Irag',
         'IR' => 'Iraŋ',
         'IS' => 'Islànd',
@@ -126,7 +120,6 @@ return [
         'KM' => 'Komoor',
         'KN' => 'Saŋ Kits ak Newis',
         'KP' => 'Kore Noor',
-        'KR' => 'Corée du Sud',
         'KW' => 'Kowet',
         'KY' => 'Duni Kaymaŋ',
         'KZ' => 'Kasaxstaŋ',
@@ -187,7 +180,6 @@ return [
         'PM' => 'Saŋ Peer ak Mikeloŋ',
         'PN' => 'Duni Pitkayirn',
         'PR' => 'Porto Riko',
-        'PS' => 'réew yu Palestine',
         'PT' => 'Portigaal',
         'PW' => 'Palaw',
         'PY' => 'Paraguwe',

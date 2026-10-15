@@ -93,12 +93,32 @@ class SchemaDotOrgCustomFieldJsonLdManager implements SchemaDotOrgCustomFieldJso
         continue;
       }
 
+      // Convert map values to PropertyValue JSON-LD objects.
+      $data_type = NestedArray::getValue($settings, ['columns', $item_key, 'type']);
+      if ($data_type === 'map') {
+        $data[$item_property] = [];
+        foreach ($item_value as $map_value) {
+          $name = $map_value['key'] ?? '';
+          $map_item_value = $map_value['value'] ?? '';
+          if ($name === '' || $map_item_value === '') {
+            continue;
+          }
+
+          $data[$item_property][] = [
+            '@type' => $this->schemaTypeManager->getPropertyDefaultType($item_property),
+            'name' => $name,
+            'value' => $map_item_value,
+          ];
+        }
+        continue;
+      }
+
       // Convert allowed values' value to text.
-      $allowed_values = NestedArray::getValue($settings, ['field_settings', $item_key, 'widget_settings', 'settings', 'allowed_values']) ?? [];
+      $allowed_values = NestedArray::getValue($settings, ['field_settings', $item_key, 'allowed_values']) ?? [];
       if ($allowed_values) {
         foreach ($allowed_values as $allowed_value) {
           if ($allowed_value['key'] === $item_value) {
-            $item_value = $allowed_value['value'];
+            $item_value = $allowed_value['label'];
             break;
           }
         }

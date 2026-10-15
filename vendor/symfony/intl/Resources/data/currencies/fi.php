@@ -904,7 +904,7 @@ return [
         ],
         'SLL' => [
             'SLL',
-            'Sierra Leonen leone (1964–2022)',
+            'Sierra Leonen leone (1964—2022)',
         ],
         'SOS' => [
             'SOS',
@@ -1082,10 +1082,6 @@ return [
             'XCD',
             'Itä-Karibian dollari',
         ],
-        'XCG' => [
-            'Cg.',
-            'Karibian guldeni',
-        ],
         'XEU' => [
             'XEU',
             'Euroopan valuuttayksikkö (ECU)',
@@ -1161,10 +1157,6 @@ return [
         'ZWD' => [
             'ZWD',
             'Zimbabwen dollari (1980–2008)',
-        ],
-        'ZWG' => [
-            'ZWG',
-            'Zimbabwen kulta',
         ],
         'ZWL' => [
             'ZWL',

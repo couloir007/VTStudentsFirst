@@ -19,21 +19,27 @@ dependencies:
     - node.type.page
   module:
     - entity_reference_revisions
-    - text
     - user
 id: node.page.default
 targetEntityType: node
 bundle: page
 mode: default
 content:
-  body:
-    type: text_default
+  field_sections:
+    type: entity_reference_revisions_entity_view
     label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: -100
     region: content
-  field_sections:
+  schema_main_entity:
     type: entity_reference_revisions_entity_view
     label: hidden
     settings:
@@ -42,20 +48,11 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  schema_main_entity:
-    type: entity_reference_revisions_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    weight: 2
-    region: content
 hidden:
+  body: true
   field_editorial: true
   field_metatag: true
   langcode: true
-  links: true
   schema_about: true
   schema_has_part: true
   schema_image: true

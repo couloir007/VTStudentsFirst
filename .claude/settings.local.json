@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node test_twig.js)",
+      "Bash(npm run *)"
+    ]
+  }
+}

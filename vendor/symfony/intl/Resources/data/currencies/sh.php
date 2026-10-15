@@ -84,7 +84,7 @@ return [
         ],
         'BAM' => [
             'KM',
-            'bosanskohercegovačka konvertibilna marka',
+            'bosansko-hercegovačka konvertibilna marka',
         ],
         'BBD' => [
             'BBD',
@@ -336,7 +336,7 @@ return [
         ],
         'EUR' => [
             '€',
-            'evro',
+            'Evro',
         ],
         'FIM' => [
             'FIM',
@@ -924,7 +924,7 @@ return [
         ],
         'TTD' => [
             'TTD',
-            'trinidadskotobaški dolar',
+            'Trinidad-tobagoški dolar',
         ],
         'TWD' => [
             'NT$',
@@ -1014,10 +1014,6 @@ return [
             'EC$',
             'istočnokaripski dolar',
         ],
-        'XCG' => [
-            'Cg.',
-            'karipski gulden',
-        ],
         'XEU' => [
             'XEU',
             'Evropska valutna jedinica',
@@ -1089,10 +1085,6 @@ return [
         'ZWD' => [
             'ZWD',
             'Zimbabveanski dolar (1980–2008)',
-        ],
-        'ZWG' => [
-            'ZWG',
-            'zimbabveansko zlato',
         ],
         'ZWL' => [
             'ZWL',

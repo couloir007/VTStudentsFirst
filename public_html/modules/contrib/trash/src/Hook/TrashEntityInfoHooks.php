@@ -78,12 +78,18 @@ class TrashEntityInfoHooks {
         $entity_type->setLinkTemplate('purge', $base_path . '/purge');
         $entity_type->setLinkTemplate('restore-multiple-form', "/admin/content/trash/$entity_type_id/restore");
         $entity_type->setLinkTemplate('purge-multiple-form', "/admin/content/trash/$entity_type_id/purge");
-      }
 
-      // Override node's access control handler, so we can skip the
-      // 'bypass node access' permission check if the node is deleted.
-      if ($entity_type->id() === 'node') {
-        $entity_type->setHandlerClass('access', TrashNodeAccessControlHandler::class);
+        // Override node's access control handler, so we can skip the
+        // 'bypass node access' permission check if the node is deleted.
+        if ($entity_type->id() === 'node') {
+          $entity_type->setHandlerClass('access', TrashNodeAccessControlHandler::class);
+        }
+
+        // Report a new redirect whose source is held by a trashed redirect,
+        // instead of letting it fail to save.
+        if ($entity_type->id() === 'redirect') {
+          $entity_type->addConstraint('TrashedRedirectSource');
+        }
       }
     }
   }

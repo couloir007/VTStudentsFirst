@@ -29,18 +29,6 @@ class ExcludeNodeTitleManager implements ExcludeNodeTitleManagerInterface {
    */
   protected array $excludeSettings;
 
-  /**
-   * Constructs a ExcludeNodeTitleManager object.
-   *
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
-   *   The config factory.
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
-   *   The entity type manager.
-   * @param \Drupal\Core\Entity\EntityTypeBundleInfoInterface $bundleInfo
-   *   The bundle info manager.
-   * @param \Drupal\Core\State\StateInterface $state
-   *   The state interface manager.
-   */
   public function __construct(
     ConfigFactoryInterface $config_factory,
     protected EntityTypeManagerInterface $entityTypeManager,

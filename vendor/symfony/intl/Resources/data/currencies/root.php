@@ -78,10 +78,6 @@ return [
             'EC$',
             'XCD',
         ],
-        'XCG' => [
-            'Cg.',
-            'XCG',
-        ],
         'XOF' => [
             'F CFA',
             'XOF',

@@ -1,9 +1,6 @@
 <?php
 
 return [
-    'UserAssignedNames' => [
-        'XK' => 'Koosofo',
-    ],
     'Names' => [
         'AD' => 'Andora',
         'AE' => 'Midawga Imaaraatka Carabta',
@@ -225,7 +222,7 @@ return [
         'TH' => 'Taylaand',
         'TJ' => 'Tajikistan',
         'TK' => 'Tokelaaw',
-        'TL' => 'Timor-Leste',
+        'TL' => 'Timoor',
         'TM' => 'Turkmenistan',
         'TN' => 'Tuniisiya',
         'TO' => 'Tonga',
@@ -240,7 +237,7 @@ return [
         'US' => 'Maraykanka',
         'UY' => 'Uruguwaay',
         'UZ' => 'Usbakistan',
-        'VA' => 'Magaalada Faatikaan',
+        'VA' => 'Faatikaan',
         'VC' => 'St. Finsent & Girenadiins',
         'VE' => 'Fenisuweela',
         'VG' => 'Biritish Farjin Island',

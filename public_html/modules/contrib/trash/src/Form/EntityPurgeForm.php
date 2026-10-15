@@ -7,8 +7,7 @@ namespace Drupal\trash\Form;
 use Drupal\Core\Entity\ContentEntityConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Form\WorkspaceSafeFormInterface;
-use Drupal\Core\Url;
-use Drupal\trash\TrashManager;
+use Drupal\trash\TrashManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -16,10 +15,12 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class EntityPurgeForm extends ContentEntityConfirmFormBase implements WorkspaceSafeFormInterface {
 
+  use TrashOperationRedirectTrait;
+
   /**
    * The trash manager.
    */
-  protected TrashManager $trashManager;
+  protected TrashManagerInterface $trashManager;
 
   /**
    * {@inheritdoc}
@@ -44,7 +45,8 @@ class EntityPurgeForm extends ContentEntityConfirmFormBase implements WorkspaceS
    * {@inheritdoc}
    */
   public function getCancelUrl() {
-    return $this->getRedirectUrl();
+    // Cancelling leaves the entity in the trash, so it can still be viewed.
+    return $this->getTrashedEntityUrl() ?? $this->getTrashListingUrl();
   }
 
   /**
@@ -52,7 +54,7 @@ class EntityPurgeForm extends ContentEntityConfirmFormBase implements WorkspaceS
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form = parent::buildForm($form, $form_state);
-    $this->trashManager->getHandler($this->getEntity()->getEntityTypeId())?->restoreFormAlter($form, $form_state);
+    $this->trashManager->getHandler($this->getEntity()->getEntityTypeId())?->purgeFormAlter($form, $form_state);
 
     return $form;
   }
@@ -87,9 +89,8 @@ class EntityPurgeForm extends ContentEntityConfirmFormBase implements WorkspaceS
    *   The redirect URL.
    */
   protected function getRedirectUrl() {
-    return Url::fromRoute('trash.admin_content_trash_entity_type', [
-      'entity_type_id' => $this->getEntity()->getEntityTypeId(),
-    ]);
+    // The entity is gone by now, so its own page is not an option.
+    return $this->getTrashListingUrl();
   }
 
 }

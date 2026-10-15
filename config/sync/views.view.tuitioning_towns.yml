@@ -162,21 +162,22 @@ display:
         options: {  }
       empty: {  }
       sorts:
-        title:
-          id: title
+        created:
+          id: created
           table: node_field_data
-          field: title
+          field: created
           relationship: none
           group_type: group
           admin_label: ''
           entity_type: node
-          entity_field: title
-          plugin_id: standard
-          order: ASC
+          entity_field: created
+          plugin_id: date
+          order: DESC
           expose:
             label: ''
             field_identifier: ''
           exposed: false
+          granularity: second
       arguments: {  }
       filters:
         status:
@@ -337,34 +338,16 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: field
-          label: Town
+          label: ''
           exclude: false
           alter:
             alter_text: false
-            text: ''
             make_link: false
-            path: ''
             absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
             word_boundary: false
             ellipsis: false
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
             strip_tags: false
             trim: false
-            preserve_tags: ''
             html: false
           element_type: ''
           element_class: ''
@@ -381,7 +364,7 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: false
+            link_to_entity: true
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -400,8 +383,8 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: District
-          exclude: false
+          label: ''
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -425,7 +408,7 @@ display:
             more_link: false
             more_link_text: ''
             more_link_path: ''
-            strip_tags: true
+            strip_tags: false
             trim: false
             preserve_tags: ''
             html: false
@@ -455,36 +438,13 @@ display:
           separator: ', '
           field_api_classes: false
       style:
-        type: table
+        type: grid_responsive
         options:
           grouping: {  }
-          row_class: ''
-          default_row_class: true
-          columns:
-            title: title
-            body: body
-          default: '-1'
-          info:
-            title:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            body:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-          override: true
-          sticky: false
-          summary: ''
-          empty_table: false
-          caption: ''
-          description: ''
+          columns: 4
+          cell_min_width: 100
+          grid_gutter: 10
+          alignment: horizontal
       row:
         type: 'entity:node'
         options:

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Drupal\trash;
 
+use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Entity\EntityPublishedInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -27,6 +28,7 @@ class TrashViewBuilder {
     protected EntityTypeManagerInterface $entityTypeManager,
     protected ModuleHandlerInterface $moduleHandler,
     protected LanguageManagerInterface $languageManager,
+    protected EntityFieldManagerInterface $entityFieldManager,
   ) {}
 
   /**
@@ -91,7 +93,6 @@ class TrashViewBuilder {
     $this->addFields($executable, $entity_type, $base_table);
     $this->addFilters($executable, $entity_type, $base_table);
     $this->addSorts($executable, $base_table);
-    $this->addRelationships($executable, $entity_type, $base_table);
 
     // Empty text when no results.
     $executable->addHandler('default', 'empty', 'views', 'area_text_custom', [
@@ -147,33 +148,49 @@ class TrashViewBuilder {
     }
 
     // Label field.
-    $label_key = $entity_type->getKey('label');
-    if ($label_key) {
-      $view->addHandler('default', 'field', $base_table, $label_key, [
+    $label_field = $this->resolveLabelField($entity_type, $base_table);
+    if ($label_field !== NULL) {
+      $options = [
         'label' => (string) $this->t('Title'),
-        'type' => 'trash_label',
-        'settings' => ['link_to_entity' => TRUE],
-      ]);
+      ];
+      // The trash_label formatter only applies to string/uri fields. Use it
+      // when the label maps directly to such a field; composite or computed
+      // label fields fall back to their main-property column rendered with the
+      // field's default formatter. link_to_entity is a trash_label setting, so
+      // it can only be set together with that formatter.
+      if ($label_field === $entity_type->getKey('label')) {
+        $options['type'] = 'trash_label';
+        $options['settings'] = ['link_to_entity' => TRUE];
+      }
+      $view->addHandler('default', 'field', $base_table, $label_field, $options);
     }
 
-    // Bundle field.
+    // Bundle field. The bundle key is only an entity reference when the entity
+    // type has a bundle entity type. Otherwise it's a plain string column, and
+    // the entity_reference_label formatter does not apply to it.
     $bundle_key = $entity_type->getKey('bundle');
     if ($bundle_key) {
-      $view->addHandler('default', 'field', $base_table, $bundle_key, [
+      $options = [
         'label' => (string) $entity_type->getBundleLabel(),
-        'type' => 'entity_reference_label',
-        'settings' => ['link' => FALSE],
-      ]);
+      ];
+      if ($entity_type->getBundleEntityType()) {
+        $options['type'] = 'entity_reference_label';
+        $options['settings'] = ['link' => FALSE];
+      }
+      $view->addHandler('default', 'field', $base_table, $bundle_key, $options);
     }
 
-    // Owner field (if entity implements EntityOwnerInterface).
+    // Owner field (if entity implements EntityOwnerInterface). Render the owner
+    // directly from the base table's reference field instead of joining
+    // users_field_data, which would multiply result rows once per user
+    // translation on multilingual sites.
     if ($entity_type->entityClassImplements(EntityOwnerInterface::class)) {
       $owner_key = $entity_type->getKey('owner');
       if ($owner_key) {
-        $view->addHandler('default', 'field', 'users_field_data', 'name', [
-          'relationship' => 'uid',
+        $view->addHandler('default', 'field', $base_table, $owner_key, [
           'label' => (string) $this->t('Author'),
-          'type' => 'user_name',
+          'type' => 'entity_reference_label',
+          'settings' => ['link' => TRUE],
         ]);
       }
     }
@@ -216,10 +233,15 @@ class TrashViewBuilder {
       }
     }
 
-    // Deleted timestamp field.
+    // Deleted timestamp field. The date format belongs in the formatter
+    // settings; a top-level 'date_format' is not a Views entity field option
+    // and gets ignored.
     $view->addHandler('default', 'field', $base_table, 'deleted', [
       'label' => (string) $this->t('Deleted'),
-      'date_format' => 'short',
+      'type' => 'timestamp',
+      'settings' => [
+        'date_format' => 'short',
+      ],
     ]);
 
     // Operations field - use standard operations for entity types with a list
@@ -248,14 +270,14 @@ class TrashViewBuilder {
     ]);
 
     // Exposed filter for entity label.
-    $label_key = $entity_type->getKey('label');
-    if ($label_key) {
-      $view->addHandler('default', 'filter', $base_table, $label_key, [
+    $label_field = $this->resolveLabelField($entity_type, $base_table);
+    if ($label_field !== NULL && $this->handlerExists($base_table, $label_field, 'filter')) {
+      $view->addHandler('default', 'filter', $base_table, $label_field, [
         'operator' => 'contains',
         'exposed' => TRUE,
         'expose' => [
           'label' => (string) $this->t('Title'),
-          'identifier' => $label_key,
+          'identifier' => $label_field,
         ],
       ]);
     }
@@ -303,23 +325,58 @@ class TrashViewBuilder {
   }
 
   /**
-   * Adds relationship handlers to the View.
+   * Resolves the Views field key to use for the entity label column.
    *
-   * @param \Drupal\views\ViewExecutable $view
-   *   The View executable.
+   * Most entities expose their label key (e.g. "title") directly as a Views
+   * field. Composite or computed label fields (e.g. redirect's
+   * "redirect_source") are only exposed per column, so fall back to the label
+   * field's main-property column ("redirect_source__path").
+   *
    * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
    *   The entity type.
    * @param string $base_table
    *   The Views base table name.
+   *
+   * @return string|null
+   *   The Views field key to use, or NULL if the label cannot be rendered.
    */
-  protected function addRelationships(ViewExecutable $view, EntityTypeInterface $entity_type, string $base_table): void {
-    // Add owner relationship if entity has an owner.
-    if ($entity_type->entityClassImplements(EntityOwnerInterface::class)) {
-      $owner_key = $entity_type->getKey('owner');
-      if ($owner_key) {
-        $view->addHandler('default', 'relationship', $base_table, $owner_key, [], 'uid');
+  protected function resolveLabelField(EntityTypeInterface $entity_type, string $base_table): ?string {
+    $label_key = $entity_type->getKey('label');
+    if (!$label_key) {
+      return NULL;
+    }
+    if ($this->handlerExists($base_table, $label_key, 'field')) {
+      return $label_key;
+    }
+    $field_storage_definitions = $this->entityFieldManager->getFieldStorageDefinitions($entity_type->id());
+    if (isset($field_storage_definitions[$label_key])) {
+      $main_property = $field_storage_definitions[$label_key]->getMainPropertyName();
+      if ($main_property) {
+        $candidate = $label_key . '__' . $main_property;
+        if ($this->handlerExists($base_table, $candidate, 'field')) {
+          return $candidate;
+        }
       }
     }
+    return NULL;
+  }
+
+  /**
+   * Checks whether the Views data defines a handler for a field.
+   *
+   * @param string $base_table
+   *   The Views base table name.
+   * @param string $field
+   *   The Views field key.
+   * @param string $handler_type
+   *   The handler type, e.g. "field" or "filter".
+   *
+   * @return bool
+   *   TRUE if a handler of the given type is defined for the field.
+   */
+  protected function handlerExists(string $base_table, string $field, string $handler_type): bool {
+    $data = Views::viewsData()->get($base_table);
+    return isset($data[$field][$handler_type]['id']);
   }
 
   /**

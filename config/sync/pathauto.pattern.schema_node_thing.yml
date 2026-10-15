@@ -2,17 +2,31 @@ uuid: 043c9d9e-7477-43b6-ab8c-865042f9bb86
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.about_page
+    - node.type.article
+    - node.type.contact_page
+    - node.type.edu_organization
+    - node.type.event
+    - node.type.legislation
+    - node.type.local_business
+    - node.type.news_updates
+    - node.type.organization
+    - node.type.page
+    - node.type.person
+    - node.type.place
+    - node.type.testimonial
+    - node.type.web_site
   module:
     - node
 id: schema_node_thing
 label: 'Schema.org: Content - Thing'
 type: 'canonical_entities:node'
-pattern: '[node:schemadotorg:base-path]/[node:schemadotorg:alternate-name]'
+pattern: '/[node:schemadotorg:base-path]/[node:schemadotorg:alternate-name]'
 selection_criteria:
   9169d6aa-607e-48c7-9975-59dcbf9d1279:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 9169d6aa-607e-48c7-9975-59dcbf9d1279
     context_mapping:
       node: node
     bundles:

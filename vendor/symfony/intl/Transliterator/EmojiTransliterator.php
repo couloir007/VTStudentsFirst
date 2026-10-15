@@ -14,7 +14,7 @@ namespace Symfony\Component\Intl\Transliterator;
 use Symfony\Component\Intl\Util\GzipStreamWrapper;
 
 if (!class_exists(\Transliterator::class)) {
-    throw new \LogicException(\sprintf('You cannot use the "%s\EmojiTransliterator" class as the "intl" extension is not installed. See https://php.net/intl.', __NAMESPACE__));
+    throw new \LogicException(sprintf('You cannot use the "%s\EmojiTransliterator" class as the "intl" extension is not installed. See https://php.net/intl.', __NAMESPACE__));
 } else {
     /**
      * @internal
@@ -52,14 +52,9 @@ if (!class_exists(\Transliterator::class)) {
             static $maps;
 
             // Create an instance of \Transliterator with a custom id; that's the only way
-            if (\PHP_VERSION_ID >= 80200) {
-                static $newInstance;
-                $instance = ($newInstance ??= (new \ReflectionClass(self::class))->newInstanceWithoutConstructor(...))();
-                $instance->id = $id;
-            } else {
-                $instance = unserialize(\sprintf('O:%d:"%s":1:{s:2:"id";s:%d:"%s";}', \strlen(self::class), self::class, \strlen($id), $id));
-            }
-
+            static $newInstance;
+            $instance = ($newInstance ??= (new \ReflectionClass(self::class))->newInstanceWithoutConstructor(...))();
+            $instance->id = $id;
             $instance->map = $maps[$id] ??= str_ends_with($file, '.gz') ? GzipStreamWrapper::require($file) : require $file;
 
             return $instance;
@@ -70,22 +65,14 @@ if (!class_exists(\Transliterator::class)) {
             return self::create($this->id, self::REVERSE);
         }
 
-        /**
-         * @return int
-         */
-        #[\ReturnTypeWillChange]
         public function getErrorCode(): int|false
         {
-            return isset($this->transliterator) ? $this->transliterator->getErrorCode() : 0;
+            return $this->transliterator?->getErrorCode() ?? 0;
         }
 
-        /**
-         * @return string
-         */
-        #[\ReturnTypeWillChange]
         public function getErrorMessage(): string|false
         {
-            return isset($this->transliterator) ? $this->transliterator->getErrorMessage() : '';
+            return $this->transliterator?->getErrorMessage() ?? false;
         }
 
         public static function listIDs(): array
@@ -140,32 +127,17 @@ if (!class_exists(\Transliterator::class)) {
     }
 }
 
-if (\PHP_VERSION_ID >= 80200) {
-    final class EmojiTransliterator extends \Transliterator
-    {
-        use EmojiTransliteratorTrait;
+final class EmojiTransliterator extends \Transliterator
+{
+    use EmojiTransliteratorTrait;
 
-        private const QUICK_CHECK = "\xA9\xAE\xE2\xE3\xF0";
-        private const REVERSEABLE_IDS = [
-            'emoji-github' => 'github-emoji',
-            'emoji-slack' => 'slack-emoji',
-            'github-emoji' => 'emoji-github',
-            'slack-emoji' => 'emoji-slack',
-        ];
+    private const QUICK_CHECK = "\xA9\xAE\xE2\xE3\xF0";
+    private const REVERSEABLE_IDS = [
+        'emoji-github' => 'github-emoji',
+        'emoji-slack' => 'slack-emoji',
+        'github-emoji' => 'emoji-github',
+        'slack-emoji' => 'emoji-slack',
+    ];
 
-        public readonly string $id;
-    }
-} else {
-    final class EmojiTransliterator extends \Transliterator
-    {
-        use EmojiTransliteratorTrait;
-
-        private const QUICK_CHECK = "\xA9\xAE\xE2\xE3\xF0";
-        private const REVERSEABLE_IDS = [
-            'emoji-github' => 'github-emoji',
-            'emoji-slack' => 'slack-emoji',
-            'github-emoji' => 'emoji-github',
-            'slack-emoji' => 'emoji-slack',
-        ];
-    }
+    public readonly string $id;
 }

@@ -17,6 +17,7 @@ use Symfony\Component\Intl\Data\Bundle\Reader\BundleEntryReaderInterface;
 use Symfony\Component\Intl\Data\Util\ArrayAccessibleResourceBundle;
 use Symfony\Component\Intl\Data\Util\LocaleScanner;
 use Symfony\Component\Intl\Exception\MissingResourceException;
+use Symfony\Component\Intl\Locale;
 
 /**
  * The rule for compiling the zone bundle.
@@ -37,7 +38,6 @@ class TimezoneDataGenerator extends AbstractDataGenerator
     private array $zoneIds = [];
     private array $zoneToCountryMapping = [];
     private array $localeAliases = [];
-    private array $ianaMap = [];
 
     protected function scanLocales(LocaleScanner $scanner, string $sourceDir): array
     {
@@ -65,14 +65,8 @@ class TimezoneDataGenerator extends AbstractDataGenerator
 
     protected function generateDataForLocale(BundleEntryReaderInterface $reader, string $tempDir, string $displayLocale): ?array
     {
-        if (!$this->ianaMap) {
-            foreach ($reader->readEntry($tempDir, 'timezoneTypes', ['ianaMap', 'timezone']) as $cldr => $iana) {
-                $this->ianaMap[str_replace(':', '/', $cldr)] = $iana;
-            }
-        }
-
         if (!$this->zoneToCountryMapping) {
-            $this->zoneToCountryMapping = $this->generateZoneToCountryMapping($reader->read($tempDir, 'windowsZones'));
+            $this->zoneToCountryMapping = self::generateZoneToCountryMapping($reader->read($tempDir, 'windowsZones'));
         }
 
         // Don't generate aliases, as they are resolved during runtime
@@ -83,7 +77,7 @@ class TimezoneDataGenerator extends AbstractDataGenerator
 
         $localeBundle = $reader->read($tempDir, $displayLocale);
 
-        if (!isset($localeBundle['zoneStrings'])) {
+        if (!isset($localeBundle['zoneStrings']) || null === $localeBundle['zoneStrings']) {
             return null;
         }
 
@@ -127,16 +121,20 @@ class TimezoneDataGenerator extends AbstractDataGenerator
 
     protected function generateDataForMeta(BundleEntryReaderInterface $reader, string $tempDir): ?array
     {
+        $rootBundle = $reader->read($tempDir, 'root');
+
         $this->zoneIds = array_unique($this->zoneIds);
 
         sort($this->zoneIds);
         ksort($this->zoneToCountryMapping);
 
-        return [
+        $data = [
             'Zones' => $this->zoneIds,
             'ZoneToCountry' => $this->zoneToCountryMapping,
             'CountryToZone' => self::generateCountryToZoneMapping($this->zoneToCountryMapping),
         ];
+
+        return $data;
     }
 
     private function generateZones(BundleEntryReaderInterface $reader, string $tempDir, string $locale): array
@@ -224,10 +222,6 @@ class TimezoneDataGenerator extends AbstractDataGenerator
             }
 
             $zones[$id] = $name;
-
-            if (isset($this->ianaMap[$id])) {
-                $zones[$this->ianaMap[$id]] = $name;
-            }
         }
 
         return $zones;
@@ -248,20 +242,14 @@ class TimezoneDataGenerator extends AbstractDataGenerator
         return $metadata;
     }
 
-    private function generateZoneToCountryMapping(ArrayAccessibleResourceBundle $windowsZoneBundle): array
+    private static function generateZoneToCountryMapping(ArrayAccessibleResourceBundle $windowsZoneBundle): array
     {
         $mapping = [];
 
         foreach ($windowsZoneBundle['mapTimezones'] as $zoneInfo) {
             foreach ($zoneInfo as $region => $zones) {
                 if (RegionDataGenerator::isValidCountryCode($region)) {
-                    foreach (explode(' ', $zones) as $zone) {
-                        $mapping[$zone] = $region;
-
-                        if (isset($this->ianaMap[$zone])) {
-                            $mapping[$this->ianaMap[$zone]] = $region;
-                        }
-                    }
+                    $mapping += array_fill_keys(explode(' ', $zones), $region);
                 }
             }
         }

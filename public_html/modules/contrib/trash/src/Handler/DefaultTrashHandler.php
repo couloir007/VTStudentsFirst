@@ -10,6 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\trash\Exception\UnrestorableEntityException;
+use Drupal\trash\File\FileIntegrationTrait;
 use Drupal\trash\MenuLinkContent\MenuLinkContentIntegrationTrait;
 use Drupal\trash\PathAlias\PathAliasIntegrationTrait;
 use Drupal\trash\TrashManagerInterface;
@@ -21,6 +22,7 @@ use Drupal\trash\Validation\TrashAwareUniqueFieldValueValidator;
 class DefaultTrashHandler implements TrashHandlerInterface {
 
   use StringTranslationTrait;
+  use FileIntegrationTrait;
   use MenuLinkContentIntegrationTrait;
   use PathAliasIntegrationTrait;
 
@@ -72,9 +74,6 @@ class DefaultTrashHandler implements TrashHandlerInterface {
    * {@inheritdoc}
    */
   public function validateRestore(EntityInterface $entity): void {
-    $entity_key = $entity->getEntityTypeId() . ':' . $entity->id();
-    $this->validatedEntities[$entity_key] = TRUE;
-
     // Run entity validation for fieldable entities to check for conflicts.
     if ($entity instanceof FieldableEntityInterface) {
       $violations = $entity->validate();
@@ -91,24 +90,58 @@ class DefaultTrashHandler implements TrashHandlerInterface {
         }
       }
     }
+
+    $this->markRestoreValidated($entity);
   }
 
   /**
    * {@inheritdoc}
    */
   public function preTrashRestore(EntityInterface $entity): void {
+    $this->ensureRestoreValidated($entity);
+
     // Ensure that Pathauto doesn't try to auto-create aliases when restoring an
     // entity.
     $this->skipPathauto($entity);
   }
 
   /**
+   * Marks $entity as having passed restore validation in this request.
+   *
+   * Only call this once validateRestore() has actually succeeded: an
+   * exception thrown before reaching this point leaves the entity unmarked,
+   * so a later call re-validates instead of trusting a failed check.
+   */
+  protected function markRestoreValidated(EntityInterface $entity): void {
+    $entity_key = $entity->getEntityTypeId() . ':' . $entity->id();
+    $this->validatedEntities[$entity_key] = TRUE;
+  }
+
+  /**
+   * Runs validateRestore() unless it has already succeeded for $entity.
+   *
+   * Every restore path (both forms, Drush, and the Trash::restoreEntity()
+   * API) calls preTrashRestore(), so handlers that call this from their own
+   * preTrashRestore() are guaranteed to validate exactly once per restore,
+   * regardless of which path triggered it.
+   */
+  protected function ensureRestoreValidated(EntityInterface $entity): void {
+    $entity_key = $entity->getEntityTypeId() . ':' . $entity->id();
+    if (empty($this->validatedEntities[$entity_key])) {
+      $this->validateRestore($entity);
+    }
+    unset($this->validatedEntities[$entity_key]);
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function postTrashRestore(EntityInterface $entity, int|string $deleted_timestamp): void {
-    // Automatically restore associated path aliases and content menu links.
+    // Automatically restore associated path aliases, content menu links and
+    // files that were trashed together with the entity.
     $this->restoreAssociatedPathAliases($entity, $deleted_timestamp);
     $this->restoreAssociatedMenuLinkContent($entity, $deleted_timestamp);
+    $this->restoreAssociatedFiles($entity, $deleted_timestamp);
   }
 
   /**
