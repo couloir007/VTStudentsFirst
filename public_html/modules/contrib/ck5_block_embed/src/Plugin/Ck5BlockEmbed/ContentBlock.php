@@ -2,24 +2,59 @@
 
 namespace Drupal\ck5_block_embed\Plugin\Ck5BlockEmbed;
 
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\StringTranslation\TranslatableMarkup;
+use Drupal\ck5_block_embed\Attribute\Ck5BlockEmbed;
 use Drupal\ck5_block_embed\Ck5BlockEmbedInterface;
 use Drupal\ck5_block_embed\Ck5BlockEmbedPluginBase;
-use Drupal\block_content\Entity\BlockContent;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Plugin iframes.
- *
- * @Ck5BlockEmbed(
- *   id = "content_block",
- *   label = @Translation("Content Block"),
- *   description = @Translation("Content Block."),
- * )
+ * Plugin for embedding content blocks.
  */
-class ContentBlock extends Ck5BlockEmbedPluginBase implements Ck5BlockEmbedInterface {
+#[Ck5BlockEmbed(
+  id: 'content_block',
+  label: new TranslatableMarkup('Content Block'),
+  description: new TranslatableMarkup('Content Block.'),
+)]
+class ContentBlock extends Ck5BlockEmbedPluginBase implements Ck5BlockEmbedInterface, ContainerFactoryPluginInterface {
 
   use StringTranslationTrait;
+
+  /**
+   * The entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected EntityTypeManagerInterface $entityTypeManager;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct(
+    array $configuration,
+    $plugin_id,
+    $plugin_definition,
+    EntityTypeManagerInterface $entity_type_manager,
+  ) {
+    parent::__construct($configuration, $plugin_id, $plugin_definition);
+    $this->entityTypeManager = $entity_type_manager;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
+    return new static(
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('entity_type.manager'),
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -34,16 +69,20 @@ class ContentBlock extends Ck5BlockEmbedPluginBase implements Ck5BlockEmbedInter
    * {@inheritdoc}
    */
   public function build(): array {
-    // Get the block_id from configuration.
     $block_id = $this->configuration['block_id'];
 
     // If a block_id is selected, load and render the block.
     if ($block_id) {
-      $block_content = BlockContent::load($block_id);
+      /** @var \Drupal\block_content\BlockContentInterface|null $block_content */
+      $block_content = $this->entityTypeManager
+        ->getStorage('block_content')
+        ->load($block_id);
 
-      if ($block_content) {
+      if ($block_content && $block_content->access('view')) {
         // Render the block using the block content view builder.
-        $render = \Drupal::entityTypeManager()->getViewBuilder('block_content')->view($block_content);
+        $render = $this->entityTypeManager
+          ->getViewBuilder('block_content')
+          ->view($block_content);
         return $render;
       }
     }
@@ -52,6 +91,7 @@ class ContentBlock extends Ck5BlockEmbedPluginBase implements Ck5BlockEmbedInter
     // or no block is found.
     return [
       '#markup' => $this->t('No content block selected or the block could not be found.'),
+      '#cache' => ['max-age' => 0],
     ];
   }
 
@@ -59,10 +99,13 @@ class ContentBlock extends Ck5BlockEmbedPluginBase implements Ck5BlockEmbedInter
    * {@inheritdoc}
    */
   public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
-    // Fetch all content blocks.
-    $block_content = BlockContent::loadMultiple();
+    $block_content_storage = $this->entityTypeManager->getStorage('block_content');
+    $block_type_storage = $this->entityTypeManager->getStorage('block_content_type');
+
+    // Fetch all content blocks and block types.
+    $block_content = $block_content_storage->loadMultiple();
+    $block_types = $block_type_storage->loadMultiple();
     $block_options = [];
-    $block_types = \Drupal::entityTypeManager()->getStorage('block_content_type')->loadMultiple();
 
     // Loop through each block type to group blocks.
     foreach ($block_types as $block_type) {
@@ -78,17 +121,39 @@ class ContentBlock extends Ck5BlockEmbedPluginBase implements Ck5BlockEmbedInter
       }
     }
 
+    // Auto-select the first available option; only fall back to an empty
+    // placeholder when no content blocks are available at all.
+    $default_value = $this->configuration['block_id'];
+    if (!$default_value) {
+      foreach ($block_options as $group_options) {
+        if (!empty($group_options)) {
+          $default_value = array_key_first($group_options);
+          break;
+        }
+      }
+    }
+
     // Add the select field with the list of content blocks grouped by type.
     $form['block_id'] = [
       '#type' => 'select',
       '#title' => $this->t('Content Block'),
       '#options' => $block_options,
-      '#default_value' => $this->configuration['block_id'],
+      '#default_value' => $default_value,
       '#required' => TRUE,
       '#description' => $this->t('Select a block to display. The list will include the available content blocks.'),
     ];
+    if (!$default_value) {
+      $form['block_id']['#empty_option'] = $this->t('- No content blocks available -');
+    }
 
     return $form;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+    $this->configuration['block_id'] = $form_state->getValue('block_id');
   }
 
   /**

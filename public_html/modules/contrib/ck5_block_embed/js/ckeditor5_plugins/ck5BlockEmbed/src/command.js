@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 // Importing necessary CKEditor 5 modules and utility functions.
 // eslint-disable-next-line import/no-unresolved
 import { Command } from 'ckeditor5/src/core';

@@ -5,6 +5,7 @@ namespace Drupal\ck5_block_embed;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;
 use Drupal\Core\Plugin\DefaultPluginManager;
+use Drupal\ck5_block_embed\Attribute\Ck5BlockEmbed;
 
 /**
  * Ck5 block embed plugin manager.
@@ -24,12 +25,15 @@ class Ck5BlockEmbedPluginManager extends DefaultPluginManager {
    */
   public function __construct(\Traversable $namespaces, CacheBackendInterface $cache_backend, ModuleHandlerInterface $module_handler) {
     parent::__construct(
-          'Plugin/Ck5BlockEmbed',
-          $namespaces,
-          $module_handler,
-          'Drupal\ck5_block_embed\Ck5BlockEmbedInterface',
-          'Drupal\ck5_block_embed\Annotation\Ck5BlockEmbed'
-      );
+      'Plugin/Ck5BlockEmbed',
+      $namespaces,
+      $module_handler,
+      Ck5BlockEmbedInterface::class,
+      Ck5BlockEmbed::class,
+      // Keep annotation discovery for third-party plugins that have not yet
+      // converted to the attribute.
+      'Drupal\ck5_block_embed\Annotation\Ck5BlockEmbed',
+    );
     $this->alterInfo('ck5_block_embed_info');
     $this->setCacheBackend($cache_backend, 'ck5_block_embed_plugins');
   }

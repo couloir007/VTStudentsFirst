@@ -1,0 +1,10 @@
+name: 'Test Custom field SDC Components'
+type: module
+dependencies:
+  - custom_field:custom_field
+package: Testing
+
+# Information added by Drupal.org packaging script on 2026-10-26
+version: '4.0.13'
+project: 'custom_field'
+datestamp: 1792997277

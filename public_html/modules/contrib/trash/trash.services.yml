@@ -6,6 +6,10 @@ services:
     class: Drupal\trash\TrashManager
   Drupal\trash\TrashManagerInterface: '@trash.manager'
 
+  logger.channel.trash:
+    parent: logger.channel_base
+    arguments: ['trash']
+
   trash.entity_purger:
     class: Drupal\trash\TrashEntityPurger
     arguments: ['@entity_type.manager', '@trash.manager', '@config.factory', '@datetime.time', '@queue', '@settings']
@@ -13,7 +17,6 @@ services:
 
   trash.config_subscriber:
     class: Drupal\trash\EventSubscriber\TrashConfigSubscriber
-    arguments: ['@entity_type.manager', '@trash.manager', '@entity.last_installed_schema.repository', '@router.builder', '@kernel']
     tags:
       - { name: event_subscriber }
 

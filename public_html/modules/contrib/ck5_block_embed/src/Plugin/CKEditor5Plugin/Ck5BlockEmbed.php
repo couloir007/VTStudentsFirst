@@ -26,6 +26,7 @@ class Ck5BlockEmbed extends CKEditor5PluginDefault implements ContainerFactoryPl
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityTypeManager;
+
   /**
    * The CSRF token generator.
    *
@@ -60,16 +61,16 @@ class Ck5BlockEmbed extends CKEditor5PluginDefault implements ContainerFactoryPl
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritdoc}
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
-          $configuration,
-          $plugin_id,
-          $plugin_definition,
-          $container->get('entity_type.manager'),
-          $container->get('csrf_token')
-      );
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('entity_type.manager'),
+      $container->get('csrf_token')
+    );
   }
 
   /**

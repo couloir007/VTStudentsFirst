@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 // eslint-disable-next-line import/no-unresolved
 import { Plugin, icons } from 'ckeditor5/src/core';
 // eslint-disable-next-line import/no-unresolved
@@ -38,16 +39,18 @@ export default class Ck5BlockEmbedToolbar extends Plugin {
       buttonView.set({
         label: editor.t('Edit'), // Button label
         icon: icons.pencil, // Pencil icon from CKEditor
-        tooltip: TRUE, // Display a tooltip
+        tooltip: true, // Display a tooltip
         class: 'ck-button_ck5-block-embed__edit', // Custom class for styling
       });
 
       // Define the behavior when the button is clicked
       this.listenTo(buttonView, 'execute', () => {
-        const selectedElement = editor.model.document.selection.getSelectedElement();
+        const selectedElement =
+          editor.model.document.selection.getSelectedElement();
 
         // Get the button ID from the selected element (if available) or default to 'default'
-        const buttonId = selectedElement.getAttribute('dataButtonId') ? ? 'default';
+        const buttonId =
+          selectedElement.getAttribute('dataButtonId') ?? 'default';
         const button = options.buttons[buttonId]; // Get the corresponding button from the configuration
         button.editor_id = editor.id; // Set the editor ID to ensure the button is tied to the correct editor instance
 
@@ -70,6 +73,33 @@ export default class Ck5BlockEmbedToolbar extends Plugin {
 
       return buttonView; // Return the button view
     });
+
+    // Add the "Remove" button to the toolbar
+    editor.ui.componentFactory.add('ck5BlockEmbedRemove', (locale) => {
+      const removeButtonView = new ButtonView(locale); // Create a button view for the "Remove" button
+
+      // Set properties for the remove button
+      removeButtonView.set({
+        label: editor.t('Remove'), // Button label
+        icon: icons.cancel, // Cross/cancel icon from CKEditor
+        tooltip: true, // Display a tooltip
+        class: 'ck-button_ck5-block-embed__remove', // Custom class for styling
+      });
+
+      // Define the behavior when the remove button is clicked
+      this.listenTo(removeButtonView, 'execute', () => {
+        const selectedElement =
+          editor.model.document.selection.getSelectedElement();
+        if (selectedElement) {
+          editor.model.change((writer) => {
+            writer.remove(selectedElement); // Remove the selected element from the model
+          });
+          editor.editing.view.focus(); // Refocus the editor
+        }
+      });
+
+      return removeButtonView; // Return the remove button view
+    });
   }
 
   /**
@@ -86,14 +116,14 @@ export default class Ck5BlockEmbedToolbar extends Plugin {
     // Register the CK5 Block Embed toolbar item
     widgetToolbarRepository.register('ck5BlockEmbed', {
       ariaLabel: Drupal.t('Ck5BlockEmbed toolbar'), // Set the ARIA label for accessibility
-      items: ['ck5BlockEmbedEdit'], // Add the "Edit" button to the toolbar
+      items: ['ck5BlockEmbedEdit', 'ck5BlockEmbedRemove'], // Add the "Edit" and "Remove" buttons to the toolbar
       getRelatedElement(selection) {
         const viewElement = selection.getSelectedElement(); // Get the selected element in the editor
         if (!viewElement || !isWidget(viewElement)) {
-          return NULL; // If no widget is selected, return null
+          return null; // If no widget is selected, return null
         }
         if (!viewElement.getCustomProperty('ck5BlockEmbed')) {
-          return NULL; // Ensure that the element is a CK5 Block Embed widget
+          return null; // Ensure that the element is a CK5 Block Embed widget
         }
 
         return viewElement; // Return the related view element

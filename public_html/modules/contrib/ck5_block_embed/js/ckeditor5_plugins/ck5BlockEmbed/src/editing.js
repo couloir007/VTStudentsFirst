@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 // Importing necessary CKEditor 5 modules and commands.
 // eslint-disable-next-line import/no-unresolved
 import { Plugin } from 'ckeditor5/src/core';
@@ -12,7 +13,7 @@ import InsertCk5BlockEmbedCommand from './command';
 export default class Ck5BlockEmbedEditing extends Plugin {
   /**
    * Defines the plugin dependencies. In this case, it requires the Widget plugin.
-   * @returns {Array} The required plugins.
+   * @return {Array} The required plugins.
    */
   static get requires() {
     return [Widget];
@@ -68,27 +69,25 @@ export default class Ck5BlockEmbedEditing extends Plugin {
 
     // Register a block element for the CK5 Block Embed with specific attributes.
     schema.register('ck5BlockEmbed', {
-      isObject: TRUE,
-      isContent: TRUE,
-      isBlock: TRUE,
+      isObject: true,
+      isContent: true,
+      isBlock: true,
       allowWhere: '$block',
       allowAttributes: Object.keys(this.attrs),
     });
 
     // Register an inline version of the CK5 Block Embed.
     schema.register('ck5BlockEmbedInline', {
-      isObject: TRUE,
-      isContent: TRUE,
-      isBlock: TRUE,
-      isInline: TRUE,
+      isObject: true,
+      isContent: true,
+      isBlock: true,
+      isInline: true,
       allowWhere: '$text',
       allowAttributes: Object.keys(this.attrs),
     });
 
     // Add the custom DOM elements to the converter for block and inline block embeds.
-    this.editor.editing.view.domConverter.blockElements.push(
-      'ck5-block-embed',
-    );
+    this.editor.editing.view.domConverter.blockElements.push('ck5-block-embed');
     this.editor.editing.view.domConverter.blockElements.push(
       'ck5-block-embed-inline',
     );
@@ -135,7 +134,7 @@ export default class Ck5BlockEmbedEditing extends Plugin {
             const container = writer.createContainerElement('figure', {
               class: `ck5 - block - embed - preview - wrapper ${viewName}`,
             });
-            writer.setCustomProperty('ck5BlockEmbed', TRUE, container);
+            writer.setCustomProperty('ck5BlockEmbed', true, container);
             return toWidget(container, writer, {
               label: Drupal.t('Ck5 block embed'),
             });
@@ -204,7 +203,7 @@ export default class Ck5BlockEmbedEditing extends Plugin {
   /**
    * Fetches the preview content for the block embed from the server.
    * @param {HTMLElement} modelElement - The model element to fetch the preview for.
-   * @returns {Promise<string>} The HTML content of the preview.
+   * @return {Promise<string>} The HTML content of the preview.
    */
   async _fetchPreview(modelElement) {
     const config = {
@@ -228,7 +227,7 @@ export default class Ck5BlockEmbedEditing extends Plugin {
 
   /**
    * Provides the plugin's name to be used by the CKEditor system.
-   * @returns {string} The name of the plugin.
+   * @return {string} The name of the plugin.
    */
   static get pluginName() {
     return 'ck5BlockEmbedEditing';

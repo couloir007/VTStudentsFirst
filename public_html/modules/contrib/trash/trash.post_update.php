@@ -81,3 +81,10 @@ function trash_post_update_create_trash_actions(): void {
     }
   }
 }
+
+/**
+ * Rebuild the container for changed service constructor arguments.
+ */
+function trash_post_update_rebuild_container(): void {
+  \Drupal::service('kernel')->invalidateContainer();
+}

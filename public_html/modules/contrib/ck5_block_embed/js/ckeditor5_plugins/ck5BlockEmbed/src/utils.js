@@ -13,8 +13,10 @@ export const openDialog = (button, saveCallback, existingValues) => {
       height: button.dialogSettings.height, // Set the dialog height.
       class: button.class, // Set additional classes for styling.
     },
-    dialogType: button.dialogSettings.renderer === 'off_canvas' ? 'dialog' : 'modal', // Set dialog type based on renderer.
-    dialogRenderer: button.dialogSettings.renderer === 'off_canvas' ? 'off_canvas' : NULL, // Set custom renderer for off-canvas dialogs.
+    dialogType:
+      button.dialogSettings.renderer === 'off_canvas' ? 'dialog' : 'modal', // Set dialog type based on renderer.
+    dialogRenderer:
+      button.dialogSettings.renderer === 'off_canvas' ? 'off_canvas' : null, // Set custom renderer for off-canvas dialogs.
     selector: button.dialogSettings.selector, // The selector for the dialog content.
     url: button.dialogUrl, // The URL for the dialog content (typically a Drupal path).
     progress: { type: 'fullscreen' }, // Show fullscreen progress indicator while loading.
@@ -27,8 +29,35 @@ export const openDialog = (button, saveCallback, existingValues) => {
   // Store the save callback function, which will be invoked when the dialog is closed.
   // If multiple modals are supported, store callbacks in a Map keyed by editor ID.
   if (Drupal.ckeditor5.saveCallback instanceof Map) {
-    Drupal.ckeditor5.saveCallback.set('#ck5-block-embed-dialog-form-' + button.editor_id, saveCallback);
+    Drupal.ckeditor5.saveCallback.set(
+      `#ck5-block-embed-dialog-form-${button.editor_id}`,
+      saveCallback,
+    );
   } else {
     Drupal.ckeditor5.saveCallback = saveCallback; // Store the callback directly if not in a Map.
   }
 };
+
+/**
+ * Fetches an SVG icon synchronously so it can be used as a button icon.
+ *
+ * @param {string} url - The URL of the SVG icon.
+ * @return {string} The SVG markup.
+ */
+export const getSvg = (url) => {
+  const xmlHttp = new XMLHttpRequest();
+  xmlHttp.open('GET', url, false);
+  xmlHttp.send();
+  return xmlHttp.responseText;
+};
+
+/**
+ * Creates a CK5 block embed model element.
+ *
+ * @param {module:engine/model/writer~Writer} writer - The model writer.
+ * @param {Object} attributes - The model attributes for the element.
+ * @param {string} element - The model element name.
+ * @return {module:engine/model/element~Element} The created model element.
+ */
+export const createCk5BlockEmbed = (writer, attributes, element) =>
+  writer.createElement(element, attributes);

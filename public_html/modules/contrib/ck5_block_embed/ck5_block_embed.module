@@ -2,8 +2,179 @@
 
 /**
  * @file
- * Module File.
+ * Module file for CKEditor 5 Block Embed.
+ *
+ * Provides hook_help(), hook_editor_js_settings_alter(), and
+ * hook_module_preuninstall() implementations.
  */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_help().
+ */
+function ck5_block_embed_help(string $route_name, RouteMatchInterface $route_match): string {
+  switch ($route_name) {
+
+    // Main module help page — linked from Admin → Help.
+    case 'help.page.ck5_block_embed':
+      $output = '';
+      $output .= '<h2>' . t('About') . '</h2>';
+      $output .= '<p>' . t(
+        'The <strong>CKEditor 5 Block Embed</strong> module adds an <em>Embed Block</em>
+         toolbar button to CKEditor 5. Editors can embed content blocks, view blocks, and
+         theme region blocks directly inside a rich-text field through a modal dialog.
+         Embeds are stored as <code>&lt;ck5-block-embed&gt;</code> elements and rendered
+         on the front end by the <em>Embed blocks</em> text filter.'
+      ) . '</p>';
+
+      $output .= '<h2>' . t('Uses') . '</h2>';
+      $output .= '<dl>';
+
+      $output .= '<dt>' . t('Enabling the filter') . '</dt>';
+      $output .= '<dd>' . t(
+        'Go to <a href=":formats_url">Text formats and editors</a>, configure the text
+         format you want to use, and check the <strong>Embed blocks</strong> filter under
+         <em>Enabled filters</em>. Without this filter, the raw <code>&lt;ck5-block-embed&gt;</code>
+         tag will be stored and displayed as-is on the front end.',
+        [':formats_url' => Url::fromRoute('filter.admin_overview')->toString()]
+      ) . '</dd>';
+
+      $output .= '<dt>' . t('Adding the toolbar button') . '</dt>';
+      $output .= '<dd>' . t(
+        'On the same text format configuration page, drag the <strong>Embed Block</strong>
+         button from the <em>Available buttons</em> bar into the active CKEditor toolbar,
+         then save. The button will only appear for users who also have the
+         <em>Administer embed block</em> (<code>use ck5 block embed button</code>) permission.'
+      ) . '</dd>';
+
+      $output .= '<dt>' . t('Granting permissions') . '</dt>';
+      $output .= '<dd>' . t(
+        'Go to <a href=":perm_url">Permissions</a> and grant the
+         <strong>Administer embed block</strong> permission to the roles that should be
+         allowed to use the embed button. Users without this permission will not see the
+         button in their editor toolbar even if it is configured on their text format.',
+        [':perm_url' => Url::fromRoute('user.admin_permissions')->toString()]
+      ) . '</dd>';
+
+      $output .= '<dt>' . t('Inserting a block') . '</dt>';
+      $output .= '<dd>' . t(
+        'Click the <strong>Embed Block</strong> toolbar button. A dialog opens where you
+         select the block category (Content Block, View Block, or Theme Block) and then
+         choose the specific block from the list. Click <em>Embed block</em> to insert it.
+         A live preview of the rendered block appears inside the editor immediately.'
+      ) . '</dd>';
+
+      $output .= '<dt>' . t('Editing an existing embed') . '</dt>';
+      $output .= '<dd>' . t(
+        'Click directly on an embedded block inside the editor and then click the
+         <strong>Embed Block</strong> toolbar button again. The dialog reopens with the
+         current configuration pre-filled. Adjust the selection and click <em>Embed block</em>
+         to update it.'
+      ) . '</dd>';
+
+      $output .= '<dt>' . t('Built-in block types') . '</dt>';
+      $output .= '<dd>';
+      $output .= '<ul>';
+      $output .= '<li>' . t(
+        '<strong>Content Block</strong> — Embeds a <code>block_content</code> entity.
+         Requires the <em>Custom Block</em> (<code>block_content</code>) core module.'
+      ) . '</li>';
+      $output .= '<li>' . t(
+        '<strong>View Block</strong> — Embeds any block display from an enabled View.
+         Requires the <em>Views</em> (<code>views</code>) core module.'
+      ) . '</li>';
+      $output .= '<li>' . t(
+        "<strong>Theme Block</strong> — Embeds a block placed in the active theme's regions.
+         Requires the <em>Block</em> (<code>block</code>) core module and at least one block
+         placed at <a href=':block_url'>Block layout</a>.",
+        [':block_url' => Url::fromRoute('block.admin_display')->toString()]
+      ) . '</li>';
+      $output .= '</ul>';
+      $output .= '</dd>';
+
+      $output .= '<dt>' . t('Adding custom block types') . '</dt>';
+      $output .= '<dd>' . t(
+        'Any module can provide additional embed types by creating a class in
+         <code>src/Plugin/Ck5BlockEmbed/</code> with the <code>#[Ck5BlockEmbed]</code> attribute
+         and extending <code>Ck5BlockEmbedPluginBase</code>. The plugin must implement
+         <code>build(): array</code>, <code>buildConfigurationForm()</code>, and
+         <code>isInline(): bool</code>. See the module README for a full example.'
+      ) . '</dd>';
+
+      $output .= '<dt>' . t('Modifying the available plugin list') . '</dt>';
+      $output .= '<dd>' . t(
+        'Implement <code>hook_ck5_block_embed_info_alter(array &amp;$definitions)</code>
+         in your module to add, remove, or modify <code>@Ck5BlockEmbed</code> plugin
+         definitions at runtime before they are presented to the editor dialog or used
+         by the text filter.'
+      ) . '</dd>';
+
+      $output .= '</dl>';
+      return $output;
+
+    // Inline help shown at the top of the Text formats overview page.
+    case 'filter.admin_overview':
+      return '<p>' . t(
+        'The <strong>Embed blocks</strong> filter provided by the
+         <a href=":help_url">CKEditor 5 Block Embed</a> module must be enabled on a
+         text format before any <code>&lt;ck5-block-embed&gt;</code> elements stored in
+         that format will be rendered on the front end.',
+        [':help_url' => Url::fromRoute('help.page', ['name' => 'ck5_block_embed'])->toString()]
+      ) . '</p>';
+
+    // Inline help shown at the top of the Permissions page.
+    case 'user.admin_permissions':
+      return '<p>' . t(
+        'The <strong>Administer embed block</strong> permission controls whether a user
+         can see and use the <em>Embed Block</em> CKEditor 5 toolbar button provided by
+         the <a href=":help_url">CKEditor 5 Block Embed</a> module.',
+        [':help_url' => Url::fromRoute('help.page', ['name' => 'ck5_block_embed'])->toString()]
+      ) . '</p>';
+  }
+
+  return '';
+}
+
+/**
+ * Implements hook_module_preuninstall().
+ */
+function ck5_block_embed_module_preuninstall(string $module): void {
+  if ($module !== 'ck5_block_embed') {
+    return;
+  }
+
+  $filter_format_storage = \Drupal::entityTypeManager()->getStorage('filter_format');
+  $editor_storage = \Drupal::entityTypeManager()->getStorage('editor');
+
+  /** @var \Drupal\filter\Entity\FilterFormat $format */
+  foreach ($filter_format_storage->loadMultiple() as $format) {
+    $filters = $format->get('filters');
+    if (isset($filters['ck5_block_embed'])) {
+      unset($filters['ck5_block_embed']);
+      $format->set('filters', $filters);
+      $format->save();
+    }
+  }
+
+  /** @var \Drupal\editor\Entity\Editor $editor */
+  foreach ($editor_storage->loadMultiple() as $editor) {
+    $settings = $editor->getSettings();
+    if (!isset($settings['toolbar']['items'])) {
+      continue;
+    }
+    $items = $settings['toolbar']['items'];
+    $filtered = array_values(array_filter($items, static function ($item) {
+      return $item !== 'ck5BlockEmbed__default';
+    }));
+    if (count($filtered) !== count($items)) {
+      $settings['toolbar']['items'] = $filtered;
+      $editor->setSettings($settings);
+      $editor->save();
+    }
+  }
+}
 
 /**
  * Implements hook_editor_js_settings_alter().
@@ -33,9 +204,12 @@ function ck5_block_embed_editor_js_settings_alter(array &$settings) {
           // Find the index of the value.
           $key = array_search('ck5BlockEmbed__default', $buttons);
 
-          // If the value exists in the array, unset it.
+          // If the value exists in the array, unset it and re-index so
+          // that the array serializes as a JSON array (not an object)
+          // in JavaScript.
           if ($key !== FALSE) {
             unset($buttons[$key]);
+            $buttons = array_values($buttons);
           }
         }
       }

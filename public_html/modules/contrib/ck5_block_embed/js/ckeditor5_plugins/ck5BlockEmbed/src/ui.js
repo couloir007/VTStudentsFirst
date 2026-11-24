@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /**
  * @file Registers the entity embed button(s) to the CKEditor instance(s) and binds functionality to it/them.
  */
@@ -47,7 +48,7 @@ export default class Ck5BlockEmbedUI extends Plugin {
         buttonView.set({
           label: button.label, // Button label
           icon: getSvg(button.iconUrl), // Button icon, fetched using the helper `getSvg`
-          tooltip: TRUE, // Enable tooltip
+          tooltip: true, // Enable tooltip
           class: `ck - button_ck5 - block - embed, ck - button_ck5 - block - embed__${id}`, // Custom class for styling
         });
 

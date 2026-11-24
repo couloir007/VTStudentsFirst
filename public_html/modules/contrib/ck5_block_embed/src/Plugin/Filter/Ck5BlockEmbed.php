@@ -4,7 +4,7 @@ namespace Drupal\ck5_block_embed\Plugin\Filter;
 
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Render\RenderContext;
-use Drupal\Core\Render\Renderer;
+use Drupal\Core\Render\RendererInterface;
 use Drupal\Core\Security\TrustedCallbackInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\ck5_block_embed\Ck5BlockEmbedPluginManager;
@@ -37,14 +37,14 @@ class Ck5BlockEmbed extends FilterBase implements ContainerFactoryPluginInterfac
   /**
    * The renderer.
    *
-   * @var \Drupal\Core\Render\Renderer
+   * @var \Drupal\Core\Render\RendererInterface
    */
   protected $renderer;
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, Renderer $renderer, Ck5BlockEmbedPluginManager $ck5_block_embed_plugin_manager) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, RendererInterface $renderer, Ck5BlockEmbedPluginManager $ck5_block_embed_plugin_manager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->ck5BlockEmbedPluginManager = $ck5_block_embed_plugin_manager;
     $this->renderer = $renderer;
@@ -55,12 +55,12 @@ class Ck5BlockEmbed extends FilterBase implements ContainerFactoryPluginInterfac
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
-          $configuration,
-          $plugin_id,
-          $plugin_definition,
-          $container->get('renderer'),
-          $container->get('plugin.manager.ck5_block_embed')
-      );
+      $configuration,
+      $plugin_id,
+      $plugin_definition,
+      $container->get('renderer'),
+      $container->get('plugin.manager.ck5_block_embed')
+    );
   }
 
   /**
@@ -74,6 +74,11 @@ class Ck5BlockEmbed extends FilterBase implements ContainerFactoryPluginInterfac
       // Return early if no matches found.
       return new FilterProcessResult($text);
     }
+
+    // Create the result object before the loop so that bubbleable metadata
+    // (cache tags, attachments, SDC CSS/JS libraries) collected during each
+    // block render can be merged into it.
+    $result = new FilterProcessResult($text);
 
     foreach ($matches[0] as $match) {
       // Extract plugin config.
@@ -94,9 +99,14 @@ class Ck5BlockEmbed extends FilterBase implements ContainerFactoryPluginInterfac
         $instance = $this->ck5BlockEmbedPluginManager->createInstance($plugin_id, $plugin_config);
         $replacement = $instance->build();
 
-        // Render the replacement.
+        // Render the replacement, then bubble any attachments (including SDC
+        // CSS/JS libraries) and cache metadata up to the filter result so
+        // they are not silently discarded.
         $context = new RenderContext();
         $render = $this->renderer->executeInRenderContext($context, fn() => $this->renderer->render($replacement));
+        if (!$context->isEmpty()) {
+          $result->addCacheableDependency($context->pop());
+        }
       }
       catch (\Exception $e) {
         // Handle exception and display an error message.
@@ -112,8 +122,9 @@ class Ck5BlockEmbed extends FilterBase implements ContainerFactoryPluginInterfac
       $text = str_replace($match, $render, $text);
     }
 
-    // Return the processed text.
-    return new FilterProcessResult($text);
+    // Return the processed text with all bubbled metadata (attachments,
+    // cache tags, etc.) accumulated from every rendered block.
+    return $result->setProcessedText($text);
   }
 
   /**

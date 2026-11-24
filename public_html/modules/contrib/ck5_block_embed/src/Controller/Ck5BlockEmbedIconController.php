@@ -4,9 +4,10 @@ namespace Drupal\ck5_block_embed\Controller;
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Session\AccountProxyInterface;
-use Symfony\Component\HttpFoundation\Response;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\Session\AccountProxyInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Controller to handle CK5 Block Embed functionality.
@@ -35,6 +36,15 @@ class Ck5BlockEmbedIconController extends ControllerBase {
    */
   public function __construct(ModuleHandlerInterface $module_handler) {
     $this->moduleHandler = $module_handler;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('module_handler')
+    );
   }
 
   /**
@@ -76,28 +86,7 @@ class Ck5BlockEmbedIconController extends ControllerBase {
 
     // Read and return the file content.
     $content = file_get_contents($file_path);
-    return $content;
-  }
-
-  /**
-   * Creates a binary response containing the generated CSS for the button.
-   *
-   * This CSS defines the background image for the toolbar button
-   * using the icon URL.
-   *
-   * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
-   *   The response containing the generated CSS.
-   */
-  public function buildAdminCss(): Response {
-    // Generate the CSS for the button icon.
-    $css = sprintf('.ckeditor5-toolbar-button-ck5BlockEmbed__%s { background-image:url(%s)}', $ck5_block_embed_button->id(), $ck5_block_embed_button->getIconUrl());
-
-    // Return the CSS as a binary response with the correct content type.
-    return new Response(
-      $css, 200, [
-        'Content-Type' => 'text/css',
-      ]
-    );
+    return $content !== FALSE ? $content : '';
   }
 
   /**

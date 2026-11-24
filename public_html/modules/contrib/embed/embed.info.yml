@@ -7,7 +7,7 @@ configure: entity.embed_button.collection
 test_dependencies:
   - drupal:ckeditor5
 
-# Information added by Drupal.org packaging script on 2025-01-23
-version: '8.x-1.10'
+# Information added by Drupal.org packaging script on 2026-11-18
+version: '8.x-1.11'
 project: 'embed'
-datestamp: 1737662979
+datestamp: 1795024312

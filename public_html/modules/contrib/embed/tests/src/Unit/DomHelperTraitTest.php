@@ -47,6 +47,13 @@ class DomHelperTraitTest extends UnitTestCase {
     $this->changeNodeName($this->node, 'tested');
     $this->assertEquals($this->node->tagName, 'tested');
     $this->assertEquals(Html::serialize($this->document), '<outer><tested foo="bar" namespace:foo="bar"><test bar="foo"></test></tested></outer>');
+
+    // Test a node with multiple children, including text nodes.
+    $document = Html::load('<p><b>one<br>two<i>three</i>four</b></p>');
+    $node = $document->getElementsByTagName('b')->item(0);
+    $this->changeNodeName($node, 'strong');
+    $this->assertEquals('strong', $node->tagName);
+    $this->assertEquals('<p><strong>one<br>two<i>three</i>four</strong></p>', Html::serialize($document));
   }
 
   /**

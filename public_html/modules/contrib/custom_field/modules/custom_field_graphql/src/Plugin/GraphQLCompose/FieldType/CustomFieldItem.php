@@ -63,6 +63,11 @@ class CustomFieldItem extends GraphQLComposeFieldTypeBase implements FieldProduc
     $settings = $item->getFieldDefinition()->getSettings();
     $custom_items = $this->customFieldManager->getCustomFieldItems($settings);
     $field_definition = $item->getFieldDefinition();
+    // Every subfield's output depends on the field's settings, and the
+    // subfield plugins are chosen from its storage's columns, so a change to
+    // either must invalidate cached responses.
+    $context->addCacheableDependency($field_definition);
+    $context->addCacheableDependency($field_definition->getFieldStorageDefinition());
     $entity_type_id = $field_definition->getTargetEntityTypeId();
     $bundle = $field_definition->getTargetBundle();
     $field_name = $field_definition->getName();
@@ -78,7 +83,7 @@ class CustomFieldItem extends GraphQLComposeFieldTypeBase implements FieldProduc
       $name_sdl = $subfield_settings['name_sdl'] ?? u($name)->camel()->toString();
 
       // Pass the widget settings down as context.
-      $context->setContextValue('settings', $settings['field_settings'][$name]['widget_settings']['settings'] ?? []);
+      $context->setContextValue('settings', $custom_item->getFieldSettings() ?? []);
       $context->setContextValue('property_name', $name);
       $context->setContextValue('data_type', $custom_item->getDataType());
       $fields[$name_sdl] = $this->getSubField($name, $item, $context) ?: NULL;
@@ -209,6 +214,14 @@ class CustomFieldItem extends GraphQLComposeFieldTypeBase implements FieldProduc
         $type = 'string';
         break;
 
+      case 'datetime':
+        $type = 'custom_field_datetime';
+        break;
+
+      case 'daterange':
+        $type = 'custom_field_daterange';
+        break;
+
       case 'entity_reference':
         $type = 'custom_field_entity_reference';
         break;
@@ -222,7 +235,12 @@ class CustomFieldItem extends GraphQLComposeFieldTypeBase implements FieldProduc
         break;
 
       case 'time':
+      case 'duration':
         $type = 'integer';
+        break;
+
+      case 'time_range':
+        $type = 'custom_field_time_range';
         break;
 
       case 'uri':
@@ -268,12 +286,12 @@ class CustomFieldItem extends GraphQLComposeFieldTypeBase implements FieldProduc
       return 'UnsupportedType';
     }
 
-    // Entity type not defined.
+    // Entity type is not defined.
     if (!$entity_type = $this->entityTypeManager->getDefinition($target_type_id, FALSE)) {
       return 'UnsupportedType';
     }
 
-    // Entity type plugin not defined.
+    // Entity type plugin is not defined.
     if (!$plugin_instance = $this->gqlEntityTypeManager->getPluginInstance($target_type_id)) {
       return 'UnsupportedType';
     }

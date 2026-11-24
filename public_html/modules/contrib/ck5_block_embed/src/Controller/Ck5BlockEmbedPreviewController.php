@@ -6,9 +6,8 @@ use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\Xss;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Render\Renderer;
-use Drupal\Core\Session\AccountProxy;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Render\RendererInterface;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\editor\Entity\Editor;
 use Drupal\ck5_block_embed\Ck5BlockEmbedPluginManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -25,14 +24,12 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class Ck5BlockEmbedPreviewController extends ControllerBase {
 
-  use StringTranslationTrait;
-
   /**
    * The renderer service for rendering the preview.
    *
    * This service is used to render the build array into HTML.
    *
-   * @var \Drupal\Core\Render\Renderer
+   * @var \Drupal\Core\Render\RendererInterface
    */
   protected $renderer;
 
@@ -67,10 +64,10 @@ class Ck5BlockEmbedPreviewController extends ControllerBase {
    *
    * @param \Drupal\ck5_block_embed\Ck5BlockEmbedPluginManager $ck5_block_embed_plugin_manager
    *   The CK5 Block Embed plugin manager.
-   * @param \Drupal\Core\Render\Renderer $renderer
+   * @param \Drupal\Core\Render\RendererInterface $renderer
    *   The renderer service for rendering HTML markup.
    */
-  public function __construct(Ck5BlockEmbedPluginManager $ck5_block_embed_plugin_manager, Renderer $renderer) {
+  public function __construct(Ck5BlockEmbedPluginManager $ck5_block_embed_plugin_manager, RendererInterface $renderer) {
     $this->ck5BlockEmbedPluginManager = $ck5_block_embed_plugin_manager;
     $this->renderer = $renderer;
   }
@@ -136,7 +133,7 @@ class Ck5BlockEmbedPreviewController extends ControllerBase {
    * view the preview for the CK5 Block Embed plugin, based on the active
    * text format associated with the editor.
    *
-   * @param \Drupal\Core\Session\AccountProxy $account
+   * @param \Drupal\Core\Session\AccountInterface $account
    *   The current user account.
    * @param \Drupal\editor\Entity\Editor $editor
    *   The editor entity associated with the request.
@@ -145,7 +142,7 @@ class Ck5BlockEmbedPreviewController extends ControllerBase {
    *   The access result, indicating whether the user has permission
    *   to view the preview.
    */
-  public function checkAccess(AccountProxy $account, Editor $editor) {
+  public function checkAccess(AccountInterface $account, Editor $editor) {
     // Check if the user has the permission to use the active text format.
     return AccessResult::allowedIfHasPermission(
       $account,

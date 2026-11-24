@@ -183,9 +183,17 @@ class Ck5BlockEmbedDialogForm extends FormBase {
        * @var \Drupal\ck5_block_embed\Ck5BlockEmbedInterface $instance
        */
       try {
+        // When editing an existing embed, $plugin_config arrives from the
+        // payload as a flat array (e.g. ['block_id' => 5]) because only the
+        // inner plugin config is stored in data-plugin-config.
+        // When the form is rebuilt via AJAX, $form_state holds a nested array
+        // keyed by plugin_id (e.g. ['content_block' => ['block_id' => 5]]).
+        // Use $plugin_config[$plugin_id] if it exists (AJAX rebuild),
+        // otherwise use the flat $plugin_config (initial edit from payload).
+        $instance_config = $plugin_config[$plugin_id] ?? $plugin_config ?? [];
         $instance = $this->ck5BlockEmbedPluginManager->createInstance(
           $plugin_id,
-          $plugin_config[$plugin_id] ?? []
+          $instance_config
         );
 
         // Create the child container BEFORE building the subform.

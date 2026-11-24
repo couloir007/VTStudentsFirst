@@ -27,14 +27,14 @@ class Ck5BlockEmbed extends Plugin {
   /**
    * The human-readable name of the plugin.
    *
-   * This title is typically displayed in the user interface and should provide
+   * This label is typically displayed in the user interface and should provide
    * a clear understanding of the plugin's purpose.
    *
    * @var \Drupal\Core\Annotation\Translation
    *
    * @ingroup plugin_translatable
    */
-  public $title;
+  public $label;
 
   /**
    * A brief description of the plugin's functionality.
